@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6장 해법을 찾고 고른다 — AI 문제해결</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="book.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+<script>MathJax = {tex: {inlineMath: [['\\(', '\\)']]}, svg: {fontCache: 'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="home" href="../index.html">&#8962; 홈</a>
+  <span class="book-title">AI 문제해결</span>
+  <span class="ch-indicator">6장 해법을 찾고 고른다</span>
+  <button class="nav-toggle" onclick="document.body.classList.toggle('nav-open')">목차</button>
+</header>
+<div class="layout">
+<nav class="sidebar">
+<div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 문제를 푸는 방식이 달라졌다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> AI는 어떻게 답을 만드는가</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 에이전트: 스스로 일하는 AI</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 문제를 찾아내고 정의한다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> 문제를 쪼개고 구조를 본다</a>
+</div>
+<div class="nav-ch current"><a class="nav-ch-link" href="ch06.html"><span class="nav-num">06</span> 해법을 찾고 고른다</a>
+<div class="nav-secs"><a class="nav-sec" href="ch06.html#sec1">6.1 대안을 많이 만드는 법</a><a class="nav-sec" href="ch06.html#sec2">6.2 무엇을 기준으로 고를 것인가</a><a class="nav-sec" href="ch06.html#sec3">6.3 만들 수 있는 크기로 줄인다</a><a class="nav-sec" href="ch06.html#sec4">6.4 종이 위 프로토타입</a><a class="nav-sec" href="ch06.html#sec5">6.5 만들기 전에 적는 해법 명세서</a><a class="nav-sec" href="ch06.html#labs">실습을 통한 개념 정리</a><a class="nav-sec" href="ch06.html#summary">6장 요약</a><a class="nav-sec" href="ch06.html#exercises">연습문제</a></div>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> AI와 제대로 대화한다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 만들기 위한 준비</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 첫 번째 웹 서비스 만들기</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch10.html"><span class="nav-num">10</span> 세상에 내놓기</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch11.html"><span class="nav-num">11</span> 파이썬 앱으로 반복을 없앤다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch12.html"><span class="nav-num">12</span> 고치고 다듬는다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch13.html"><span class="nav-num">13</span> 나의 문제 해결 프로젝트</a>
+</div>
+<div class="nav-part">부록</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">A</span> 무료 AI 도구와 에이전트 총정리</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxb.html"><span class="nav-num">B</span> 문제 해결 프롬프트 사전</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxc.html"><span class="nav-num">C</span> 자주 만나는 오류와 해결</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxd.html"><span class="nav-num">D</span> 배포와 공유 안내</a>
+</div>
+<div class="nav-part">부가 자료</div>
+<div class="nav-ch"><a class="nav-ch-link" href="references.html"><span class="nav-num">&#128218;</span> 참고문헌</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">&#128295;</span> 도구 비교표</a></div>
+</nav>
+<main class="content">
+<div class="chapter-head">
+  <div class="ch-label">CHAPTER 06</div>
+  <h1>해법을 찾고 고른다</h1>
+</div>
+<img class="chapter-hero" src="img/ch06/ch06_img01.jpg" alt="6장 대표 이미지">
+<div class="center"><details class="box goals"><summary class="box-head">이 장을 마치면</summary><div class="goals-body"><ul data-blk="chapters/ch06/ch06.tex#1">
+<li>한 문제에 대해 서로 다른 해법을 여러 개 만들어 낼 수 있다.</li>
+<li>해법을 비교할 기준을 세우고 표로 정리할 수 있다.</li>
+<li>한 학기 안에 만들 수 있는 크기로 범위를 줄일 수 있다.</li>
+<li>종이 위 프로토타입으로 해법을 미리 검증할 수 있다.</li>
+<li>만들기 전에 해법 명세서를 작성할 수 있다.</li>
+</ul>
+</div></details></div>
+<p data-blk="chapters/ch06/ch06.tex#2">문제를 잘 정의하면 해법이 저절로 떠오를 것 같지만 그렇지 않다. 대개는 가장 먼저 떠오른 하나에 매달리게 되고, 그것이 최선인지는 끝내 확인하지 못한다. 인공지능은 이 지점에서 특히 쓸모가 있다 — 사람이 지치는 <em>여러 개 만들기</em>를 지치지 않고 해내기 때문이다.</p>
+<p data-blk="chapters/ch06/ch06.tex#3">이 장에서는 대안을 여러 개 만들고, 기준을 세워 고르고, 고른 것을 만들 수 있는 크기로 줄인다. 그리고 코드 한 줄 쓰기 전에 종이 위에서 먼저 만들어 본다. 마지막 절에서 쓰는 <strong>해법 명세서</strong>가 8장 이후 실제 제작의 출발점이 된다.</p>
+<h2 data-blk="chapters/ch06/sec01.tex#1" id="sec1">6.1 대안을 많이 만드는 법</h2>
+<p data-blk="chapters/ch06/sec01.tex#2">5장에서 어느 가지부터 손댈지 정했다. 이제 그 가지를 어떻게 다룰지 정할 차례다. 그런데 대부분의 사람이 여기서 같은 실수를 한다. <strong>맨 처음 떠오른 하나에 매달린다.</strong></p>
+<h3 data-blk="chapters/ch06/sec01.tex#3">첫 아이디어는 왜 위험한가</h3>
+<p data-blk="chapters/ch06/sec01.tex#4">첫 아이디어가 나쁘다는 뜻이 아니다. 문제는 <em>비교 대상이 없다</em>는 것이다. 하나만 있으면 그것이 좋은지 나쁜지 판단할 방법이 없다. 게다가 사람은 한 번 떠올린 것에 애착이 생겨서, 그 뒤로는 그것을 지지하는 근거만 눈에 들어온다.</p>
+<p data-blk="chapters/ch06/sec01.tex#5">그래서 이 절에서는 <strong>평가하지 않고 늘리기만</strong> 한다. 좋은지 나쁜지는 다음 절에서 따진다. 이 두 가지를 섞으면 늘어나다 말고 멈춘다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch06/sec01.tex#6"><strong>발산과 수렴을 섞지 않는다.</strong> 늘릴 때는 판단하지 않고, 판단할 때는 늘리지 않는다. 이 구분 하나로 나오는 대안의 수가 두 배 이상 달라진다.</p>
+</div>
+<h3 data-blk="chapters/ch06/sec01.tex#7">대안을 갈라 내는 축</h3>
+<p data-blk="chapters/ch06/sec01.tex#8">무작정 <em>더 생각해 보자</em>로는 잘 안 나온다. 축을 주면 나온다.</p>
+<p data-blk="chapters/ch06/sec01.tex#9"><strong>축 1: 그 일을 어떻게 할 것인가.</strong></p>
+<ul>
+<li><strong>없앤다</strong>  —  그 일을 아예 안 해도 되게 한다</li>
+<li><strong>줄인다</strong>  —  횟수나 양을 줄인다</li>
+<li><strong>옮긴다</strong>  —  다른 사람이나 다른 시점으로 옮긴다</li>
+<li><strong>자동으로 만든다</strong>  —  기계가 하게 한다</li>
+<li><strong>쉽게 만든다</strong>  —  사람이 하되 덜 힘들게 한다</li>
+</ul>
+<p data-blk="chapters/ch06/sec01.tex#11">정산 문제에 이 축을 대 보자. <em>없앤다</em>는 애초에 현금 지출을 없애고 계좌 하나로만 쓰게 하는 것이다. <em>옮긴다</em>는 지출한 사람이 그 자리에서 기록하게 하는 것이고, <em>자동으로 만든다</em>는 거래 내역을 읽어 자동 분류하는 것이다. 이 다섯이 벌써 서로 아주 다른 해법이다.</p>
+<p data-blk="chapters/ch06/sec01.tex#12"><strong>축 2: 무엇을 바꿀 것인가.</strong></p>
+<ul>
+<li><strong>도구를 만든다</strong>  —  이 수업의 기본</li>
+<li><strong>규칙을 바꾼다</strong>  —  언제 어떻게 하기로 정한다</li>
+<li><strong>정보 전달 방식을 바꾼다</strong>  —  어디에 어떻게 알리는지</li>
+<li><strong>이미 있는 것을 쓴다</strong>  —  무료 서비스, 학교가 제공하는 것</li>
+</ul>
+<p data-blk="chapters/ch06/sec01.tex#14">마지막 항목을 반드시 포함하자. <strong>만들지 않는 것이 최선일 때가 있다.</strong> 이 수업의 목표는 무언가를 만드는 것이지만, 만들 필요가 없다는 판단도 훌륭한 결과다(그 경우 두 번째로 아픈 문제로 옮기면 된다).</p>
+<h3 data-blk="chapters/ch06/sec01.tex#15">인공지능으로 늘리기</h3>
+<p data-blk="chapters/ch06/sec01.tex#16">사람은 열 개를 만들다 지친다. 인공지능은 지치지 않는다. 다만 그냥 시키면 비슷한 것 열 개가 나온다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code><p>아래는 내가 다루려는 문제와, 그중 손대기로 정한 부분이다.</p><p><i class="resp-note">(문제 진술문 + 트리에서 고른 가지를 붙여 넣는다)</i></p><p>이 부분을 다룰 방법을 <strong>12가지</strong> 제안해 줘. 규칙은 다음과 같다.</p><p>- 서로 <strong>확실히 다른</strong> 방법이어야 한다. 세부만 다른 것은 하나로 친다<br>
+- 다음 다섯 종류가 각각 최소 둘씩 들어가야 한다: 그 일을 없애기 / 줄이기 / 다른 사람에게 옮기기 / 자동으로 만들기 / 사람이 하되 쉽게 만들기<br>
+- <strong>만들지 않는 해법</strong>(규칙을 바꾸거나 이미 있는 것을 쓰는 것)을 최소 셋 포함할 것<br>
+- 각각을 한 문장으로만 설명하고, 평가는 하지 말 것</p><p>목록만 달라. 어느 것이 좋은지는 내가 정한다.</p></code></pre><div class="listing-caption">프롬프트 6.1: 서로 다른 대안을 뽑아내기</div></div>
+<p data-blk="chapters/ch06/sec01.tex#17">마지막 줄이 중요하다. 이렇게 쓰지 않으면 <em>3번을 추천드립니다</em> 같은 말이 붙는데, 그것을 읽는 순간 우리 판단이 오염된다.</p>
+<div class="box note"><span class="chip">잠깐</span><span class="box-title">열두 개 중 셋이면 성공</span><p data-blk="chapters/ch06/sec01.tex#18">열두 개를 받으면 대개 절반은 뻔하고, 서넛은 우리 사정에 맞지 않고, 두셋이 쓸 만하다. 그거면 된다. <strong>목적은 좋은 답을 받는 것이 아니라 내가 생각하지 못한 방향을 하나라도 보는 것</strong>이다.</p>
+</div>
+<h3 data-blk="chapters/ch06/sec01.tex#19">남의 방식을 보기</h3>
+<p data-blk="chapters/ch06/sec01.tex#20">또 하나 값싼 방법이 있다. <strong>같은 문제를 남들은 어떻게 하고 있는지 보는 것</strong>이다.</p>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>이 문제를 다른 조직이나 다른 분야에서는 어떻게 해결하고 있는지 알려 줘. 우리와 비슷한 규모(수십 명)의 경우와, 훨씬 큰 조직의 경우를 나눠서 알려 줘. 실제로 존재하는 방식만 말하고, 확실하지 않으면 표시해 줘.</p></code></pre></div>
+<p data-blk="chapters/ch06/sec01.tex#21">여기서 나온 것은 반드시 확인해야 하지만(2.3절), 방향을 잡는 데는 도움이 된다. 특히 <em>훨씬 큰 조직</em>의 방식을 보면 우리가 왜 그렇게까지 할 필요는 없는지도 알게 된다.</p>
+<h3 data-blk="chapters/ch06/sec01.tex#22">목록을 남긴다</h3>
+<p data-blk="chapters/ch06/sec01.tex#23">이 절의 결과물은 <strong>대안 목록</strong>이다. 다음 절에서 여기서 골라낼 것이므로, 지금 버리지 말고 전부 적어 둔다.</p>
+<div class="settingbox-wrap"><div class="setting-label">대안 목록 서식</div><pre class="settingbox"><code>번호  방법(한 문장)                        종류        누가 만드나
+1     지출한 사람이 그 자리에서 올린다      옮기기      내가 만든다
+2     현금 지출을 없애고 계좌 하나로 쓴다   없애기      규칙만 바꾸면 됨
+3     거래 내역을 자동으로 분류한다         자동화      내가 만든다
+...
+12</code></pre></div>
+<p data-blk="chapters/ch06/sec01.tex#24"><em>종류</em>와 <em>누가 만드나</em> 열이 있는 이유는, 다음 절에서 비교할 때 이 두 가지가 판단에 크게 작용하기 때문이다.</p>
+<h2 data-blk="chapters/ch06/sec02.tex#1" id="sec2">6.2 무엇을 기준으로 고를 것인가</h2>
+<p data-blk="chapters/ch06/sec02.tex#2">이제 수렴할 차례다. 열두 개를 넷으로, 넷을 하나로 줄인다. 그런데 <em>어느 것이 가장 좋은가</em>라고 물으면 답이 안 나온다. <strong>좋다는 말에는 여러 뜻이 섞여 있기</strong> 때문이다.</p>
+<h3 data-blk="chapters/ch06/sec02.tex#3">네 가지 기준</h3>
+<p data-blk="chapters/ch06/sec02.tex#4">이 수업의 조건에서는 다음 넷이면 충분하다.</p>
+<p><strong>효과</strong>  —  이걸 하면 문제가 얼마나 줄어드는가? 4.4절의 성공 기준에 얼마나 다가가는가?</p>
+<p><strong>만들 수 있는가</strong>  —  한 달 안에, 나 혼자서, 무료 도구로 만들 수 있는가? 여기에는 <em>내가 그 분야를 아는가</em>도 포함된다.</p>
+<p><strong>쓰이겠는가</strong>  —  사람들이 실제로 쓸까? 지금 방식보다 확실히 편한가? 새로 배워야 할 것이 많지 않은가?</p>
+<p><strong>위험은 없는가</strong>  —  잘못되면 어떤 일이 생기는가? 개인정보나 돈이 걸리는가? 되돌릴 수 있는가?</p>
+<div class="table-wrap"><div class="table-caption">표 6.1: 대안 비교표  —  정산 문제</div><table><tr><th> 대안</th><th> 효과</th><th> 만들기</th><th> 쓰이나</th><th> 위험</th></tr><tr><td>지출한 사람이 그 자리에서 올린다</td><td>큼</td><td>가능</td><td>보통</td><td>낮음</td></tr><tr><td>현금을 없애고 계좌 하나로</td><td>큼</td><td>만들 것 없음</td><td>낮음</td><td>낮음</td></tr><tr><td>거래 내역을 자동 분류</td><td>중간</td><td>어려움</td><td>높음</td><td>보통</td></tr><tr><td>정산 서식을 통일해 배포</td><td>작음</td><td>쉬움</td><td>높음</td><td>낮음</td></tr></table></div>
+<p>표 <span class="xref" data-ref="tab:compare">6.1</span>를 보면 흥미로운 일이 생긴다. 효과가 가장 큰 두 번째 대안은 <em>만들 것이 없는</em> 대신 <em>쓰이지 않을</em> 가능성이 높다  —  사람들에게 현금을 쓰지 말라고 강제할 수 없기 때문이다. 세 번째는 쓰이기는 하겠지만 만들기 어렵다. 첫 번째가 균형이 맞는다.</p>
+<h3 data-blk="chapters/ch06/sec02.tex#10">점수를 매길 것인가</h3>
+<p data-blk="chapters/ch06/sec02.tex#11">각 칸에 숫자를 넣고 가중치를 곱해 합계를 내는 방법이 있다. 유혹적이지만 권하지 않는다.</p>
+<p data-blk="chapters/ch06/sec02.tex#12">이유는 두 가지다. 첫째, 숫자를 붙이는 순간 근거 없는 정밀함이 생긴다. <em>3.7 대 3.5</em>는 아무 의미가 없다. 둘째, 대개 자기가 하고 싶은 것이 1등이 되도록 가중치를 조정하게 된다.</p>
+<p data-blk="chapters/ch06/sec02.tex#13">대신 <strong>말로 적고 눈으로 비교</strong>한다. 크다/보통/작다 세 단계면 충분하다. 그리고 표를 만든 뒤 다음을 스스로에게 묻는다.</p>
+<ul data-blk="chapters/ch06/sec02.tex#14">
+<li>표를 만들기 전과 후에 마음이 바뀌었는가?</li>
+<li>바뀌지 않았다면, 표를 만들기 전부터 답이 정해져 있던 것은 아닌가?</li>
+<li>어느 칸이 가장 확신이 없는가? 그것을 확인할 방법이 있는가?</li>
+</ul>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch06/sec02.tex#15">비교표는 <strong>결정을 대신하는 도구가 아니라 생각을 드러내는 도구</strong>다. 표를 만드는 진짜 효과는, 내가 무엇을 근거로 판단하고 있었는지가 눈에 보이는 것이다.</p>
+</div>
+<h3 data-blk="chapters/ch06/sec02.tex#16">자주 나오는 판단 실수</h3>
+<p data-blk="chapters/ch06/sec02.tex#17"><strong>만들기 쉬운 것을 고른다.</strong> 가장 흔하다. 효과가 작아도 만들기 쉬우면 손이 간다. 그렇게 만든 것은 대개 아무도 안 쓴다. <em>쉽다</em>는 기준이 아니라 조건이다.</p>
+<p data-blk="chapters/ch06/sec02.tex#18"><strong>멋있어 보이는 것을 고른다.</strong> 인공지능이 자동으로 분류해 준다는 쪽이 발표하기에 좋아 보인다. 그런데 정확도가 80%면 나머지 20%를 손으로 고쳐야 하고, 결국 손으로 하는 것보다 오래 걸린다.</p>
+<p data-blk="chapters/ch06/sec02.tex#19"><strong>내가 쓰고 싶은 기술을 고른다.</strong> 새로 배운 도구를 써 보고 싶은 마음은 자연스럽다. 다만 그것이 이 문제에 맞는지는 따로 판단해야 한다.</p>
+<p data-blk="chapters/ch06/sec02.tex#20"><strong>모두를 만족시키려 한다.</strong> 이해관계자가 넷인데 넷 다 만족시키려 하면 아무 결정도 못 한다. 4.2절에서 한 명을 골랐던 것을 기억하자.</p>
+<h3 data-blk="chapters/ch06/sec02.tex#21">인공지능에게 비교시키기</h3>
+<p data-blk="chapters/ch06/sec02.tex#22">기준을 세우는 데는 도움을 받을 수 있다. 다만 <strong>결정을 시키지는 않는다.</strong></p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code><p>아래는 내가 고려 중인 해법 네 가지와, 내가 세운 비교 기준 네 가지다.</p><p><i class="resp-note">(대안과 기준을 붙여 넣는다)</i></p><p>다음을 알려 줘.</p><p>1. 내가 빠뜨린 <strong>중요한 기준</strong>이 있는가? (있다면 왜 중요한지)<br>
+2. 각 대안에서 내가 <strong>과소평가하고 있을 위험</strong>은 무엇인가?<br>
+3. 이 중 어느 것도 좋지 않다면, 그 이유는 무엇일까?</p><p>어느 것을 고르라고 추천하지는 말아 줘. 판단 재료만 달라.</p></code></pre><div class="listing-caption">프롬프트 6.2: 빠뜨린 기준 찾기</div></div>
+<p data-blk="chapters/ch06/sec02.tex#23">2번이 특히 쓸모 있다. 우리는 하고 싶은 대안의 위험을 자연스럽게 낮춰 본다. 밖에서 보는 눈이 그것을 짚어 준다.</p>
+<p data-blk="chapters/ch06/sec02.tex#24">3번의 답이 설득력 있게 나온다면 1절로 돌아가 대안을 더 만들어야 한다. 열두 개를 만들었는데도 쓸 만한 것이 없다면, 대개 문제 정의가 잘못되었거나 범위가 너무 크다. 다음 절에서 범위를 줄인다.</p>
+<h2 data-blk="chapters/ch06/sec03.tex#1" id="sec3">6.3 만들 수 있는 크기로 줄인다</h2>
+<p data-blk="chapters/ch06/sec03.tex#2">해법 하나를 골랐다. 이제 마지막이자 가장 중요한 작업이 남았다. <strong>그것을 한 달 안에 끝낼 수 있는 크기로 줄이는 일</strong>이다.</p>
+<p>이 절을 대충 하면 학기가 끝날 때 미완성 결과물이 남는다. 매 학기 반드시 일어나는 일이고, 예외 없이 원인은 같다  —  처음에 너무 크게 잡았다.</p>
+<h3 data-blk="chapters/ch06/sec03.tex#4">학생들이 잡는 크기</h3>
+<p data-blk="chapters/ch06/sec03.tex#5">실제로 나온 기획들이다.</p>
+<div class="center"><p><em>동아리 통합 관리 시스템</em>  —  회비, 출석, 일정, 게시판, 사진첩</p>
+<p><em>학과 커뮤니티 앱</em>  —  로그인, 게시판, 쪽지, 알림, 강의평</p>
+<p><em>AI 학습 도우미</em>  —  필기 정리, 문제 생성, 오답 분석, 학습 계획</p></div>
+<p>셋 다 4주 안에는 불가능하다. 회사에서 여러 사람이 몇 달을 들여야 하는 규모다. 그런데 학생들이 이렇게 잡는 이유가 있다  —  <strong>작게 잡으면 성의 없어 보일까 봐</strong>다.</p>
+<p data-blk="chapters/ch06/sec03.tex#8">정반대다. <strong>작게 잡고 끝까지 만든 것이 크게 잡고 절반만 만든 것보다 훨씬 좋은 평가를 받는다.</strong> 왜냐하면 완성된 것만이 사람들에게 쓰이고, 쓰여야 반응을 받고, 반응을 받아야 배울 것이 생기기 때문이다.</p>
+<h3 data-blk="chapters/ch06/sec03.tex#9">최소 크기의 기준</h3>
+<p data-blk="chapters/ch06/sec03.tex#10"><strong class="term-ko">최소 기능 제품</strong><sup class="term">MVP</sup>이라는 말이 있다. 쓸 만한 최소한의 것이라는 뜻이다. 이 수업의 기준으로 옮기면 이렇다.</p>
+<p><blockquote class="bodyquote"><p data-blk="chapters/ch06/sec03.tex#11">한 사람이, 하나의 상황에서, 하나의 일을 끝까지 할 수 있다.</p>
+</blockquote></p>
+<p><strong>한 사람</strong>  —  여러 사람이 동시에 쓰는 것은 어렵다. 우선 한 사람이 쓰는 것으로 만든다.</p>
+<p><strong>하나의 상황</strong>  —  예외 상황은 나중에. 일단 가장 흔한 경우만 되게 한다.</p>
+<p><strong>하나의 일</strong>  —  기능 하나. 정산이면 정산만, 출석이면 출석만.</p>
+<p><strong>끝까지</strong>  —  이것이 핵심이다. 시작부터 끝까지 이어져야 한다. 입력만 되고 결과가 안 나오면 쓸 수 없다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch06/sec03.tex#16">줄일 때 <strong>세로로 자르지 말고 가로로 자른다.</strong> 화면만 잔뜩 만들고 동작은 안 되는 것(세로)보다, 화면 하나가 처음부터 끝까지 동작하는 것(가로)이 낫다.</p>
+</div>
+<h3 data-blk="chapters/ch06/sec03.tex#17">세 칸으로 나누기</h3>
+<p data-blk="chapters/ch06/sec03.tex#18">기능을 적고 세 칸에 나눈다. 이 작업이 6장에서 가장 중요하다.</p>
+<div class="table-wrap"><div class="table-caption">표 6.2: 기능 나누기  —  정산 도구의 예</div><table><tr><th> 꼭 있어야</th><th> 있으면 좋음</th><th> 이번엔 안 함</th></tr><tr><td>지출 입력 (날짜·항목·금액·결제수단·이름)</td><td>사진 첨부</td><td>로그인</td></tr><tr><td>입력한 목록 보기</td><td>월별로 나눠 보기</td><td>여러 동아리 지원</td></tr><tr><td>항목별 합계와 총계</td><td>항목 자동 추천</td><td>예산 대비 집행률</td></tr><tr><td>새로고침해도 안 지워짐</td><td>잘못 넣은 것 수정</td><td>통장 내역 자동 연동</td></tr><tr><td>표 파일로 내보내기</td><td>그래프</td><td>알림 발송</td></tr></table></div>
+<p data-blk="chapters/ch06/sec03.tex#19">규칙이 셋 있다.</p>
+<p data-blk="chapters/ch06/sec03.tex#20"><strong><em>꼭</em>은 다섯 개를 넘기지 않는다.</strong> 여섯 개째가 생각나면 하나를 <em>있으면 좋음</em>으로 옮긴다.</p>
+<p data-blk="chapters/ch06/sec03.tex#21"><strong><em>꼭</em>만으로 일이 끝나야 한다.</strong> 표 <span class="xref" data-ref="tab:scope">6.2</span>의 왼쪽 열만 있으면 정산을 처음부터 끝까지 할 수 있는가? 있다. 그러면 된 것이다.</p>
+<p data-blk="chapters/ch06/sec03.tex#22"><strong><em>이번엔 안 함</em>을 반드시 적는다.</strong> 머릿속에서 지우는 것과 적어 두고 미루는 것은 다르다. 적어 두면 (1) 발표에서 <em>왜 이것만 했는가</em>에 답할 수 있고, (2) 다음 판의 목록이 되고, (3) 만드는 중에 자꾸 떠오르는 것을 그 자리에 던져 넣고 계속 갈 수 있다.</p>
+<h3 data-blk="chapters/ch06/sec03.tex#23">줄여도 되는지 확인하기</h3>
+<p data-blk="chapters/ch06/sec03.tex#24">줄이고 나면 불안해진다. <em>이 정도로 문제가 해결되나?</em> 확인하는 방법이 있다.</p>
+<p data-blk="chapters/ch06/sec03.tex#25">4.4절에서 정한 성공 기준으로 돌아가 본다. <em>꼭</em> 목록만 있을 때 그 기준에 얼마나 다가가는가?</p>
+<p data-blk="chapters/ch06/sec03.tex#26">정산 문제의 성공 기준이 <em>3시간 → 30분</em>이었다. 지출한 사람이 그 자리에서 올리고 합계가 자동으로 나오면, 담당자가 할 일은 확인과 공유뿐이다. 30분 안에 된다. <strong>줄인 범위로도 기준을 만족한다.</strong></p>
+<p data-blk="chapters/ch06/sec03.tex#27">만약 만족하지 못한다면 두 가지 중 하나다. 기준이 너무 높거나, 더 줄이면 안 되는 것을 줄인 것이다. 어느 쪽인지 판단해 조정한다.</p>
+<div class="box caution"><span class="chip">주의</span><p data-blk="chapters/ch06/sec03.tex#28"><em>일단 만들면서 필요한 걸 추가하자</em>는 계획은 계획이 아니다. 만들다 보면 무엇이든 필요해 보이고, 그렇게 범위가 늘어나 끝나지 않는다. <strong>추가할 것이 생기면 <em>이번엔 안 함</em> 칸에 적고 계속 간다.</strong> 다 만든 뒤에 그 칸을 다시 본다.</p>
+</div>
+<h2 data-blk="chapters/ch06/sec04.tex#1" id="sec4">6.4 종이 위 프로토타입</h2>
+<p data-blk="chapters/ch06/sec04.tex#2">만들기 전에 마지막으로 할 일이 있다. <strong>종이에 그려 보는 것</strong>이다. 십 분이면 되고, 이 십 분이 며칠을 아낀다.</p>
+<h3 data-blk="chapters/ch06/sec04.tex#3">왜 종이인가</h3>
+<p data-blk="chapters/ch06/sec04.tex#4">도구로 그리면 예쁘게 만드는 데 시간을 뺏긴다. 색을 고르고 정렬을 맞추다 보면 정작 <em>무엇이 어디에 있어야 하는가</em>는 생각하지 않게 된다.</p>
+<p data-blk="chapters/ch06/sec04.tex#5">종이의 장점은 <strong>버리기 쉽다</strong>는 것이다. 마음에 안 들면 구겨서 다시 그린다. 화면에 만든 것은 아까워서 못 버린다.</p>
+<h3 data-blk="chapters/ch06/sec04.tex#6">무엇을 그리는가</h3>
+<p data-blk="chapters/ch06/sec04.tex#7">화면 세 장이면 대개 충분하다.</p>
+<p data-blk="chapters/ch06/sec04.tex#8"><strong>1. 처음 열었을 때.</strong> 아무것도 없는 상태다. 여기서 사람은 무엇을 봐야 하는가? 무엇을 해야 할지 알 수 있는가? 초심자가 가장 많이 빠뜨리는 화면이다.</p>
+<p data-blk="chapters/ch06/sec04.tex#9"><strong>2. 일하는 중.</strong> 자료가 들어 있고 사람이 무언가를 하는 상태다. 가장 오래 보게 되는 화면이므로 여기에 시간을 쓴다.</p>
+<p data-blk="chapters/ch06/sec04.tex#10"><strong>3. 잘못됐을 때.</strong> 빈칸으로 저장했거나, 숫자 자리에 글자를 넣었거나, 자료가 너무 많을 때. 이 화면을 미리 생각해 두면 9.5절에서 다듬을 것이 절반으로 준다.</p>
+<div class="settingbox-wrap"><div class="setting-label">화면 스케치에 반드시 표시할 것</div><pre class="settingbox"><code>[ 무엇을 입력하는가 ]  칸의 이름과 종류(글자/숫자/날짜/고르기)
+[ 무엇이 나오는가 ]    결과가 어디에 어떤 모양으로
+[ 무엇을 누르는가 ]    단추 이름과 누르면 생기는 일
+[ 처음에 보이는 것 ]   자료가 하나도 없을 때의 화면
+[ 잘못 넣으면 ]        어떤 안내가 어디에 뜨는가</code></pre></div>
+<h3 data-blk="chapters/ch06/sec04.tex#11">흐름도 한 장</h3>
+<p data-blk="chapters/ch06/sec04.tex#12">화면 세 장 옆에 흐름을 그린다. 화살표로 이으면 된다.</p>
+<div class="center"><p>페이지 열기 → (자료 없음) 안내 문구 → 입력 → [추가] → 목록에 쌓임 <br>
+→ 합계 자동 갱신 → [내보내기] → 파일 저장</p></div>
+<p data-blk="chapters/ch06/sec04.tex#14">이 한 줄이 7.5절에서 프롬프트의 뼈대가 된다. 흐름이 분명하지 않으면 인공지능도 무엇을 만들지 모른다.</p>
+<h3 data-blk="chapters/ch06/sec04.tex#15">종이 위에서 시험하기</h3>
+<p data-blk="chapters/ch06/sec04.tex#16">그림이 있으면 만들기 전에 시험할 수 있다. <strong>다른 사람에게 종이를 보여 주고 시켜 보는 것</strong>이다.</p>
+<ol data-blk="chapters/ch06/sec04.tex#17">
+<li>종이를 내밀고 <em>이걸로 지출 하나를 입력해 보세요</em>라고 한다</li>
+<li>설명하지 않는다. 손가락으로 짚는 것을 지켜본다</li>
+<li>망설이는 지점, 엉뚱한 곳을 짚는 지점을 표시한다</li>
+<li>다 끝나면 <em>무엇을 하는 것 같았느냐</em>고 묻는다</li>
+</ol>
+<p data-blk="chapters/ch06/sec04.tex#18">세 명에게만 해 봐도 고칠 것이 서넛 나온다. 그리고 이 단계에서 고치는 비용은 <strong>연필로 지우는 것</strong>이다. 만든 뒤에 고치면 훨씬 비싸다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch06/sec04.tex#19">사람들이 종이 앞에서 망설이면, 화면 앞에서도 망설인다. <strong>종이에서 안 되는 것은 만들어도 안 된다.</strong></p>
+</div>
+<h3 data-blk="chapters/ch06/sec04.tex#20">이름을 정한다</h3>
+<p data-blk="chapters/ch06/sec04.tex#21">작은 일이지만 지금 해 두면 좋다. 화면에 들어갈 <strong>말</strong>을 정하는 것이다.</p>
+<ul data-blk="chapters/ch06/sec04.tex#22">
+<li>단추에 뭐라고 쓸 것인가? (<em>추가</em>인가 <em>등록</em>인가 <em>저장</em>인가)</li>
+<li>항목 이름은? (<em>금액</em>인가 <em>액수</em>인가 <em>비용</em>인가)</li>
+<li>사람들이 실제로 쓰는 말은 무엇인가?</li>
+</ul>
+<p data-blk="chapters/ch06/sec04.tex#23">마지막 항목이 기준이다. 4.2절에서 인터뷰할 때 사람들이 쓴 말을 그대로 쓰는 것이 가장 좋다. 동아리에서 <em>총무</em>라고 부르면 화면에도 <em>총무</em>라고 쓴다. <em>회계 담당자</em>라고 쓰면 순간 낯설어진다.</p>
+<div class="box note"><span class="chip">잠깐</span><span class="box-title">스케치를 남겨 둔다</span><p>종이 스케치를 사진으로 찍어 <code>02_해법/</code> 폴더에 넣어 두자. 두 곳에서 쓰인다. 하나는 7.5절  —  그림을 그대로 첨부해 만들어 달라고 할 수 있다. 다른 하나는 13장 발표  —  처음 스케치와 완성된 화면을 나란히 보여 주면 과정이 한눈에 전달된다.</p></div>
+<h2 data-blk="chapters/ch06/sec05.tex#1" id="sec5">6.5 만들기 전에 적는 해법 명세서</h2>
+<p data-blk="chapters/ch06/sec05.tex#2">지금까지 세 장에 걸쳐 만든 것을 한 장으로 묶는다. 이 문서를 <strong>해법 명세서</strong>라고 부르자. 8장부터 12장까지 이 문서가 기준점이 된다.</p>
+<h3 data-blk="chapters/ch06/sec05.tex#3">서식</h3>
+<div class="settingbox-wrap"><div class="setting-label">해법 명세서 (한 장을 넘기지 않는다)</div><pre class="settingbox"><code>1. 문제
+   (4장의 문제 진술문을 그대로)
+
+2. 이번에 다루는 부분
+   (5장 트리에서 고른 가지 + 왜 여기부터인지)
+
+3. 누구를 위한 것인가
+   주 사용자 :
+   그 사람이 지금 겪는 것 :
+
+4. 무엇을 만드는가
+   한 문장 설명 :
+   형태 : 웹 페이지 / 파이썬 앱 / 그 밖(          )
+
+5. 화면과 흐름
+   (6.4절의 흐름 한 줄 + 스케치 파일 이름)
+
+6. 기능
+   꼭 있어야     : 1)  2)  3)  4)  5)
+   이번엔 안 함  :
+
+7. 자료
+   무엇을 다루는가 :
+   어떤 형태로 (열 이름) :
+   어디에 저장하나 :
+
+8. 성공 기준
+   (4.4절에서 정한 것을 그대로)
+
+9. 아직 모르는 것
+   (만들면서 확인해야 할 것)</code></pre></div>
+<h3 data-blk="chapters/ch06/sec05.tex#4">채워 보기</h3>
+<p data-blk="chapters/ch06/sec05.tex#5">이 책이 9장부터 실제로 만들 것의 명세서다. 여러분의 것도 이 정도 분량이면 된다.</p>
+<div class="settingbox-wrap"><div class="setting-label">해법 명세서  —  동아리 지출 기록 도구</div><pre class="settingbox"><code>1. 문제
+   회계 담당 학생은 매달 말 그달의 지출을 항목별로 정리해 공유하려 하는데,
+   지출 기록이 영수증 사진으로만 흩어져 있어 한 번에 약 3시간을 쓰고
+   매달 두세 건의 입력 오류가 생긴다.
+
+2. 이번에 다루는 부분
+   "지출한 사람이 그 자리에서 기록할 방법이 없다" 가지.
+   전체 3시간 중 2시간이 옮겨 적기이므로 여기가 가장 크다.
+
+3. 누구를 위한 것인가
+   주 사용자 : 지출하는 동아리원 (총무 포함 40명)
+   지금 겪는 것 : 영수증 사진만 찍고 잊는다. 나중에 총무가 다 옮긴다.
+
+4. 무엇을 만드는가
+   한 문장 : 지출을 그 자리에서 입력하면 목록과 합계가 쌓이는 웹 페이지 한 장
+   형태 : 웹 페이지
+
+5. 화면과 흐름
+   열기 → (없으면) 안내 문구 → 입력 → [추가] → 목록에 쌓임
+        → 합계 갱신 → [표로 내보내기]
+   스케치 : 02_해법/sketch01.jpg
+
+6. 기능
+   꼭 있어야 : 1) 지출 입력(날짜·항목·금액·결제수단·이름)
+               2) 입력한 목록 보기
+               3) 항목별 합계와 총계
+               4) 새로고침해도 안 지워짐
+               5) 표 파일로 내보내기
+   이번엔 안 함 : 로그인, 사진 첨부, 예산 대비 집행률, 통장 연동, 수정 기능
+
+7. 자료
+   무엇을 : 지출 기록 한 건
+   열 이름 : 날짜, 항목, 금액, 결제수단, 이름
+   저장 : 브라우저에 저장(당분간). 백업은 내보낸 표 파일로.
+
+8. 성공 기준
+   주 : 총무의 정산 시간 3시간 → 30분 이하 (다음 정산 때 시계로 잰다)
+   부 : 입력 오류 월 2~3건 → 0건 (통장 내역과 대조)
+   쓰임 : 2주 뒤 총무 외 3명 이상이 직접 입력하고 있을 것
+
+9. 아직 모르는 것
+   - 사람들이 휴대전화에서 입력할지, 나중에 컴퓨터에서 몰아 넣을지
+   - 항목 이름을 미리 정해 주는 것이 나은지 자유롭게 쓰게 하는 것이 나은지</code></pre></div>
+<h3 data-blk="chapters/ch06/sec05.tex#6">9번 칸이 있는 이유</h3>
+<p data-blk="chapters/ch06/sec05.tex#7">명세서를 쓰다 보면 모르는 것이 나온다. 그때 멈추지 말고 <strong>9번 칸에 적고 계속 간다</strong>.</p>
+<p data-blk="chapters/ch06/sec05.tex#8">모르는 것을 다 해결하고 시작하려 하면 시작하지 못한다. 그리고 대부분의 <em>모르는 것</em>은 만들어서 써 보면 저절로 답이 나온다. 예를 들어 <em>휴대전화에서 입력할지</em>는 만들어 놓고 이틀 지켜보면 알게 된다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p>명세서는 <strong>확정된 계획서가 아니라 지금 시점의 최선</strong>이다. 만들면서 바뀐다. 다만 바뀔 때마다 <strong>고쳐 두어야</strong> 한다  —  고치지 않은 명세서는 며칠 만에 아무도 안 보는 종이가 된다.</p></div>
+<h3 data-blk="chapters/ch06/sec05.tex#10">한 장을 넘기지 않는 이유</h3>
+<p data-blk="chapters/ch06/sec05.tex#11">길게 쓸수록 좋아 보이지만 반대다. 긴 명세서는 (1) 읽히지 않고, (2) 고쳐지지 않고, (3) 범위가 커졌다는 증거다.</p>
+<p data-blk="chapters/ch06/sec05.tex#12">한 장에 안 들어간다면 대개 6번 <em>꼭 있어야</em>가 너무 많은 것이다. 6.3절로 돌아가 다시 줄인다.</p>
+<h3 data-blk="chapters/ch06/sec05.tex#13">이것으로 무엇을 하는가</h3>
+<p data-blk="chapters/ch06/sec05.tex#14">명세서는 다음 다섯 곳에서 쓰인다. 지금 잘 써 두면 앞으로 다섯 번 편해진다.</p>
+<div class="table-wrap"><div class="table-caption">표 6.3: 해법 명세서가 쓰이는 곳</div><table><tr><th> 어디서</th><th> 무엇으로</th><th> 어느 칸</th></tr><tr><td>7.5절</td><td>제작 프롬프트의 재료</td><td>3–7번 전부</td></tr><tr><td>8–9장</td><td>만들다 길을 잃었을 때 기준</td><td>6번</td></tr><tr><td>10장</td><td>사용자에게 설명할 내용</td><td>1·4번</td></tr><tr><td>12.3절</td><td>확인할 항목</td><td>6·8번</td></tr><tr><td>13장</td><td>발표와 포트폴리오</td><td>전부</td></tr></table></div>
+<p data-blk="chapters/ch06/sec05.tex#15">이 명세서가 <strong>중간 발표(8주차)의 제출물</strong>이다. 여기까지가 이 수업의 절반이고, 어떤 의미에서는 어려운 절반이 끝난 것이다. 다음 장에서 이것을 인공지능에게 전달하는 법을 배우고, 8장부터 실제로 만든다.</p>
+<p><span id="labs"></span><div class="box lab"><div class="lab-title">이 장의 실습</div><h3 data-blk="chapters/ch06/labs.tex#1">실습 6-1. 대안 열두 개</h3>
+<p data-blk="chapters/ch06/labs.tex#2">6.1절의 프롬프트로 자기 문제의 대안을 열두 개 만든다. 그런 다음 <strong>직접</strong> 세 개를 더 보탠다.</p>
+<ol data-blk="chapters/ch06/labs.tex#3">
+<li>인공지능이 낸 열두 개를 6.1절의 다섯 종류로 분류한다</li>
+<li>비어 있는 종류가 있으면 그쪽으로 직접 만들어 채운다</li>
+<li><strong>만들지 않는 해법</strong>이 셋 이상 있는지 확인한다. 없으면 만든다</li>
+<li>평가는 하지 않는다. 이번 실습에서는 지우지 않는다</li>
+</ol>
+<h3 data-blk="chapters/ch06/labs.tex#4">실습 6-2. 넷으로 줄이고 비교표 만들기</h3>
+<p>열다섯 개에서 넷을 고른다. 고르는 것은 직관으로 해도 된다  —  비교는 그다음이다.</p>
+<p data-blk="chapters/ch06/labs.tex#6">표 <span class="xref" data-ref="tab:compare">6.1</span>의 형식으로 비교표를 만든다. 각 칸은 크다/보통/작다로 적고, <strong>그렇게 적은 이유를 한 줄씩</strong> 옆에 단다.</p>
+<p data-blk="chapters/ch06/labs.tex#7">다 만든 뒤 스스로에게 묻는다.</p>
+<ul data-blk="chapters/ch06/labs.tex#8">
+<li>표를 만들기 전과 후에 마음이 바뀌었는가?</li>
+<li>가장 확신이 없는 칸은 어디인가? 어떻게 확인할 수 있는가?</li>
+</ul>
+<h3 data-blk="chapters/ch06/labs.tex#9">실습 6-3. 기준을 점검받기</h3>
+<p data-blk="chapters/ch06/labs.tex#10">6.2절의 <em>빠뜨린 기준 찾기</em> 프롬프트로 비교표를 점검받는다.</p>
+<ol data-blk="chapters/ch06/labs.tex#11">
+<li>빠뜨린 기준이 있었는가? 있다면 표에 추가한다</li>
+<li>과소평가하고 있던 위험은 무엇이었는가?</li>
+<li>그래서 선택이 바뀌었는가?</li>
+</ol>
+<h3 data-blk="chapters/ch06/labs.tex#12">실습 6-4. 범위 줄이기</h3>
+<p data-blk="chapters/ch06/labs.tex#13">고른 해법의 기능을 표 <span class="xref" data-ref="tab:scope">6.2</span>처럼 세 칸으로 나눈다. 규칙을 지킨다.</p>
+<ul class="checklist">
+<li><em>꼭 있어야</em>가 다섯 개 이하인가</li>
+<li><em>꼭</em>만으로 일이 처음부터 끝까지 되는가</li>
+<li><em>이번엔 안 함</em>에 최소 세 개가 적혀 있는가</li>
+<li>4.4절의 성공 기준을 <em>꼭</em>만으로 만족하는가</li>
+</ul>
+<p data-blk="chapters/ch06/labs.tex#15">네 번째를 만족하지 못하면 기준이 높거나 잘못 줄인 것이다. 어느 쪽인지 판단해 조정하고, 조정한 내용을 적어 둔다.</p>
+<h3 data-blk="chapters/ch06/labs.tex#16">실습 6-5. 화면 세 장 그리기</h3>
+<p data-blk="chapters/ch06/labs.tex#17"><strong>종이에 손으로</strong> 그린다. 도구를 쓰지 않는다.</p>
+<ol data-blk="chapters/ch06/labs.tex#18">
+<li>처음 열었을 때 (자료가 하나도 없는 화면)</li>
+<li>일하는 중 (자료가 들어 있는 화면)</li>
+<li>잘못됐을 때 (빈칸 저장, 잘못된 값 입력)</li>
+</ol>
+<p data-blk="chapters/ch06/labs.tex#19">6.4절의 다섯 가지 표시 항목을 모두 적어 넣는다. 그리고 흐름을 한 줄로 옆에 적는다.</p>
+<h3 data-blk="chapters/ch06/labs.tex#20">실습 6-6. 종이로 시험하기</h3>
+<p data-blk="chapters/ch06/labs.tex#21">그린 종이를 <strong>세 사람</strong>에게 보여 주고 시켜 본다. 설명하지 않는다.</p>
+<div class="settingbox-wrap"><div class="setting-label">종이 시험 기록</div><pre class="settingbox"><code>사람 1 : 망설인 지점 :
+         엉뚱하게 짚은 곳 :
+         "무엇을 하는 것 같았나" :
+
+사람 2 : ...
+사람 3 : ...
+
+고칠 것 (세 사람 중 둘 이상이 걸린 것) :</code></pre></div>
+<p data-blk="chapters/ch06/labs.tex#22">마지막 줄이 이 실습의 결과다. 세 사람 중 둘 이상이 같은 곳에서 막혔다면 반드시 고친다.</p>
+<h3 data-blk="chapters/ch06/labs.tex#23">실습 6-7. 해법 명세서 한 장</h3>
+<p data-blk="chapters/ch06/labs.tex#24">6.5절의 서식으로 명세서를 완성한다. <strong>한 장을 넘기지 않는다.</strong></p>
+<p data-blk="chapters/ch06/labs.tex#25">이것이 <strong>중간 발표(8주차)의 제출물</strong>이다. 다음 항목이 모두 있어야 한다.</p>
+<ul class="checklist">
+<li>4장의 문제 진술문 (그대로)</li>
+<li>5장 트리에서 고른 가지와 그 이유</li>
+<li>대안 비교표 (실습 6-2)</li>
+<li>세 칸으로 나눈 기능 목록</li>
+<li>화면 스케치 사진</li>
+<li>성공 기준 (지금 값과 목표 값)</li>
+<li>아직 모르는 것</li>
+</ul></div></p>
+<details class="box summary" id="summary"><summary class="box-head">6장 요약</summary><div class="sum-body"><ul>
+<li>첫 아이디어가 위험한 이유는 나빠서가 아니라 <strong>비교 대상이 없기</strong> 때문이다. 하나만 있으면 좋은지 나쁜지 판단할 수 없고, 애착이 생겨 지지하는 근거만 눈에 들어온다.</li>
+<li><strong>발산과 수렴을 섞지 않는다.</strong> 늘릴 때는 판단하지 않고, 판단할 때는 늘리지 않는다.</li>
+<li>대안은 축을 주면 나온다. <strong>없앤다 / 줄인다 / 옮긴다 / 자동으로 만든다 / 쉽게 만든다</strong>, 그리고 <strong>도구를 만든다 / 규칙을 바꾼다 / 전달 방식을 바꾼다 / 이미 있는 것을 쓴다</strong>.</li>
+<li><strong>만들지 않는 해법</strong>을 반드시 후보에 넣는다. 만들 필요가 없다는 판단도 훌륭한 결과다.</li>
+<li>인공지능에게 대안을 시킬 때는 <em>어느 것이 좋은지 말하지 말라</em>고 못 박는다. 추천을 읽는 순간 판단이 오염된다. 열두 개 중 둘셋이 쓸 만하면 성공이다.</li>
+<li>고르는 기준 넷  —  <strong>효과, 만들 수 있는가, 쓰이겠는가, 위험은 없는가</strong>. 점수를 매겨 합산하지 말고 크다/보통/작다로 적어 눈으로 비교한다.</li>
+<li>비교표는 결정을 대신하지 않는다. 진짜 효과는 <strong>내가 무엇을 근거로 판단하고 있었는지가 눈에 보이는 것</strong>이다.</li>
+<li>자주 나오는 판단 실수  —  만들기 쉬운 것을 고르기, 멋있어 보이는 것을 고르기, 쓰고 싶은 기술을 고르기, 모두를 만족시키려 하기.</li>
+<li>범위를 줄이는 것이 이 장에서 가장 중요하다. <strong class="term-ko">최소 기능 제품</strong><sup class="term">MVP</sup>의 기준은 <strong>한 사람이, 하나의 상황에서, 하나의 일을 끝까지</strong> 할 수 있는 크기다.</li>
+<li>줄일 때 <strong>세로가 아니라 가로로 자른다</strong>. 화면만 많고 동작하지 않는 것보다, 화면 하나가 처음부터 끝까지 되는 편이 낫다.</li>
+<li>기능은 <strong>꼭 있어야 / 있으면 좋음 / 이번엔 안 함</strong> 세 칸으로 나눈다. <em>꼭</em>은 다섯 개 이하, <em>꼭</em>만으로 일이 끝나야 하며, <strong><em>이번엔 안 함</em>을 반드시 적어 둔다</strong>.</li>
+<li>만들기 전에 <strong>종이에 화면 세 장</strong>을 그린다  —  처음 열었을 때, 일하는 중, 잘못됐을 때. 종이를 남에게 보여 주고 시켜 보면, 연필로 지울 수 있는 값에 고칠 것이 드러난다.</li>
+<li><strong>해법 명세서</strong>는 4–6장의 결과를 한 장으로 묶은 것이다. 7.5절의 프롬프트, 8–9장의 기준, 12.3절의 확인 항목, 13장의 발표로 모두 이어진다. 확정된 계획서가 아니라 <em>지금 시점의 최선</em>이며, 바뀌면 반드시 고쳐 둔다.</li>
+</ul></div></details>
+<details class="box exercise" id="exercises"><summary class="box-head">6장 연습문제</summary><div class="ex-body"><ol>
+<li class="ex-item" data-ex="1"><span class="diff"><span class="d1">★</span></span>  발산과 수렴을 섞으면 안 되는 이유를 설명하시오.</li>
+<li class="ex-item" data-ex="2"><span class="diff"><span class="d1">★</span></span>  다음 문제에 대해 6.1절의 다섯 종류(없애기·줄이기·옮기기·자동화·쉽게 하기)로 각각 하나씩 대안을 만드시오.
+<blockquote class="plainquote"><p><em>학과 사무실 조교가 매 학기 초 수강 정정 문의 전화를 하루 20통씩 2주간 받는다.</em></p></blockquote></li>
+<li class="ex-item" data-ex="3"><span class="diff"><span class="d1">★</span></span>  <strong class="term-ko">최소 기능 제품</strong><sup class="term">MVP</sup>의 기준 <em>한 사람이, 하나의 상황에서, 하나의 일을 끝까지</em>에서 각 조건이 무엇을 막기 위한 것인지 설명하시오.</li>
+<li class="ex-item" data-ex="4"><span class="diff"><span class="d2">★★</span></span>  다음 기능 목록을 세 칸(꼭·있으면 좋음·이번엔 안 함)으로 나누고, 그렇게 나눈 이유를 쓰시오. 대상은 <em>조별 과제 진행 상황 공유 도구</em>이며 제작 기간은 4주다.
+<ol type="a">
+<li>할 일 추가   (b) 담당자 지정   (c) 완료 표시</li>
+<li>(d) 로그인   (e) 마감일 알림   (f) 진행률 그래프</li>
+<li>(g) 조원별 기여도 자동 계산   (h) 파일 첨부   (i) 댓글</li>
+</ol></li>
+<li class="ex-item" data-ex="5"><span class="diff"><span class="d2">★★</span></span>  어떤 학생이 <em>인공지능이 자동으로 분류해 주는</em> 해법을 골랐다. 정확도가 80%라고 할 때, 이 선택이 실제로는 시간을 아껴 주지 못할 수 있는 이유를 설명하고, 그럼에도 이 해법이 유리한 조건은 무엇일지 제시하시오.</li>
+<li class="ex-item" data-ex="6"><span class="diff"><span class="d2">★★</span></span>  6.4절의 세 화면 중 <em>처음 열었을 때</em>를 초심자가 자주 빠뜨리는 이유를 설명하고, 그 화면이 없으면 사용자에게 어떤 일이 생기는지 쓰시오.</li>
+<li class="ex-item" data-ex="7"><span class="diff"><span class="d3">★★★</span></span>  자기 문제에 대해 대안 열두 개를 만들고 넷으로 줄인 뒤 비교표를 작성하시오. 보고에는 (1) 열두 개 전체 목록과 종류 분류, (2) 넷을 고른 근거, (3) 비교표와 각 칸의 이유, (4) <strong>표를 만들기 전과 후에 마음이 바뀌었는지</strong>와 그 이유가 포함되어야 한다.</li>
+<li class="ex-item" data-ex="8"><span class="diff"><span class="d3">★★★</span></span>  해법 명세서를 완성하고, 이를 자기 문제를 모르는 사람 한 명에게 읽히시오. 읽은 사람에게 <em>무엇을 만들 것 같은지</em>를 그림으로 그려 보게 한 뒤, 자신의 스케치와 비교하시오. 두 그림이 다르다면 명세서의 어느 부분이 부족했는지 분석하고, 그 부분을 고쳐 다시 제출하시오.</li>
+</ol></div></details>
+<div class="pager-row"><a class="pager prev" href="ch05.html">&larr; 5장</a><a class="pager next" href="ch07.html">7장 &rarr;</a></div>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-glsl.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="book.js"></script>
+</body>
+</html>

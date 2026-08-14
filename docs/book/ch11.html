@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>11장 파이썬 앱으로 반복을 없앤다 — AI 문제해결</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="book.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+<script>MathJax = {tex: {inlineMath: [['\\(', '\\)']]}, svg: {fontCache: 'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="home" href="../index.html">&#8962; 홈</a>
+  <span class="book-title">AI 문제해결</span>
+  <span class="ch-indicator">11장 파이썬 앱으로 반복을 없앤다</span>
+  <button class="nav-toggle" onclick="document.body.classList.toggle('nav-open')">목차</button>
+</header>
+<div class="layout">
+<nav class="sidebar">
+<div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 문제를 푸는 방식이 달라졌다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> AI는 어떻게 답을 만드는가</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 에이전트: 스스로 일하는 AI</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 문제를 찾아내고 정의한다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> 문제를 쪼개고 구조를 본다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch06.html"><span class="nav-num">06</span> 해법을 찾고 고른다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> AI와 제대로 대화한다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 만들기 위한 준비</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 첫 번째 웹 서비스 만들기</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch10.html"><span class="nav-num">10</span> 세상에 내놓기</a>
+</div>
+<div class="nav-ch current"><a class="nav-ch-link" href="ch11.html"><span class="nav-num">11</span> 파이썬 앱으로 반복을 없앤다</a>
+<div class="nav-secs"><a class="nav-sec" href="ch11.html#sec1">11.1 파이썬이 잘하는 일</a><a class="nav-sec" href="ch11.html#sec2">11.2 코랩에서 첫 코드 돌리기</a><a class="nav-sec" href="ch11.html#sec3">11.3 자료를 읽고 정리하고 내보내기</a><a class="nav-sec" href="ch11.html#sec4">11.4 결과를 그림으로 보기</a><a class="nav-sec" href="ch11.html#sec5">11.5 화면이 있는 앱으로</a><a class="nav-sec" href="ch11.html#labs">실습을 통한 개념 정리</a><a class="nav-sec" href="ch11.html#summary">11장 요약</a><a class="nav-sec" href="ch11.html#exercises">연습문제</a></div>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch12.html"><span class="nav-num">12</span> 고치고 다듬는다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch13.html"><span class="nav-num">13</span> 나의 문제 해결 프로젝트</a>
+</div>
+<div class="nav-part">부록</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">A</span> 무료 AI 도구와 에이전트 총정리</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxb.html"><span class="nav-num">B</span> 문제 해결 프롬프트 사전</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxc.html"><span class="nav-num">C</span> 자주 만나는 오류와 해결</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxd.html"><span class="nav-num">D</span> 배포와 공유 안내</a>
+</div>
+<div class="nav-part">부가 자료</div>
+<div class="nav-ch"><a class="nav-ch-link" href="references.html"><span class="nav-num">&#128218;</span> 참고문헌</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">&#128295;</span> 도구 비교표</a></div>
+</nav>
+<main class="content">
+<div class="chapter-head">
+  <div class="ch-label">CHAPTER 11</div>
+  <h1>파이썬 앱으로 반복을 없앤다</h1>
+</div>
+<img class="chapter-hero" src="img/ch11/ch11_img01.jpg" alt="11장 대표 이미지">
+<div class="center"><details class="box goals"><summary class="box-head">이 장을 마치면</summary><div class="goals-body"><ul data-blk="chapters/ch11/ch11.tex#1">
+<li>파이썬이 잘하는 일과 웹이 잘하는 일을 구분할 수 있다.</li>
+<li>설치 없이 브라우저에서 파이썬 코드를 실행할 수 있다.</li>
+<li>자료를 읽어 정리하고 결과 파일로 내보낼 수 있다.</li>
+<li>결과를 그림으로 확인할 수 있다.</li>
+<li>화면이 있는 간단한 앱으로 만들어 남에게 줄 수 있다.</li>
+</ul>
+</div></details></div>
+<p data-blk="chapters/ch11/ch11.tex#2">웹 페이지로는 다루기 번거로운 일들이 있다. 파일 수십 개를 한꺼번에 처리하거나, 표 몇천 줄을 정리하거나, 매주 같은 계산을 반복하는 일이 그렇다. 이런 일에는 파이썬이 맞는다.</p>
+<p>이 장에서도 문법을 배우지 않는다. 대신 <strong>어떤 일을 파이썬에게 맡길 수 있는지 알아보는 눈</strong>과, 에이전트에게 그 일을 정확히 시키는 방법을 익힌다. 설치는 하지 않는다  —  브라우저에서 실행되는 무료 환경을 쓴다.</p>
+<h2 data-blk="chapters/ch11/sec01.tex#1" id="sec1">11.1 파이썬이 잘하는 일</h2>
+<p data-blk="chapters/ch11/sec01.tex#2">9–10장에서 만든 것은 남이 열어 쓰는 화면이었다. 이 장에서는 다른 종류를 만든다. <strong>내 반복 작업을 대신 해 주는 것</strong>이다.</p>
+<h3 data-blk="chapters/ch11/sec01.tex#3">웹으로는 번거로운 일들</h3>
+<p data-blk="chapters/ch11/sec01.tex#4">다음 같은 일은 브라우저 안에서 하기 어렵거나 번거롭다.</p>
+<ul data-blk="chapters/ch11/sec01.tex#5">
+<li>폴더에 있는 파일 백 개의 이름을 규칙대로 바꾼다</li>
+<li>표 파일 여러 개를 하나로 합친다</li>
+<li>수천 줄짜리 자료에서 조건에 맞는 것만 뽑는다</li>
+<li>같은 보고서를 매주 자동으로 만든다</li>
+<li>사진 이백 장의 크기를 한 번에 맞춘다</li>
+</ul>
+<p data-blk="chapters/ch11/sec01.tex#6">공통점이 보인다. <strong>양이 많고, 파일을 직접 다루고, 사람이 화면을 볼 필요가 없다.</strong> 이런 일에 파이썬이 맞는다.</p>
+<h3 data-blk="chapters/ch11/sec01.tex#7">판단 기준</h3>
+<p data-blk="chapters/ch11/sec01.tex#8">1.4절과 8.1절에서 본 기준을 마지막으로 확정한다.</p>
+<div class="table-wrap"><div class="table-caption">표 11.1: 웹으로 갈지 파이썬으로 갈지</div><table><tr><th> 이런 일이라면</th><th> 어느 쪽</th><th> 왜</th></tr><tr><td>남이 입력하고 결과를 본다</td><td>웹</td><td>주소만 있으면 된다</td></tr><tr><td>그때그때 한 건씩 처리한다</td><td>웹</td><td>화면이 있어야 한다</td></tr><tr><td>파일 여러 개를 한꺼번에</td><td><strong>파이썬</strong></td><td>브라우저는 파일 접근이 제한적</td></tr><tr><td>수백–수천 건을 한 번에</td><td><strong>파이썬</strong></td><td>빠르고 안정적이다</td></tr><tr><td>정해진 때에 한 번씩 돌린다</td><td><strong>파이썬</strong></td><td>화면이 필요 없다</td></tr><tr><td>결과를 그림으로 봐야 한다</td><td><strong>파이썬</strong></td><td>도구가 잘 갖춰져 있다</td></tr></table></div>
+<h3 data-blk="chapters/ch11/sec01.tex#9">이 장에서 만들 것</h3>
+<p data-blk="chapters/ch11/sec01.tex#10">책의 예시를 이어 간다. 9–10장에서 만든 웹 도구로 동아리원들이 지출을 입력하고, 각자 CSV 파일을 내보내 총무에게 보냈다. 이제 총무에게는 <strong>여러 개의 CSV 파일</strong>이 있다.</p>
+<p data-blk="chapters/ch11/sec01.tex#11">총무가 할 일은 이렇다.</p>
+<ol data-blk="chapters/ch11/sec01.tex#12">
+<li>여러 파일을 하나로 합친다</li>
+<li>중복된 것을 찾아낸다 (같은 지출을 두 사람이 올린 경우)</li>
+<li>항목별·사람별로 집계한다</li>
+<li>통장 거래 내역과 대조해 빠진 것을 찾는다</li>
+<li>월간 보고서 파일을 만든다</li>
+</ol>
+<p data-blk="chapters/ch11/sec01.tex#13">이 다섯 가지를 손으로 하면 한 시간이 넘는다. 파이썬으로는 몇 초다. <strong>9장의 웹과 11장의 파이썬이 짝을 이뤄 원래 문제를 끝까지 해결</strong>하는 구조다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch11/sec01.tex#14">웹과 파이썬은 경쟁하는 선택지가 아니라 <strong>같은 문제의 다른 구간</strong>을 맡는 짝이 될 수 있다. <em>사람이 입력하는 곳</em>은 웹, <em>많은 양을 처리하는 곳</em>은 파이썬.</p>
+</div>
+<h3 data-blk="chapters/ch11/sec01.tex#15">여러분의 경우</h3>
+<p data-blk="chapters/ch11/sec01.tex#16">자기 문제가 웹만으로 끝났다면, 이 장에서는 <strong>그 결과물이 만들어 내는 자료를 다루는</strong> 것을 만들면 된다. 예를 들면 이런 것들이다.</p>
+<div class="table-wrap"><div class="table-caption">표 11.2: 전공별 파이썬 과제의 예</div><table><tr><th> 자료</th><th> 하는 일</th><th> 결과</th></tr><tr><td>설문 응답 파일</td><td>문항별 집계, 자유응답 분류</td><td>요약 표와 그림</td></tr><tr><td>실험 기록 여러 개</td><td>하나로 합치고 평균 계산</td><td>정리된 표</td></tr><tr><td>봉사 확인서 목록</td><td>기관별 시간 합산</td><td>제출용 표</td></tr><tr><td>글 파일 여러 개</td><td>문장 길이 분포 계산</td><td>그림과 통계</td></tr><tr><td>사진 폴더</td><td>크기 조정, 이름 통일</td><td>정리된 폴더</td></tr><tr><td>출석 기록</td><td>학생별 집계, 결석 경고</td><td>명단</td></tr></table></div>
+<h3 data-blk="chapters/ch11/sec01.tex#17">여기서도 문법은 배우지 않는다</h3>
+<p data-blk="chapters/ch11/sec01.tex#18">이 장에서 파이썬 코드가 나오지만, 그것을 쓰는 법을 배우지는 않는다. 목표는 둘이다.</p>
+<p data-blk="chapters/ch11/sec01.tex#19"><strong>첫째, 무엇을 맡길 수 있는지 아는 눈.</strong> 어떤 일이 파이썬으로 몇 초에 되는 일인지 감이 생기면, 앞으로 반복 작업을 만날 때마다 <em>이건 맡길 수 있겠다</em>는 판단이 선다.</p>
+<p data-blk="chapters/ch11/sec01.tex#20"><strong>둘째, 시키고 확인하는 법.</strong> 자료 처리는 조용히 틀린다. 오류 없이 잘 돌았는데 결과가 잘못된 경우가 많다. 그것을 잡아내는 법이 이 장의 절반이다.</p>
+<div class="box caution"><span class="chip">주의</span><p data-blk="chapters/ch11/sec01.tex#21">자료 처리에서 가장 위험한 것은 <strong>잘 돌았다고 믿는 것</strong>이다. 212건을 처리했는데 결과가 198건이면 14건이 어디론가 사라진 것인데, 아무도 알려 주지 않는다. 7.4절에서 말한 <em>건수 확인</em>이 이 장 내내 반복된다.</p>
+</div>
+<h2 data-blk="chapters/ch11/sec02.tex#1" id="sec2">11.2 코랩에서 첫 코드 돌리기</h2>
+<p data-blk="chapters/ch11/sec02.tex#2">파이썬을 설치하지 않는다. 브라우저에서 실행되는 무료 환경을 쓴다.</p>
+<h3 data-blk="chapters/ch11/sec02.tex#3">노트북이라는 형태</h3>
+<div class="toolcard"><div class="tool-head"><span class="tool-name">브라우저에서 파이썬을 실행하는 노트북</span><span class="price free">무료</span></div><div class="tool-addr">colab.research.google.com</div><p>계정만 있으면 설치 없이 파이썬을 실행할 수 있다. 코드와 결과와 설명이 한 화면에 함께 남는 <strong class="term-ko">노트북</strong><sup class="term">notebook</sup> 형태이며, 파일을 올리고 내려받을 수 있다. 만든 것을 링크로 공유할 수도 있다. 무료 범위에서 이 수업의 모든 실습이 가능하다.</p></div>
+<p data-blk="chapters/ch11/sec02.tex#4">노트북은 <strong>칸(셀)</strong>으로 이루어진다. 각 칸에 코드를 넣고 실행하면 그 아래에 결과가 나온다. 위에서부터 차례로 실행하는 것이 기본이다.</p>
+<p data-blk="chapters/ch11/sec02.tex#5">이 형태가 초심자에게 좋은 이유가 있다. <strong>한 번에 조금씩 실행하고 결과를 바로 볼 수 있기</strong> 때문이다. 전체를 다 짜고 한꺼번에 돌리는 것보다 훨씬 덜 막힌다.</p>
+<h3 data-blk="chapters/ch11/sec02.tex#6">첫 실행</h3>
+<p data-blk="chapters/ch11/sec02.tex#7">새 노트북을 만들고 첫 칸에 다음을 넣어 실행한다.</p>
+<div class="listing"><button class="prompt-copy" type="button">복사</button><pre class="line-numbers"><code class="language-python">print("안녕하세요")
+2 + 3</code></pre></div>
+<pre class="termout">안녕하세요
+5</pre>
+<p data-blk="chapters/ch11/sec02.tex#8">이것이 되면 준비 끝이다. 파이썬이 여러분 컴퓨터가 아니라 인터넷 어딘가의 컴퓨터에서 돌고 있고, 결과만 브라우저로 돌아온 것이다.</p>
+<h3 data-blk="chapters/ch11/sec02.tex#9">파일 올리고 내려받기</h3>
+<p data-blk="chapters/ch11/sec02.tex#10"><strong>여기서 가장 많이 막힌다.</strong> 미리 확실히 해 두자.</p>
+<p data-blk="chapters/ch11/sec02.tex#11">파이썬이 도는 컴퓨터는 내 컴퓨터가 아니다. 그래서 내 파일을 쓰려면 <strong>올려야</strong> 하고, 결과를 가지려면 <strong>내려받아야</strong> 한다.</p>
+<div class="listing"><button class="prompt-copy" type="button">복사</button><pre class="line-numbers"><code class="language-python">from google.colab import files
+uploaded = files.upload()      # 파일 고르기 창이 뜬다
+print(uploaded.keys())         # 올라온 파일 이름 확인</code></pre><div class="listing-caption">코드 11.1: 파일 올리기  —  코랩의 경우</div></div>
+<div class="listing"><button class="prompt-copy" type="button">복사</button><pre class="line-numbers"><code class="language-python">files.download('결과.csv')      # 내 컴퓨터로 받는다</code></pre><div class="listing-caption">코드 11.2: 파일 내려받기</div></div>
+<div class="box caution"><span class="chip">주의</span><p data-blk="chapters/ch11/sec02.tex#12">노트북을 닫거나 한동안 두면 <strong>올렸던 파일이 사라진다.</strong> 다음에 열면 다시 올려야 한다. 결과 파일은 <strong>만든 즉시 내려받는</strong> 습관을 들이자. 한 시간 작업한 결과를 날리는 일이 실제로 자주 생긴다.</p>
+</div>
+<h3 data-blk="chapters/ch11/sec02.tex#13">코드를 직접 쓰지 않는다</h3>
+<p data-blk="chapters/ch11/sec02.tex#14">이 장에서 나오는 코드는 여러분이 타이핑할 것이 아니다. <strong>인공지능에게 받아 붙여 넣고 실행한다.</strong> 요청 방식은 지금까지와 같다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://colab.research.google.com" target="_blank" rel="noopener">Colab</a><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code><p>코랩에서 실행할 파이썬 코드를 만들어 줘.</p><p><span class="ptag">[자료]</span> <code>지출_2026-03.csv</code> 파일. 열은 날짜, 항목, 금액, 결제수단, 이름. 각 행이 지출 한 건. 첫 줄은 열 이름. 약 60행.</p><p><span class="ptag">[할 일]</span> 항목별 합계를 구해 금액이 큰 순서로 출력해 줘.</p><p><span class="ptag">[형식]</span> 코드는 <strong>한 칸에 다 들어가게</strong> 한 덩어리로 주고, 각 줄이 무엇을 하는지 짧은 주석을 달아 줘.</p><p><span class="ptag">[확인]</span> 처리한 행이 몇 개인지, 금액이 비어 있거나 숫자가 아닌 행이 몇 개인지도 함께 출력해 줘.</p><p><span class="ptag">[제약]</span> 설치가 필요한 것은 쓰지 말고, 코랩에 기본으로 있는 것만 써 줘.</p></code></pre><div class="listing-caption">프롬프트 11.3: 파이썬 코드 요청의 기본형</div></div>
+<p data-blk="chapters/ch11/sec02.tex#15">마지막 두 요소가 중요하다. <strong>확인</strong> 항목이 없으면 결과 숫자만 나오고 그것이 맞는지 알 수 없다. <strong>제약</strong>이 없으면 설치가 필요한 도구를 쓰라고 할 수 있다.</p>
+<h3 data-blk="chapters/ch11/sec02.tex#16">돌려 보고 나오는 것</h3>
+<div class="listing"><button class="prompt-copy" type="button">복사</button><pre class="line-numbers"><code class="language-python">import pandas as pd
+
+df = pd.read_csv('지출_2026-03.csv')     # 파일을 읽는다
+print("읽은 행 수:", len(df))            # 몇 건인지 확인
+
+# 금액이 숫자가 아닌 행 확인
+bad = df[pd.to_numeric(df['금액'], errors='coerce').isna()]
+print("금액이 이상한 행:", len(bad))
+
+df['금액'] = pd.to_numeric(df['금액'], errors='coerce')  # 숫자로 바꾼다
+result = df.groupby('항목')['금액'].sum()  # 항목별로 더한다
+print(result.sort_values(ascending=False)) # 큰 것부터 출력</code></pre><div class="listing-caption">코드 11.4: 돌아온 코드  —  항목별 합계</div></div>
+<pre class="termout">읽은 행 수: 62
+금액이 이상한 행: 1
+항목
+대관료    500000
+간식      320000
+인쇄비    127000
+교통비     48000
+물품       32000</pre>
+<p data-blk="chapters/ch11/sec02.tex#17"><strong><em>금액이 이상한 행: 1</em></strong>이 이 출력에서 가장 중요한 줄이다. 한 건이 계산에서 빠졌다는 뜻이고, 그 한 건을 확인해야 한다. 이 줄이 없었다면 합계가 조용히 틀린 채로 넘어갔을 것이다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch11/sec02.tex#18">자료 처리 코드에는 <strong>언제나 확인 출력을 함께 요청</strong>한다. 몇 건을 읽었는지, 몇 건이 이상한지, 몇 건이 결과에 들어갔는지. 이 세 숫자가 맞아야 결과를 믿을 수 있다.</p>
+</div>
+<h3 data-blk="chapters/ch11/sec02.tex#19">한 칸씩 나눠 실행하기</h3>
+<p data-blk="chapters/ch11/sec02.tex#20">긴 코드를 한 번에 돌리지 말고 나눠 실행하는 것이 좋다.</p>
+<ol data-blk="chapters/ch11/sec02.tex#21">
+<li>파일을 읽는다 → 몇 행인지 확인</li>
+<li>자료를 살펴본다 → 처음 다섯 줄을 출력해 본다</li>
+<li>정리한다 → 무엇이 바뀌었는지 확인</li>
+<li>계산한다 → 결과 확인</li>
+<li>내보낸다 → 파일 확인</li>
+</ol>
+<p data-blk="chapters/ch11/sec02.tex#22">각 단계에서 결과를 보면 어디서 틀어졌는지 바로 알 수 있다. 이것이 노트북 형태의 가장 큰 장점이다.</p>
+<div class="listing"><button class="prompt-copy" type="button">복사</button><pre class="line-numbers"><code class="language-python">df.head()        # 처음 다섯 줄만 보여 준다
+df.info()        # 각 열이 어떤 종류인지
+df['항목'].unique()   # 항목에 어떤 값들이 있는지</code></pre></div>
+<p>세 번째 줄이 특히 유용하다. 5.4절에서 걱정한 <strong>표기 불일치</strong>가 여기서 드러난다  —  <em>간식</em>과 <em>간식비</em>가 따로 나오면 통일해야 한다는 뜻이다.</p>
+<h2 data-blk="chapters/ch11/sec03.tex#1" id="sec3">11.3 자료를 읽고 정리하고 내보내기</h2>
+<p data-blk="chapters/ch11/sec03.tex#2">이 절이 11장의 중심이다. <strong>여러 파일을 하나로 합치고, 지저분한 것을 정리하고, 결과를 내보내는</strong> 흐름 하나를 끝까지 완성한다.</p>
+<h3 data-blk="chapters/ch11/sec03.tex#3">실제 자료는 언제나 지저분하다</h3>
+<p data-blk="chapters/ch11/sec03.tex#4">교과서의 자료는 깨끗하지만 실제 자료는 그렇지 않다. 5.4절에서 예고한 것들이 여기서 전부 나타난다.</p>
+<div class="table-wrap"><div class="table-caption">표 11.3: 실제 자료에서 만나는 것들</div><table><tr><th> 문제</th><th> 예</th><th> 어떻게 할까</th></tr><tr><td>표기 불일치</td><td>카드 / 신용카드</td><td>통일 규칙을 정한다</td></tr><tr><td>빈칸</td><td>이름이 비어 있다</td><td>채울까 버릴까 정한다</td></tr><tr><td>형식 불일치</td><td>3/4 / 2026.03.04</td><td>하나로 맞춘다</td></tr><tr><td>숫자 아닌 숫자</td><td><em>12,000원</em></td><td>숫자만 남긴다</td></tr><tr><td>중복</td><td>같은 지출 두 건</td><td>무엇을 같다고 볼지 정한다</td></tr><tr><td>이상값</td><td>금액이 0 또는 음수</td><td>확인 대상으로 뺀다</td></tr></table></div>
+<p data-blk="chapters/ch11/sec03.tex#5"><strong>오른쪽 칸을 사람이 정해야 한다.</strong> 인공지능에게 <em>알아서 정리해 줘</em>라고 하면 알아서 정하는데, 그 판단이 우리 의도와 다를 수 있다. 예를 들어 이름이 빈 행을 조용히 버릴 수도 있다.</p>
+<h3 data-blk="chapters/ch11/sec03.tex#6">먼저 자료를 살펴본다</h3>
+<p data-blk="chapters/ch11/sec03.tex#7">정리하기 전에 무엇이 있는지 본다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://colab.research.google.com" target="_blank" rel="noopener">Colab</a><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code><p>올린 CSV 파일을 읽고 다음을 알려 줘. <strong>아직 고치지는 마.</strong></p><p>1. 전체 행 수와 열 이름<br>
+2. 각 열에 어떤 값들이 들어 있는지 (글자 열은 서로 다른 값의 목록, 숫자 열은 최소·최대·평균)<br>
+3. <strong>빈칸이 있는 열</strong>과 그 개수<br>
+4. <strong>같은 뜻인데 다르게 적힌 것으로 보이는</strong> 값들<br>
+5. 이상해 보이는 행 (0이나 음수, 미래 날짜, 지나치게 큰 값)</p><p>각 항목마다 실제 예를 두세 개씩 보여 줘.</p></code></pre><div class="listing-caption">프롬프트 11.5: 자료 살펴보기</div></div>
+<p data-blk="chapters/ch11/sec03.tex#8"><strong><em>아직 고치지는 마</em></strong>가 핵심이다. 무엇이 문제인지 보고 나서 어떻게 할지 정한다.</p>
+<h3 data-blk="chapters/ch11/sec03.tex#9">정리 방침을 정한다</h3>
+<p data-blk="chapters/ch11/sec03.tex#10">살펴본 결과를 보고 표를 채운다.</p>
+<div class="settingbox-wrap"><div class="setting-label">정리 방침</div><pre class="settingbox"><code>문제                          어떻게 처리        버리는 행 수(예상)
+----------------------------------------------------------------------
+"카드"/"신용카드"/"체크"      모두 "카드"로              0
+날짜 형식 여러 가지           YYYY-MM-DD로 통일          0
+금액에 쉼표와 "원"            숫자만 남긴다              0
+금액이 비어 있음              버린다 (별도 파일로 보관)  1
+이름이 비어 있음              "미상"으로 채운다          3
+금액이 0 이하                 버리지 말고 표시만         2
+완전히 같은 행 두 개          하나만 남긴다              1
+----------------------------------------------------------------------
+예상 최종 행 수 : 62 - 1 - 1 = 60</code></pre></div>
+<p data-blk="chapters/ch11/sec03.tex#11">맨 아래 줄이 중요하다. <strong>처리 후 몇 건이 남을지 미리 계산해 두면</strong>, 실제 결과와 대조해 확인할 수 있다.</p>
+<h3 data-blk="chapters/ch11/sec03.tex#12">정리하기</h3>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://colab.research.google.com" target="_blank" rel="noopener">Colab</a><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code><p>아래 방침대로 자료를 정리해 줘.</p><p><i class="resp-note">(위의 정리 방침 표를 그대로 붙여 넣는다)</i></p><p><span class="ptag">[반드시 지킬 것]</span>
+- <strong>원본 파일은 고치지 말고</strong> 정리된 것을 새 파일로 만들 것<br>
+- 버린 행은 버리기 전에 <code>제외된행.csv</code>로 따로 저장할 것<br>
+- 각 단계마다 <strong>몇 건이 처리되고 몇 건이 남았는지</strong> 출력할 것<br>
+- 방침에 없는 처리는 하지 말 것. 애매하면 나에게 물어볼 것</p><p><span class="ptag">[마지막]</span> 처리 전 행 수, 각 단계에서 줄어든 수, 최종 행 수를 표로 정리해 줘.</p></code></pre><div class="listing-caption">프롬프트 11.6: 정리 방침대로 처리하기</div></div>
+<pre class="termout">읽은 행 수                62
+결제수단 통일             62  (변경 4건)
+날짜 형식 통일            62  (변경 7건)
+금액 숫자 변환            62  (실패 1건 -&gt; 제외)
+금액 빈칸 제외            61
+완전 중복 제거            60  (제거 1건)
+이름 빈칸 채움            60  (변경 3건)
+--------------------------------
+최종                      60
+제외된 행은 제외된행.csv 에 저장 (2건)</pre>
+<p data-blk="chapters/ch11/sec03.tex#13"><strong>예상한 60건과 실제 60건이 맞는다.</strong> 이것을 확인하는 것이 이 절의 핵심이다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch11/sec03.tex#14"><strong>원본을 고치지 않는다</strong>는 원칙을 지킨다(3.4절, 9.4절과 같은 원칙). 정리는 언제나 새 파일로 하고, 버리는 것은 버리기 전에 따로 저장한다. 이렇게 하면 방침이 잘못됐어도 처음부터 다시 할 수 있다.</p>
+</div>
+<h3 data-blk="chapters/ch11/sec03.tex#15">여러 파일 합치기</h3>
+<p data-blk="chapters/ch11/sec03.tex#16">동아리원 여덟 명이 각자 보낸 파일이 있다면.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://colab.research.google.com" target="_blank" rel="noopener">Colab</a><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code><p>폴더에 있는 CSV 파일을 모두 읽어 하나로 합쳐 줘.</p><p>- 파일마다 열 구성이 같은지 먼저 확인하고, 다르면 어떻게 다른지 알려 줘<br>
+- 합칠 때 <strong>어느 파일에서 왔는지</strong> 열을 하나 추가해 줘<br>
+- 파일별 행 수와 합친 뒤 총 행 수를 표로 보여 줘<br>
+- <strong>여러 파일에 걸쳐 중복된 행</strong>(날짜·항목·금액·이름이 모두 같은 것)을 찾아 목록으로 보여 줘. 아직 지우지는 말고</p></code></pre><div class="listing-caption">프롬프트 11.7: 여러 파일 합치기</div></div>
+<p data-blk="chapters/ch11/sec03.tex#17">마지막 항목을 눈여겨보자. <strong>중복을 자동으로 지우지 않는다.</strong> 같은 날 같은 사람이 같은 금액을 두 번 쓴 진짜 지출일 수도 있기 때문이다. 목록을 보고 사람이 판단한다.</p>
+<h3 data-blk="chapters/ch11/sec03.tex#18">내보내기</h3>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://colab.research.google.com" target="_blank" rel="noopener">Colab</a><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code><p>정리된 자료로 다음 셋을 만들어 각각 파일로 저장하고 내려받게 해 줘.</p><p>1. <code>정리된지출_2026-03.csv</code>  —  정리된 전체 자료<br>
+2. <code>항목별집계_2026-03.csv</code>  —  항목별 건수와 합계<br>
+3. <code>사람별집계_2026-03.csv</code>  —  이름별 건수와 합계</p><p>- 엑셀에서 열었을 때 한글이 깨지지 않게 저장할 것<br>
+- 각 파일의 행 수를 출력할 것<br>
+- 2번과 3번의 합계가 서로 같은지 확인해 알려 줄 것</p></code></pre><div class="listing-caption">프롬프트 11.8: 결과 내보내기</div></div>
+<p data-blk="chapters/ch11/sec03.tex#19">마지막 항목이 좋은 검산이다. 항목별로 더한 총액과 사람별로 더한 총액은 같아야 한다. 다르면 어딘가 잘못된 것이다.</p>
+<div class="box caution"><span class="chip">주의</span><p><strong>만든 파일은 즉시 내려받는다.</strong> 노트북 환경의 파일은 얼마 뒤 사라진다. 그리고 내려받은 파일을 엑셀에서 열어 <strong>눈으로 확인</strong>한다  —  화면의 숫자와 파일의 숫자가 다른 경우가 있다.</p></div>
+<h2 data-blk="chapters/ch11/sec04.tex#1" id="sec4">11.4 결과를 그림으로 보기</h2>
+<p data-blk="chapters/ch11/sec04.tex#2">숫자 표는 정확하지만 느리게 읽힌다. 그림은 빠르게 읽힌다. 이 절에서는 정리한 자료를 그림으로 바꾸고, 동시에 <strong>그림으로 잘못 말하지 않는 법</strong>을 익힌다.</p>
+<h3 data-blk="chapters/ch11/sec04.tex#3">세 가지면 충분하다</h3>
+<p data-blk="chapters/ch11/sec04.tex#4">교양 수준에서는 셋이면 대부분을 덮는다.</p>
+<div class="table-wrap"><div class="table-caption">표 11.4: 언제 어떤 그림을 쓰나</div><table><tr><th> 그림</th><th> 무엇을 보여 주나</th><th> 예</th></tr><tr><td>막대</td><td>항목끼리 비교</td><td>항목별 지출액</td></tr><tr><td>선</td><td>시간에 따른 변화</td><td>월별 지출 추이</td></tr><tr><td>분포</td><td>값이 어디에 몰려 있나</td><td>지출 건당 금액 분포</td></tr></table></div>
+<p data-blk="chapters/ch11/sec04.tex#5"><strong>원그래프는 권하지 않는다.</strong> 조각의 크기를 눈으로 비교하기 어렵고, 항목이 넷을 넘으면 읽기 힘들어진다. 같은 내용을 막대로 그리면 훨씬 잘 읽힌다.</p>
+<h3 data-blk="chapters/ch11/sec04.tex#6">그리기</h3>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://colab.research.google.com" target="_blank" rel="noopener">Colab</a><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code><p>정리된 자료로 그림을 그려 줘.</p><p>1. 항목별 지출액  —  <strong>가로</strong> 막대. 금액이 큰 것이 위로<br>
+2. 날짜별 지출액  —  선. 지출이 없는 날은 0으로</p><p><span class="ptag">[공통 규칙]</span>
+- 한글이 깨지지 않게 폰트를 설정할 것<br>
+- 축에 무엇인지와 단위를 적을 것 (금액은 만원 단위로 표시)<br>
+- <strong>세로축은 0에서 시작할 것</strong><br>
+- 값을 막대 옆에 숫자로도 적어 줄 것<br>
+- 제목에 기간을 밝힐 것 (2026년 3월)<br>
+- 그림 파일로 저장하고 내려받게 해 줘</p></code></pre><div class="listing-caption">프롬프트 11.9: 그림 그리기</div></div>
+<p data-blk="chapters/ch11/sec04.tex#7">한글 폰트는 이 환경에서 자주 걸리는 문제다. 처음부터 요청에 넣어 두면 네모(<em>두부</em>)로 나오는 사고를 피할 수 있다.</p>
+<h3 data-blk="chapters/ch11/sec04.tex#8">그림으로 거짓말하지 않기</h3>
+<p data-blk="chapters/ch11/sec04.tex#9">같은 자료로도 아주 다른 인상을 줄 수 있다. 의도하지 않아도 그렇게 된다.</p>
+<p data-blk="chapters/ch11/sec04.tex#10"><strong>세로축을 0에서 시작하지 않으면</strong> 작은 차이가 크게 보인다. 100과 105의 차이가 두 배처럼 보이게 만들 수 있다. 막대그래프에서는 반드시 0에서 시작한다.</p>
+<p data-blk="chapters/ch11/sec04.tex#11"><strong>기간을 골라 자르면</strong> 원하는 추세를 만들 수 있다. 5개월 중 오르는 3개월만 보여 주는 식이다. 자를 때는 왜 그 기간인지 밝힌다.</p>
+<p data-blk="chapters/ch11/sec04.tex#12"><strong>비교 대상이 없으면</strong> 크고 작음을 알 수 없다. <em>이번 달 지출 120만 원</em>만으로는 많은지 적은지 모른다. 지난달이나 예산과 함께 보여 준다.</p>
+<p data-blk="chapters/ch11/sec04.tex#13"><strong>건수가 적은 것을 비율로 말하면</strong> 과장된다. 3명 중 2명을 <em>67%</em>라고 쓰면 통계처럼 보인다. <strong>작은 수는 비율이 아니라 숫자 그대로</strong> 쓴다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch11/sec04.tex#14">이것은 정직성의 문제이기 전에 <strong>자기가 속지 않기 위한</strong> 문제다. 내가 그린 그림에 내가 먼저 설득되고, 잘못된 결론을 내리게 된다. 5.4절에서 근거를 다룰 때와 같은 태도가 필요하다.</p>
+</div>
+<h3 data-blk="chapters/ch11/sec04.tex#15">그림을 읽고 문장으로 쓰기</h3>
+<p data-blk="chapters/ch11/sec04.tex#16">그림을 그렸으면 <strong>그것이 무엇을 보여 주는지 두 문장으로 적는다</strong>. 이 습관이 중요하다.</p>
+<div class="center"><p><em>3월 지출 102만 원 중 대관료가 50만 원으로 절반을 차지했다. 대관료는 3월에 있었던 정기 공연 때문이며, 이를 빼면 평월과 비슷한 수준이다.</em></p></div>
+<p data-blk="chapters/ch11/sec04.tex#18">앞 문장은 그림에서 읽히는 것이고, 뒤 문장은 <strong>자료에 없는 해석</strong>이다. 둘을 구분해 적는 습관을 들이자. 해석은 그 분야를 아는 사람만 할 수 있고, 그것이 여러분이 하는 일이다.</p>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>이 그림에서 <strong>자료만 보고 말할 수 있는 것</strong>과 <strong>자료 밖의 지식이 있어야 말할 수 있는 것</strong>을 구분해서 정리해 줘. 두 번째 것은 무엇을 더 알아야 확인할 수 있는지도 알려 줘.</p></code></pre></div>
+<h3 data-blk="chapters/ch11/sec04.tex#19">보고서로 묶기</h3>
+<p data-blk="chapters/ch11/sec04.tex#20">그림과 표를 모아 한 파일로 만들면 그대로 제출물이 된다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://colab.research.google.com" target="_blank" rel="noopener">Colab</a><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code><p>지금까지 만든 표와 그림을 묶어 월간 보고서를 만들어 줘.</p><p><span class="ptag">[구성]</span>
+1. 요약  —  총 건수, 총액, 지난달 대비 증감<br>
+2. 항목별 집계 표와 막대그래프<br>
+3. 사람별 집계 표<br>
+4. 확인이 필요한 항목  —  제외된 행, 중복 의심, 금액이 0 이하인 건<br>
+5. 처리 기록  —  몇 건을 읽어 몇 건을 어떻게 처리했는지</p><p><span class="ptag">[형식]</span> 표 파일(엑셀에서 열리는) 하나와 그림 파일들로 저장하고 모두 내려받게 해 줘.</p><p><span class="ptag">[제약]</span> 4번을 반드시 넣어 줘. 사람이 확인해야 할 것을 감추지 말 것.</p></code></pre><div class="listing-caption">프롬프트 11.10: 월간 보고서 만들기</div></div>
+<p>4번 항목이 좋은 보고서를 만든다. <strong>정리 과정에서 애매했던 것을 감추지 않고 드러내는 것</strong>이 신뢰를 만든다. 5번도 마찬가지다  —  어떻게 나온 숫자인지 남아 있어야 나중에 확인할 수 있다.</p>
+<h2 data-blk="chapters/ch11/sec05.tex#1" id="sec5">11.5 화면이 있는 앱으로</h2>
+<p data-blk="chapters/ch11/sec05.tex#2">지금까지 만든 것은 나만 쓸 수 있다. 노트북을 열고, 파일을 올리고, 칸을 순서대로 실행해야 한다. 이 절에서는 그것을 <strong>남이 쓸 수 있는 화면</strong>으로 감싼다.</p>
+<h3 data-blk="chapters/ch11/sec05.tex#3">왜 필요한가</h3>
+<p data-blk="chapters/ch11/sec05.tex#4">총무가 만든 정리 도구를 다음 학기 총무가 쓰려면 어떻게 해야 할까? 지금 상태로는 노트북 사용법을 가르쳐야 한다. 화면이 있으면 <em>파일을 올리고 단추를 누르세요</em>로 끝난다.</p>
+<div class="table-wrap"><div class="table-caption">표 11.5: 노트북 그대로 vs 화면을 붙였을 때</div><table><tr><th></th><th> 노트북 그대로</th><th> 화면을 붙이면</th></tr><tr><td>쓰는 법</td><td>칸을 순서대로 실행</td><td>파일 올리고 단추</td></tr><tr><td>남에게 주기</td><td>사용법을 가르쳐야</td><td>주소만 보내면</td></tr><tr><td>잘못 쓸 여지</td><td>많다 (순서, 수정)</td><td>적다</td></tr><tr><td>만드는 비용</td><td>없음</td><td>조금 더 든다</td></tr></table></div>
+<h3 data-blk="chapters/ch11/sec05.tex#5">간단한 앱 도구</h3>
+<p data-blk="chapters/ch11/sec05.tex#6">파이썬 코드에 화면을 붙여 주는 도구가 있다. 코드를 크게 고치지 않고도 웹 화면이 생긴다.</p>
+<div class="toolcard"><div class="tool-head"><span class="tool-name">파이썬 코드에 화면을 붙이는 도구</span><span class="price free">무료</span> <span class="price freemium">부분 무료</span></div><div class="tool-addr">각 서비스의 공식 안내 참조</div><p>이미 만든 파이썬 코드에 몇 줄을 더하면 파일 올리기·단추·표·그림이 있는 웹 화면이 만들어진다. 무료로 인터넷에 올려 주소를 만들 수도 있다. 다만 무료 계정에서는 <strong>한동안 아무도 안 쓰면 잠들어</strong> 다음 사람이 열 때 시작에 시간이 걸린다.</p></div>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://colab.research.google.com" target="_blank" rel="noopener">Colab</a><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code><p>지금까지 만든 정리 코드에 화면을 붙여 줘. 파이썬 앱 프레임워크를 쓰되, <strong>무료로 쓸 수 있고 설치 없이 시험할 수 있는</strong> 것으로 해 줘.</p><p><span class="ptag">[화면 구성]</span>
+1. 맨 위에 제목과 한 줄 설명<br>
+2. CSV 파일 올리기 (여러 개 한꺼번에)<br>
+3. 올리면 읽은 행 수와 처음 다섯 줄을 보여 준다<br>
+4. [정리하기] 단추  —  누르면 정리 방침대로 처리하고 처리 기록을 표로 보여 준다<br>
+5. 항목별·사람별 집계 표와 막대그래프<br>
+6. [결과 내려받기] 단추  —  정리된 파일과 집계 파일</p><p><span class="ptag">[제약]</span>
+- 파일을 올리지 않았을 때는 안내만 보여 주고 오류를 내지 말 것<br>
+- 정리 방침은 화면에 표시해서 사용자가 무엇이 처리되는지 알게 할 것<br>
+- 올린 파일을 서버에 저장하지 말 것 (처리하고 버린다)</p><p><span class="ptag">[알려 줄 것]</span> 이것을 인터넷에 올려 주소를 만들려면 어떤 절차가 필요한지 단계별로 알려 줘.</p></code></pre><div class="listing-caption">프롬프트 11.11: 화면 붙이기</div></div>
+<p data-blk="chapters/ch11/sec05.tex#7">세 번째 제약을 눈여겨보자. <strong>남의 자료를 서버에 남기지 않는 것</strong>은 10.4절에서 다룬 책임의 연장이다.</p>
+<h3 data-blk="chapters/ch11/sec05.tex#8">한계를 알고 쓴다</h3>
+<p data-blk="chapters/ch11/sec05.tex#9">무료로 앱을 올릴 때 알아 둘 것들이다. 미리 알면 당황하지 않는다.</p>
+<ul>
+<li><strong>잠든다</strong>  —  한동안 안 쓰면 멈추고, 다음 사람이 열 때 30초쯤 기다린다</li>
+<li><strong>용량 제한</strong>  —  아주 큰 파일은 못 올린다</li>
+<li><strong>동시 사용</strong>  —  여러 명이 한꺼번에 쓰면 느려진다</li>
+<li><strong>자료가 안 남는다</strong>  —  껐다 켜면 초기 상태로 돌아간다</li>
+<li><strong>비공개가 어렵다</strong>  —  무료 계정에서는 주소를 아는 사람은 대개 들어올 수 있다</li>
+</ul>
+<p>마지막 항목이 중요하다. 자료를 다루는 도구라면 <strong>누가 들어와도 남의 자료를 볼 수 없게</strong> 만들어야 한다  —  위 프롬프트에서 서버에 저장하지 말라고 한 이유다.</p>
+<h3 data-blk="chapters/ch11/sec05.tex#12">여기까지 왔다면</h3>
+<p data-blk="chapters/ch11/sec05.tex#13">11장을 마치면 두 종류의 결과물이 생긴다.</p>
+<div class="center"><p>사람이 입력하는 곳(웹)   +   많은 양을 처리하는 곳(파이썬)</p></div>
+<p data-blk="chapters/ch11/sec05.tex#15">그리고 이 둘이 4장에서 정의한 하나의 문제를 앞뒤로 나눠 맡고 있다. 이것이 이 수업이 목표한 모양이다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch11/sec05.tex#16">결과물이 하나든 둘이든 상관없다. 중요한 것은 <strong>자기가 정의한 문제가 실제로 줄어들었는지</strong>다. 다음 장에서 그것을 확인하는 방법을 다룬다.</p>
+</div>
+<h3 data-blk="chapters/ch11/sec05.tex#17">자동으로 돌게 하기 (선택)</h3>
+<p data-blk="chapters/ch11/sec05.tex#18">여유가 있다면 한 걸음 더 갈 수 있다. 정해진 때에 저절로 돌게 하는 것이다. 매월 1일에 지난달 보고서를 만들어 두는 식이다.</p>
+<p data-blk="chapters/ch11/sec05.tex#19">이것은 이 수업의 범위를 넘지만, 방향만 알아 두자. 무료 서비스 중에 <em>정해진 시각에 코드를 실행해 주는</em> 것들이 있다. 관심이 있다면 인공지능에게 다음처럼 물어보면 된다.</p>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>지금 만든 이 파이썬 코드를 <strong>매월 1일 아침에 자동으로</strong> 실행하고 결과를 메일로 받고 싶다. 무료로 할 수 있는 방법을 두세 가지 알려 주고, 각각의 준비 절차와 한계를 비교해 줘. 설치가 필요 없는 쪽을 먼저 알려 줘.</p></code></pre></div>
+<p>다만 자동으로 도는 것은 <strong>아무도 결과를 확인하지 않게</strong> 되기 쉽다. 3.4절의 자율성 기준을 다시 떠올리자  —  자동화하기 전에 여러 번 손으로 돌려 결과를 확인해 본 것이어야 한다.</p>
+<p><span id="labs"></span><div class="box lab"><div class="lab-title">이 장의 실습</div><h3 data-blk="chapters/ch11/labs.tex#1">실습 11-1. 첫 실행과 파일 다루기</h3>
+<p data-blk="chapters/ch11/labs.tex#2">노트북 환경에 들어가 다음을 확인한다.</p>
+<ul class="checklist">
+<li>새 노트북을 만들고 <code>print("안녕하세요")</code>가 실행된다</li>
+<li>내 컴퓨터의 파일을 올릴 수 있다</li>
+<li>올린 파일의 처음 다섯 줄을 볼 수 있다</li>
+<li>파일을 만들어 내려받을 수 있다</li>
+</ul>
+<p data-blk="chapters/ch11/labs.tex#4">마지막 두 개가 이 장 내내 쓰인다. 여기서 막히면 다음으로 넘어갈 수 없다.</p>
+<h3 data-blk="chapters/ch11/labs.tex#5">실습 11-2. 내 자료 살펴보기</h3>
+<p data-blk="chapters/ch11/labs.tex#6">자기 자료 파일을 올리고 11.3절의 <em>자료 살펴보기</em> 프롬프트를 넣는다.</p>
+<div class="settingbox-wrap"><div class="setting-label">자료 점검 결과</div><pre class="settingbox"><code>전체 행 수 :          열 이름 :
+빈칸이 있는 열과 개수 :
+같은 뜻인데 다르게 적힌 값 :
+이상해 보이는 행 :
+예상하지 못했던 것 :</code></pre></div>
+<p data-blk="chapters/ch11/labs.tex#7">마지막 칸이 이 실습의 목적이다. <strong>자기 자료가 생각보다 지저분하다는 것</strong>을 확인하는 것이다.</p>
+<h3 data-blk="chapters/ch11/labs.tex#8">실습 11-3. 정리 방침 정하기</h3>
+<p data-blk="chapters/ch11/labs.tex#9">11.3절의 서식으로 정리 방침을 정한다. <strong>각 항목을 사람이 판단한다.</strong></p>
+<div class="settingbox-wrap"><div class="setting-label">정리 방침</div><pre class="settingbox"><code>문제                  어떻게 처리          영향받는 행 수
+---------------------------------------------------------
+
+---------------------------------------------------------
+처리 전 행 수 :         예상 최종 행 수 :</code></pre></div>
+<p data-blk="chapters/ch11/labs.tex#10">맨 아래 줄을 반드시 채운다. 다음 실습에서 이 예상과 실제를 대조한다.</p>
+<h3 data-blk="chapters/ch11/labs.tex#11">실습 11-4. 정리하고 확인하기</h3>
+<p data-blk="chapters/ch11/labs.tex#12">방침대로 처리한다. 그리고 확인한다.</p>
+<ul class="checklist">
+<li>원본 파일을 고치지 않았다</li>
+<li>버린 행이 따로 저장되었다</li>
+<li>각 단계의 건수가 출력되었다</li>
+<li><strong>예상한 최종 행 수와 실제가 같다</strong></li>
+<li>다르다면 그 이유를 찾았다</li>
+</ul>
+<p data-blk="chapters/ch11/labs.tex#14">4번이 다르면 반드시 원인을 찾는다. <em>대충 맞으니 넘어가자</em>가 이 장에서 가장 위험한 태도다.</p>
+<h3 data-blk="chapters/ch11/labs.tex#15">실습 11-5. 반복을 실제로 없애기</h3>
+<p data-blk="chapters/ch11/labs.tex#16">지금까지 손으로 하던 작업 하나를 통째로 자동화한다. 그리고 4.4절의 성공 기준으로 잰다.</p>
+<div class="settingbox-wrap"><div class="setting-label">시간 측정</div><pre class="settingbox"><code>작업 이름 :
+손으로 할 때 걸린 시간 : (실제로 재 본 값)
+파이썬으로 할 때       :
+  준비(코드 만들기)에 든 시간 :
+  실행 시간 :
+  결과 확인에 든 시간 :
+
+몇 번 반복하면 본전인가 :</code></pre></div>
+<p data-blk="chapters/ch11/labs.tex#17">맨 아래 칸이 재미있는 질문이다. 코드를 만드는 데 두 시간이 들었고 매번 세 시간을 아낀다면 첫 번째부터 이익이다. 반대로 한 번만 할 일이었다면 손해다. <strong>이 계산을 해 보는 것</strong>이 실습의 목적이다.</p>
+<h3 data-blk="chapters/ch11/labs.tex#18">실습 11-6. 그림 한 장</h3>
+<p data-blk="chapters/ch11/labs.tex#19">정리한 자료로 그림을 그리고, <strong>그것이 무엇을 보여 주는지 두 문장</strong>으로 쓴다.</p>
+<ol data-blk="chapters/ch11/labs.tex#20">
+<li>첫 문장: 그림에서 읽히는 것 (자료만으로 말할 수 있는 것)</li>
+<li>둘째 문장: 왜 그런지에 대한 해석 (자료 밖의 지식이 필요한 것)</li>
+<li>둘을 구분해 표시한다</li>
+</ol>
+<p data-blk="chapters/ch11/labs.tex#21">그리고 11.4절의 네 가지 함정(축 자르기, 기간 자르기, 비교 대상 없음, 작은 수를 비율로)에 걸리지 않았는지 확인한다.</p>
+<h3 data-blk="chapters/ch11/labs.tex#22">실습 11-7. 화면 붙이기 (선택)</h3>
+<p>11.5절의 프롬프트로 화면을 붙인다. 시간이 부족하면 <strong>여기까지 오지 않아도 된다</strong>  —  실습 11-5까지가 이 장의 필수다.</p>
+<p data-blk="chapters/ch11/labs.tex#24">붙였다면 다음을 확인한다.</p>
+<ul class="checklist">
+<li>파일을 올리지 않았을 때 오류 없이 안내가 나온다</li>
+<li>정리 방침이 화면에 표시된다</li>
+<li>결과를 내려받을 수 있다</li>
+<li>남 한 명이 설명 없이 써 봤다</li>
+</ul>
+<h3 data-blk="chapters/ch11/labs.tex#26">실습 11-8. 두 결과물 이어 보기</h3>
+<p data-blk="chapters/ch11/labs.tex#27">9–10장의 웹과 11장의 파이썬을 실제로 이어서 한 바퀴 돌려 본다.</p>
+<ol data-blk="chapters/ch11/labs.tex#28">
+<li>웹에서 자료를 입력한다 (최소 10건)</li>
+<li>[표로 내보내기]로 파일을 만든다</li>
+<li>그 파일을 노트북에 올려 정리한다</li>
+<li>집계 결과를 만든다</li>
+<li>처음 입력한 10건과 최종 집계가 맞는지 확인한다</li>
+</ol>
+<p data-blk="chapters/ch11/labs.tex#29">5번에서 어긋나면 어디서 어긋났는지 찾는다. 대개 형식 문제이며, 그것을 찾는 과정이 12장의 예습이 된다.</p>
+</div></p>
+<details class="box summary" id="summary"><summary class="box-head">11장 요약</summary><div class="sum-body"><ul>
+<li>파이썬이 맞는 일은 <strong>양이 많고, 파일을 직접 다루고, 사람이 화면을 볼 필요가 없는</strong> 일이다. 웹은 사람이 입력하고 결과를 보는 자리를 맡는다.</li>
+<li>웹과 파이썬은 경쟁하는 선택지가 아니라 <strong>같은 문제의 다른 구간</strong>을 맡는 짝이 될 수 있다. 입력은 웹으로, 대량 처리는 파이썬으로.</li>
+<li>설치하지 않는다. <strong class="term-ko">노트북</strong><sup class="term">notebook</sup> 환경에서 브라우저로 실행한다. 칸 단위로 조금씩 실행하고 결과를 바로 보는 형태가 초심자에게 유리하다.</li>
+<li>노트북이 도는 컴퓨터는 내 컴퓨터가 아니다. 파일은 <strong>올려야</strong> 쓸 수 있고 결과는 <strong>내려받아야</strong> 가질 수 있으며, 한동안 두면 사라진다. <strong>만든 즉시 내려받는다</strong>.</li>
+<li>코드는 직접 쓰지 않고 받아서 실행한다. 요청에는 언제나 <strong>확인 출력</strong>(몇 건을 읽었나, 몇 건이 이상한가, 몇 건이 결과에 들어갔나)을 함께 요구한다.</li>
+<li>실제 자료는 언제나 지저분하다  —  표기 불일치, 빈칸, 형식 불일치, 숫자 아닌 숫자, 중복, 이상값. <strong>각각을 어떻게 처리할지는 사람이 정한다.</strong></li>
+<li>정리하기 전에 <strong>먼저 살펴본다</strong>. <em>아직 고치지 말라</em>고 못 박고 무엇이 있는지 본 뒤 방침을 정한다.</li>
+<li>정리 방침에는 <strong>처리 후 몇 건이 남을지 예상</strong>을 적어 둔다. 실제 결과와 대조해 확인하기 위해서다.</li>
+<li><strong>원본은 고치지 않는다.</strong> 정리는 새 파일로 하고, 버리는 행은 버리기 전에 따로 저장한다. 방침이 틀렸어도 처음부터 다시 할 수 있다.</li>
+<li>중복은 <strong>자동으로 지우지 않는다</strong>. 진짜 중복인지 같은 날 같은 금액의 다른 건인지는 사람이 판단한다.</li>
+<li>그림은 막대·선·분포 셋이면 충분하다. 원그래프는 권하지 않는다.</li>
+<li>그림으로 잘못 말하는 네 가지  —  세로축을 0에서 시작하지 않기, 기간을 골라 자르기, 비교 대상 없이 보여 주기, <strong>작은 수를 비율로 말하기</strong>. 이것은 정직성 이전에 자기가 속지 않기 위한 문제다.</li>
+<li>그림을 그렸으면 <strong>자료에서 읽히는 것</strong>과 <strong>자료 밖의 지식이 필요한 해석</strong>을 구분해 두 문장으로 적는다.</li>
+<li>파이썬 코드에 화면을 붙이면 남이 쓸 수 있게 된다. 다만 무료 환경은 <strong>잠들고, 용량이 제한되고, 자료가 남지 않는다</strong>. 남의 자료를 서버에 남기지 않게 만든다.</li>
+<li>자동으로 돌게 하기 전에 <strong>손으로 여러 번 돌려 결과를 확인</strong>해 본 것이어야 한다. 자동화된 것은 아무도 결과를 보지 않게 되기 쉽다.</li>
+</ul></div></details>
+<details class="box exercise" id="exercises"><summary class="box-head">11장 연습문제</summary><div class="ex-body"><ol>
+<li class="ex-item" data-ex="1"><span class="diff"><span class="d1">★</span></span>  다음 작업에 웹과 파이썬 중 어느 쪽이 맞는지 고르고 이유를 쓰시오(표 <span class="xref" data-ref="tab:final-choice">11.1</span> 참조).
+<ol type="a">
+<li>학과 행사 참가 신청을 받는다</li>
+<li>3년 치 실험 기록 파일 36개를 하나로 합친다</li>
+<li>조원들이 각자 진행 상황을 표시한다</li>
+<li>사진 200장의 파일 이름을 촬영일 순으로 바꾼다</li>
+</ol></li>
+<li class="ex-item" data-ex="2"><span class="diff"><span class="d1">★</span></span>  자료 처리 코드를 요청할 때 반드시 함께 요구해야 할 <strong>확인 출력</strong> 세 가지를 쓰고, 각각이 무엇을 막아 주는지 설명하시오.</li>
+<li class="ex-item" data-ex="3"><span class="diff"><span class="d1">★</span></span>  실제 자료에서 흔히 만나는 문제 여섯 가지(표 <span class="xref" data-ref="tab:dirty-data">11.3</span>)를 쓰고, 자기 자료에서 실제로 발견한 것에 표시하시오.</li>
+<li class="ex-item" data-ex="4"><span class="diff"><span class="d2">★★</span></span>  다음 지시의 문제점을 지적하고 11.3절의 방식으로 고쳐 쓰시오.
+<blockquote class="plainquote"><p><em>이 파일 좀 깔끔하게 정리해 줘.</em></p></blockquote></li>
+<li class="ex-item" data-ex="5"><span class="diff"><span class="d2">★★</span></span>  어떤 학생이 212건의 설문 자료를 정리했더니 결과가 198건이 되었다. 이 상황에서 확인해야 할 것을 순서대로 쓰고, 이런 일을 미리 막으려면 요청을 어떻게 했어야 하는지 설명하시오.</li>
+<li class="ex-item" data-ex="6"><span class="diff"><span class="d2">★★</span></span>  다음 그림 설명에서 11.4절의 네 가지 함정 중 어떤 것에 해당하는지 찾고, 어떻게 고쳐야 하는지 쓰시오.
+<ol type="a">
+<li><em>설문 결과 응답자의 75%가 찬성했습니다</em> (응답자 4명)</li>
+<li><em>최근 3개월간 지출이 급증했습니다</em> (세로축이 90만 원부터 시작)</li>
+<li><em>올해 참여율이 크게 올랐습니다</em> (5년 중 최근 2년만 표시)</li>
+</ol></li>
+<li class="ex-item" data-ex="7"><span class="diff"><span class="d3">★★★</span></span>  자기 자료를 대상으로 11.3절의 전체 흐름(살펴보기 → 방침 정하기 → 정리 → 확인 → 내보내기)을 수행하고 보고하시오. 보고에는 (1) 살펴본 결과, (2) 정리 방침 표와 예상 행 수, (3) 실제 처리 기록, (4) <strong>예상과 실제가 달랐다면 그 원인</strong>, (5) 제외된 행의 내용과 제외가 타당했는지에 대한 판단이 포함되어야 한다.</li>
+<li class="ex-item" data-ex="8"><span class="diff"><span class="d3">★★★</span></span>  손으로 하던 작업 하나를 자동화하고, 다음을 계산해 보고하시오. (1) 손으로 할 때의 실측 시간, (2) 코드를 만드는 데 든 시간, (3) 실행과 결과 확인에 드는 시간, (4) <strong>몇 번 반복하면 본전인지</strong>, (5) 그럼에도 자동화하지 않는 편이 나았을 조건은 무엇일지.</li>
+</ol></div></details>
+<div class="pager-row"><a class="pager prev" href="ch10.html">&larr; 10장</a><a class="pager next" href="ch12.html">12장 &rarr;</a></div>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-glsl.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="book.js"></script>
+</body>
+</html>

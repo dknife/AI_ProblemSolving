@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>부록 B 문제 해결 프롬프트 사전 — AI 문제해결</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="book.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="home" href="../index.html">&#8962; 홈</a>
+  <span class="book-title">AI 문제해결</span>
+  <span class="ch-indicator">부록 B 문제 해결 프롬프트 사전</span>
+  <button class="nav-toggle" onclick="document.body.classList.toggle('nav-open')">목차</button>
+</header>
+<div class="layout">
+<nav class="sidebar">
+<div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 문제를 푸는 방식이 달라졌다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> AI는 어떻게 답을 만드는가</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 에이전트: 스스로 일하는 AI</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 문제를 찾아내고 정의한다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> 문제를 쪼개고 구조를 본다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch06.html"><span class="nav-num">06</span> 해법을 찾고 고른다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> AI와 제대로 대화한다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 만들기 위한 준비</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 첫 번째 웹 서비스 만들기</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch10.html"><span class="nav-num">10</span> 세상에 내놓기</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch11.html"><span class="nav-num">11</span> 파이썬 앱으로 반복을 없앤다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch12.html"><span class="nav-num">12</span> 고치고 다듬는다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch13.html"><span class="nav-num">13</span> 나의 문제 해결 프로젝트</a>
+</div>
+<div class="nav-part">부록</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">A</span> 무료 AI 도구와 에이전트 총정리</a>
+</div>
+<div class="nav-ch current"><a class="nav-ch-link" href="apxb.html"><span class="nav-num">B</span> 문제 해결 프롬프트 사전</a>
+<div class="nav-secs"><a class="nav-sec" href="apxb.html#sec1">문제를 정의할 때 (4장)</a><a class="nav-sec" href="apxb.html#sec2">문제를 쪼갤 때 (5장)</a><a class="nav-sec" href="apxb.html#sec3">해법을 찾고 고를 때 (6장)</a><a class="nav-sec" href="apxb.html#sec4">만들 때 (8–11장)</a><a class="nav-sec" href="apxb.html#sec5">고칠 때 (12장)</a><a class="nav-sec" href="apxb.html#sec6">검증할 때 (전 장)</a><a class="nav-sec" href="apxb.html#sec7">맥락을 옮길 때 (2.4절)</a><a class="nav-sec" href="apxb.html#sec8">쓰지 말아야 할 프롬프트</a></div>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxc.html"><span class="nav-num">C</span> 자주 만나는 오류와 해결</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxd.html"><span class="nav-num">D</span> 배포와 공유 안내</a>
+</div>
+<div class="nav-part">부가 자료</div>
+<div class="nav-ch"><a class="nav-ch-link" href="references.html"><span class="nav-num">&#128218;</span> 참고문헌</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">&#128295;</span> 도구 비교표</a></div>
+</nav>
+<main class="content">
+<div class="chapter-head">
+  <div class="ch-label">APPENDIX B</div>
+  <h1>문제 해결 프롬프트 사전</h1>
+</div>
+<img class="appendix-hero" src="img/appendix.jpg" alt="부록 대표 이미지">
+<p>본문에서 쓴 프롬프트를 목적별로 모았다. 그대로 복사해 쓰되, <span class="pblank"></span> 자리에는 자기 문제의 내용을 채워야 한다. 빈 채로 보내면 그럴듯하지만 자기 문제와 무관한 답이 돌아온다.</p>
+<h2 data-blk="backmatter/appendix_prompts.tex#2" id="sec1">문제를 정의할 때 (4장)</h2>
+<h3 data-blk="backmatter/appendix_prompts.tex#3">불편을 구체화하기</h3>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>나는 <span class="pblank"></span> 상황에서 <span class="pblank"></span> 일을 반복하고 있다.</p><p>이 불편을 <strong>확인 가능한 문제</strong>로 다듬으려 한다. 다음을 물어봐 줘. 한 번에 하나씩, 내 답을 듣고 다음 질문으로 넘어가 줘.</p><p>- 얼마나 자주 일어나는가<br>
+- 한 번에 얼마나 걸리거나 어떤 대가를 치르는가<br>
+- 누가 겪는가<br>
+- 그래서 무엇이 나빠지는가</p><p>내 답이 여전히 모호하면 다시 물어 줘.</p></code></pre></div>
+<h3 data-blk="backmatter/appendix_prompts.tex#4">이해관계자 찾기</h3>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>아래 문제에 관련된 사람들을 찾아 줘.</p><p><span class="pblank"></span></p><p>- 겪는 사람 / 시키는 사람 / 결과를 받는 사람으로 나눠 줘<br>
+- 각자가 무엇을 얻고 싶어 하고 지금 무엇을 잃고 있는지<br>
+- 이 문제가 <strong>해결되면 오히려 곤란해지는</strong> 사람이 있다면 알려 줘</p></code></pre></div>
+<h3 data-blk="backmatter/appendix_prompts.tex#5">문제 진술문 반박받기</h3>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>아래는 내가 쓴 문제 진술문이다.</p><p><span class="pblank"></span></p><p>너는 이것을 심사하는 까다로운 심사위원이다. 칭찬하지 말고 다음만 지적해 줘.</p><p>1. 근거 없이 단정한 부분<br>
+2. 확인되지 않은 가정<br>
+3. 이 문제가 사실은 다른 문제의 증상일 가능성<br>
+4. 이 문제를 겪지 않는 사람이 읽으면 이해가 안 될 부분</p><p>각 지적에 <strong>무엇을 확인하면 되는지</strong>를 한 줄로 붙여 줘.</p></code></pre></div>
+<h3 data-blk="backmatter/appendix_prompts.tex#6">이미 있는 해법 찾기</h3>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>이런 문제를 다루는 도구나 방법이 이미 있는지 알려 줘. 있다면 그것으로 충분한지, 부족하다면 무엇이 부족한지도. <strong>없으면 없다고 해도 된다.</strong> 확실하지 않은 것은 [확인 필요]로 표시해 줘.</p></code></pre></div>
+<h2 data-blk="backmatter/appendix_prompts.tex#7" id="sec2">문제를 쪼갤 때 (5장)</h2>
+<h3 data-blk="backmatter/appendix_prompts.tex#8">여러 축으로 나누기</h3>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>아래 문제를 <strong>서로 다른 세 가지 축</strong>으로 각각 나눠 줘.</p><p><span class="pblank"></span></p><p>각 축마다: 3–4개 가지로, 겹치지 않게, <em>기타</em>는 만들지 말고, 그 축으로 나눴을 때 <strong>어떤 해법이 보이는지</strong> 한 줄 덧붙여 줘.</p></code></pre></div>
+<h3 data-blk="backmatter/appendix_prompts.tex#9">내 트리 점검받기</h3>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>아래는 내가 그린 로직 트리다(들여쓰기로 계층 표시).</p><p><span class="pblank"></span></p><p>다음을 지적해 줘. 잘한 점은 말하지 않아도 된다.</p><p>1. 겹치는 가지  —  어느 것과 어느 것이 왜<br>
+2. 빠진 가지  —  이 분류에서 다뤄지지 않는 경우<br>
+3. 층위가 맞지 않는 가지<br>
+4. 원인이 아니라 <strong>해법</strong>이 들어와 있는 가지</p></code></pre></div>
+<h3 data-blk="backmatter/appendix_prompts.tex#10">사실과 추측 구분하기</h3>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>방금 만든 트리에서 각 가지가 <strong>사실로 확인된 것</strong>인지 <strong>추측</strong>인지 표시해 줘. 추측이라면 무엇을 보면 확인할 수 있는지도. <strong>내가 준 자료에 없는 내용은 전부 추측으로</strong> 표시해야 한다.</p></code></pre></div>
+<h2 data-blk="backmatter/appendix_prompts.tex#11" id="sec3">해법을 찾고 고를 때 (6장)</h2>
+<h3 data-blk="backmatter/appendix_prompts.tex#12">대안 늘리기</h3>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>아래 문제의 이 부분을 다룰 방법을 <strong>12가지</strong> 제안해 줘.</p><p><span class="pblank"></span></p><p>- 서로 확실히 다른 방법일 것 (세부만 다른 것은 하나로)<br>
+- 다음이 각각 최소 둘씩: 없애기 / 줄이기 / 옮기기 / 자동화 / 쉽게 하기<br>
+- <strong>만들지 않는 해법</strong>(규칙 변경, 이미 있는 것 사용)을 최소 셋<br>
+- 각각 한 문장으로만, 평가는 하지 말 것</p><p><strong>어느 것이 좋은지는 말하지 마. 내가 정한다.</strong></p></code></pre></div>
+<h3 data-blk="backmatter/appendix_prompts.tex#13">빠뜨린 기준 찾기</h3>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>아래는 내가 고려 중인 해법 넷과 비교 기준 넷이다.</p><p><span class="pblank"></span></p><p>1. 내가 빠뜨린 중요한 기준이 있는가<br>
+2. 각 대안에서 내가 <strong>과소평가하고 있을 위험</strong>은<br>
+3. 이 중 어느 것도 좋지 않다면 그 이유는</p><p><strong>어느 것을 고르라고 추천하지는 마.</strong> 판단 재료만 달라.</p></code></pre></div>
+<h3 data-blk="backmatter/appendix_prompts.tex#14">범위 줄이기 압박</h3>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>아래 기능 목록을 <strong>한 사람이 4주 안에</strong> 만들 수 있는 크기로 줄여 줘.</p><p><span class="pblank"></span></p><p>- <em>꼭 있어야</em>는 다섯 개 이하<br>
+- <em>꼭</em>만으로 일이 처음부터 끝까지 되어야 함<br>
+- 나머지는 <em>이번엔 안 함</em>으로 옮기고 <strong>왜 미뤄도 되는지</strong> 한 줄씩</p></code></pre></div>
+<h2 data-blk="backmatter/appendix_prompts.tex#15" id="sec4">만들 때 (8–11장)</h2>
+<h3 data-blk="backmatter/appendix_prompts.tex#16">제작 프롬프트 서식</h3>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p><span class="ptag">[만들 것]</span> <span class="pblank"></span>을 만들어 줘. <strong>파일 하나</strong>로만, 외부 라이브러리 없이 동작해야 해.</p><p><span class="ptag">[누가 쓰나]</span> <span class="pblank"></span></p><p><span class="ptag">[화면과 흐름]</span> <span class="pblank"></span></p><p><span class="ptag">[기능  —  이것만]</span> 1) 2) 3) 4) 5)</p><p><span class="ptag">[자료 형식]</span> 열 이름과 각각의 형식</p><p><span class="ptag">[이번엔 넣지 말 것]</span> <span class="pblank"></span>. <strong>요청하지 않은 기능을 넣지 말 것.</strong></p><p><span class="ptag">[지켜야 할 것]</span> (확인할 수 있는 조건으로)</p><p><span class="ptag">[만든 뒤]</span> 1) 어디에 저장하고 어떻게 여는지 2) 내가 고칠 만한 부분이 어디인지 3) <strong>네가 임의로 정한 것</strong></p></code></pre></div>
+<h3 data-blk="backmatter/appendix_prompts.tex#17">프롬프트 미리 점검받기</h3>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>아래는 내가 요청하려는 프롬프트다. <strong>아직 만들지 말고</strong> 이것만 검토해 줘.</p><p>1. 내가 지정하지 않아서 <strong>네가 임의로 정하게 될</strong> 것들을 모두<br>
+2. 서로 모순되거나 애매한 지시<br>
+3. 이대로 만들면 내가 실망할 가능성이 높은 부분</p></code></pre></div>
+<h3 data-blk="backmatter/appendix_prompts.tex#18">수정 요청</h3>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p><span class="pblank"></span> 부분에서, <span class="pblank"></span> 때문에 <span class="pblank"></span> 하다.</p><p><span class="pblank"></span> 하게 바꿔 줘. <strong>나머지는 그대로 둬.</strong></p></code></pre></div>
+<h3 data-blk="backmatter/appendix_prompts.tex#19">코드 읽기</h3>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>아래는 내가 만든 것의 일부다.</p><p><span class="pblank"></span></p><p>프로그래밍을 배우지 않은 사람이 이해할 수 있게 알려 줘.</p><p>1. 이 부분이 하는 일을 한 문장으로<br>
+2. 지우면 화면에서 무엇이 사라지는지<br>
+3. 내가 바꿔도 안전한 곳과 건드리면 안 되는 곳</p><p><strong>문법을 설명하지 말고</strong> 무슨 일을 하는지만.</p></code></pre></div>
+<h3 data-blk="backmatter/appendix_prompts.tex#20">자료 처리 요청</h3>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p><span class="ptag">[자료]</span> <span class="pblank"></span> 파일. 열은 <span class="pblank"></span>. 각 행이 <span class="pblank"></span> 한 건. 약 <span class="pblank"></span>행.</p><p><span class="ptag">[할 일]</span> <span class="pblank"></span></p><p><span class="ptag">[확인]</span> 처리한 행 수, 이상한 값이 있는 행 수, 결과에 들어간 행 수를 함께 출력해 줘.</p><p><span class="ptag">[제약]</span> 원본 파일은 고치지 말고 새 파일로. 버린 행은 따로 저장. 설치가 필요한 것은 쓰지 말 것.</p></code></pre></div>
+<h2 data-blk="backmatter/appendix_prompts.tex#21" id="sec5">고칠 때 (12장)</h2>
+<h3 data-blk="backmatter/appendix_prompts.tex#22">오류 보고</h3>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p><span class="ptag">[하려던 것]</span> <span class="pblank"></span></p><p><span class="ptag">[한 것]</span> <span class="pblank"></span></p><p><span class="ptag">[나온 것]</span> (화면에 뜬 것을 <strong>그대로</strong> 붙여 넣는다)</p><p><span class="ptag">[해 본 것]</span> <span class="pblank"></span></p><p><span class="ptag">[언제부터]</span> <span class="pblank"></span> 한 뒤부터 이렇게 됐다.</p></code></pre></div>
+<h3 data-blk="backmatter/appendix_prompts.tex#23">원인 먼저 듣기</h3>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>바로 고치지 말고 먼저 알려 줘.</p><p>1. 무엇이 원인인지 프로그래밍을 모르는 사람이 이해할 수 있게<br>
+2. 왜 어제까지는 되다가 지금 안 되게 됐는지<br>
+3. 고치는 방법이 둘 이상이면 각각의 장단점</p><p>설명을 듣고 <strong>어떻게 할지 내가 정한다.</strong></p></code></pre></div>
+<h3 data-blk="backmatter/appendix_prompts.tex#24">숨은 가정 드러내기</h3>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>방금 만든 계산에 대해 알려 줘.</p><p>1. 내가 지정하지 않아서 <strong>네가 정한 처리 방식</strong>을 모두 (빈칸 처리, 경계 포함 여부, 반올림 시점, 정렬 기준, 중복 판정 등)<br>
+2. 각각에 대해 다른 선택도 가능했는지, 다르게 하면 결과가 어떻게 달라지는지<br>
+3. 이 중 내가 확인해야 할 것</p><p>코드는 고치지 말고 설명만.</p></code></pre></div>
+<h3 data-blk="backmatter/appendix_prompts.tex#25">확인 목록 만들기</h3>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>아래는 내가 만든 것의 기능 목록과 성공 기준이다.</p><p><span class="pblank"></span></p><p>확인할 <strong>시험 항목</strong>을 만들어 줘.</p><p>- 각 항목은 <em>무엇을 하면</em> / <em>무엇이 나와야</em> 두 칸으로<br>
+- 각 기능마다 <strong>정상 / 이상한 값 / 비어 있음</strong> 세 경우를 모두<br>
+- 눈으로 판정할 수 있게 구체적으로 (<em>잘 동작한다</em> 금지)<br>
+- 15개 이하, 표로</p></code></pre></div>
+<h2 data-blk="backmatter/appendix_prompts.tex#26" id="sec6">검증할 때 (전 장)</h2>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>방금 답한 내용 중 각 주장이 어디에서 나온 것인지 표시해 줘. <strong>내가 준 자료 / 검색한 것(출처 주소) / 원래 알고 있던 것</strong>으로 구분해 줘.</p></code></pre></div>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>네 결론에 반대하는 입장에서 가장 강한 반박을 세 가지 해 봐. 그리고 그 반박이 타당한지 평가해 줘.</p></code></pre></div>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>각 항목의 확신 정도를 [높음/보통/낮음]으로 표시해 줘. 낮음인 것은 무엇을 확인하면 되는지도.</p></code></pre></div>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>같은 문제를 <strong>완전히 다른 방법</strong>으로 다시 풀어 봐. 두 결과가 같은지 비교하고, 다르면 어느 쪽이 맞을지 판단해 줘.</p></code></pre></div>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>정리 전 건수와 정리 후 건수를 각각 알려 줘. <strong>다르다면 어느 건이 왜 빠졌는지 전부</strong> 보여 줘.</p></code></pre></div>
+<h2 data-blk="backmatter/appendix_prompts.tex#27" id="sec7">맥락을 옮길 때 (2.4절)</h2>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>지금까지의 대화를 새 대화창에 옮겨 이어 가려 한다. 다음을 정리해 줘.</p><p>1. 지금 하려는 일과 목표<br>
+2. 지금까지 내린 결정과 그 이유<br>
+3. 시도했지만 안 된 방법과 그 이유<br>
+4. 현재 상태와 다음에 할 일</p><p>새 대화에 그대로 붙여 넣을 수 있게, 설명 없이 정리된 내용만.</p></code></pre></div>
+<h2 data-blk="backmatter/appendix_prompts.tex#28" id="sec8">쓰지 말아야 할 프롬프트</h2>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt bad"><code><p>알아서 잘 만들어 줘.</p></code></pre></div>
+<p data-blk="backmatter/appendix_prompts.tex#29">무엇을 만들지 정하지 않은 것이다. 인공지능이 정하게 되고, 그 결정이 내 문제와 맞을 확률은 낮다.</p>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt bad"><code><p>이 자료 분석해서 결론 내려 줘. (실제 명단·연락처가 든 파일 첨부)</p></code></pre></div>
+<p data-blk="backmatter/appendix_prompts.tex#30">개인정보를 그대로 올린 것이다. 이름을 바꾸거나 일부만 올린다(7.2절).</p>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt bad"><code><p>로그인, 게시판, 알림, 통계, 관리자 페이지까지 다 만들어 줘.</p></code></pre></div>
+<p data-blk="backmatter/appendix_prompts.tex#31">한 번에 너무 많다. 하나씩 붙이고 매 단계 동작을 확인한다(7.3절).</p>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt bad"><code><p>정말이야? 확실해?</p></code></pre></div>
+<p data-blk="backmatter/appendix_prompts.tex#32">맞는 답까지 철회하게 만든다. <em>어떻게 확인할 수 있어?</em>라고 묻는다(7.4절).</p>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt bad"><code><p>안 되는데 고쳐 줘.</p></code></pre></div>
+<p data-blk="backmatter/appendix_prompts.tex#33">무엇이 어떻게 안 되는지가 없다. 네 요소를 갖춰 적는다(12.2절).</p>
+
+<div class="pager-row"><a class="pager prev" href="apxa.html">&larr; 부록 A</a><a class="pager next" href="apxc.html">부록 C &rarr;</a></div>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-glsl.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="book.js"></script>
+</body>
+</html>

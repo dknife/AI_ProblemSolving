@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>그림 확대 보기 — AI 문제해결</title>
+<style>
+  :root { --bg: #F8F8F8; --text: #222; --accent: #FA5D29; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+    background: var(--bg); color: var(--text);
+    min-height: 100vh;
+  }
+  .bar {
+    position: fixed; top: 0; left: 0; right: 0; height: 46px;
+    display: flex; align-items: center; gap: 1rem; padding: 0 1.2rem;
+    background: rgba(248,248,248,0.94); backdrop-filter: blur(8px);
+    border-bottom: 1px solid #E4E4E4; z-index: 10; font-size: 0.85rem;
+  }
+  .bar .tag { font-weight: 800; }
+  .bar .tag em { color: var(--accent); font-style: normal; }
+  .bar .hint { color: #767676; }
+  .bar button {
+    margin-left: auto; background: #222; color: #fff; border: none;
+    border-radius: 8px; padding: 0.3rem 0.9rem; cursor: pointer;
+    font: inherit; transition: background 0.3s ease;
+  }
+  .bar button:hover { background: #383838; }
+  .stage {
+    padding: 66px 20px 40px; text-align: center;
+  }
+  img {
+    width: min(92vw, 1400px); height: auto;
+    background: #fff; border-radius: 8px; padding: 18px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    cursor: zoom-in; transition: width 0.25s cubic-bezier(0.25,1,0.5,1);
+  }
+  body.zoomed img { width: 160vw; max-width: none; cursor: zoom-out; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <span class="tag">AI <em>문제해결</em> — 그림 보기</span>
+  <span class="hint">그림을 클릭하면 더 크게 확대됩니다</span>
+  <button onclick="window.close()">닫기</button>
+</div>
+<div class="stage"><img id="fig" alt="figure"></div>
+<script>
+(function () {
+  var p = new URLSearchParams(location.search);
+  var src = p.get('src') || '';
+  // 같은 폴더 기준 상대 경로만 허용 (외부 URL 차단)
+  if (/^[a-zA-Z0-9_\-./%]+$/.test(src) && src.indexOf('..') < 0 &&
+      src.indexOf(':') < 0 && !src.startsWith('/')) {
+    document.getElementById('fig').src = src;
+  }
+  document.getElementById('fig').addEventListener('click', function () {
+    document.body.classList.toggle('zoomed');
+  });
+})();
+</script>
+</body>
+</html>

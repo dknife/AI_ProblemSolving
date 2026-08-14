@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10장 세상에 내놓기 — AI 문제해결</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="book.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+<script>MathJax = {tex: {inlineMath: [['\\(', '\\)']]}, svg: {fontCache: 'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="home" href="../index.html">&#8962; 홈</a>
+  <span class="book-title">AI 문제해결</span>
+  <span class="ch-indicator">10장 세상에 내놓기</span>
+  <button class="nav-toggle" onclick="document.body.classList.toggle('nav-open')">목차</button>
+</header>
+<div class="layout">
+<nav class="sidebar">
+<div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 문제를 푸는 방식이 달라졌다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> AI는 어떻게 답을 만드는가</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 에이전트: 스스로 일하는 AI</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 문제를 찾아내고 정의한다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> 문제를 쪼개고 구조를 본다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch06.html"><span class="nav-num">06</span> 해법을 찾고 고른다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> AI와 제대로 대화한다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 만들기 위한 준비</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 첫 번째 웹 서비스 만들기</a>
+</div>
+<div class="nav-ch current"><a class="nav-ch-link" href="ch10.html"><span class="nav-num">10</span> 세상에 내놓기</a>
+<div class="nav-secs"><a class="nav-sec" href="ch10.html#sec1">10.1 내 컴퓨터 밖으로</a><a class="nav-sec" href="ch10.html#sec2">10.2 무료로 배포하기</a><a class="nav-sec" href="ch10.html#sec3">10.3 써 보게 하고 반응 받기</a><a class="nav-sec" href="ch10.html#sec4">10.4 사용자가 생기면 따라오는 책임</a><a class="nav-sec" href="ch10.html#sec5">10.5 다음 판을 준비한다</a><a class="nav-sec" href="ch10.html#labs">실습을 통한 개념 정리</a><a class="nav-sec" href="ch10.html#summary">10장 요약</a><a class="nav-sec" href="ch10.html#exercises">연습문제</a></div>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch11.html"><span class="nav-num">11</span> 파이썬 앱으로 반복을 없앤다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch12.html"><span class="nav-num">12</span> 고치고 다듬는다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch13.html"><span class="nav-num">13</span> 나의 문제 해결 프로젝트</a>
+</div>
+<div class="nav-part">부록</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">A</span> 무료 AI 도구와 에이전트 총정리</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxb.html"><span class="nav-num">B</span> 문제 해결 프롬프트 사전</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxc.html"><span class="nav-num">C</span> 자주 만나는 오류와 해결</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxd.html"><span class="nav-num">D</span> 배포와 공유 안내</a>
+</div>
+<div class="nav-part">부가 자료</div>
+<div class="nav-ch"><a class="nav-ch-link" href="references.html"><span class="nav-num">&#128218;</span> 참고문헌</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">&#128295;</span> 도구 비교표</a></div>
+</nav>
+<main class="content">
+<div class="chapter-head">
+  <div class="ch-label">CHAPTER 10</div>
+  <h1>세상에 내놓기</h1>
+</div>
+<img class="chapter-hero" src="img/ch10/ch10_img01.jpg" alt="10장 대표 이미지">
+<div class="center"><details class="box goals"><summary class="box-head">이 장을 마치면</summary><div class="goals-body"><ul data-blk="chapters/ch10/ch10.tex#1">
+<li>만든 것을 인터넷에 올려 주소로 공유할 수 있다.</li>
+<li>무료 배포 방법을 하나 이상 실행할 수 있다.</li>
+<li>사용자에게 써 보게 하고 반응을 수집할 수 있다.</li>
+<li>사용자가 생겼을 때 따라오는 책임을 인식하고 대비할 수 있다.</li>
+<li>받은 반응을 다음 판의 작업 목록으로 바꿀 수 있다.</li>
+</ul>
+</div></details></div>
+<p data-blk="chapters/ch10/ch10.tex#2">9장에서 만든 것은 아직 내 컴퓨터 안에 있다. 문제를 겪는 사람이 나 혼자라면 그것으로 충분하지만, 4장에서 이해관계자를 찾아본 이유가 있다. 남이 쓰게 하려면 주소가 있어야 하고, 주소가 생기는 순간 몇 가지 책임도 함께 생긴다.</p>
+<p data-blk="chapters/ch10/ch10.tex#3">이 장은 올리고, 써 보게 하고, 반응을 받아 고치는 한 바퀴를 다룬다. 이 한 바퀴를 돌아 본 학생과 돌지 않은 학생의 결과물은 완성도에서 확연히 갈린다.</p>
+<h2 data-blk="chapters/ch10/sec01.tex#1" id="sec1">10.1 내 컴퓨터 밖으로</h2>
+<p data-blk="chapters/ch10/sec01.tex#2">지금 만든 것은 내 폴더 안에 있다. 파일을 두 번 눌러야 열리고, 남에게 주려면 파일을 보내야 한다. 이 절에서는 그것에 <strong>주소</strong>를 붙인다.</p>
+<h3 data-blk="chapters/ch10/sec01.tex#3">주소가 생긴다는 것</h3>
+<p data-blk="chapters/ch10/sec01.tex#4">파일이 인터넷 주소를 갖는다는 것은, 그 파일이 <strong>항상 켜져 있는 컴퓨터에 올라가 있고</strong> 누구든 그 주소로 요청하면 받아 갈 수 있다는 뜻이다. 이 서비스를 흔히 <strong class="term-ko">호스팅</strong><sup class="term">hosting</sup>이라고 부른다.</p>
+<div class="table-wrap"><div class="table-caption">표 10.1: 내 컴퓨터에 있을 때와 주소가 생겼을 때</div><table><tr><th></th><th> 내 폴더에</th><th> 주소가 있으면</th></tr><tr><td>여는 법</td><td>파일을 두 번 누른다</td><td>주소를 누른다</td></tr><tr><td>주소</td><td><code>file:///\dots{}</code></td><td><code>https://\dots{}</code></td></tr><tr><td>남에게 주기</td><td>파일을 보낸다</td><td>링크를 보낸다</td></tr><tr><td>고쳤을 때</td><td>각자 다시 받아야</td><td>올리면 모두가 새것을 본다</td></tr><tr><td>휴대전화</td><td>옮겨야 열린다</td><td>바로 열린다</td></tr></table></div>
+<p data-blk="chapters/ch10/sec01.tex#5">네 번째 줄이 결정적이다. 파일을 보내면 사람마다 다른 버전을 갖게 되고, 고칠 때마다 다시 보내야 한다. 주소가 있으면 <strong>고친 것을 한 번 올리면 끝</strong>이다.</p>
+<h3 data-blk="chapters/ch10/sec01.tex#6">우리에게 맞는 방식</h3>
+<p data-blk="chapters/ch10/sec01.tex#7">무료로 쓸 수 있는 방식이 여럿 있다. 무엇을 만들었느냐에 따라 고른다.</p>
+<div class="table-wrap"><div class="table-caption">표 10.2: 무료 배포 방식</div><table><tr><th> 방식</th><th> 무엇에 맞나</th><th> 알아 둘 것</th></tr><tr><td>정적 페이지 호스팅</td><td><code>.html</code> 파일 하나</td><td><strong>이 수업의 기본</strong>. 가장 쉽다</td></tr><tr><td>파일 끌어다 놓기</td><td>빠른 시험용</td><td>주소가 임시일 수 있다</td></tr><tr><td>노트북 공유</td><td>파이썬 노트북</td><td>보는 사람도 계정이 필요할 수 있다</td></tr><tr><td>앱 호스팅</td><td>파이썬 앱</td><td>한동안 안 쓰면 잠들어 느려진다</td></tr></table></div>
+<p data-blk="chapters/ch10/sec01.tex#8">9장에서 만든 것은 <code>.html</code> 파일 하나이므로 <strong>첫 번째 방식</strong>이 맞는다. 11장의 파이썬 결과물은 세 번째나 네 번째를 쓴다.</p>
+<h3 data-blk="chapters/ch10/sec01.tex#9">공개한다는 뜻</h3>
+<p data-blk="chapters/ch10/sec01.tex#10">여기서 짚고 갈 것이 있다. 주소가 생긴다는 것은 <strong>그 주소를 아는 누구나 볼 수 있다</strong>는 뜻이다. 대부분의 무료 호스팅에서 공개 페이지는 검색에도 걸릴 수 있다.</p>
+<div class="box caution"><span class="chip">주의</span><p data-blk="chapters/ch10/sec01.tex#11">공개하기 전에 파일 안에 다음이 없는지 확인한다.</p>
+<ul data-blk="chapters/ch10/sec01.tex#12">
+<li>실제 사람의 이름·연락처·학번이 예시로 들어가 있지 않은가</li>
+<li>시험 삼아 넣어 둔 실제 자료가 코드 안에 남아 있지 않은가</li>
+<li>주석에 적어 둔 메모(<em>일단 대충 함</em>, 계정 정보 등)가 남아 있지 않은가</li>
+</ul>
+</div>
+<p data-blk="chapters/ch10/sec01.tex#13">세 번째가 의외로 자주 걸린다. 코드에 남긴 메모는 화면에 안 보이지만 <strong>파일을 열어 보면 그대로 다 보인다.</strong> 부록 D의 공개 전 점검 목록을 반드시 거치자.</p>
+<h3 data-blk="chapters/ch10/sec01.tex#14">올리기 전에 정할 것</h3>
+<div class="settingbox-wrap"><div class="setting-label">공개 전 결정 사항</div><pre class="settingbox"><code>파일 이름       : index.html 로 할 것인가 (그러면 주소가 짧아진다)
+주소를 누구에게 : 전체 공개 / 링크 아는 사람만 / 특정 몇 명
+안내 문구       : 처음 여는 사람에게 무엇을 알려야 하나
+연락 방법       : 문제가 생기면 누구에게 알리나
+언제까지        : 학기 끝나면 내릴 것인가 남길 것인가</code></pre></div>
+<p data-blk="chapters/ch10/sec01.tex#15">두 번째 항목을 정할 때 4.2절의 이해관계자 목록을 다시 본다. 동아리 회비 기록이라면 동아리원만 알면 되므로, 굳이 전체 공개할 필요는 없다.</p>
+<p data-blk="chapters/ch10/sec01.tex#16">다섯 번째도 지금 정해 두자. 13.5절에서 포트폴리오로 남길 것이라면 학기 후에도 살아 있어야 하고, 그렇다면 계정을 개인 이메일로 만들어 두었어야 한다(8.2절).</p>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch10/sec01.tex#17">배포는 기술적인 단계이기 전에 <strong>결정의 단계</strong>다. 누구에게 보일지, 무엇을 알릴지, 언제까지 유지할지. 이것을 정하지 않고 올리면 나중에 곤란해진다.</p>
+</div>
+<h2 data-blk="chapters/ch10/sec02.tex#1" id="sec2">10.2 무료로 배포하기</h2>
+<p data-blk="chapters/ch10/sec02.tex#2">이 절에서 실제로 주소를 만든다. 화면 순서는 서비스마다 다르고 자주 바뀌므로, 여기서는 <strong>하는 일의 순서</strong>를 익힌다. 구체적인 절차는 부록 D에 있다.</p>
+<h3 data-blk="chapters/ch10/sec02.tex#3">네 단계</h3>
+<p data-blk="chapters/ch10/sec02.tex#4">어느 서비스를 쓰든 하는 일은 같다.</p>
+<ol>
+<li><strong>보관할 자리를 만든다</strong>  —  저장소를 하나 만든다. 이름은 영문 소문자로</li>
+<li><strong>파일을 올린다</strong>  —  <code>index.html</code>이라는 이름으로 올린다</li>
+<li><strong>공개 설정을 켠다</strong>  —  이 저장소를 웹으로 보이게 한다는 설정</li>
+<li><strong>주소를 확인한다</strong>  —  몇 분 뒤 주소로 열린다</li>
+</ol>
+<p data-blk="chapters/ch10/sec02.tex#6"><strong>파일 이름을 <code>index.html</code>로 하는 이유</strong>가 있다. 주소 끝에 파일 이름을 적지 않아도 열리기 때문이다. <code>.../expense/</code>만으로 열리는 것과 <code>.../expense/expense.html</code>까지 적어야 하는 것은 남에게 보낼 때 차이가 크다.</p>
+<h3 data-blk="chapters/ch10/sec02.tex#7">저장소가 무엇인가</h3>
+<p data-blk="chapters/ch10/sec02.tex#8">여기서 <strong class="term-ko">저장소</strong><sup class="term">repository</sup>라는 말이 나온다. 원래는 코드의 변경 이력을 관리하는 도구지만, 우리는 그 기능을 거의 쓰지 않는다. <strong>파일을 올려 두는 폴더</strong>로 생각하면 충분하다.</p>
+<p data-blk="chapters/ch10/sec02.tex#9">다만 하나는 알아 두면 좋다. <strong>파일을 고쳐 다시 올리면 이전 것이 남아 있다.</strong> 실수로 망가뜨려도 이전 버전으로 돌아갈 수 있다. 사본을 만드는 습관(8.5절)의 자동화된 형태인 셈이다.</p>
+<div class="box note"><span class="chip">잠깐</span><span class="box-title">명령어를 배우지 않아도 된다</span><p data-blk="chapters/ch10/sec02.tex#10">저장소를 다루는 방법으로 흔히 명령줄 도구를 쓴다. 이 수업에서는 쓰지 않는다. <strong>웹 화면에서 파일을 끌어다 놓는 것</strong>으로 충분하다. 파일이 하나뿐이므로 불편하지 않다. 명령줄이 궁금하면 학기 후에 익혀도 늦지 않다.</p>
+</div>
+<h3 data-blk="chapters/ch10/sec02.tex#11">자주 막히는 곳</h3>
+<p data-blk="chapters/ch10/sec02.tex#12">실제로 학생들이 걸리는 지점을 미리 알려 둔다.</p>
+<div class="table-wrap"><div class="table-caption">표 10.3: 배포에서 자주 막히는 곳</div><table><tr><th> 증상</th><th> 원인과 해결</th></tr><tr><td>주소를 열었더니 404</td><td>아직 반영 전이다. 몇 분 기다린다. 그래도 안 되면 공개 설정과 파일 이름 확인</td></tr><tr><td>빈 화면이 나온다</td><td>파일 이름이 <code>index.html</code>이 아니거나, 확장자가 <code>.html.txt</code>다</td></tr><tr><td>고쳤는데 옛날 것이 보인다</td><td>브라우저 캐시. 강제 새로고침 (<code>Ctrl+Shift+R</code>)</td></tr><tr><td>한글이 깨진다</td><td>파일이 UTF-8로 저장되지 않았다</td></tr><tr><td>휴대전화에서만 안 열린다</td><td>주소를 잘못 옮겨 적었거나, 학교 와이파이 문제</td></tr></table></div>
+<p data-blk="chapters/ch10/sec02.tex#13">첫 줄이 가장 흔하다. <strong>올리자마자 열리지 않는 것은 정상이다.</strong> 반영에 몇 분이 걸린다. 그 사이에 설정을 이것저것 바꾸다 오히려 망가뜨리는 일이 많으니, 5분은 기다려 보자.</p>
+<h3 data-blk="chapters/ch10/sec02.tex#14">주소를 확인한다</h3>
+<p data-blk="chapters/ch10/sec02.tex#15">주소가 나오면 다음을 확인한다.</p>
+<ul class="checklist">
+<li>내 컴퓨터의 브라우저에서 열린다</li>
+<li><strong>휴대전화</strong>에서 열린다 (데이터로. 와이파이를 끄고 확인)</li>
+<li>다른 사람의 기기에서 열린다</li>
+<li>9장에서 확인한 기능이 모두 그대로 된다</li>
+<li>자료를 넣고 새로고침해도 남는다</li>
+</ul>
+<p data-blk="chapters/ch10/sec02.tex#17">두 번째를 반드시 하자. 학교 와이파이에서만 되는 경우가 있고, 실제 사용자는 대부분 휴대전화로 연다.</p>
+<h3 data-blk="chapters/ch10/sec02.tex#18">고치고 다시 올리기</h3>
+<p data-blk="chapters/ch10/sec02.tex#19">배포한 뒤에도 계속 고치게 된다. 순서를 정해 두자.</p>
+<ol data-blk="chapters/ch10/sec02.tex#20">
+<li>내 컴퓨터의 파일을 고친다</li>
+<li>내 컴퓨터에서 열어 확인한다</li>
+<li>사본을 남긴다</li>
+<li>저장소에 올린다 (같은 이름으로 덮어쓴다)</li>
+<li>몇 분 뒤 주소에서 확인한다 (강제 새로고침)</li>
+</ol>
+<p data-blk="chapters/ch10/sec02.tex#21"><strong>2번을 건너뛰지 않는다.</strong> 확인하지 않은 것을 올리면 사람들이 망가진 화면을 보게 된다. 쓰는 사람이 생긴 뒤에는 이것이 중요해진다.</p>
+<div class="box caution"><span class="chip">주의</span><p data-blk="chapters/ch10/sec02.tex#22">사용자가 쓰고 있는 중에 올리면 그 사람의 화면이 갑자기 바뀔 수 있다. 사람이 많이 쓰는 시간을 피하고, 큰 변경은 미리 알린다. <strong>남이 쓰는 것을 고치는 일에는 예의가 따른다.</strong></p>
+</div>
+<h3 data-blk="chapters/ch10/sec02.tex#23">주소를 기록한다</h3>
+<p data-blk="chapters/ch10/sec02.tex#24">만든 주소는 여러 곳에서 쓰인다. 지금 적어 두자.</p>
+<div class="settingbox-wrap"><div class="setting-label">내 결과물 주소</div><pre class="settingbox"><code>서비스 이름   :
+저장소 이름   :
+공개 주소     : https://
+공개 범위     :
+만든 날짜     :
+마지막 갱신   :</code></pre></div>
+<p data-blk="chapters/ch10/sec02.tex#25">이 정보는 부록 D, 13.5절의 포트폴리오, 그리고 기말 발표에서 쓴다.</p>
+<h2 data-blk="chapters/ch10/sec03.tex#1" id="sec3">10.3 써 보게 하고 반응 받기</h2>
+<p data-blk="chapters/ch10/sec03.tex#2">주소가 생겼다. 이제 진짜 시험이 시작된다. <strong>만든 사람이 아닌 사람이, 도움 없이, 실제 상황에서</strong> 쓰게 하는 것이다.</p>
+<h3 data-blk="chapters/ch10/sec03.tex#3">어떻게 내보내는가</h3>
+<p data-blk="chapters/ch10/sec03.tex#4">무턱대고 단체 대화방에 링크를 던지면 아무도 안 쓴다. 세 가지를 함께 보낸다.</p>
+<div class="settingbox-wrap"><div class="setting-label">처음 알릴 때 보낼 것</div><pre class="settingbox"><code>[한 줄 설명]  이게 무엇을 하는 것인지
+[왜 만들었나]  어떤 불편을 줄이려는 것인지
+[무엇을 해 달라]  지금 무엇을 해 주면 되는지 (구체적으로)
+[알아 둘 것]  한계나 주의점
+[연락처]  안 되면 누구에게 말하나</code></pre></div>
+<p data-blk="chapters/ch10/sec03.tex#5">예를 들면 이렇다.</p>
+<div class="airesp"><span class="chip">알림 메시지 예</span><p>동아리 지출을 그 자리에서 기록하는 페이지를 만들었습니다.</p>
+<p>지금은 총무가 월말에 영수증 60장을 혼자 옮겨 적느라 세 시간씩 쓰고 있습니다. 지출할 때 각자 1분만 써 주시면 그 작업이 없어집니다.</p>
+<p><b class="resp-h">해 주실 것</b>
+다음에 동아리 관련 지출을 하시면, 그 자리에서 아래 주소에 입력해 주세요. 30초면 됩니다.<br>
+주소: <em>(여기에 주소)</em></p>
+<p><b class="resp-h">알아 두실 것</b>
+- 입력한 내용은 <strong>각자의 휴대전화에만</strong> 저장됩니다. 월말에 [표로 내보내기]로 파일을 만들어 총무에게 보내 주세요.<br>
+- 로그인은 없습니다. 이름을 직접 적어 주세요.</p>
+<p>안 되거나 이상하면 저(OOO)에게 알려 주세요.</p></div>
+<p data-blk="chapters/ch10/sec03.tex#6"><strong>알아 둘 것</strong>을 정직하게 밝히는 것이 중요하다. 9.4절에서 브라우저 저장의 한계를 확인했으니, 그것을 감추면 월말에 자료가 없어 곤란해진다.</p>
+<h3 data-blk="chapters/ch10/sec03.tex#7">몇 명이면 되는가</h3>
+<p><strong>다섯 명이면 대부분의 문제가 드러난다.</strong> 4.2절에서와 같다. 스무 명에게 뿌리기 전에 다섯 명으로 먼저 확인하는 편이 낫다  —  문제가 있는 것을 스무 명에게 보이면 신뢰를 잃고, 그다음에는 고쳐도 안 쓴다.</p>
+<h3 data-blk="chapters/ch10/sec03.tex#9">무엇을 물어야 하는가</h3>
+<p data-blk="chapters/ch10/sec03.tex#10"><em>어때요?</em>라고 물으면 <em>좋아요</em>가 온다. 쓸모없다. 다음을 묻는다.</p>
+<ul>
+<li><strong>어디서 멈췄나요?</strong>  —  막힌 지점을 찾는다</li>
+<li><strong>무엇이 나올 줄 알았나요?</strong>  —  기대와 실제의 차이</li>
+<li><strong>다시 쓰실 건가요?</strong>  —  가장 중요한 질문</li>
+<li><strong>안 쓰신다면 왜인가요?</strong>  —  가장 값진 답</li>
+</ul>
+<p data-blk="chapters/ch10/sec03.tex#12">마지막 질문을 두려워하지 말자. 안 쓸 이유를 아는 것이 쓴 사람의 칭찬보다 훨씬 유용하다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch10/sec03.tex#13"><strong>관찰이 설문보다 낫다.</strong> 물어보면 사람들은 예의 바르게 답한다. 옆에서 지켜보면 진실이 보인다. 가능하면 한 명이라도 실제로 쓰는 것을 지켜보자.</p>
+</div>
+<h3 data-blk="chapters/ch10/sec03.tex#14">반응 기록하기</h3>
+<p data-blk="chapters/ch10/sec03.tex#15">받은 것을 그때그때 적는다. 기억에 남을 것 같아도 안 남는다.</p>
+<div class="settingbox-wrap"><div class="setting-label">반응 기록</div><pre class="settingbox"><code>날짜  누가        무슨 일                        분류        고칠 것
+----------------------------------------------------------------------
+3/12  동아리원A   금액 넣고 추가 눌렀는데       버그        확인 필요
+                  아무 일도 안 일어남
+3/12  동아리원B   항목에 "회식"이 없어서        요청        항목 추가
+                  기타로 넣음
+3/13  총무        내보낸 파일을 엑셀에서 열면   버그        인코딩 확인
+                  한글 깨짐
+3/14  동아리원C   그냥 대화방에 적는 게 편함    이탈        원인 파악</code></pre></div>
+<p>마지막 줄 같은 반응이 가장 중요하다. <strong>원래 방식으로 돌아간 사람</strong>은 4.4절에서 정한 쓰임 기준의 실패를 뜻한다. 왜 그런지 반드시 물어야 한다  —  대개 우리가 생각지 못한 이유가 있다.</p>
+<h3 data-blk="chapters/ch10/sec03.tex#17">분류하기</h3>
+<p data-blk="chapters/ch10/sec03.tex#18">들어온 반응을 넷으로 나눈다.</p>
+<div class="table-wrap"><div class="table-caption">표 10.4: 반응의 분류</div><table><tr><th> 분류</th><th> 무엇인가</th><th> 어떻게 다루나</th></tr><tr><td>버그</td><td>되어야 하는데 안 되는 것</td><td><strong>가장 먼저 고친다</strong></td></tr><tr><td>막힘</td><td>되긴 하는데 헤매는 것</td><td>안내나 배치를 고친다</td></tr><tr><td>요청</td><td>없는 기능을 원하는 것</td><td>명세서와 대조해 판단</td></tr><tr><td>이탈</td><td>안 쓰기로 한 것</td><td>이유를 파악한다</td></tr></table></div>
+<p data-blk="chapters/ch10/sec03.tex#19"><strong>요청은 바로 반영하지 않는다.</strong> 6.3절에서 정한 범위와 대조한다. <em>있으면 좋음</em>에 있던 것이면 여유를 보고, <em>이번엔 안 함</em>에 있던 것이면 왜 그렇게 정했는지 다시 생각한다. 요청이 들어올 때마다 붙이면 범위가 무너진다.</p>
+<h3 data-blk="chapters/ch10/sec03.tex#20">쓰이지 않는다면</h3>
+<p data-blk="chapters/ch10/sec03.tex#21">가장 흔하고 가장 아픈 결과다. 만들었는데 아무도 안 쓴다. 원인을 찾을 때 이 순서로 확인한다.</p>
+<ol>
+<li><strong>알고 있는가</strong>  —  알림을 못 봤을 수 있다. 다시 알린다</li>
+<li><strong>열어는 봤는가</strong>  —  열었는데 안 썼다면 첫 화면의 문제다</li>
+<li><strong>쓰다 막혔는가</strong>  —  버그거나 헤매는 지점이 있다</li>
+<li><strong>쓸 이유가 없는가</strong>  —  지금 방식이 더 편한 것이다</li>
+</ol>
+<p data-blk="chapters/ch10/sec03.tex#23">4번이면 문제 정의로 돌아가야 한다(4장). 그것도 결과다. 13장 발표에서 <em>왜 쓰이지 않았는가</em>를 분석해 발표하는 것은, 잘 쓰이는 것을 자랑하는 것 못지않게 좋은 발표가 된다.</p>
+<h2 data-blk="chapters/ch10/sec04.tex#1" id="sec4">10.4 사용자가 생기면 따라오는 책임</h2>
+<p data-blk="chapters/ch10/sec04.tex#2">주소를 알리는 순간 무언가가 달라진다. 지금까지는 내 것이었지만, 이제 <strong>남의 시간과 자료가 들어온다</strong>. 교양 수업의 과제라도 실제 사람이 쓰면 실제 책임이 생긴다.</p>
+<h3 data-blk="chapters/ch10/sec04.tex#3">개인정보를 다루게 될 때</h3>
+<p data-blk="chapters/ch10/sec04.tex#4">가장 먼저 확인할 것이다. 만든 것이 사람에 대한 정보를 받고 있는가?</p>
+<div class="table-wrap"><div class="table-caption">표 10.5: 어떤 정보를 받고 있는가</div><table><tr><th> 받는 것</th><th> 위험</th><th> 대응</th></tr><tr><td>이름</td><td>보통</td><td>성만, 또는 별명</td></tr><tr><td>학번·연락처</td><td><strong>높음</strong></td><td>받지 않는다</td></tr><tr><td>금액·지출 내역</td><td>보통</td><td>개인별로 드러나지 않게</td></tr><tr><td>건강·성적·상담</td><td><strong>아주 높음</strong></td><td>이 수업에서 다루지 않는다</td></tr><tr><td>사진</td><td>높음</td><td>얼굴이 나오면 동의를 받는다</td></tr></table></div>
+<p data-blk="chapters/ch10/sec04.tex#5">원칙은 하나다. <strong>필요하지 않으면 받지 않는다.</strong> 있으면 좋을 것 같아서 받아 두는 정보가 사고의 원인이 된다.</p>
+<p data-blk="chapters/ch10/sec04.tex#6">우리 예시의 지출 기록에서 <em>이름</em>은 왜 필요한가? 누가 썼는지 확인하기 위해서다. 그렇다면 전체 이름이 필요한가, <em>김OO</em> 정도면 되는가? 대개 후자로 충분하다.</p>
+<div class="box caution"><span class="chip">주의</span><p data-blk="chapters/ch10/sec04.tex#7"><strong>남의 개인정보를 인공지능에게 그대로 올리지 않는다</strong>(7.2절). 자기가 만든 페이지에 대해 물을 때도, 시험 자료에 실제 사람의 정보가 들어 있으면 지우고 올린다.</p>
+</div>
+<h3 data-blk="chapters/ch10/sec04.tex#8">알려야 할 것</h3>
+<p data-blk="chapters/ch10/sec04.tex#9">사용자에게 밝혀야 할 것이 셋 있다. 어렵지 않고, 화면 아래 작은 글씨 몇 줄이면 된다.</p>
+<ul>
+<li><strong>무엇을 저장하는가</strong>  —  어떤 정보가 어디에 남는지</li>
+<li><strong>누가 볼 수 있는가</strong>  —  나만인지, 다른 사람도 보는지</li>
+<li><strong>어떻게 지우는가</strong>  —  지우고 싶을 때 어떻게 하는지</li>
+</ul>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://aistudio.google.com" target="_blank" rel="noopener">AI Studio</a><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://github.com" target="_blank" rel="noopener">GitHub</a></div><pre class="prompt"><code><p>화면 맨 아래에 작은 회색 글씨로 다음 안내를 넣어 줘.</p><p><em>입력한 내용은 이 기기의 브라우저에만 저장되며, 다른 사람이나 다른 기기에서는 보이지 않습니다. [전체 지우기]를 누르면 저장된 내용이 모두 삭제됩니다. 이 페이지는 OO동아리 정산을 위해 만든 수업 과제물입니다. 문의: OOO</em></p><p>그리고 [전체 지우기] 단추도 함께 만들어 줘. 누르면 <em>저장된 지출 기록을 모두 지웁니다. 되돌릴 수 없습니다. 계속할까요?</em>를 확인한 뒤 지운다.</p></code></pre><div class="listing-caption">프롬프트 10.1: 안내 문구 넣기</div></div>
+<p data-blk="chapters/ch10/sec04.tex#11"><strong>지우는 방법을 제공하는 것</strong>을 잊지 말자. 자기 자료를 지울 수 없는 것은 사용자 입장에서 불편을 넘어 불안이다.</p>
+<h3 data-blk="chapters/ch10/sec04.tex#12">잘못되면 무엇이 생기는가</h3>
+<p data-blk="chapters/ch10/sec04.tex#13">한 번 생각해 볼 질문이다. <em>이것이 틀리면 누가 무엇을 잃는가?</em></p>
+<div class="table-wrap"><div class="table-caption">표 10.6: 잘못됐을 때의 대가</div><table><tr><th> 만든 것</th><th> 틀리면</th><th> 준비할 것</th></tr><tr><td>지출 합계</td><td>정산이 어긋난다</td><td>원자료(영수증)를 남긴다</td></tr><tr><td>일정 안내</td><td>헛걸음한다</td><td>공식 공지를 함께 안내</td></tr><tr><td>봉사 시간 집계</td><td>인증이 안 된다</td><td>확인서 원본 보관</td></tr><tr><td>과제 진행 상황</td><td>오해가 생긴다</td><td>큰 영향 없음</td></tr></table></div>
+<p data-blk="chapters/ch10/sec04.tex#14"><strong>준비할 것</strong> 칸이 핵심이다. 우리가 만든 것이 유일한 근거가 되지 않게 하는 것이다. 원본이 따로 있으면 잘못돼도 되돌릴 수 있다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch10/sec04.tex#15"><em>이건 수업 과제니까</em>는 사용자에게 통하지 않는다. 쓰는 사람은 그것이 과제인지 제품인지 상관하지 않고 자기 시간을 들인다. <strong>만든 사람이 책임진다</strong>는 사실은 달라지지 않는다.</p>
+</div>
+<h3 data-blk="chapters/ch10/sec04.tex#16">그만둘 때도 알린다</h3>
+<p data-blk="chapters/ch10/sec04.tex#17">학기가 끝나면 대개 관리를 그만두게 된다. 그때 그냥 사라지면 곤란하다.</p>
+<ul data-blk="chapters/ch10/sec04.tex#18">
+<li>언제까지 유지할 것인지 미리 알린다</li>
+<li>그만두기 전에 <strong>자료를 내보내 가라고</strong> 안내한다</li>
+<li>계속 쓰겠다는 사람이 있으면 파일을 넘겨준다 (파일 하나이므로 쉽다)</li>
+<li>남길 것이면 <em>더 이상 관리하지 않습니다</em>라고 표시해 둔다</li>
+</ul>
+<p data-blk="chapters/ch10/sec04.tex#19">마지막 항목이 중요하다. 관리되지 않는 것이 관리되는 것처럼 보이는 상태가 가장 나쁘다.</p>
+<h3 data-blk="chapters/ch10/sec04.tex#20">점검 목록</h3>
+<ul class="checklist">
+<li>필요하지 않은 개인정보를 받고 있지 않은가</li>
+<li>무엇이 저장되고 누가 볼 수 있는지 안내했는가</li>
+<li>사용자가 자기 자료를 지울 수 있는가</li>
+<li>잘못됐을 때의 대가가 큰가? 크다면 원본이 따로 있는가</li>
+<li>문제가 생겼을 때 연락할 방법이 있는가</li>
+<li>언제까지 유지할지 정하고 알렸는가</li>
+</ul>
+<p data-blk="chapters/ch10/sec04.tex#22">이 목록은 12.5절에서 저작권·라이선스와 함께 다시 정리하고, 부록 D의 공개 전 점검 목록으로 이어진다.</p>
+<h2 data-blk="chapters/ch10/sec05.tex#1" id="sec5">10.5 다음 판을 준비한다</h2>
+<p>반응이 들어왔다. 이제 무엇을 고칠지 정한다. 여기서도 원칙은 같다  —  <strong>전부 반영하지 않는다.</strong></p>
+<h3 data-blk="chapters/ch10/sec05.tex#3">우선순위 정하기</h3>
+<p data-blk="chapters/ch10/sec05.tex#4">들어온 것을 세 기준으로 본다.</p>
+<ul>
+<li><strong>치명적인가</strong>  —  이것 때문에 아예 못 쓰는가?</li>
+<li><strong>여럿이 겪는가</strong>  —  한 명인가 여러 명인가?</li>
+<li><strong>쉬운가</strong>  —  30분이면 되는가 사흘이 걸리는가?</li>
+</ul>
+<p data-blk="chapters/ch10/sec05.tex#6">순서는 다음과 같다.</p>
+<div class="table-wrap"><div class="table-caption">표 10.7: 고치는 순서</div><table><tr><th> 순위</th><th> 무엇</th><th> 왜</th></tr><tr><td>1</td><td>치명적 + 여럿</td><td>이것 때문에 아무도 못 쓴다</td></tr><tr><td>2</td><td>치명적 + 한 명</td><td>그 사람은 못 쓴다</td></tr><tr><td>3</td><td>쉬운 것</td><td>값싸게 좋아진다</td></tr><tr><td>4</td><td>여럿이 원하는 기능</td><td>명세서와 대조한 뒤</td></tr><tr><td>5</td><td>나머지</td><td>대개 하지 않는다</td></tr></table></div>
+<p data-blk="chapters/ch10/sec05.tex#7">3번 <em>쉬운 것</em>을 3순위에 둔 이유가 있다. 30분이면 되는 것 세 개를 고치면 사용자가 <em>반응을 반영해 주는구나</em>를 느낀다. 그러면 다음 반응이 더 잘 들어온다.</p>
+<h3 data-blk="chapters/ch10/sec05.tex#8">모두 반영하지 않는다</h3>
+<p data-blk="chapters/ch10/sec05.tex#9">들어온 요청 중 상당수는 하지 않을 것이다. 그 결정을 <strong>기록으로 남긴다</strong>.</p>
+<div class="settingbox-wrap"><div class="setting-label">반영하지 않기로 한 것</div><pre class="settingbox"><code>요청                    누가        왜 안 하나
+------------------------------------------------------------
+로그인 기능            동아리원 2명  명세서에서 이번 범위 밖으로 정함.
+                                     40명 규모에서는 관리 부담이 더 큼
+사진 첨부              동아리원 1명  저장 공간 문제. 영수증은 원본을
+                                     각자 보관하는 것으로 충분
+그래프                 총무          숫자만으로 판단 가능. 다음 판 후보
+자동 항목 분류         동아리원 1명  정확도가 낮으면 오히려 손이 더 감</code></pre></div>
+<p data-blk="chapters/ch10/sec05.tex#10">이 표가 13장 발표에서 쓰인다. <em>왜 이것만 만들었는가</em>에 대한 답이며, 판단할 줄 아는 사람이라는 증거이기도 하다. <strong>요청을 다 들어준 결과물보다 골라 낸 결과물이 좋은 평가를 받는다.</strong></p>
+<h3 data-blk="chapters/ch10/sec05.tex#11">한 바퀴 더 돌린다</h3>
+<p data-blk="chapters/ch10/sec05.tex#12">고쳤으면 다시 내놓고 다시 반응을 받는다. 이 순환이 3장에서 본 에이전트의 순환과 같은 모양이라는 것을 다시 짚어 두자.</p>
+<div class="center"><p>내놓는다 → 써 보게 한다 → 반응을 받는다 → 고친다 → 다시 내놓는다</p></div>
+<p data-blk="chapters/ch10/sec05.tex#14">한 학기에 이 순환을 <strong>두 바퀴만 돌아도</strong> 결과물의 완성도가 크게 달라진다. 한 바퀴도 안 돈 것과 두 바퀴 돈 것은 발표에서 바로 구분된다.</p>
+<h3 data-blk="chapters/ch10/sec05.tex#15">성공 기준을 확인한다</h3>
+<p data-blk="chapters/ch10/sec05.tex#16">4.4절에서 정한 기준으로 돌아간다. 지금 어디쯤 왔는가?</p>
+<div class="settingbox-wrap"><div class="setting-label">성공 기준 확인</div><pre class="settingbox"><code>주 기준 : 정산 시간 3시간 → 30분 이하
+   지금 : (다음 정산 때 실제로 재 본다)         달성? [   ]
+
+부 기준 : 입력 오류 월 2~3건 → 0건
+   지금 :                                        달성? [   ]
+
+쓰임   : 2주 뒤 총무 외 3명 이상이 입력
+   지금 : 실제 입력한 사람 (   )명               달성? [   ]
+
+달성하지 못한 것의 원인 :</code></pre></div>
+<p data-blk="chapters/ch10/sec05.tex#17"><strong>달성하지 못했어도 괜찮다.</strong> 중요한 것은 그 사실을 알고 있고, 왜 그런지 설명할 수 있는 것이다. 4.4절에서 말한 대로, 기준을 슬그머니 낮추는 것과 근거를 대고 조정하는 것은 다르다.</p>
+<h3 data-blk="chapters/ch10/sec05.tex#18">여기까지 왔다면</h3>
+<p data-blk="chapters/ch10/sec05.tex#19">10장이 끝나면 손에 이런 것들이 있다.</p>
+<ul class="checklist">
+<li>인터넷 주소가 있고 남이 열어 쓸 수 있는 결과물</li>
+<li>실제 사용자 다섯 명 이상의 반응 기록</li>
+<li>반영한 것과 반영하지 않은 것의 목록</li>
+<li>성공 기준 대비 현재 상태</li>
+<li><strong>한 바퀴 이상 돌린 경험</strong></li>
+</ul>
+<p data-blk="chapters/ch10/sec05.tex#21">마지막 항목이 이 수업에서 가장 값진 것이다. 만들고 끝난 것과, 내놓고 반응을 받아 고쳐 본 것은 전혀 다른 경험이다.</p>
+<p>다음 장에서는 다른 종류의 결과물  —  반복 작업을 대신하는 파이썬 앱을 만든다. 지금까지 만든 웹과 짝을 이룬다.</p>
+<p><span id="labs"></span><div class="box lab"><div class="lab-title">이 장의 실습</div><h3 data-blk="chapters/ch10/labs.tex#1">실습 10-1. 공개 전 점검</h3>
+<p data-blk="chapters/ch10/labs.tex#2">올리기 전에 10.1절과 부록 D의 목록을 확인한다.</p>
+<ul class="checklist">
+<li>실제 사람의 이름·연락처·학번이 예시로 남아 있지 않다</li>
+<li>시험용 실제 자료가 코드 안에 없다</li>
+<li>주석에 남긴 메모가 없다</li>
+<li>파일 이름을 <code>index.html</code>로 바꿨다</li>
+<li>공개 범위를 정했다</li>
+<li>학기 후 유지 여부를 정했다</li>
+</ul>
+<h3 data-blk="chapters/ch10/labs.tex#4">실습 10-2. 주소 만들기</h3>
+<p data-blk="chapters/ch10/labs.tex#5">10.2절의 네 단계로 배포한다. 그리고 확인한다.</p>
+<ul class="checklist">
+<li>내 컴퓨터 브라우저에서 열린다</li>
+<li><strong>휴대전화에서 데이터로</strong> 열린다 (와이파이를 끄고)</li>
+<li>다른 사람 기기에서 열린다</li>
+<li>9장에서 확인한 기능이 모두 된다</li>
+</ul>
+<p data-blk="chapters/ch10/labs.tex#7">주소를 10.2절의 서식에 기록한다. 막혔다면 표 <span class="xref" data-ref="tab:deploy-issues">10.3</span>와 부록 C를 본다.</p>
+<h3 data-blk="chapters/ch10/labs.tex#8">실습 10-3. 안내 문구와 지우기</h3>
+<p data-blk="chapters/ch10/labs.tex#9">10.4절의 프롬프트로 안내 문구와 [전체 지우기]를 넣는다. 안내에는 다음이 모두 있어야 한다.</p>
+<ul data-blk="chapters/ch10/labs.tex#10">
+<li>무엇이 어디에 저장되는가</li>
+<li>누가 볼 수 있는가</li>
+<li>어떻게 지우는가</li>
+<li>이것이 무엇인지 (수업 과제물임을 밝힌다)</li>
+<li>연락 방법</li>
+</ul>
+<h3 data-blk="chapters/ch10/labs.tex#11">실습 10-4. 다섯 명에게 내보내기</h3>
+<p>10.3절의 서식으로 알림 메시지를 쓰고 다섯 명에게 보낸다. <strong>설명을 덧붙이지 않는다</strong>  —  메시지만으로 이해되어야 한다.</p>
+<p data-blk="chapters/ch10/labs.tex#13">가능하면 그중 <strong>한 명은 옆에서 지켜본다.</strong> 관찰이 설문보다 정확하다.</p>
+<h3 data-blk="chapters/ch10/labs.tex#14">실습 10-5. 반응 기록</h3>
+<p data-blk="chapters/ch10/labs.tex#15">일주일 동안 들어온 반응을 10.3절의 서식으로 기록한다. 최소 다섯 건.</p>
+<div class="settingbox-wrap"><div class="setting-label">반응 기록</div><pre class="settingbox"><code>날짜  누가  무슨 일  분류(버그/막힘/요청/이탈)  고칠 것</code></pre></div>
+<p data-blk="chapters/ch10/labs.tex#16">아무 반응이 없다면 그것도 결과다. 10.3절의 네 단계로 원인을 찾아 기록한다.</p>
+<h3 data-blk="chapters/ch10/labs.tex#17">실습 10-6. 우선순위 정하고 고치기</h3>
+<p data-blk="chapters/ch10/labs.tex#18">표 <span class="xref" data-ref="tab:fix-order">10.7</span>의 순서로 우선순위를 매기고, <strong>상위 세 개</strong>를 고친다.</p>
+<ol data-blk="chapters/ch10/labs.tex#19">
+<li>고칠 것 목록과 순위, 순위의 근거</li>
+<li>고치는 데 쓴 프롬프트</li>
+<li>고치기 전후 화면</li>
+<li>다시 배포하고 확인</li>
+</ol>
+<h3 data-blk="chapters/ch10/labs.tex#20">실습 10-7. 반영하지 않기로 한 것</h3>
+<p data-blk="chapters/ch10/labs.tex#21">들어온 요청 중 하지 않기로 한 것을 10.5절의 서식으로 정리한다. <strong>각각의 이유를 명세서와 연결해</strong> 적는다.</p>
+<p data-blk="chapters/ch10/labs.tex#22">최소 세 개는 있어야 한다. 하나도 없다면 요청을 다 받아들이고 있다는 뜻이고, 그러면 범위가 무너진다.</p>
+<h3 data-blk="chapters/ch10/labs.tex#23">실습 10-8. 성공 기준 확인</h3>
+<p data-blk="chapters/ch10/labs.tex#24">10.5절의 서식으로 지금 상태를 확인한다. 달성하지 못한 것이 있으면 원인을 적는다.</p>
+<div class="settingbox-wrap"><div class="setting-label">2주 뒤 확인</div><pre class="settingbox"><code>주 기준 : 지금 값 (       )  →  목표 (       )   달성? [   ]
+부 기준 : 지금 값 (       )  →  목표 (       )   달성? [   ]
+쓰임   : 실제로 쓴 사람 (   )명                   달성? [   ]
+
+기준을 조정한다면 무엇을, 왜 :</code></pre></div>
+<p data-blk="chapters/ch10/labs.tex#25">이 기록이 13장 발표의 핵심 자료가 된다.</p>
+</div></p>
+<details class="box summary" id="summary"><summary class="box-head">10장 요약</summary><div class="sum-body"><ul>
+<li>주소가 생긴다는 것은 파일이 항상 켜져 있는 컴퓨터에 올라가 누구나 받아 갈 수 있게 된다는 뜻이다(<strong class="term-ko">호스팅</strong><sup class="term">hosting</sup>). 가장 큰 차이는 <strong>고친 것을 한 번 올리면 모두가 새것을 본다</strong>는 점이다.</li>
+<li><code>.html</code> 파일 하나는 <strong>정적 페이지 호스팅</strong>이 맞는다. 파일 이름을 <code>index.html</code>로 하면 주소가 짧아진다.</li>
+<li>배포의 네 단계  —  저장소 만들기, 파일 올리기, 공개 설정 켜기, 주소 확인. <strong>명령줄을 배우지 않아도</strong> 웹 화면에서 파일을 끌어다 놓으면 된다.</li>
+<li>공개 전에 파일 안을 확인한다. 실제 사람의 정보, 시험용 실제 자료, <strong>주석에 남긴 메모</strong>. 화면에 안 보여도 파일을 열면 다 보인다.</li>
+<li>올리자마자 안 열리는 것은 정상이다. 반영에 몇 분 걸린다. 고친 것이 안 보이면 <strong>강제 새로고침</strong>을 한다.</li>
+<li>배포 후 고칠 때는 <strong>내 컴퓨터에서 먼저 확인</strong>하고 올린다. 남이 쓰는 것을 고치는 일에는 예의가 따른다.</li>
+<li>알릴 때는 링크만 던지지 않는다. 한 줄 설명, 왜 만들었나, 무엇을 해 달라, <strong>알아 둘 것(한계)</strong>, 연락처를 함께 보낸다.</li>
+<li><em>어때요?</em>라고 묻지 않는다. <strong>어디서 멈췄나, 무엇이 나올 줄 알았나, 다시 쓸 것인가, 안 쓴다면 왜인가.</strong> 마지막 답이 가장 값지다.</li>
+<li>반응은 넷으로 나눈다  —  버그(먼저 고친다) / 막힘(안내를 고친다) / 요청(<strong>명세서와 대조</strong>) / 이탈(이유를 파악한다).</li>
+<li>사용자가 생기면 책임이 생긴다. <strong>필요하지 않은 개인정보는 받지 않고</strong>, 무엇이 저장되고 누가 보는지 알리고, <strong>지울 방법을 제공</strong>한다.</li>
+<li><em>이건 수업 과제니까</em>는 통하지 않는다. 쓰는 사람은 자기 시간을 들이고, 만든 사람이 책임진다.</li>
+<li>잘못됐을 때의 대가가 크다면 <strong>원본이 따로 있게</strong> 한다. 우리가 만든 것이 유일한 근거가 되지 않게 한다.</li>
+<li>그만둘 때도 알린다. 유지 기간을 미리 밝히고, 자료를 내보내 가라고 안내한다. <strong>관리되지 않는 것이 관리되는 것처럼 보이는 상태</strong>가 가장 나쁘다.</li>
+<li>반응을 전부 반영하지 않는다. <strong>반영하지 않기로 한 것과 그 이유를 기록</strong>한다  —  요청을 다 들어준 결과물보다 골라 낸 결과물이 좋은 평가를 받는다.</li>
+<li>내놓고 → 써 보게 하고 → 반응 받고 → 고치고 → 다시 내놓는 순환을 <strong>두 바퀴만 돌아도</strong> 완성도가 확연히 달라진다.</li>
+</ul></div></details>
+<details class="box exercise" id="exercises"><summary class="box-head">10장 연습문제</summary><div class="ex-body"><ol>
+<li class="ex-item" data-ex="1"><span class="diff"><span class="d1">★</span></span>  파일을 직접 보내는 것과 주소로 공유하는 것의 차이를 세 가지 쓰시오.</li>
+<li class="ex-item" data-ex="2"><span class="diff"><span class="d1">★</span></span>  배포한 주소를 열었더니 페이지를 찾을 수 없다고 나온다. 확인할 것을 순서대로 세 가지 쓰시오(표 <span class="xref" data-ref="tab:deploy-issues">10.3</span> 참조).</li>
+<li class="ex-item" data-ex="3"><span class="diff"><span class="d1">★</span></span>  사용자에게 반드시 알려야 할 세 가지를 쓰고, 자기 결과물에 대해 각각 실제로 어떤 문장을 넣을지 작성하시오.</li>
+<li class="ex-item" data-ex="4"><span class="diff"><span class="d2">★★</span></span>  다음 알림 메시지의 문제점을 지적하고 10.3절의 서식으로 고쳐 쓰시오.
+<blockquote class="plainquote"><p><em>안녕하세요! 지출 기록 사이트 만들었습니다. 많이 이용해 주세요! (주소)</em></p></blockquote></li>
+<li class="ex-item" data-ex="5"><span class="diff"><span class="d2">★★</span></span>  다음 반응들을 표 <span class="xref" data-ref="tab:feedback-sort">10.4</span>의 네 분류로 나누고, 각각 어떻게 다룰지 쓰시오.
+<ol type="a">
+<li>금액에 소수점을 넣으니 이상하게 저장됩니다</li>
+<li>어디를 눌러야 할지 몰라서 한참 찾았어요</li>
+<li>지난달 것도 같이 볼 수 있으면 좋겠어요</li>
+<li>저는 그냥 메모장에 적는 게 편해서요</li>
+<li>휴대전화로 열면 글자가 잘려요</li>
+</ol></li>
+<li class="ex-item" data-ex="6"><span class="diff"><span class="d2">★★</span></span>  표 <span class="xref" data-ref="tab:pii">10.5</span>를 참고해 자기 결과물이 받고 있는 정보를 모두 나열하고, 각각에 대해 (1) 정말 필요한가, (2) 더 적게 받을 수 있는가를 판단하시오.</li>
+<li class="ex-item" data-ex="7"><span class="diff"><span class="d3">★★★</span></span>  자기 결과물을 실제로 배포하고 다섯 명 이상에게 써 보게 한 뒤, 다음을 보고하시오. (1) 알림 메시지 전문, (2) 반응 기록 전체, (3) 네 분류로 나눈 결과, (4) 우선순위와 그 근거, (5) 상위 세 개를 고친 과정과 결과, (6) <strong>반영하지 않기로 한 것과 이유</strong>.</li>
+<li class="ex-item" data-ex="8"><span class="diff"><span class="d3">★★★</span></span>  자기 결과물이 <em>쓰이지 않는다</em>고 가정하고(또는 실제로 그렇다면), 10.3절의 네 단계로 원인을 조사해 분석하시오. 조사에는 실제 사람에게 물은 내용이 포함되어야 하며, 원인이 4번(쓸 이유가 없다)으로 밝혀졌다면 4장의 문제 정의로 돌아가 무엇이 잘못되었는지 서술하시오.</li>
+</ol></div></details>
+<div class="pager-row"><a class="pager prev" href="ch09.html">&larr; 9장</a><a class="pager next" href="ch11.html">11장 &rarr;</a></div>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-glsl.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="book.js"></script>
+</body>
+</html>

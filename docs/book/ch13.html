@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>13장 나의 문제 해결 프로젝트 — AI 문제해결</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="book.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+<script>MathJax = {tex: {inlineMath: [['\\(', '\\)']]}, svg: {fontCache: 'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="home" href="../index.html">&#8962; 홈</a>
+  <span class="book-title">AI 문제해결</span>
+  <span class="ch-indicator">13장 나의 문제 해결 프로젝트</span>
+  <button class="nav-toggle" onclick="document.body.classList.toggle('nav-open')">목차</button>
+</header>
+<div class="layout">
+<nav class="sidebar">
+<div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 문제를 푸는 방식이 달라졌다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> AI는 어떻게 답을 만드는가</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 에이전트: 스스로 일하는 AI</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 문제를 찾아내고 정의한다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> 문제를 쪼개고 구조를 본다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch06.html"><span class="nav-num">06</span> 해법을 찾고 고른다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> AI와 제대로 대화한다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 만들기 위한 준비</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 첫 번째 웹 서비스 만들기</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch10.html"><span class="nav-num">10</span> 세상에 내놓기</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch11.html"><span class="nav-num">11</span> 파이썬 앱으로 반복을 없앤다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch12.html"><span class="nav-num">12</span> 고치고 다듬는다</a>
+</div>
+<div class="nav-ch current"><a class="nav-ch-link" href="ch13.html"><span class="nav-num">13</span> 나의 문제 해결 프로젝트</a>
+<div class="nav-secs"><a class="nav-sec" href="ch13.html#sec1">13.1 주제를 고른다</a><a class="nav-sec" href="ch13.html#sec2">13.2 기획서 쓰기</a><a class="nav-sec" href="ch13.html#sec3">13.3 만들기: 일정과 기록</a><a class="nav-sec" href="ch13.html#sec4">13.4 발표하기</a><a class="nav-sec" href="ch13.html#sec5">13.5 포트폴리오로 남기기</a><a class="nav-sec" href="ch13.html#labs">실습을 통한 개념 정리</a><a class="nav-sec" href="ch13.html#summary">13장 요약</a><a class="nav-sec" href="ch13.html#exercises">연습문제</a></div>
+</div>
+<div class="nav-part">부록</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">A</span> 무료 AI 도구와 에이전트 총정리</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxb.html"><span class="nav-num">B</span> 문제 해결 프롬프트 사전</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxc.html"><span class="nav-num">C</span> 자주 만나는 오류와 해결</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxd.html"><span class="nav-num">D</span> 배포와 공유 안내</a>
+</div>
+<div class="nav-part">부가 자료</div>
+<div class="nav-ch"><a class="nav-ch-link" href="references.html"><span class="nav-num">&#128218;</span> 참고문헌</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">&#128295;</span> 도구 비교표</a></div>
+</nav>
+<main class="content">
+<div class="chapter-head">
+  <div class="ch-label">CHAPTER 13</div>
+  <h1>나의 문제 해결 프로젝트</h1>
+</div>
+<img class="chapter-hero" src="img/ch13/ch13_img01.jpg" alt="13장 대표 이미지">
+<div class="center"><details class="box goals"><summary class="box-head">이 장을 마치면</summary><div class="goals-body"><ul data-blk="chapters/ch13/ch13.tex#1">
+<li>스스로 정한 문제로 한 편의 프로젝트를 기획할 수 있다.</li>
+<li>일정과 기록을 관리하며 결과물을 완성할 수 있다.</li>
+<li>만든 것을 남 앞에서 설명하고 시연할 수 있다.</li>
+<li>과정과 결과를 포트폴리오로 정리할 수 있다.</li>
+<li>다음에 무엇을 배워야 할지 스스로 정할 수 있다.</li>
+</ul>
+</div></details></div>
+<p data-blk="chapters/ch13/ch13.tex#2">마지막 장이다. 지금까지 배운 것을 한 줄로 꿰면 <em>문제를 정하고, 쪼개고, 해법을 골라, 만들어, 내놓고, 고친다</em>가 된다. 이 장에서는 그 전부를 자기 주제로 한 번 통과한다.</p>
+<p data-blk="chapters/ch13/ch13.tex#3">새로 배우는 것은 없다. 대신 흩어져 있던 것을 하나로 모으고, 남에게 보여 줄 수 있는 형태로 남긴다. 이 장의 결과물은 성적을 위한 제출물이 아니라 <strong>앞으로도 쓸 수 있는 기록</strong>이 되어야 한다.</p>
+<h2 data-blk="chapters/ch13/sec01.tex#1" id="sec1">13.1 주제를 고른다</h2>
+<p>마지막 장이다. 지금까지 배운 것을 자기 주제로 한 번 통과한다. 새로 배우는 것은 없다  —  흩어져 있던 것을 하나로 모으는 시간이다.</p>
+<h3 data-blk="chapters/ch13/sec01.tex#3">어디서 고르는가</h3>
+<p data-blk="chapters/ch13/sec01.tex#4">실습 1-3에서 적은 <strong>내 전공의 불편 열 가지</strong>로 돌아간다. 그리고 4장에서 그중 셋을 다듬었고, 그중 하나로 8–12장을 진행했다.</p>
+<p data-blk="chapters/ch13/sec01.tex#5">세 갈래가 있다.</p>
+<ul>
+<li><strong>이어 간다</strong>  —  지금까지 만든 것을 다듬어 완성한다. 가장 안전하다</li>
+<li><strong>옆으로 넓힌다</strong>  —  같은 문제의 다른 가지(5장 트리)를 다룬다</li>
+<li><strong>새로 고른다</strong>  —  목록의 다른 문제로 간다. 시간이 빠듯하다</li>
+</ul>
+<p data-blk="chapters/ch13/sec01.tex#7">특별한 이유가 없으면 <strong>첫 번째</strong>를 권한다. 이미 문제 정의도 되어 있고 사용자 반응도 받아 봤다. 남은 4주를 완성도에 쓸 수 있다.</p>
+<h3 data-blk="chapters/ch13/sec01.tex#8">고르는 기준</h3>
+<p data-blk="chapters/ch13/sec01.tex#9">새로 고른다면 다음 넷을 확인한다.</p>
+<div class="table-wrap"><div class="table-caption">표 13.1: 주제를 고르는 기준</div><table><tr><th> 질문</th><th> 아니라면</th></tr><tr><td>내가 실제로 겪는가</td><td>남에게 물어야 하는데 시간이 없다</td></tr><tr><td>자료를 구할 수 있는가</td><td>근거 없이 만들게 된다</td></tr><tr><td>4주 안에 만들 수 있는가</td><td>미완성으로 끝난다</td></tr><tr><td>써 줄 사람이 있는가</td><td>반응을 받을 수 없다</td></tr></table></div>
+<p>넷 중 하나라도 <em>아니오</em>면 다시 생각한다. 특히 세 번째를 낙관하지 말자  —  6.3절에서 본 대로 학생들은 예외 없이 크게 잡는다.</p>
+<h3 data-blk="chapters/ch13/sec01.tex#11">전공별 예시</h3>
+<p data-blk="chapters/ch13/sec01.tex#12">고르기 어려워하는 학생을 위한 목록이다. <strong>그대로 고르지 말고</strong> 자기 상황에 맞게 바꾸어 쓴다. 이 목록의 것들은 이미 문제 정의가 절반쯤 되어 있어서, 그대로 가져가면 4장에서 배운 것을 실습할 기회를 잃는다.</p>
+<div class="table-wrap"><div class="table-caption">표 13.2: 전공별 주제 예시  —  출발점으로만</div><table><tr><th> 계열</th><th> 예</th></tr><tr><td>경영·경제</td><td>동아리 회계, 소규모 재고 관리, 설문 집계</td></tr><tr><td>간호·보건</td><td>실습 일정 정리, 투약 계산 확인표, 자격 요건 점검</td></tr><tr><td>교육</td><td>학습 진도 기록, 문제 은행 정리, 출석 집계</td></tr><tr><td>어문·문예</td><td>원고 문장 분석, 인용 목록 정리, 낱말 빈도</td></tr><tr><td>사회·행정</td><td>봉사 시간 집계, 회의록 정리, 민원 유형 분류</td></tr><tr><td>체육</td><td>리그 대진과 순위표, 훈련 기록, 체력 측정 정리</td></tr><tr><td>디자인·예술</td><td>포트폴리오 정리, 작업 시간 기록, 파일 일괄 처리</td></tr><tr><td>자연·공학</td><td>실험 기록 취합, 측정값 정리, 단위 변환 확인</td></tr></table></div>
+<div class="box caution"><span class="chip">주의</span><p data-blk="chapters/ch13/sec01.tex#13">이 목록에서 그대로 고르는 것을 권하지 않는 이유가 있다. <strong>자기가 겪지 않는 문제는 정의할 수 없고, 검증할 수도 없다.</strong> 남의 문제를 짐작으로 만들면 1.3절의 알림 도구와 같은 결과가 나온다.</p>
+</div>
+<h3 data-blk="chapters/ch13/sec01.tex#14">크기를 다시 확인한다</h3>
+<p data-blk="chapters/ch13/sec01.tex#15">주제가 정해지면 6.3절로 돌아가 크기를 확인한다. 4주 일정으로 다시 계산한다.</p>
+<div class="settingbox-wrap"><div class="setting-label">4주 안에 되는가</div><pre class="settingbox"><code>1주차에 무엇이 동작해야 하나 :
+2주차에 무엇이 동작해야 하나 :
+3주차에 무엇이 동작해야 하나 :
+4주차 (발표 준비) :
+
+"꼭 있어야" 기능 수 :        (다섯 개 이하인가?)
+사람들에게 보여 줄 시점 :    (3주차 이전인가?)</code></pre></div>
+<p data-blk="chapters/ch13/sec01.tex#16"><strong>마지막 줄이 중요하다.</strong> 3주차에는 반드시 남에게 보여 줘야 한다. 4주차에 처음 보여 주면 반응을 받아도 고칠 시간이 없다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch13/sec01.tex#17">기말 프로젝트에서 가장 흔한 실패는 <strong>크게 잡고 끝내지 못하는 것</strong>이다. 두 번째로 흔한 것은 <strong>끝까지 혼자 만들다가 아무에게도 안 보여 주는 것</strong>이다. 둘 다 4주 일정을 처음에 짜 두면 피할 수 있다.</p>
+</div>
+<h2 data-blk="chapters/ch13/sec02.tex#1" id="sec2">13.2 기획서 쓰기</h2>
+<p data-blk="chapters/ch13/sec02.tex#2">4–6장에서 만든 것들을 한 편의 기획서로 묶는다. 새로 쓰는 것이 아니라 <strong>모으고 다듬는</strong> 작업이다.</p>
+<h3 data-blk="chapters/ch13/sec02.tex#3">이미 다 있다</h3>
+<p data-blk="chapters/ch13/sec02.tex#4">기획서에 들어갈 것은 이미 만들어 두었다.</p>
+<div class="table-wrap"><div class="table-caption">표 13.3: 기획서의 재료는 이미 있다</div><table><tr><th> 기획서 항목</th><th> 어디에</th><th> 지금 할 일</th></tr><tr><td>문제 진술문</td><td>4.3절</td><td>그동안 알게 된 것 반영</td></tr><tr><td>이해관계자</td><td>4.2절</td><td>그대로</td></tr><tr><td>성공 기준</td><td>4.4절</td><td>실제 값으로 갱신</td></tr><tr><td>로직 트리</td><td>5.2절</td><td>다룬 가지 표시</td></tr><tr><td>근거 자료</td><td>5.4절</td><td>조사 결과 요약</td></tr><tr><td>대안 비교표</td><td>6.2절</td><td>그대로</td></tr><tr><td>기능 범위</td><td>6.3절</td><td>실제 만든 것으로 갱신</td></tr><tr><td>화면 스케치</td><td>6.4절</td><td>완성 화면과 나란히</td></tr><tr><td>해법 명세서</td><td>6.5절</td><td>바뀐 것 반영</td></tr><tr><td>사용자 반응</td><td>10.3절</td><td>요약</td></tr></table></div>
+<p><strong>오른쪽 칸을 보자.</strong> 대부분 <em>그대로</em>이거나 <em>갱신</em>이다. 매주 실습을 했다면 이 작업은 두 시간이면 끝난다. 안 했다면 지금 처음부터 해야 한다  —  이것이 매주 하라고 한 이유다.</p>
+<h3 data-blk="chapters/ch13/sec02.tex#6">서식</h3>
+<div class="settingbox-wrap"><div class="setting-label">프로젝트 기획서 (3쪽을 넘기지 않는다)</div><pre class="settingbox"><code>[표지]
+  제목 / 이름 / 학과 / 날짜
+  한 줄 요약 : 무엇을 만들어 무엇을 해결했는가
+
+1. 문제
+   1.1 문제 진술문 (4장)
+   1.2 누가 겪는가 (이해관계자)
+   1.3 어떻게 확인했는가 (근거 자료)
+   1.4 성공 기준 : 지금 값 -&gt; 목표 값
+
+2. 해법
+   2.1 문제를 어떻게 나눴는가 (로직 트리, 다룬 가지 표시)
+   2.2 어떤 대안들을 검토했는가 (비교표)
+   2.3 왜 이것을 골랐는가
+   2.4 무엇을 만들지 않기로 했는가 + 이유
+
+3. 만든 것
+   3.1 무엇인가 (화면 또는 결과물)
+   3.2 어떻게 동작하는가 (흐름)
+   3.3 주소 / 실행 방법
+   3.4 처음 스케치와 완성 화면 비교
+
+4. 결과
+   4.1 성공 기준 대비 실제
+   4.2 사용자 반응 (몇 명이 어떻게 썼는가)
+   4.3 반영한 것 / 반영하지 않은 것 + 이유
+
+5. 돌아보기
+   5.1 잘 안 된 것과 그 원인
+   5.2 다시 한다면 무엇을 다르게 할까
+   5.3 확인하지 못한 것 (12.5절)
+   5.4 AI 사용 기록 (12.5절)</code></pre></div>
+<h3 data-blk="chapters/ch13/sec02.tex#7">5장을 소홀히 하지 않는다</h3>
+<p data-blk="chapters/ch13/sec02.tex#8">기획서의 마지막 장이 가장 좋은 평가를 받는 부분이다. 그런데 학생들은 여기를 가장 급하게 쓴다.</p>
+<p data-blk="chapters/ch13/sec02.tex#9"><strong>왜 중요한가.</strong> 1–4장은 <em>무엇을 했는가</em>이고 5장은 <em>무엇을 아는가</em>이다. 잘 된 것을 나열하는 것은 누구나 한다. <strong>안 된 것을 정확히 짚고 원인을 아는 것</strong>이 실력의 증거다.</p>
+<div class="table-wrap"><div class="table-caption">표 13.4: 같은 사실, 다른 서술</div><table><tr><th> 약한 서술</th><th> 좋은 서술</th></tr><tr><td>시간이 부족했다</td><td>자료 정리에 예상보다 3배가 걸렸다. 표기 통일 규칙을 미리 정하지 않았기 때문이다</td></tr><tr><td>사람들이 잘 안 썼다</td><td>5명 중 2명만 두 번 이상 썼다. 나머지는 <em>대화방에 적는 게 빠르다</em>고 했다</td></tr><tr><td>어려웠다</td><td>브라우저 저장이 기기별로 따로 남는다는 것을 8장에서야 알았고, 그래서 애초의 <em>공유</em> 목표를 파일 내보내기로 바꿨다</td></tr></table></div>
+<p>오른쪽 열의 공통점은 <strong>구체적인 숫자와 원인</strong>이 있다는 것이다. 그리고 이것은 지어낼 수 없다  —  매주 기록을 남긴 사람만 쓸 수 있다.</p>
+<h3 data-blk="chapters/ch13/sec02.tex#11">인공지능에게 검토받기</h3>
+<p data-blk="chapters/ch13/sec02.tex#12">기획서를 다 쓰면 4.5절과 같은 방식으로 점검받는다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a><a class="tool-open" href="https://aistudio.google.com" target="_blank" rel="noopener">AI Studio</a></div><pre class="prompt"><code><p>아래는 내 프로젝트 기획서다.</p><p><i class="resp-note">(기획서 전문을 붙여 넣는다)</i></p><p>이것을 심사하는 사람의 입장에서 다음을 지적해 줘. 칭찬은 필요 없다.</p><p>1. <strong>근거 없이 단정한</strong> 부분<br>
+2. 앞뒤가 맞지 않는 부분 (예: 성공 기준과 결과가 대응하지 않음)<br>
+3. 심사자가 반드시 물어볼 만한 질문 다섯 개<br>
+4. 빠져 있어서 이해가 안 되는 부분<br>
+5. <strong>자랑처럼 읽히지만 근거가 없는</strong> 문장</p><p>각 지적에 무엇을 보태면 되는지 한 줄로 붙여 줘.</p></code></pre><div class="listing-caption">프롬프트 13.1: 기획서 점검받기</div></div>
+<p data-blk="chapters/ch13/sec02.tex#13">3번이 특히 유용하다. <strong>미리 나온 질문에 답을 준비해 두면</strong> 발표가 훨씬 편해진다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch13/sec02.tex#14">기획서는 <strong>잘한 것을 보여 주는 문서가 아니라, 무엇을 왜 했는지 설명하는 문서</strong>다. 결과가 좋지 않아도 판단의 근거가 분명하면 좋은 기획서다.</p>
+</div>
+<h2 data-blk="chapters/ch13/sec03.tex#1" id="sec3">13.3 만들기: 일정과 기록</h2>
+<p data-blk="chapters/ch13/sec03.tex#2">기획서가 나왔으면 만든다. 이 절에서는 4주를 어떻게 쓸지, 그리고 무엇을 남길지 정한다.</p>
+<h3 data-blk="chapters/ch13/sec03.tex#3">4주 일정</h3>
+<p data-blk="chapters/ch13/sec03.tex#4">핵심 원칙은 하나다. <strong>매주 끝에 동작하는 상태여야 한다.</strong> 9.1절에서 쓴 원칙을 프로젝트 전체로 확장한 것이다.</p>
+<div class="table-wrap"><div class="table-caption">표 13.5: 4주 일정  —  매주 무엇이 동작해야 하나</div><table><tr><th> 주</th><th> 하는 일</th><th> 주말에 동작하는 것</th></tr><tr><td>1</td><td>뼈대와 핵심 기능 하나</td><td>가장 중요한 일 하나가 끝까지 된다</td></tr><tr><td>2</td><td>나머지 <em>꼭</em> 기능</td><td>명세서의 다섯 기능이 모두 된다</td></tr><tr><td>3</td><td><strong>남에게 보이고 고친다</strong></td><td>다섯 명이 써 본 상태</td></tr><tr><td>4</td><td>다듬기와 발표 준비</td><td>발표할 수 있는 상태</td></tr></table></div>
+<p data-blk="chapters/ch13/sec03.tex#5"><strong>3주차가 이 일정의 중심이다.</strong> 이때 반드시 남에게 보여 준다. 4주차에 처음 보여 주면 반응을 받아도 고칠 시간이 없고, 그러면 10장에서 배운 것을 쓰지 못한 채 끝난다.</p>
+<h3 data-blk="chapters/ch13/sec03.tex#6">1주차에 무엇을 만드는가</h3>
+<p data-blk="chapters/ch13/sec03.tex#7">가장 중요한 기능 <strong>하나</strong>를 골라 끝까지 만든다. 화면 여러 개를 조금씩 만들지 않는다(6.3절의 <em>가로로 자른다</em>).</p>
+<p data-blk="chapters/ch13/sec03.tex#8">고르는 기준은 <em>이것이 없으면 아무 의미가 없는 것</em>이다. 지출 기록이라면 <em>입력하면 목록에 쌓이고 합계가 나오는 것</em>이고, 실습 일정이라면 <em>일정을 한곳에서 볼 수 있는 것</em>이다.</p>
+<h3 data-blk="chapters/ch13/sec03.tex#9">작업 기록</h3>
+<p data-blk="chapters/ch13/sec03.tex#10">매번 작업할 때마다 짧게 적는다. 다섯 줄이면 된다.</p>
+<div class="settingbox-wrap"><div class="setting-label">작업 기록 (매 작업마다)</div><pre class="settingbox"><code>날짜 / 걸린 시간 :
+하려던 것 :
+한 것 :
+막힌 것 / 어떻게 넘겼나 :
+다음에 할 것 :</code></pre></div>
+<p data-blk="chapters/ch13/sec03.tex#11">이 기록이 세 곳에서 쓰인다.</p>
+<ul>
+<li><strong>다음 작업을 시작할 때</strong>  —  어디까지 했는지 5초에 파악된다</li>
+<li><strong>기획서 5장</strong>  —  <em>잘 안 된 것과 원인</em>의 재료</li>
+<li><strong>발표</strong>  —  <em>무엇을 배웠는가</em>의 근거</li>
+</ul>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch13/sec03.tex#13">기억에 의존하지 말자. 3주 전에 무엇 때문에 막혔는지는 절대 기억나지 않는다. <strong>그때 적어 둔 사람만 나중에 말할 수 있다.</strong></p>
+</div>
+<h3 data-blk="chapters/ch13/sec03.tex#14">버전을 남긴다</h3>
+<p data-blk="chapters/ch13/sec03.tex#15">8.5절과 7.3절에서 말한 대로, 잘 되는 상태가 나오면 사본을 만든다. 프로젝트에서는 더 중요해진다.</p>
+<ul data-blk="chapters/ch13/sec03.tex#16">
+<li>매주 끝에 그 주의 상태를 사본으로 남긴다 (<code>v1_1주차.html</code>)</li>
+<li>큰 변경 전에 사본을 만든다</li>
+<li>남에게 보여 준 버전은 반드시 남긴다 (반응이 그 버전에 대한 것이므로)</li>
+</ul>
+<p data-blk="chapters/ch13/sec03.tex#17">세 번째가 중요하다. 사용자가 지적한 것이 어느 버전에 대한 것인지 알아야 무엇을 고쳤는지 설명할 수 있다.</p>
+<h3 data-blk="chapters/ch13/sec03.tex#18">막혔을 때의 규칙</h3>
+<p data-blk="chapters/ch13/sec03.tex#19">프로젝트 기간에는 시간이 정해져 있으므로 규칙을 미리 정해 둔다.</p>
+<div class="table-wrap"><div class="table-caption">표 13.6: 막혔을 때  —  시간 규칙</div><table><tr><th> 얼마나</th><th> 무엇을 한다</th></tr><tr><td>30분</td><td>8.5절의 네 가지를 적어 다시 물어본다</td></tr><tr><td>1시간</td><td>다른 도구에 물어본다. 기능을 더 작게 쪼갠다</td></tr><tr><td>2시간</td><td><strong>그 기능을 빼는 것을 검토한다</strong> (<em>이번엔 안 함</em>으로)</td></tr><tr><td>반나절</td><td>사람에게 묻는다. 조교·교수·아는 사람</td></tr></table></div>
+<p data-blk="chapters/ch13/sec03.tex#20">세 번째 줄이 어렵지만 중요하다. <strong>기능 하나 때문에 프로젝트 전체가 미완성이 되는 것</strong>이 가장 나쁜 결과다. 뺀 기능은 기획서 2.4절에 <em>시도했으나 뺀 것</em>으로 적으면 되고, 그 판단 자체가 좋은 평가를 받는다.</p>
+<h3 data-blk="chapters/ch13/sec03.tex#21">진행 상황 점검</h3>
+<p data-blk="chapters/ch13/sec03.tex#22">매주 끝에 다섯 가지를 확인한다.</p>
+<ul class="checklist">
+<li>이번 주에 동작하기로 한 것이 동작하는가</li>
+<li>사본을 남겼는가</li>
+<li>작업 기록을 적었는가</li>
+<li>다음 주 일정이 아직 유효한가</li>
+<li><strong>범위가 늘어나지 않았는가</strong></li>
+</ul>
+<p data-blk="chapters/ch13/sec03.tex#24">마지막 항목을 특히 보자. 만들다 보면 <em>이것도 있으면 좋겠다</em>가 계속 생긴다. 그때마다 <em>이번엔 안 함</em> 칸에 적고 계속 간다(6.3절).</p>
+<h2 data-blk="chapters/ch13/sec04.tex#1" id="sec4">13.4 발표하기</h2>
+<p>10분 안에 무엇을 말할지 정한다. 대부분의 학생이 여기서 실수한다  —  <strong>만든 과정을 설명하는 데 시간을 다 쓴다.</strong></p>
+<h3 data-blk="chapters/ch13/sec04.tex#3">시간 배분</h3>
+<div class="table-wrap"><div class="table-caption">표 13.7: 10분 발표의 구성</div><table><tr><th> 시간</th><th> 무엇을</th><th> 핵심</th></tr><tr><td>2분</td><td>문제</td><td>왜 이것이 문제인가, 근거는</td></tr><tr><td>2분</td><td>왜 이 해법인가</td><td>다른 대안과 비교해서</td></tr><tr><td>4분</td><td><strong>시연</strong></td><td>실제로 돌아가는 것을 보인다</td></tr><tr><td>2분</td><td>결과와 배운 것</td><td>성공 기준 대비, 안 된 것</td></tr></table></div>
+<p data-blk="chapters/ch13/sec04.tex#4"><strong>만드는 과정은 발표에 넣지 않는다.</strong> 어떤 도구를 썼고 어떤 코드를 짰는지는 듣는 사람에게 중요하지 않다. 질문이 나오면 그때 답한다.</p>
+<h3 data-blk="chapters/ch13/sec04.tex#5">문제부터 말한다</h3>
+<p data-blk="chapters/ch13/sec04.tex#6">첫 2분이 발표의 성패를 가른다. 여기서 듣는 사람이 <em>아, 그건 확실히 불편하겠다</em>고 느껴야 한다.</p>
+<ul data-blk="chapters/ch13/sec04.tex#7">
+<li>상황을 구체적으로 그린다 (<em>매달 말 영수증 60장을 앞에 두고…</em>)</li>
+<li>숫자를 말한다 (<em>3시간, 매달, 오류 2–3건</em>)</li>
+<li>어떻게 알았는지 밝힌다 (<em>직접 재 봤습니다</em>)</li>
+<li><strong>해법을 아직 말하지 않는다</strong></li>
+</ul>
+<p data-blk="chapters/ch13/sec04.tex#8">마지막 항목이 요령이다. 문제가 충분히 그려지기 전에 해법을 말하면, 듣는 사람은 <em>왜 그게 필요한지</em> 모른 채 기능 설명을 듣게 된다.</p>
+<h3 data-blk="chapters/ch13/sec04.tex#9">시연이 절반이다</h3>
+<p data-blk="chapters/ch13/sec04.tex#10">4분을 시연에 쓴다. 슬라이드로 설명하지 말고 <strong>실제로 돌린다.</strong></p>
+<ol data-blk="chapters/ch13/sec04.tex#11">
+<li>빈 상태에서 시작한다 (처음 여는 사람이 보는 화면)</li>
+<li>실제 자료를 넣는다 (미리 준비한 것 말고 그 자리에서)</li>
+<li>결과가 나오는 것을 보인다</li>
+<li><strong>잘못 입력했을 때</strong> 어떻게 되는지도 보인다</li>
+<li>실제 사용자가 쓰는 화면(휴대전화)도 보인다</li>
+</ol>
+<p data-blk="chapters/ch13/sec04.tex#12">4번을 넣는 발표가 드물고, 그래서 인상적이다. 12.3절에서 확인 목록을 만들어 돌린 사람만 자신 있게 보일 수 있다.</p>
+<div class="box caution"><span class="chip">주의</span><p data-blk="chapters/ch13/sec04.tex#13"><strong>시연은 반드시 실패에 대비한다.</strong> 인터넷이 안 되거나, 계정이 로그아웃되거나, 배포한 것이 잠들어 있을 수 있다. 미리 <strong>화면 녹화</strong>를 만들어 두자. 30초짜리면 충분하고, 이것이 없어서 발표를 망치는 경우가 매 학기 나온다.</p>
+</div>
+<h3 data-blk="chapters/ch13/sec04.tex#14">결과를 정직하게 말한다</h3>
+<p data-blk="chapters/ch13/sec04.tex#15">마지막 2분에서 성공 기준 대비 결과를 말한다.</p>
+<div class="table-wrap"><div class="table-caption">표 13.8: 결과를 말하는 법</div><table><tr><th> 이렇게 말하지 말고</th><th> 이렇게 말한다</th></tr><tr><td>잘 동작합니다</td><td>확인 목록 12개 중 12개를 통과했습니다</td></tr><tr><td>편해졌습니다</td><td>3시간이 40분으로 줄었습니다. 목표는 30분이었으므로 미달입니다</td></tr><tr><td>사람들이 좋아했습니다</td><td>5명이 써 봤고 3명이 두 번 이상 썼습니다</td></tr><tr><td>거의 완성했습니다</td><td>다섯 기능 중 넷이 되고, 하나는 뺐습니다. 뺀 이유는…</td></tr></table></div>
+<p>오른쪽 열이 더 좋은 이유는 <strong>확인할 수 있는 말</strong>이기 때문이다. 그리고 미달을 밝히는 것이 감점 요인이 아니다  —  미달을 알고 원인을 말할 수 있는 것이 오히려 평가받는 지점이다.</p>
+<h3 data-blk="chapters/ch13/sec04.tex#17">질문에 답하기</h3>
+<p data-blk="chapters/ch13/sec04.tex#18">받게 될 질문은 대개 정해져 있다. 미리 답을 준비해 두자.</p>
+<ul data-blk="chapters/ch13/sec04.tex#19">
+<li><em>이미 있는 도구를 쓰면 되지 않나요?</em> → 4.5절에서 조사한 내용</li>
+<li><em>그 숫자는 어떻게 나온 건가요?</em> → 12.3절의 검산 기록</li>
+<li><em>왜 이 기능은 없나요?</em> → 6.3절의 <em>이번엔 안 함</em>과 이유</li>
+<li><em>AI가 다 만들어 준 것 아닌가요?</em> → 12.5절의 AI 사용 기록</li>
+<li><em>계속 쓰실 건가요?</em> → 10.4절의 유지 계획</li>
+</ul>
+<p>네 번째 질문을 두려워하지 말자. <strong>정직하게 답하면 된다</strong>  —  코드는 AI가 만들었고, 무엇을 만들지 정하고 맞는지 확인한 것은 나다. 그것이 이 수업이 가르친 것이다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch13/sec04.tex#21">좋은 발표의 기준은 <em>대단해 보이는가</em>가 아니라 <strong>듣는 사람이 문제와 판단을 이해했는가</strong>이다. 만든 것이 작아도, 왜 그것을 만들었는지 설명할 수 있으면 좋은 발표다.</p>
+</div>
+<h2 data-blk="chapters/ch13/sec05.tex#1" id="sec5">13.5 포트폴리오로 남기기</h2>
+<p data-blk="chapters/ch13/sec05.tex#2">학기가 끝나면 대개 파일이 흩어지고 주소는 잊힌다. 이 절에서는 한 시간을 들여 <strong>나중에도 꺼내 보일 수 있는 형태</strong>로 남긴다.</p>
+<h3 data-blk="chapters/ch13/sec05.tex#3">무엇을 남기는가</h3>
+<div class="table-wrap"><div class="table-caption">표 13.9: 포트폴리오에 남길 것</div><table><tr><th> 무엇</th><th> 어디서</th><th> 왜</th></tr><tr><td>문제 진술문</td><td>4.3절</td><td><strong>가장 중요하다</strong></td></tr><tr><td>결과물 주소</td><td>10.2절</td><td>실제로 돌아가는 증거</td></tr><tr><td>화면 캡처</td><td> — </td><td>주소가 죽어도 남는다</td></tr><tr><td>처음 스케치</td><td>6.4절</td><td>과정을 보여 준다</td></tr><tr><td>사용자 반응</td><td>10.3절</td><td>실제로 쓰였다는 증거</td></tr><tr><td>안 된 것과 원인</td><td>13.2절</td><td><strong>판단력의 증거</strong></td></tr><tr><td>다음에 할 것</td><td> — </td><td>계속 생각하고 있다는 표시</td></tr></table></div>
+<h3 data-blk="chapters/ch13/sec05.tex#4">무엇이 인상적인가</h3>
+<p data-blk="chapters/ch13/sec05.tex#5">취업이나 진학에서 이런 기록이 어떻게 읽히는지 현실적으로 말해 두자.</p>
+<p data-blk="chapters/ch13/sec05.tex#6"><strong>결과물 자체는 생각보다 덜 인상적이다.</strong> 요즘은 누구나 무언가를 빠르게 만들 수 있고, 읽는 사람도 그것을 안다. 학부생이 만든 도구가 기술적으로 놀라울 일은 별로 없다.</p>
+<p data-blk="chapters/ch13/sec05.tex#7"><strong>인상적인 것은 문제를 정의한 흔적이다.</strong> 무엇이 문제인지 직접 확인했고, 근거를 모았고, 여러 대안 중에서 골랐고, 범위를 정했고, 결과를 재 봤다는 기록. 이것은 흔하지 않고 흉내 내기도 어렵다.</p>
+<p><blockquote class="bodyquote"><p data-blk="chapters/ch13/sec05.tex#8">만들 줄 아는 사람은 많아졌다. 무엇을 만들지 아는 사람은 여전히 드물다.</p>
+</blockquote></p>
+<h3 data-blk="chapters/ch13/sec05.tex#9">한 장으로 정리한다</h3>
+<p data-blk="chapters/ch13/sec05.tex#10">포트폴리오 페이지의 구성이다. 길게 쓰지 않는다.</p>
+<div class="settingbox-wrap"><div class="setting-label">포트폴리오 페이지 구성</div><pre class="settingbox"><code>[제목]  무엇을 만들었는가 (한 줄)
+[한 문장 요약]  누구의 어떤 문제를 어떻게 줄였는가 + 숫자
+
+1. 문제 (3~4문장)
+   무엇이 문제였는지, 어떻게 확인했는지, 숫자 하나 이상
+
+2. 과정 (그림 위주)
+   처음 스케치 -&gt; 완성 화면 (나란히)
+   검토한 대안과 고른 이유 (한 문단)
+
+3. 결과
+   주소 : (누르면 열리는 링크)
+   화면 캡처 2~3장
+   성공 기준 대비 : 3시간 -&gt; 40분 (목표 30분, 미달)
+   실제 사용자 : 5명이 사용, 3명이 재사용
+
+4. 배운 것 (3~4항목)
+   잘 안 된 것과 원인
+   다시 한다면 다르게 할 것
+
+5. 만드는 데 쓴 것
+   AI 사용 기록 (12.5절)</code></pre></div>
+<h3 data-blk="chapters/ch13/sec05.tex#11">이 페이지를 어떻게 만드는가</h3>
+<p data-blk="chapters/ch13/sec05.tex#12">여기에 이 수업의 마무리가 있다. <strong>이 포트폴리오 페이지 자체를 이 수업에서 배운 방법으로 만든다.</strong></p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a><a class="tool-open" href="https://aistudio.google.com" target="_blank" rel="noopener">AI Studio</a></div><pre class="prompt"><code><p>포트폴리오 페이지를 HTML 파일 하나로 만들어 줘. 내용은 아래에 있다.</p><p><i class="resp-note">(위 서식을 채운 내용을 붙여 넣는다)</i></p><p><span class="ptag">[요구]</span>
+- 파일 하나. 외부 라이브러리 없이 동작할 것<br>
+- 화면 캡처 이미지를 넣을 자리를 만들어 줘 (파일 이름을 내가 바꿀 수 있게)<br>
+- 휴대전화에서도 읽기 편하게<br>
+- 글자 위주로 담백하게. 화려한 효과는 넣지 말 것<br>
+- 결과물 주소는 눌러서 열리는 링크로</p><p><span class="ptag">[넣지 말 것]</span> 방문자 수 표시, 연락처 양식, 외부 폰트, 애니메이션</p></code></pre><div class="listing-caption">프롬프트 13.2: 포트폴리오 페이지 만들기</div></div>
+<p data-blk="chapters/ch13/sec05.tex#13">만든 뒤 10장의 방식으로 배포하면, 주소 하나로 자기 작업을 보여 줄 수 있게 된다.</p>
+<h3 data-blk="chapters/ch13/sec05.tex#14">계정과 주소를 챙긴다</h3>
+<p data-blk="chapters/ch13/sec05.tex#15">마지막으로 실무적인 것 하나. 8.2절에서 개인 이메일로 계정을 만들라고 한 이유가 여기서 드러난다.</p>
+<ul class="checklist">
+<li>저장소 계정이 <strong>개인 이메일</strong>로 되어 있다</li>
+<li>결과물 주소가 살아 있고, 언제까지 유지할지 정했다</li>
+<li>화면 캡처를 남겨 두었다 (주소가 죽어도 보여 줄 수 있게)</li>
+<li>파일 전체를 내 컴퓨터에도 백업했다</li>
+<li>자료 파일에 남의 개인정보가 없다 (12.5절)</li>
+</ul>
+<h3 data-blk="chapters/ch13/sec05.tex#17">다음 단계</h3>
+<p data-blk="chapters/ch13/sec05.tex#18">이 수업이 끝난 뒤 더 갈 생각이라면 방향을 짧게 안내한다.</p>
+<ul>
+<li><strong>더 나은 결과물을 만들고 싶다면</strong>  —  화면 만들기와 자료 다루기를 조금 더 배운다. 문법부터 배우기보다, 만들고 싶은 것을 정하고 필요한 것만 익히는 편이 빠르다</li>
+<li><strong>자료를 더 다루고 싶다면</strong>  —  파이썬의 표 처리와 그림 그리기. 11장에서 쓴 것이 그 입구다</li>
+<li><strong>여러 사람이 쓰는 것을 만들고 싶다면</strong>  —  자료를 서버에 저장하는 법. 이때부터는 보안과 개인정보가 진짜 문제가 되므로 제대로 배워야 한다</li>
+<li><strong>자기 전공에 더 깊이 쓰고 싶다면</strong>  —  이것이 가장 값진 길이다. 전공 지식과 만드는 능력을 함께 가진 사람은 드물다</li>
+</ul>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch13/sec05.tex#20">이 수업에서 배운 것은 도구 사용법이 아니다. <strong>문제를 정의하고, 쪼개고, 해법을 고르고, 만들어 확인하고, 고치는 방법</strong>이다. 도구는 계속 바뀌겠지만 이 순서는 바뀌지 않는다.</p>
+</div>
+<p><span id="labs"></span><div class="box lab"><div class="lab-title">이 장의 실습</div><h3 data-blk="chapters/ch13/labs.tex#1">실습 13-1. 주제 확정</h3>
+<p data-blk="chapters/ch13/labs.tex#2">후보 셋을 표 <span class="xref" data-ref="tab:topic-criteria">13.1</span>의 네 기준으로 비교해 하나를 고른다.</p>
+<div class="settingbox-wrap"><div class="setting-label">주제 비교</div><pre class="settingbox"><code>후보          내가 겪나  자료 있나  4주 안에  써 줄 사람
+------------------------------------------------------------
+1.
+2.
+3.
+------------------------------------------------------------
+고른 것 :              이유 :
+이어 가는가 / 새로 시작하는가 :</code></pre></div>
+<h3 data-blk="chapters/ch13/labs.tex#3">실습 13-2. 4주 일정</h3>
+<p data-blk="chapters/ch13/labs.tex#4">13.3절의 표를 자기 프로젝트로 채운다. <strong>매주 무엇이 동작해야 하는지</strong>를 적는 것이 핵심이다.</p>
+<div class="settingbox-wrap"><div class="setting-label">4주 일정</div><pre class="settingbox"><code>1주차 : 만들 것            주말에 동작할 것 :
+2주차 :                    주말에 동작할 것 :
+3주차 : (남에게 보인다)    누구에게 :         몇 명 :
+4주차 : 다듬기와 발표      발표 리허설 날짜 :</code></pre></div>
+<p data-blk="chapters/ch13/labs.tex#5">3주차에 보여 줄 사람을 <strong>지금 정한다.</strong> 미루면 안 하게 된다.</p>
+<h3 data-blk="chapters/ch13/labs.tex#6">실습 13-3. 기획서 제출</h3>
+<p data-blk="chapters/ch13/labs.tex#7">13.2절 서식으로 기획서를 완성한다. 3쪽을 넘기지 않는다.</p>
+<ul class="checklist">
+<li>1–4장은 기존 실습 결과를 모아 갱신했다</li>
+<li>5장(돌아보기)에 <strong>구체적인 숫자와 원인</strong>이 있다</li>
+<li>성공 기준과 결과가 대응한다</li>
+<li>반영하지 않은 요청과 이유가 있다</li>
+<li>AI 사용 기록이 있다</li>
+</ul>
+<p data-blk="chapters/ch13/labs.tex#9">그리고 13.2절의 프롬프트로 점검받아, 나온 질문 다섯 개에 답을 준비한다.</p>
+<h3 data-blk="chapters/ch13/labs.tex#10">실습 13-4. 매주 작업 기록</h3>
+<p data-blk="chapters/ch13/labs.tex#11">13.3절 서식으로 작업할 때마다 기록한다. 4주 동안 최소 여덟 번.</p>
+<p data-blk="chapters/ch13/labs.tex#12">기록이 쌓이면 마지막에 정리한다.</p>
+<div class="settingbox-wrap"><div class="setting-label">4주 정리</div><pre class="settingbox"><code>총 작업 시간 :
+가장 오래 걸린 것 :          (예상보다 몇 배?)
+막힌 횟수 :                  해결 방법별 건수 :
+뺀 기능 :                    뺀 이유 :
+계획과 달라진 것 :</code></pre></div>
+<h3 data-blk="chapters/ch13/labs.tex#13">실습 13-5. 3주차 사용자 시험</h3>
+<p data-blk="chapters/ch13/labs.tex#14"><strong>반드시 3주차에</strong> 다섯 명에게 보여 준다. 10.3절의 방식을 쓴다.</p>
+<ol data-blk="chapters/ch13/labs.tex#15">
+<li>알림 메시지를 쓴다 (설명을 덧붙이지 않는다)</li>
+<li>최소 한 명은 옆에서 지켜본다</li>
+<li>반응을 기록한다</li>
+<li>버그/막힘/요청/이탈로 분류한다</li>
+<li>우선순위를 정해 상위 세 개를 고친다</li>
+<li>고친 뒤 다시 보여 준다</li>
+</ol>
+<h3 data-blk="chapters/ch13/labs.tex#16">실습 13-6. 발표 리허설</h3>
+<p data-blk="chapters/ch13/labs.tex#17">10분 발표를 <strong>시간을 재며</strong> 한 번 연습한다.</p>
+<div class="settingbox-wrap"><div class="setting-label">리허설 기록</div><pre class="settingbox"><code>문제 (목표 2분)        실제 :        말이 막힌 곳 :
+왜 이 해법 (2분)       실제 :
+시연 (4분)             실제 :        실패한 것 :
+결과와 배운 것 (2분)   실제 :
+------------------------------------------------------
+총 시간 :              줄여야 할 곳 :
+녹화본 준비 :  [  ]    (시연 실패 대비)</code></pre></div>
+<p data-blk="chapters/ch13/labs.tex#18">시간을 넘겼다면 <strong>만드는 과정 설명을 먼저 줄인다.</strong> 문제와 시연은 줄이지 않는다.</p>
+<h3 data-blk="chapters/ch13/labs.tex#19">실습 13-7. 포트폴리오 공개</h3>
+<p data-blk="chapters/ch13/labs.tex#20">13.5절 서식으로 포트폴리오 페이지를 만들어 배포한다.</p>
+<ul class="checklist">
+<li>한 문장 요약에 숫자가 들어 있다</li>
+<li>처음 스케치와 완성 화면이 나란히 있다</li>
+<li>결과물 주소가 눌러서 열린다</li>
+<li>성공 기준 대비 결과가 정직하게 적혀 있다</li>
+<li>안 된 것과 원인이 있다</li>
+<li>AI 사용 기록이 있다</li>
+<li>주소가 다른 기기에서 열린다</li>
+</ul>
+<h3 data-blk="chapters/ch13/labs.tex#22">실습 13-8. 마무리 정리</h3>
+<p data-blk="chapters/ch13/labs.tex#23">학기가 끝나기 전에 챙겨 둔다.</p>
+<ul class="checklist">
+<li>계정이 개인 이메일로 되어 있다</li>
+<li>파일 전체를 내 컴퓨터에 백업했다</li>
+<li>화면 캡처를 남겼다</li>
+<li>공개된 곳에 남의 개인정보가 없다</li>
+<li>사용자에게 유지 계획을 알렸다 (10.4절)</li>
+<li><code>프롬프트기록.txt</code>에서 쓸 만한 것을 골라 정리했다</li>
+</ul>
+<p data-blk="chapters/ch13/labs.tex#25">마지막 항목이 이 수업에서 남는 실용적인 자산이다. 자기 작업에 맞는 프롬프트 서식 대여섯 개는 앞으로도 계속 쓰게 된다.</p>
+</div></p>
+<details class="box summary" id="summary"><summary class="box-head">13장 요약</summary><div class="sum-body"><ul>
+<li>주제는 실습 1-3의 목록에서 나온다. 특별한 이유가 없으면 <strong>지금까지 만든 것을 이어 가는</strong> 편이 안전하다  —  문제 정의와 사용자 반응이 이미 있기 때문이다.</li>
+<li>고르는 기준 넷  —  내가 실제로 겪는가, 자료를 구할 수 있는가, 4주 안에 되는가, 써 줄 사람이 있는가. <strong>자기가 겪지 않는 문제는 정의할 수도 검증할 수도 없다.</strong></li>
+<li>기획서의 재료는 4–10장에서 이미 다 만들어 두었다. 매주 실습을 했다면 모으고 갱신하는 데 두 시간이면 된다.</li>
+<li>기획서에서 가장 좋은 평가를 받는 부분은 <strong>돌아보기</strong>다. 잘 된 것을 나열하는 것은 누구나 하고, <strong>안 된 것을 정확히 짚고 원인을 아는 것</strong>이 실력의 증거다. 구체적인 숫자와 원인은 기록을 남긴 사람만 쓸 수 있다.</li>
+<li>4주 일정의 원칙은 <strong>매주 끝에 동작하는 상태</strong>다. 그리고 <strong>3주차에 반드시 남에게 보여 준다</strong>  —  4주차에 처음 보여 주면 고칠 시간이 없다.</li>
+<li>1주차에는 가장 중요한 기능 <strong>하나</strong>를 끝까지 만든다. 화면 여러 개를 조금씩 만들지 않는다.</li>
+<li>막혔을 때의 시간 규칙을 정해 둔다. 2시간을 넘기면 <strong>그 기능을 빼는 것을 검토</strong>한다  —  기능 하나 때문에 프로젝트 전체가 미완성이 되는 것이 가장 나쁘다.</li>
+<li>10분 발표는 문제 2분, 왜 이 해법 2분, <strong>시연 4분</strong>, 결과와 배운 것 2분. <strong>만드는 과정은 넣지 않는다.</strong></li>
+<li>첫 2분에 해법을 말하지 않는다. 문제가 충분히 그려지기 전에 해법을 말하면 듣는 사람은 왜 필요한지 모른 채 기능 설명을 듣게 된다.</li>
+<li>시연에서는 <strong>잘못 입력했을 때</strong>도 보인다. 그리고 <strong>화면 녹화를 반드시 준비</strong>한다  —  시연 실패로 발표를 망치는 경우가 매 학기 나온다.</li>
+<li>결과는 <strong>확인할 수 있는 말</strong>로 보고한다. <em>잘 동작합니다</em>가 아니라 <em>확인 목록 12개 중 12개 통과</em>. 미달을 밝히는 것은 감점이 아니라 오히려 평가받는 지점이다.</li>
+<li>포트폴리오에서 인상적인 것은 결과물이 아니라 <strong>문제를 정의한 흔적</strong>이다. 만들 줄 아는 사람은 많아졌지만 무엇을 만들지 아는 사람은 여전히 드물다.</li>
+<li>포트폴리오 페이지 자체를 이 수업에서 배운 방법으로 만든다. 계정은 <strong>개인 이메일</strong>로, 화면 캡처는 주소가 죽어도 남게, 파일은 내 컴퓨터에도 백업한다.</li>
+<li>이 수업에서 배운 것은 도구 사용법이 아니라 <strong>문제를 정의하고 쪼개고 고르고 만들어 확인하고 고치는 순서</strong>다. 도구는 바뀌어도 이 순서는 바뀌지 않는다.</li>
+</ul></div></details>
+<details class="box exercise" id="exercises"><summary class="box-head">13장 연습문제</summary><div class="ex-body"><ol data-blk="chapters/ch13/exercises.tex#1">
+<li class="ex-item" data-ex="1"><span class="diff"><span class="d1">★</span></span>  프로젝트 주제를 고르는 네 가지 기준을 쓰고, 자기 주제가 각각을 만족하는지 근거와 함께 판단하시오.</li>
+<li class="ex-item" data-ex="2"><span class="diff"><span class="d1">★</span></span>  4주 일정에서 <strong>3주차에 반드시 남에게 보여 주어야 하는</strong> 이유를 설명하시오.</li>
+<li class="ex-item" data-ex="3"><span class="diff"><span class="d1">★</span></span>  10분 발표의 시간 배분을 쓰고, <em>만드는 과정</em>을 넣지 않는 이유를 설명하시오.</li>
+<li class="ex-item" data-ex="4"><span class="diff"><span class="d2">★★</span></span>  다음 돌아보기 문장들을 13.2절의 기준으로 고쳐 쓰시오. 없는 정보는 그럴듯하게 지어내되 <strong>숫자와 원인</strong>이 들어가야 한다.
+<ol type="a">
+<li>시간이 부족해서 다 못 만들었다</li>
+<li>생각보다 어려웠다</li>
+<li>사람들 반응이 별로였다</li>
+</ol></li>
+<li class="ex-item" data-ex="5"><span class="diff"><span class="d2">★★</span></span>  발표에서 <em>AI가 다 만들어 준 것 아닌가요?</em>라는 질문을 받았다고 하자. 12.5절의 내용을 바탕으로 답변을 작성하시오. 답변에는 자신이 직접 판단한 것이 세 가지 이상 포함되어야 한다.</li>
+<li class="ex-item" data-ex="6"><span class="diff"><span class="d2">★★</span></span>  어떤 학생이 기능 하나가 안 되어 사흘째 붙들고 있다. 13.3절의 시간 규칙에 따라 이 학생이 했어야 할 일을 순서대로 쓰고, 지금 시점에서 취할 최선의 선택을 제시하시오.</li>
+<li class="ex-item" data-ex="7"><span class="diff"><span class="d3">★★★</span></span>  자기 프로젝트를 완성하고 기획서(13.2절)와 포트폴리오 페이지(13.5절)를 모두 제출하시오. 포트폴리오 페이지는 실제로 배포되어 주소로 열려야 하며, 다음이 모두 포함되어야 한다: 문제 진술, 처음 스케치와 완성 화면, 결과물 주소, 성공 기준 대비 결과(미달이면 미달로), 사용자 반응, 안 된 것과 원인, AI 사용 기록.</li>
+<li class="ex-item" data-ex="8"><span class="diff"><span class="d3">★★★</span></span>  이 수업 전체를 돌아보며 다음을 서술하시오. (1) 1장에서 <em>병목이 무엇을 만들지 정하는 일로 옮겨 갔다</em>고 했는데, 자기 경험에 비추어 이 말이 맞았는지, (2) 가장 시간을 많이 쓴 단계는 어디였고 왜 그랬는지, (3) 다시 한 학기를 시작한다면 무엇을 다르게 할 것인지, (4) <strong>앞으로 자기 전공에서 이 방법을 쓸 만한 일</strong> 세 가지.</li>
+</ol>
+</div></details>
+<div class="pager-row"><a class="pager prev" href="ch12.html">&larr; 12장</a><a class="pager next" href="apxa.html">부록 A &rarr;</a></div>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-glsl.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="book.js"></script>
+</body>
+</html>

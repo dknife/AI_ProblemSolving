@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>참고문헌 — AI 문제해결</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="book.css">
+<style>
+  .reflist{list-style:none;counter-reset:ref;padding:0;margin:0 0 30px}
+  .reflist li{position:relative;counter-increment:ref;padding:9px 0 9px 40px;
+    border-bottom:1px solid #eef1f5;line-height:1.6;font-size:.94rem;color:#33424f}
+  .reflist li::before{content:counter(ref);position:absolute;left:0;top:9px;
+    width:26px;text-align:right;color:#c86932;font-weight:700;font-variant-numeric:tabular-nums}
+  .reflist .ref-au{font-weight:600;color:#163864}
+  .reflist .ref-ti{color:#1c2430}
+  .reflist a{color:#c86932;text-decoration:none;word-break:break-all}
+  .reflist a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="home" href="../index.html">&#8962; 홈</a>
+  <span class="book-title">AI 문제해결</span>
+  <span class="ch-indicator">참고문헌</span>
+  <button class="nav-toggle" onclick="document.body.classList.toggle('nav-open')">목차</button>
+</header>
+<div class="layout">
+<nav class="sidebar">
+<div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 문제를 푸는 방식이 달라졌다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> AI는 어떻게 답을 만드는가</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 에이전트: 스스로 일하는 AI</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 문제를 찾아내고 정의한다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> 문제를 쪼개고 구조를 본다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch06.html"><span class="nav-num">06</span> 해법을 찾고 고른다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> AI와 제대로 대화한다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 만들기 위한 준비</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 첫 번째 웹 서비스 만들기</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch10.html"><span class="nav-num">10</span> 세상에 내놓기</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch11.html"><span class="nav-num">11</span> 파이썬 앱으로 반복을 없앤다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch12.html"><span class="nav-num">12</span> 고치고 다듬는다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch13.html"><span class="nav-num">13</span> 나의 문제 해결 프로젝트</a>
+</div>
+<div class="nav-part">부록</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">A</span> 무료 AI 도구와 에이전트 총정리</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxb.html"><span class="nav-num">B</span> 문제 해결 프롬프트 사전</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxc.html"><span class="nav-num">C</span> 자주 만나는 오류와 해결</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxd.html"><span class="nav-num">D</span> 배포와 공유 안내</a>
+</div>
+<div class="nav-part">부가 자료</div>
+<div class="nav-ch current"><a class="nav-ch-link" href="references.html"><span class="nav-num">&#128218;</span> 참고문헌</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">&#128295;</span> 도구 비교표</a></div>
+</nav>
+<main class="content">
+<div class="chapter-head">
+  <div class="ch-label">REFERENCES</div>
+  <h1>참고문헌</h1>
+</div>
+<p>이 책을 집필하며 참고한 문헌을 주제별로 정리하였습니다. 인공지능 입문서와 예술 분야의 논의부터 생성 모델의 원논문, 그리고 저작권·윤리 관련 자료까지 폭넓게 담았습니다.</p>
+<h2>인공지능 입문과 교양</h2>
+<ol class="reflist">
+  <li><span class="ref-au">Melanie Mitchell</span> (2019). <span class="ref-ti">Artificial Intelligence: A Guide for Thinking Humans</span>. <em>Farrar, Straus and Giroux</em>.</li>
+  <li><span class="ref-au">Michael Wooldridge</span> (2021). <span class="ref-ti">A Brief History of Artificial Intelligence: What It Is, Where We Are, and Where We Are Going</span>. <em>Flatiron Books</em>.</li>
+  <li><span class="ref-au">Stuart Russell and Peter Norvig</span> (2021). <span class="ref-ti">Artificial Intelligence: A Modern Approach</span>. <em>Pearson</em> (4판).</li>
+</ol>
+<h2>문제 정의와 문제 해결</h2>
+<ol class="reflist">
+  <li><span class="ref-au">Barbara Minto</span> (2009). <span class="ref-ti">The Pyramid Principle: Logic in Writing and Thinking</span>. <em>Pearson Education</em>.</li>
+  <li><span class="ref-au">George Pólya</span> (2004). <span class="ref-ti">How to Solve It: A New Aspect of Mathematical Method</span>. <em>Princeton University Press</em>.</li>
+  <li><span class="ref-au">Herbert A. Simon</span> (1996). <span class="ref-ti">The Sciences of the Artificial</span>. <em>MIT Press</em> (3판).</li>
+  <li><span class="ref-au">Kees Dorst</span> (2015). <span class="ref-ti">Frame Innovation: Create New Thinking by Design</span>. <em>MIT Press</em>.</li>
+  <li><span class="ref-au">Thomas Wedell-Wedellsborg</span> (2020). <span class="ref-ti">What's Your Problem? To Solve Your Toughest Problems, Change the Problems You Solve</span>. <em>Harvard Business Review Press</em>.</li>
+  <li><span class="ref-au">Tim Brown</span> (2009). <span class="ref-ti">Change by Design: How Design Thinking Transforms Organizations and Inspires Innovation</span>. <em>HarperBusiness</em>.</li>
+</ol>
+<h2>에이전트와 자동화</h2>
+<ol class="reflist">
+  <li><span class="ref-au">Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, \Lukasz Kaiser and Illia Polosukhin</span> (2017). <span class="ref-ti">Attention Is All You Need</span>. In <em>Advances in Neural Information Processing Systems (NeurIPS)</em>.</li>
+  <li><span class="ref-au">Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Brian Ichter, Fei Xia, Ed H. Chi, Quoc V. Le and Denny Zhou</span> (2022). <span class="ref-ti">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</span>. In <em>Advances in Neural Information Processing Systems (NeurIPS)</em>.</li>
+  <li><span class="ref-au">Michael Wooldridge</span> (2009). <span class="ref-ti">An Introduction to MultiAgent Systems</span>. <em>Wiley</em> (2판).</li>
+  <li><span class="ref-au">Rishi Bommasani, Drew A. Hudson, Ehsan Adeli and others</span> (2021). <span class="ref-ti">On the Opportunities and Risks of Foundation Models</span>. <em>arXiv preprint arXiv:2108.07258</em>.</li>
+  <li><span class="ref-au">Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan and Yuan Cao</span> (2023). <span class="ref-ti">ReAct: Synergizing Reasoning and Acting in Language Models</span>. In <em>International Conference on Learning Representations (ICLR)</em>.</li>
+  <li><span class="ref-au">Timo Schick, Jane Dwivedi-Yu, Roberto Dess\`\i, Roberta Raileanu, Maria Lomeli, Luke Zettlemoyer, Nicola Cancedda and Thomas Scialom</span> (2023). <span class="ref-ti">Toolformer: Language Models Can Teach Themselves to Use Tools</span>. In <em>Advances in Neural Information Processing Systems (NeurIPS)</em>.</li>
+</ol>
+<h2>만들기 · 웹과 파이썬</h2>
+<ol class="reflist">
+  <li><span class="ref-au">David Thomas and Andrew Hunt</span> (2019). <span class="ref-ti">The Pragmatic Programmer: Your Journey to Mastery</span>. <em>Addison-Wesley</em> (2판).</li>
+  <li><span class="ref-au">Eric Matthes</span> (2023). <span class="ref-ti">Python Crash Course: A Hands-On, Project-Based Introduction to Programming</span>. <em>No Starch Press</em> (3판).</li>
+  <li><span class="ref-au">Eric Ries</span> (2011). <span class="ref-ti">The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses</span>. <em>Crown Business</em>.</li>
+  <li><span class="ref-au">Jon Duckett</span> (2011). <span class="ref-ti">HTML and CSS: Design and Build Websites</span>. <em>Wiley</em>.</li>
+  <li><span class="ref-au">Steve Krug</span> (2014). <span class="ref-ti">Don't Make Me Think, Revisited: A Common Sense Approach to Web Usability</span>. <em>New Riders</em> (3판).</li>
+  <li><span class="ref-au">Wes McKinney</span> (2022). <span class="ref-ti">Python for Data Analysis: Data Wrangling with pandas, NumPy, and Jupyter</span>. <em>O'Reilly Media</em> (3판).</li>
+</ol>
+<h2>윤리 · 책임 · 개인정보</h2>
+<ol class="reflist">
+  <li><span class="ref-au">Cathy O'Neil</span> (2016). <span class="ref-ti">Weapons of Math Destruction: How Big Data Increases Inequality and Threatens Democracy</span>. <em>Crown</em>.</li>
+  <li><span class="ref-au">Kate Crawford</span> (2021). <span class="ref-ti">Atlas of AI: Power, Politics, and the Planetary Costs of Artificial Intelligence</span>. <em>Yale University Press</em>.</li>
+  <li><span class="ref-au">Luciano Floridi</span> (2023). <span class="ref-ti">The Ethics of Artificial Intelligence: Principles, Challenges, and Opportunities</span>. <em>Oxford University Press</em>.</li>
+  <li><span class="ref-au">Safiya Umoja Noble</span> (2018). <span class="ref-ti">Algorithms of Oppression: How Search Engines Reinforce Racism</span>. <em>New York University Press</em>.</li>
+  <li><span class="ref-au">Stuart Russell</span> (2019). <span class="ref-ti">Human Compatible: Artificial Intelligence and the Problem of Control</span>. <em>Viking</em>.</li>
+</ol>
+<div class="pager-row"><a class="pager prev" href="apxd.html">&larr; 부록 D</a><span></span></div>
+</main>
+</div>
+<script src="book.js"></script>
+</body>
+</html>

@@ -1,0 +1,1076 @@
+/* AI 문제해결 — 웹 본문 읽기 페이지 (Sutera 디자인 시스템, 알짜파이썬/DESIGN.md)
+ * 손으로 관리하는 파일. tex2html.py는 이 파일을 만들지 않는다. */
+:root {
+  --bg: #F8F8F8;
+  --bg-2: #EDEDED;
+  --white: #FFFFFF;
+  --text: #222222;
+  --text-2: #313131;
+  --text-light: #767676;
+  --accent: #FA5D29;       /* 오렌지-레드: CTA·강조 */
+  --cyan: #0693E3;         /* 테마 포인트 */
+  --mint: #7BDCB5;         /* 보조 액센트 */
+  --yellow: #FFF083;       /* 하이라이트·학습 */
+  --border: #E4E4E4;
+  --btn: #222222;
+  --btn-hover: #383838;
+  --radius: 8px;
+  --radius-lg: 16px;
+  --sidebar-w: 300px;
+  --ease: cubic-bezier(0.25, 1, 0.5, 1);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter Tight', 'Pretendard', 'Noto Sans KR',
+    -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.65;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- fixed top bar ---- */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; height: 54px;
+  background: rgba(248,248,248,0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  display: flex; align-items: center; gap: 1rem;
+  padding: 0 1.4rem; z-index: 50;
+}
+.topbar .home {
+  color: #fff; background: var(--btn);
+  text-decoration: none; font-weight: 600;
+  padding: 0.32rem 1rem; border-radius: var(--radius);
+  font-size: 0.85rem; transition: background 0.3s ease;
+}
+.topbar .home:hover { background: var(--btn-hover); }
+.topbar .book-title { font-weight: 800; letter-spacing: -0.02em; }
+.topbar .ch-indicator {
+  font-size: 0.85rem; color: var(--text-light);
+  overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+}
+.nav-toggle {
+  margin-left: auto; display: none;
+  background: var(--btn); border: none;
+  color: #fff; border-radius: var(--radius);
+  padding: 0.35rem 0.9rem; cursor: pointer;
+  font: inherit; font-size: 0.85rem;
+  transition: background 0.3s ease;
+}
+.nav-toggle:hover { background: var(--btn-hover); }
+
+/* ---- layout ---- */
+.layout { display: flex; padding-top: 54px; }
+.sidebar {
+  position: fixed; top: 54px; bottom: 0; left: 0;
+  width: var(--sidebar-w);
+  overflow-y: auto;
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+  padding: 1.4rem 1rem 3rem;
+  font-size: 0.88rem;
+}
+.content {
+  margin-left: var(--sidebar-w);
+  flex: 1; min-width: 0;
+  max-width: 900px;
+  padding: 3rem 3.4rem 5rem;
+  background: var(--white);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* ---- sidebar nav ---- */
+.nav-part {
+  font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--accent);
+  margin: 1.3rem 0 0.4rem; padding: 0 0.55rem;
+}
+.nav-ch-link {
+  display: block; padding: 0.34rem 0.55rem; border-radius: var(--radius);
+  color: var(--text-2); text-decoration: none; font-weight: 500;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.nav-ch-link:hover { background: var(--bg-2); }
+.nav-ch.current > .nav-ch-link {
+  background: var(--btn); color: #fff; font-weight: 600;
+}
+.nav-num { color: var(--text-light); font-size: 0.76rem; margin-right: 0.2rem;
+  font-weight: 700; }
+.nav-ch.current .nav-num { color: var(--accent); }
+.nav-secs { margin: 0.3rem 0 0.6rem 0.9rem; border-left: 2px solid var(--bg-2); }
+.nav-sec {
+  display: block; padding: 0.22rem 0.75rem; color: var(--text-light);
+  text-decoration: none; font-size: 0.83rem;
+  transition: color 0.3s ease;
+}
+.nav-sec:hover { color: var(--accent); }
+
+/* ---- chapter head ---- */
+.chapter-head { margin-bottom: 2.6rem; }
+.chapter-head .ch-label {
+  font-size: 0.8rem; font-weight: 800; letter-spacing: 0.16em;
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+}
+.chapter-head h1 {
+  font-size: 2.6rem; color: var(--text);
+  font-weight: 800; letter-spacing: -0.03em; line-height: 1.2;
+}
+.chapter-head::after {
+  content: ''; display: block; width: 56px; height: 4px;
+  background: var(--accent); border-radius: 2px; margin-top: 1rem;
+}
+img.chapfig {
+  display: block; max-width: 320px; margin: 1.6rem auto;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s ease;
+}
+img.chapfig:hover { transform: scale(1.02); box-shadow: 0 8px 24px rgba(0,0,0,0.14); }
+
+/* 챕터·부록 오프너 대표 이미지 (인쇄판 챕터 표지 디자인의 웹 대응) */
+img.chapter-hero, img.appendix-hero {
+  display: block; width: 100%; max-width: 560px; height: auto;
+  margin: 0.4rem auto 2.4rem;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.14);
+}
+.chapter-head + img.chapter-hero, .chapter-head + img.appendix-hero { margin-top: 1.4rem; }
+
+/* ---- headings ---- */
+h2 {
+  color: var(--text); font-size: 1.7rem; font-weight: 700;
+  letter-spacing: -0.02em; line-height: 1.2;
+  margin: 3rem 0 1.1rem;
+  scroll-margin-top: 74px;
+}
+h2::after {
+  content: ''; display: block; width: 34px; height: 3px;
+  background: var(--accent); border-radius: 2px; margin-top: 0.45rem;
+}
+h3 {
+  color: var(--text-2); font-size: 1.16rem; font-weight: 700;
+  letter-spacing: -0.01em; line-height: 1.25;
+  margin: 2.2rem 0 0.8rem;
+  padding-left: 0.7rem; border-left: 3px solid var(--accent);
+  scroll-margin-top: 74px;
+}
+h4 {
+  color: var(--text-2); font-size: 1rem; font-weight: 700;
+  margin: 1.6rem 0 0.5rem;
+}
+p { margin: 0 0 1rem; color: var(--text-2); }
+strong { color: var(--text); }
+sup.term { color: var(--text-light); font-size: 0.7em; font-style: italic;
+  margin-left: 1px; }
+strong.term-ko { color: var(--cyan); }
+strong.term-ko code { color: var(--cyan); font-weight: 700; }
+.fn { color: var(--text-light); font-size: 0.85em; }
+
+/* ---- code ---- */
+pre, code { font-family: 'D2Coding', Consolas, 'JetBrains Mono', monospace; }
+code {
+  background: var(--bg-2); border-radius: 4px; padding: 0.08em 0.35em;
+  font-size: 0.86em; color: var(--text);
+}
+pre { margin: 1.2rem 0; }
+pre code { background: none; padding: 0; font-size: 0.84rem; color: inherit; }
+/* Prism 기본 테마가 code[class*=language-]에 font-size:1em과 Consolas를 건다.
+   book.css가 prism.min.css보다 먼저 실려 같은 특정도에서는 Prism이 이긴다.
+   (Prism이 실행 시 language-* 클래스를 <pre>에도 복사하므로 pre까지 해당된다.)
+   본문 코드가 출력 블록보다 커지고 글꼴도 달라지므로 특정도를 높여 되돌린다. */
+.content pre.line-numbers,
+.content pre.line-numbers > code[class*="language-"] {
+  font-family: 'D2Coding', Consolas, 'JetBrains Mono', monospace;
+  font-size: 0.84rem;
+}
+pre.line-numbers, .listing pre {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+  transition: box-shadow 0.3s ease;
+}
+pre.line-numbers:hover, .listing pre:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+pre.jsout, pre.termout {
+  background: var(--btn); color: #EDEDED;
+  border: none; border-radius: var(--radius);
+  padding: 0.85rem 1.1rem; font-size: 0.84rem; overflow-x: auto;
+}
+/* 오류 출력(pyerr) — 어두운 배경 위에서 읽히는 밝은 빨강 */
+pre.jsout.jserr { color: #F87171; }
+/* 어두운 터미널 배경 위에서는 안쪽 요소도 밝은 글자색을 물려받게 한다
+   (본문 색 #313131이 새어 들어오면 검은 바탕에서 글자가 보이지 않는다) */
+pre.jsout *, pre.termout * {
+  color: inherit; background: none; margin: 0; padding: 0;
+  font: inherit;
+}
+.listing { margin: 1.2rem 0; }
+.listing pre { margin-bottom: 0.35rem; }
+/* 파일 소스(HTML 템플릿 등) — 실행 결과가 아니라 독자가 만들어 저장하는 파일.
+   파이썬 코드 상자와 같은 결이지만 파일명 라벨이 위에 붙는다 */
+.filecode-wrap { margin: 1.2rem 0; }
+.filecode-wrap .file-label {
+  display: inline-block;
+  font-family: 'D2Coding', Consolas, 'JetBrains Mono', monospace;
+  font-size: 0.76rem; font-weight: 700; color: var(--accent);
+  background: var(--bg); border: 1px solid var(--border);
+  border-bottom: none;
+  border-radius: var(--radius) var(--radius) 0 0;
+  padding: 0.28rem 0.8rem 0.2rem;
+}
+.content pre.filecode,
+.content pre.filecode > code[class*="language-"] {
+  font-family: 'D2Coding', Consolas, 'JetBrains Mono', monospace;
+  font-size: 0.84rem;
+}
+pre.filecode {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) var(--radius);
+  padding: 1rem 1.1rem; margin: 0;
+  overflow-x: auto;
+  transition: box-shadow 0.3s ease;
+}
+pre.filecode:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.listing-caption, figcaption, .table-caption {
+  text-align: center; font-size: 0.84rem; color: var(--text-light);
+  margin: 0.5rem 0 1.3rem;
+}
+
+/* ---- boxes ---- */
+.box {
+  border-radius: var(--radius-lg); padding: 1.15rem 1.35rem; margin: 1.6rem 0;
+  background: var(--bg);
+  transition: box-shadow 0.3s ease, transform 0.3s var(--ease);
+}
+.box:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
+.box p:last-child { margin-bottom: 0; }
+.box .chip {
+  display: inline-block;
+  font-size: 0.7rem; font-weight: 800; color: #fff;
+  padding: 0.14rem 0.65rem; border-radius: 20px; margin-bottom: 0.55rem;
+  letter-spacing: 0.04em;
+}
+.box .box-title {
+  font-weight: 700;
+  color: var(--text); margin-left: 0.5rem; font-size: 0.95rem;
+}
+/* 요점: 노랑 하이라이트 (학습 강조) */
+.box.keypoint { background: var(--yellow); }
+.box.keypoint .chip { background: var(--btn); }
+.box.keypoint p { color: var(--text); }
+/* 주의: 오렌지 (경고) */
+.box.caution { background: #FFF0EA; }
+.box.caution .chip { background: var(--accent); }
+/* 잠깐: 시안 블루 */
+.box.note { background: #EAF5FC; }
+.box.note .chip { background: var(--cyan); }
+/* 실습: 민트 그린 */
+.box.lab { background: #EDFAF4; }
+.box.lab .lab-title {
+  font-weight: 800; color: var(--text); font-size: 1.08rem;
+  margin-bottom: 0.8rem; padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--mint);
+  letter-spacing: -0.01em;
+}
+/* 요약·연습문제: 미니멀 그레이/화이트 */
+.box.summary { background: var(--bg-2); }
+.box.exercise { background: var(--white); border: 1.5px solid var(--text); }
+.box.goals { background: var(--bg); border-left: 4px solid var(--cyan);
+  border-radius: var(--radius);
+  text-align: left;          /* center 블록 안에서도 왼쪽 정렬 */
+  font-size: 0.88rem; }
+.box.goals p, .box.goals li { font-size: 0.88rem; }
+.box.goals .box-head { font-size: 0.95rem; }
+/* 학습 목표는 접어 두고 제목을 눌러 펼친다 (<details>/<summary>, JS 불필요) */
+details.box.goals { padding-top: 0.9rem; padding-bottom: 0.9rem; }
+details.box.goals > summary {
+  cursor: pointer;
+  list-style: none;                 /* 기본 삼각형 마커 제거 */
+  display: flex; align-items: center; gap: 0.55rem;
+  margin-bottom: 0;
+  transition: color 0.3s ease;
+}
+details.box.goals > summary::-webkit-details-marker { display: none; }
+details.box.goals > summary::after {
+  content: '';
+  width: 0.42em; height: 0.42em;
+  margin-left: auto;
+  border-right: 2px solid var(--cyan);
+  border-bottom: 2px solid var(--cyan);
+  transform: rotate(45deg) translate(-0.12em, -0.12em);
+  transition: transform 0.3s var(--ease);
+}
+details.box.goals[open] > summary::after {
+  transform: rotate(225deg) translate(-0.12em, -0.12em);
+}
+details.box.goals > summary:hover { color: var(--cyan); }
+details.box.goals > summary:focus-visible {
+  outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 3px;
+}
+.goals-body { margin-top: 0.75rem; }
+.goals-body > :last-child { margin-bottom: 0; }
+.goals-body ul { margin-bottom: 0; }
+/* 연습문제도 접어 두고 제목을 눌러 펼친다 */
+details.box.exercise > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex; align-items: center; gap: 0.55rem;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+  transition: color 0.3s ease;
+}
+details.box.exercise > summary::-webkit-details-marker { display: none; }
+details.box.exercise > summary::after {
+  content: '';
+  width: 0.42em; height: 0.42em;
+  margin-left: auto;
+  border-right: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+  transform: rotate(45deg) translate(-0.12em, -0.12em);
+  transition: transform 0.3s var(--ease);
+}
+details.box.exercise[open] > summary::after {
+  transform: rotate(225deg) translate(-0.12em, -0.12em);
+}
+details.box.exercise > summary:hover { color: var(--accent); }
+details.box.exercise > summary:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px;
+}
+.ex-body { margin-top: 0.85rem; }
+.ex-body > :last-child { margin-bottom: 0; }
+/* 장 요약도 접어 두고 제목을 눌러 펼친다 */
+details.box.summary > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex; align-items: center; gap: 0.55rem;
+  margin-bottom: 0;
+  transition: color 0.3s ease;
+}
+details.box.summary > summary::-webkit-details-marker { display: none; }
+details.box.summary > summary::after {
+  content: '';
+  width: 0.42em; height: 0.42em;
+  margin-left: auto;
+  border-right: 2px solid var(--text-light);
+  border-bottom: 2px solid var(--text-light);
+  transform: rotate(45deg) translate(-0.12em, -0.12em);
+  transition: transform 0.3s var(--ease);
+}
+details.box.summary[open] > summary::after {
+  transform: rotate(225deg) translate(-0.12em, -0.12em);
+}
+details.box.summary > summary:hover { color: var(--accent); }
+details.box.summary > summary:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px;
+}
+.sum-body { margin-top: 0.85rem; }
+.sum-body > :last-child { margin-bottom: 0; }
+.box .box-head {
+  font-weight: 800; color: var(--text); font-size: 1.08rem;
+  margin-bottom: 0.8rem; letter-spacing: -0.01em;
+}
+.box.exercise .box-head::before,
+.box.summary .box-head::before {
+  content: ''; display: inline-block; width: 10px; height: 10px;
+  background: var(--accent); border-radius: 50%; margin-right: 0.5rem;
+}
+.diff { font-size: 0.8rem; margin-right: 0.2rem; }
+.d1 { color: var(--mint); } .d2 { color: #E5B93C; } .d3 { color: var(--accent); }
+
+/* ---- lists ---- */
+ul, ol { margin: 0 0 1rem 1.5rem; color: var(--text-2); }
+li { margin-bottom: 0.45rem; }
+li::marker { color: var(--accent); font-weight: 700; }
+li > pre, li > .listing { margin-top: 0.6rem; }
+
+/* ---- figures & tables ---- */
+figure.fig { margin: 1.8rem 0; text-align: center; }
+figure.fig img, img.tikz, img.gfx, img.shot { max-width: 100%; height: auto; }
+img.tikz { max-width: 88%; }
+/* 결과 그림이 아직 없을 때의 자리 표시 (\resultfig) */
+.fig-pending {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: .5rem;
+  margin: 0 auto; max-width: 82%; min-height: 8rem;
+  border: 1px dashed rgba(128,128,128,.55); border-radius: var(--radius);
+  background: rgba(128,128,128,.07);
+  color: rgba(128,128,128,.95); font-size: .9rem;
+}
+.fig-pending code { font-size: .82rem; opacity: .85; }
+img.shot {
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); max-width: 82%;
+  transition: filter 0.3s ease;
+}
+img.shot:hover { filter: brightness(0.92); }
+.center { text-align: center; }
+.center img { margin: 0 auto; }
+.table-wrap { margin: 1.6rem 0; overflow-x: auto; }
+.table-wrap table {
+  border-collapse: collapse; margin: 0 auto; min-width: 60%;
+  font-size: 0.9rem;
+  background: var(--white);
+  border-radius: var(--radius); overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.table-wrap th {
+  background: var(--btn); color: #fff; font-weight: 600;
+  padding: 0.55rem 1rem; text-align: left; font-size: 0.85rem;
+}
+.table-wrap td { padding: 0.5rem 1rem; border-bottom: 1px solid var(--bg-2);
+  color: var(--text-2); }
+.table-wrap tr:last-child td { border-bottom: none; }
+.table-wrap tr:hover td { background: var(--bg); }
+.table-caption { margin-bottom: 0.5rem; }
+
+blockquote.bodyquote {
+  border-left: 3px solid var(--accent); padding: 0.3rem 1.1rem;
+  color: var(--text-light); font-style: italic; margin: 1.3rem 0.5rem;
+}
+
+/* ---- front page (cover + preface) ---- */
+.cover-wrap { text-align: center; margin: 0 0 3rem; }
+img.cover {
+  max-width: 420px; width: 80%;
+  border-radius: var(--radius);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s ease;
+}
+img.cover:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.22); }
+p.signoff { text-align: right; font-weight: 700; color: var(--text-light); }
+.box.construct { background: var(--bg); }
+.chipdemo {
+  display: inline-block;
+  font-size: 0.7rem; font-weight: 800; color: #fff;
+  padding: 0.12rem 0.6rem; border-radius: 20px;
+}
+
+/* ---- pager ---- */
+.pager-row {
+  display: flex; justify-content: space-between; margin-top: 4rem;
+  padding-top: 1.6rem; border-top: 1px solid var(--border);
+}
+.pager {
+  display: inline-flex; align-items: center; height: 48px;
+  padding: 0 24px; border-radius: var(--radius);
+  background: var(--btn); color: #fff;
+  text-decoration: none; font-weight: 600; font-size: 0.92rem;
+  transition: background 0.3s ease, transform 0.3s var(--ease);
+}
+.pager:hover { background: var(--btn-hover); transform: translateY(-2px); }
+
+/* ---- 그림 확대 & 코드 복사 ---- */
+img.zoomable { cursor: zoom-in; }
+.code-wrap { position: relative; }
+.code-actions {
+  position: absolute; top: 10px; right: 10px;
+  display: flex; gap: 0.35rem;
+}
+.copy-btn {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  background: rgba(34,34,34,0.85); color: #fff;
+  border: none; border-radius: 6px;
+  padding: 0.28rem 0.65rem; font: inherit; font-size: 0.72rem;
+  font-weight: 600; cursor: pointer;
+  opacity: 0; transition: opacity 0.3s ease, background 0.3s ease;
+}
+.code-wrap:hover .copy-btn { opacity: 1; }
+.copy-btn:hover { background: var(--btn-hover); }
+.copy-btn.ok { background: var(--mint); color: var(--text); opacity: 1; }
+.copy-btn.run-btn { background: rgba(250,93,41,0.92); }
+.copy-btn.run-btn:hover { background: var(--accent); }
+.copy-btn:focus-visible { opacity: 1; outline: 2px solid var(--cyan); outline-offset: 2px; }
+@media (hover: none) { .copy-btn { opacity: 0.85; } }
+
+/* ---- scroll reveal ---- */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ---- responsive ---- */
+@media (max-width: 1024px) {
+  .content { padding: 2.2rem 2rem 4rem; }
+}
+@media (max-width: 900px) {
+  .sidebar { transform: translateX(-100%); transition: transform 0.3s var(--ease);
+    z-index: 40; box-shadow: 4px 0 24px rgba(0,0,0,0.14); background: var(--white); }
+  body.nav-open .sidebar { transform: translateX(0); }
+  .content { margin-left: 0; padding: 1.6rem 1.2rem 4rem; }
+  .nav-toggle { display: block; }
+  .topbar .ch-indicator { display: none; }
+  .chapter-head h1 { font-size: 1.9rem; }
+  h2 { font-size: 1.4rem; }
+}
+
+
+/* ===== 블록 위 버튼 바 (book.js가 생성) ===== */
+.runbar { display: flex; gap: 0.5rem; margin: 0 0 -6px; }
+.runbar button {
+  background: #222; color: #fff; border: none; border-radius: 8px 8px 0 0;
+  padding: 0.3rem 1.0rem; cursor: pointer; font: inherit; font-size: 0.8rem;
+  font-weight: 600; transition: background 0.3s ease;
+}
+.runbar button:hover { background: #383838; }
+.runbar button.run { background: var(--accent, #FA5D29); }
+.runbar button.run:hover { filter: brightness(0.92); }
+
+/* ============================================================
+   AI 문제해결 고유 스타일
+   앞선 두 책의 '코드 실행' 자리에 '프롬프트 실습'이 들어간다.
+   ============================================================ */
+
+/* ---- 프롬프트 블록 ---- */
+.content pre.prompt {
+  background: #FBFCFE;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 0.85rem 1.05rem;
+  margin: 0;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+/* 프롬프트도 응답과 같은 폰트로 흐른다(2026-08 개편). 고정폭이 아니다.
+   pre/code에 D2Coding이 걸려 있으므로 여기서 본문 글꼴로 되돌려야 한다. */
+.content pre.prompt, .content pre.prompt > code {
+  font-family: 'Inter Tight', 'Pretendard', 'Noto Sans KR',
+               -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+}
+.content pre.prompt { white-space: normal; }
+.content pre.prompt > code {
+  font-size: 0.95rem; line-height: 1.72; color: var(--text-2);
+  background: none; padding: 0;
+  text-align: justify; word-break: keep-all;
+}
+.content pre.prompt p { margin: 0 0 0.5rem; }
+.content pre.prompt p:last-child { margin-bottom: 0; }
+.content pre.prompt .ptag {
+  color: var(--muted, #6B7280); font-weight: 700; margin-right: 0.3rem;
+}
+.content pre.prompt .pblank {
+  display: inline-block; width: 7rem;
+  border-bottom: 1px solid var(--text-2); margin: 0 0.15rem;
+}
+.content pre.prompt.bad { border-color: #E7BDB4; background: #FFF8F6; }
+.content pre.prompt.bad::before { content: "이렇게 쓰지 말 것"; background: #C35546; }
+
+/* 프롬프트는 도구의 입력창에 그대로 옮겨 적는 글이다.
+   그래서 인쇄판과 같은 모양 — 둥근 입력창 + 칩 + 보내기 단추 — 으로 보인다. */
+.content pre.prompt {
+  position: relative;
+  border-radius: 14px;
+  border: 1px solid #E2CBBA;
+  border-left: 1px solid #E2CBBA;
+  padding: 2.1rem 3.1rem 1.5rem 1.05rem;
+}
+.content pre.prompt::before {
+  content: "프롬프트";
+  position: absolute; top: 0.6rem; left: 0.9rem;
+  background: var(--accent); color: #fff;
+  font-family: inherit; font-size: 0.64rem; font-weight: 700;
+  letter-spacing: 0.02em; border-radius: 4px; padding: 0.1rem 0.42rem;
+}
+.content pre.prompt::after {           /* 보내기 단추 */
+  content: "↑";
+  position: absolute; right: 0.85rem; bottom: 0.85rem;
+  width: 1.55rem; height: 1.55rem; border-radius: 50%;
+  background: var(--accent); color: #fff;
+  font-size: 0.85rem; line-height: 1.55rem; text-align: center;
+  font-family: inherit;
+}
+.content pre.prompt.bad::after { background: #C35546; }
+.prompt-wrap, .promptcard { position: relative; }
+.prompt-wrap { margin: 1.1rem 0; }
+/* 카드 안에서는 위 바가 이미 라벨·버튼을 갖고 있으므로 칩만 뺀다 */
+.promptcard pre.prompt::before { content: none; }
+.promptcard pre.prompt { padding-top: 1rem; }
+.prompt-wrap > .prompt-copy { top: 10px; right: 3.2rem; }
+
+/* ---- AI 응답 ----
+   프롬프트는 한 글자도 다르지 않게 옮겨 적는 것이라 고정폭이지만,
+   응답은 '읽는 글'이라 본문처럼 흐르게 둔다(비례폭·양끝 맞춤). */
+.content .airesp {
+  --resp: #5C7CA8;
+  background: #F4F7FB;
+  border-left: 3px solid var(--resp);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 0.85rem 1.15rem 0.95rem; margin: 1.2rem 0;
+  font-size: 0.95rem; line-height: 1.72; color: var(--text-2);
+  text-align: justify; word-break: keep-all;
+}
+.content .airesp.err { --resp: #C35546; background: #FFF7F5; }
+.content .airesp > .chip {
+  display: inline-block; margin-bottom: 0.5rem;
+  background: var(--resp); color: #fff;
+  font-size: 0.66rem; font-weight: 700; letter-spacing: 0.02em;
+  border-radius: 4px; padding: 0.12rem 0.45rem;
+}
+.content .airesp p { margin: 0 0 0.6rem; }
+.content .airesp p:last-child { margin-bottom: 0; }
+.content .airesp ul, .content .airesp ol { margin: 0.35rem 0 0.7rem 1.1rem; }
+.content .airesp li { margin: 0.12rem 0; }
+.content .airesp .table-wrap { margin: 0.5rem 0 0.2rem; box-shadow: none; }
+.content .airesp table { font-size: 0.86rem; background: transparent; }
+/* .table-wrap th 가 color:#fff 를 걸어 두므로 밝은 카드 안에서는 반드시 다시 지정한다 */
+.content .airesp .table-wrap th {
+  background: #E4EBF5; color: var(--text); font-size: 0.8rem;
+  padding: 0.35rem 0.6rem;
+}
+.content .airesp .table-wrap td { padding: 0.32rem 0.6rem; }
+.content .airesp .resp-h {           /* 응답 안의 소제목 */
+  display: block; margin-top: 0.35rem;
+  color: var(--resp); font-weight: 700; font-style: normal;
+}
+.content .airesp .resp-note {        /* 저자의 설명 — 모델이 한 말이 아니다 */
+  display: block; margin-top: 0.45rem;
+  font-size: 0.85rem; color: var(--muted, #6B7280);
+}
+
+/* ---- 도구 설정값 ---- */
+.settingbox-wrap { margin: 1.2rem 0; }
+.settingbox-wrap .setting-label {
+  display: inline-block; margin-bottom: 0.3rem;
+  font-size: 0.76rem; font-weight: 700; color: var(--accent);
+  background: #FFF0EA; border-radius: 5px; padding: 0.14rem 0.6rem;
+}
+.content pre.settingbox {
+  background: #FBFCFE; border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 0.8rem 1rem; margin: 0; overflow-x: auto;
+}
+.content pre.settingbox > code {
+  font-family: 'D2Coding', ui-monospace, Consolas, monospace;
+  font-size: 0.8rem; line-height: 1.6; color: var(--text-2);
+  background: none; padding: 0;
+}
+
+/* ---- 프롬프트 실습 카드 (이 책의 핵심 인터랙션) ---- */
+.promptcard {
+  margin: 1.4rem 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+.promptcard:hover { box-shadow: 0 4px 18px rgba(0,0,0,0.07); }
+.promptcard-bar {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem;
+  padding: 0.5rem 0.7rem;
+  background: var(--bg); border-bottom: 1px solid var(--border);
+}
+.promptcard-tag {
+  font-size: 0.7rem; font-weight: 800; letter-spacing: 0.04em;
+  color: var(--accent); text-transform: uppercase;
+  margin-right: 0.25rem;
+}
+.promptcard .prompt-copy,
+.prompt-wrap > .prompt-copy {
+  background: var(--btn); color: #fff; border: none; border-radius: 6px;
+  padding: 0.28rem 0.8rem; font: inherit; font-size: 0.76rem; font-weight: 600;
+  cursor: pointer; transition: background 0.25s ease;
+}
+.promptcard .prompt-copy:hover,
+.prompt-wrap > .prompt-copy:hover { background: var(--btn-hover); }
+.prompt-copy.ok { background: #2E8B57; }
+/* 캡션 없는 프롬프트는 버튼을 우상단에 띄운다 */
+.prompt-wrap > .prompt-copy {
+  position: absolute; top: 8px; right: 8px; z-index: 2;
+  opacity: 0; transition: opacity 0.25s ease, background 0.25s ease;
+}
+.prompt-wrap:hover > .prompt-copy,
+.prompt-wrap > .prompt-copy:focus-visible { opacity: 1; }
+@media (hover: none) { .prompt-wrap > .prompt-copy { opacity: 0.85; } }
+
+.tool-open {
+  display: inline-flex; align-items: center;
+  background: var(--white); color: var(--text-2);
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 0.26rem 0.7rem; font-size: 0.75rem; font-weight: 600;
+  text-decoration: none; transition: all 0.25s ease;
+}
+.tool-open::before { content: '\2197'; margin-right: 0.25rem; color: var(--text-light); }
+.tool-open:hover {
+  border-color: var(--accent); color: var(--accent);
+  transform: translateY(-1px);
+}
+.promptcard .listing-caption { padding: 0.45rem 0.9rem 0.6rem; margin: 0; }
+.promptcard pre.prompt { border: none; border-radius: 0; }
+
+/* ---- 도구 소개 카드 ---- */
+.toolcard {
+  margin: 1.3rem 0; padding: 0.9rem 1.1rem;
+  background: #F2F7FC;
+  border-left: 3px solid #3C6EA5;
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.toolcard .tool-head {
+  display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap;
+  margin-bottom: 0.15rem;
+}
+.toolcard .tool-name {
+  font-weight: 800; font-size: 1.02rem; color: #2A5580;
+  letter-spacing: -0.01em;
+}
+.toolcard .tool-addr {
+  font-family: 'D2Coding', ui-monospace, Consolas, monospace;
+  font-size: 0.74rem; color: var(--text-light); margin-bottom: 0.55rem;
+  word-break: break-all;
+}
+.toolcard p:last-child { margin-bottom: 0; }
+
+/* ---- 요금 배지 ---- */
+.price {
+  display: inline-block; border-radius: 20px;
+  padding: 0.1rem 0.6rem; font-size: 0.68rem; font-weight: 700;
+  white-space: nowrap; letter-spacing: 0.01em;
+}
+.price.free     { background: #E4F6EC; color: #1F7A4D; }
+.price.freemium { background: #FBF1D9; color: #8A6A11; }
+.price.credit   { background: #FBF1D9; color: #8A6A11; }
+.price.paid     { background: #FBE9EC; color: #9E3247; }
+
+/* ---- 집필 예정 표시 (초고 단계 전용) ---- */
+.stub {
+  margin: 1.1rem 0; padding: 0.7rem 1rem;
+  background: #F4F4F5; border-left: 3px solid #9A9AA0;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 0.86rem; font-style: italic; color: #5C5C64;
+}
+.stub .chip {
+  display: inline-block; margin-right: 0.5rem;
+  background: #9A9AA0; color: #fff; border-radius: 4px;
+  padding: 0.08rem 0.5rem; font-size: 0.68rem; font-weight: 700;
+  font-style: normal;
+}
+
+/* ============================================================
+   체험 위젯 (앞선 두 책의 코드 실행기에 해당하는 자리)
+   ============================================================ */
+.widget {
+  margin: 1.6rem 0; border: 1px solid var(--border);
+  border-radius: var(--radius-lg); background: var(--white);
+  overflow: hidden;
+}
+.widget-head {
+  display: flex; align-items: center; gap: 0.55rem;
+  padding: 0.6rem 1rem; background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.widget-tag {
+  font-size: 0.68rem; font-weight: 800; letter-spacing: 0.05em;
+  color: #fff; background: var(--cyan);
+  border-radius: 4px; padding: 0.1rem 0.5rem; text-transform: uppercase;
+}
+.widget-title { font-weight: 700; font-size: 0.92rem; }
+.widget-body { padding: 1rem; }
+.widget-note {
+  padding: 0.55rem 1rem 0.8rem; font-size: 0.78rem; color: var(--text-light);
+  border-top: 1px dashed var(--border);
+}
+.widget-row {
+  display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;
+  margin-bottom: 0.8rem;
+}
+.widget label { font-size: 0.82rem; font-weight: 600; color: var(--text-2); }
+.widget select, .widget input[type=range] { font: inherit; }
+.widget select {
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 0.3rem 0.6rem; background: var(--white); color: var(--text);
+  font-size: 0.84rem; max-width: 100%;
+}
+.widget input[type=range] { accent-color: var(--accent); flex: 1; min-width: 150px; }
+.widget-val {
+  font-family: 'D2Coding', ui-monospace, Consolas, monospace;
+  font-size: 0.8rem; color: var(--text-light); min-width: 3.4rem;
+}
+
+/* 토큰 예측 위젯 */
+.tok-context {
+  font-size: 0.95rem; line-height: 1.7; margin-bottom: 0.9rem;
+  padding: 0.6rem 0.85rem; background: var(--bg); border-radius: var(--radius);
+}
+.tok-context .blank {
+  display: inline-block; min-width: 4.5rem; text-align: center;
+  border-bottom: 2px solid var(--accent); color: var(--accent); font-weight: 700;
+}
+.tok-bars { display: flex; flex-direction: column; gap: 0.35rem; }
+.tok-row { display: flex; align-items: center; gap: 0.6rem; }
+.tok-word {
+  min-width: 5.5rem; text-align: right; font-size: 0.86rem; font-weight: 600;
+  color: var(--text-2); flex-shrink: 0;
+}
+/* span이라 display를 켜 주지 않으면 height가 먹지 않는다 */
+.tok-track {
+  display: block; flex: 1; height: 20px; min-width: 0;
+  background: var(--bg-2); border-radius: 4px; overflow: hidden;
+}
+.tok-fill {
+  display: block; height: 100%; min-width: 2px;
+  background: var(--cyan); border-radius: 4px;
+  transition: width 0.4s var(--ease), background 0.4s ease;
+}
+.tok-row:first-child .tok-fill { background: var(--accent); }
+.tok-pct {
+  min-width: 3.2rem; font-family: 'D2Coding', ui-monospace, monospace;
+  font-size: 0.78rem; color: var(--text-light); text-align: right;
+}
+
+/* 확산(노이즈 제거) 위젯 */
+.diff-stage { display: flex; justify-content: center; margin-bottom: 0.8rem; }
+.diff-stage canvas {
+  width: 260px; height: 260px; max-width: 100%;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  image-rendering: pixelated; background: #111;
+}
+.diff-steps {
+  display: flex; justify-content: space-between;
+  font-size: 0.72rem; color: var(--text-light); margin-top: -0.4rem;
+}
+
+/* 도구 비교표 */
+.tooltable-controls {
+  display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.8rem;
+}
+.tooltable-controls button {
+  background: var(--white); color: var(--text-2);
+  border: 1px solid var(--border); border-radius: 20px;
+  padding: 0.24rem 0.8rem; font: inherit; font-size: 0.78rem; font-weight: 600;
+  cursor: pointer; transition: all 0.25s ease;
+}
+.tooltable-controls button:hover { border-color: var(--accent); color: var(--accent); }
+.tooltable-controls button.on { background: var(--btn); color: #fff; border-color: var(--btn); }
+table.tooltable { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
+/* .table-wrap th 가 color:#fff 를 걸어 두므로 반드시 다시 지정한다 */
+table.tooltable th {
+  text-align: left; padding: 0.5rem 0.7rem;
+  background: var(--bg); color: var(--text-2);
+  border-bottom: 2px solid var(--border); font-size: 0.78rem; font-weight: 700;
+  cursor: pointer; user-select: none; white-space: nowrap;
+}
+table.tooltable th:hover { color: var(--accent); }
+table.tooltable th::after { content: ''; margin-left: 0.3rem; font-size: 0.7rem; }
+table.tooltable th.asc::after  { content: '\25B2'; }
+table.tooltable th.desc::after { content: '\25BC'; }
+table.tooltable td {
+  padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--bg-2);
+  vertical-align: top;
+}
+table.tooltable td:first-child,
+table.tooltable td:nth-child(2),
+table.tooltable td:last-child { white-space: nowrap; }
+table.tooltable tr:hover td { background: var(--bg); }
+table.tooltable a { color: var(--text); text-decoration: none; font-weight: 600; }
+table.tooltable a:hover { color: var(--accent); }
+.tooltable-empty { padding: 1.2rem; text-align: center; color: var(--text-light); }
+
+/* 표준 quote 환경 — 연습문제에서 논평 대상 진술을 인용할 때 */
+.content blockquote.plainquote {
+  margin: 0.9rem 0; padding: 0.6rem 0 0.6rem 1rem;
+  border-left: 3px solid var(--border);
+  color: var(--text-2); font-size: 0.92rem;
+}
+.content blockquote.plainquote p:last-child { margin-bottom: 0; }
+
+/* ================================================================
+   편집 모드 — Ctrl+E (로컬 편집 서버가 떠 있을 때만 나타난다)
+   WebBook/editserver.py 가 /__edit/ping 에 응답할 때 body에 .can-edit이
+   붙고, Ctrl+E로 .edit-mode가 토글된다. GitHub Pages에서는 둘 다 없다.
+   ================================================================ */
+.edit-bar {
+  position: fixed; left: 1rem; bottom: 1rem; z-index: 90;
+  display: flex; align-items: center; gap: 0.5rem;
+  background: var(--btn); color: #fff;
+  padding: 0.45rem 0.9rem; border-radius: 999px;
+  font-size: 0.8rem; box-shadow: 0 3px 14px rgba(0,0,0,0.25);
+}
+.edit-bar kbd {
+  background: rgba(255,255,255,0.18); border-radius: 4px;
+  padding: 0 0.3rem; font-family: inherit; font-size: 0.95em;
+}
+.edit-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--mint); flex: none;
+}
+
+/* 편집 가능한 블록 표시 — 왼쪽 여백에 얇은 눈금 */
+body.edit-mode .content [data-blk] {
+  position: relative;
+  outline: 1px dashed transparent;
+  outline-offset: 4px;
+  transition: outline-color 0.15s ease;
+}
+body.edit-mode .content [data-blk]::before {
+  content: ""; position: absolute;
+  left: -1.2rem; top: 0.15em; bottom: 0.15em; width: 2px;
+  background: var(--border);
+}
+body.edit-mode .content [data-blk]:hover { outline-color: var(--cyan); }
+body.edit-mode .content [data-blk]:hover::before { background: var(--cyan); }
+
+.blk-edit {
+  position: absolute; right: -0.4rem; top: -1.35rem; z-index: 5;
+  opacity: 0; pointer-events: none;
+  background: var(--cyan); color: #fff; border: none;
+  border-radius: var(--radius); cursor: pointer;
+  font: inherit; font-size: 0.72rem; font-weight: 600;
+  padding: 0.16rem 0.6rem;
+  transition: opacity 0.15s ease;
+}
+body.edit-mode [data-blk]:hover > .blk-edit,
+body.edit-mode .blk-edit:focus { opacity: 1; pointer-events: auto; }
+body:not(.edit-mode) .blk-edit { display: none; }
+
+.blk-hidden { display: none !important; }
+
+/* 편집창 */
+.blk-editor {
+  margin: 1rem 0; border: 1px solid var(--cyan);
+  border-radius: var(--radius); overflow: hidden;
+  background: var(--bg);
+}
+.blk-editor-head {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.7rem;
+  padding: 0.45rem 0.8rem; background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+}
+.blk-where {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem; font-weight: 700; color: var(--text-2);
+}
+.blk-hint { font-size: 0.72rem; color: var(--text-light); }
+textarea.blk-src {
+  display: block; width: 100%; box-sizing: border-box;
+  border: none; outline: none; resize: vertical;
+  padding: 0.8rem; background: var(--white); color: var(--text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.82rem; line-height: 1.65;
+}
+.blk-editor-foot {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.55rem 0.8rem; border-top: 1px solid var(--border);
+}
+.blk-editor-foot button {
+  border: none; border-radius: var(--radius); cursor: pointer;
+  font: inherit; font-size: 0.78rem; font-weight: 600;
+  padding: 0.3rem 0.85rem;
+  background: var(--bg-2); color: var(--text);
+  transition: background 0.2s ease;
+}
+.blk-editor-foot button:hover { background: var(--border); }
+.blk-editor-foot .blk-save { background: var(--btn); color: #fff; }
+.blk-editor-foot .blk-save:hover { background: var(--btn-hover); }
+.blk-msg { font-size: 0.76rem; color: var(--text-light); }
+.blk-msg.bad { color: #c35546; font-weight: 600; }
+pre.blk-tex {
+  margin: 0; padding: 0.8rem; background: #2b2b2b; color: #eee;
+  font-size: 0.78rem; line-height: 1.6; white-space: pre-wrap;
+  word-break: break-all; border-top: 1px solid var(--border);
+}
+
+/* 저장 직후 잠깐 강조 */
+.blk-saved { animation: blk-flash 1.2s ease; }
+@keyframes blk-flash {
+  0%   { background: rgba(123,220,181,0.55); }
+  100% { background: transparent; }
+}
+
+/* ============================================================
+   『AI 문제해결』 고유 요소 — 문제 카드 / 점검 목록 / 오류 / 셸
+   (이 책에서 새로 더한 부분. 위쪽 규칙과 같은 모티프를 따른다)
+   ============================================================ */
+
+/* ---- 문제 카드 : 본문에서 다루는 문제 사례를 같은 틀로 보인다 ---- */
+.problemcard {
+  margin: 1.3rem 0; padding: 0.9rem 1.1rem;
+  background: #F8F3FA;
+  border-left: 3px solid #965596;
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.problemcard .problem-head {
+  display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap;
+  margin-bottom: 0.15rem;
+}
+.problemcard .chip {
+  background: #965596; color: #fff;
+  font-size: 0.66rem; font-weight: 700; letter-spacing: 0.02em;
+  padding: 0.14rem 0.46rem; border-radius: 3px;
+}
+.problemcard .problem-name {
+  font-weight: 800; font-size: 1.02rem; color: #6E3A6E;
+  letter-spacing: -0.01em;
+}
+.problemcard .problem-who {
+  font-size: 0.78rem; color: var(--text-light); margin-bottom: 0.55rem;
+}
+.problemcard p:last-child { margin-bottom: 0; }
+
+/* ---- 점검 목록 : 눌러서 표시할 수 있는 빈 네모 ---- */
+ul.checklist { list-style: none; padding-left: 0.2rem; }
+ul.checklist > li {
+  position: relative; padding-left: 1.7rem; margin: 0.34rem 0;
+  cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+ul.checklist > li::before {
+  content: ""; position: absolute; left: 0; top: 0.34em;
+  width: 0.92em; height: 0.92em;
+  border: 1.6px solid #8A9099; border-radius: 3px;
+  background: #fff; transition: all 0.15s ease;
+}
+ul.checklist > li.done::before {
+  background: #2A8C7D; border-color: #2A8C7D;
+}
+ul.checklist > li.done::after {
+  content: ""; position: absolute; left: 0.28em; top: 0.46em;
+  width: 0.26em; height: 0.52em;
+  border: solid #fff; border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+ul.checklist > li.done { color: var(--text-light); }
+
+/* ---- 오류 메시지 : 화면에 뜬 그대로 ---- */
+pre.errorbox {
+  background: #FDF4F3;
+  border-left: 3px solid #C35546;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 0.75rem 0.95rem; margin: 0;
+  font-family: 'D2Coding', ui-monospace, Consolas, monospace;
+  font-size: 0.8rem; line-height: 1.55; color: #7A2E24;
+  white-space: pre-wrap; word-break: break-word;
+}
+
+/* ---- 터미널 명령 ---- */
+pre.shellcode {
+  background: #1E293B; color: #F1F5F9;
+  border-radius: var(--radius);
+  padding: 0.75rem 0.95rem; margin: 0;
+  font-family: 'D2Coding', ui-monospace, Consolas, monospace;
+  font-size: 0.8rem; line-height: 1.55;
+  white-space: pre-wrap; word-break: break-word;
+}
+pre.shellcode code { color: inherit; background: none; }
+
+/* 코드 블록에 붙은 복사 버튼 (listing 안) */
+.listing { position: relative; }
+.listing > .prompt-copy {
+  position: absolute; top: 8px; right: 10px; z-index: 2;
+}

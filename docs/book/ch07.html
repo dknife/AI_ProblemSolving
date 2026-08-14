@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7장 AI와 제대로 대화한다 — AI 문제해결</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="book.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+<script>MathJax = {tex: {inlineMath: [['\\(', '\\)']]}, svg: {fontCache: 'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="home" href="../index.html">&#8962; 홈</a>
+  <span class="book-title">AI 문제해결</span>
+  <span class="ch-indicator">7장 AI와 제대로 대화한다</span>
+  <button class="nav-toggle" onclick="document.body.classList.toggle('nav-open')">목차</button>
+</header>
+<div class="layout">
+<nav class="sidebar">
+<div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 문제를 푸는 방식이 달라졌다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> AI는 어떻게 답을 만드는가</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 에이전트: 스스로 일하는 AI</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 문제를 찾아내고 정의한다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> 문제를 쪼개고 구조를 본다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch06.html"><span class="nav-num">06</span> 해법을 찾고 고른다</a>
+</div>
+<div class="nav-ch current"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> AI와 제대로 대화한다</a>
+<div class="nav-secs"><a class="nav-sec" href="ch07.html#sec1">7.1 프롬프트의 뼈대</a><a class="nav-sec" href="ch07.html#sec2">7.2 맥락을 주는 법</a><a class="nav-sec" href="ch07.html#sec3">7.3 한 번에 되지 않는다: 반복과 되먹임</a><a class="nav-sec" href="ch07.html#sec4">7.4 결과를 의심하는 습관</a><a class="nav-sec" href="ch07.html#sec5">7.5 만들기 위한 대화: 명세서를 프롬프트로</a><a class="nav-sec" href="ch07.html#labs">실습을 통한 개념 정리</a><a class="nav-sec" href="ch07.html#summary">7장 요약</a><a class="nav-sec" href="ch07.html#exercises">연습문제</a></div>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 만들기 위한 준비</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 첫 번째 웹 서비스 만들기</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch10.html"><span class="nav-num">10</span> 세상에 내놓기</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch11.html"><span class="nav-num">11</span> 파이썬 앱으로 반복을 없앤다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch12.html"><span class="nav-num">12</span> 고치고 다듬는다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch13.html"><span class="nav-num">13</span> 나의 문제 해결 프로젝트</a>
+</div>
+<div class="nav-part">부록</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">A</span> 무료 AI 도구와 에이전트 총정리</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxb.html"><span class="nav-num">B</span> 문제 해결 프롬프트 사전</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxc.html"><span class="nav-num">C</span> 자주 만나는 오류와 해결</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxd.html"><span class="nav-num">D</span> 배포와 공유 안내</a>
+</div>
+<div class="nav-part">부가 자료</div>
+<div class="nav-ch"><a class="nav-ch-link" href="references.html"><span class="nav-num">&#128218;</span> 참고문헌</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">&#128295;</span> 도구 비교표</a></div>
+</nav>
+<main class="content">
+<div class="chapter-head">
+  <div class="ch-label">CHAPTER 07</div>
+  <h1>AI와 제대로 대화한다</h1>
+</div>
+<img class="chapter-hero" src="img/ch07/ch07_img01.jpg" alt="7장 대표 이미지">
+<div class="center"><details class="box goals"><summary class="box-head">이 장을 마치면</summary><div class="goals-body"><ul data-blk="chapters/ch07/ch07.tex#1">
+<li>프롬프트의 기본 구성 요소를 갖추어 쓸 수 있다.</li>
+<li>필요한 맥락을 골라 함께 전달할 수 있다.</li>
+<li>한 번에 되지 않는 작업을 여러 번의 대화로 완성할 수 있다.</li>
+<li>받은 결과를 검증하는 질문을 던질 수 있다.</li>
+<li>해법 명세서를 만들기 위한 프롬프트로 옮길 수 있다.</li>
+</ul>
+</div></details></div>
+<p data-blk="chapters/ch07/ch07.tex#2">여기까지 왔다면 무엇을 만들지가 종이 위에 정리되어 있을 것이다. 이제 그것을 인공지능에게 전달해야 한다. 같은 것을 원해도 어떻게 말하느냐에 따라 돌아오는 결과가 크게 달라지는데, 그 차이는 말재주가 아니라 <strong>무엇을 빠뜨리지 않고 적었는가</strong>에서 온다.</p>
+<p data-blk="chapters/ch07/ch07.tex#3">이 장은 프롬프트를 다룬다. 유행하는 요령을 모으는 대신, 2장에서 배운 성질에서 규칙을 끌어낸다. 그래야 도구가 바뀌어도 통한다. 마지막 절에서 6장의 해법 명세서를 실제 제작 프롬프트로 옮기면 8장으로 넘어갈 준비가 끝난다.</p>
+<h2 data-blk="chapters/ch07/sec01.tex#1" id="sec1">7.1 프롬프트의 뼈대</h2>
+<p data-blk="chapters/ch07/sec01.tex#2">같은 것을 원해도 어떻게 말하느냐에 따라 결과가 크게 달라진다. 그 차이는 말재주가 아니라 <strong>무엇을 빠뜨리지 않고 적었는가</strong>에서 온다. 이 절에서는 빠뜨리지 않기 위한 뼈대를 세운다.</p>
+<h3 data-blk="chapters/ch07/sec01.tex#3">다섯 요소</h3>
+<div class="table-wrap"><div class="table-caption">표 7.1: 프롬프트의 다섯 요소</div><table><tr><th> 요소</th><th> 무엇을 적는가</th><th> 빠지면</th></tr><tr><td>역할</td><td>어떤 입장에서 답할지</td><td>두루뭉술한 일반론이 온다</td></tr><tr><td>맥락</td><td>내 상황, 관련 자료</td><td>우리 사정과 무관한 답</td></tr><tr><td>과제</td><td>무엇을 해 달라는지</td><td>무엇을 할지 모른다</td></tr><tr><td>형식</td><td>어떤 모양으로 답할지</td><td>매번 다른 모양이라 비교가 안 된다</td></tr><tr><td>제약</td><td>지켜야 할 것, 하지 말 것</td><td>지어내고, 길어지고, 딴 길로 샌다</td></tr></table></div>
+<p data-blk="chapters/ch07/sec01.tex#4">다섯 개를 다 쓰지 않아도 된다. <em>이 문장 다듬어 줘</em> 같은 요청에 다섯 요소는 과하다. 다만 <strong>답이 마음에 안 들 때 무엇이 빠졌는지 확인하는 목록</strong>으로 쓰면 정확하다.</p>
+<h3 data-blk="chapters/ch07/sec01.tex#5">같은 요청, 두 가지 방식</h3>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt bad"><code><p>설문 결과 좀 분석해 줘.</p></code></pre></div>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a><a class="tool-open" href="https://aistudio.google.com" target="_blank" rel="noopener">AI Studio</a></div><pre class="prompt"><code><p><span class="ptag">[역할]</span> 너는 설문 자료를 정리하는 조수다. 해석과 제안은 하지 말고 자료에 있는 것만 다뤄 줘.</p><p><span class="ptag">[맥락]</span> 첨부한 파일은 학과 학생 212명이 응답한 설문이다. 각 행이 응답 한 건이고, 3번 열은 5점 척도, 8번 열은 자유 응답이다.</p><p><span class="ptag">[과제]</span> 다음 세 가지를 해 줘.<br>
+1. 3번 열의 응답 분포를 세어 준다<br>
+2. 8번 열의 자유 응답을 비슷한 것끼리 묶어 5–7개 묶음으로 분류하고, 각 묶음의 건수를 센다<br>
+3. 어느 묶음에도 들어가지 않는 응답은 따로 모아 보여 준다</p><p><span class="ptag">[형식]</span> 1–2번은 표로, 3번은 목록으로. 각 묶음에 <strong>실제 응답 두 개</strong>를 예로 붙여 줘.</p><p><span class="ptag">[제약]</span> 자료에 없는 것을 추측하지 말 것. 응답 문장을 고쳐 쓰지 말고 그대로 옮길 것. 건수의 합이 212가 맞는지 마지막에 확인해 줄 것.</p></code></pre><div class="listing-caption">프롬프트 7.1: 다섯 요소를 갖춘 요청</div></div>
+<p data-blk="chapters/ch07/sec01.tex#6">길어 보이지만 실제로는 2분이면 쓴다. 그리고 이 2분이 <em>다시 해 줘</em>를 다섯 번 반복하는 것보다 빠르다.</p>
+<h3 data-blk="chapters/ch07/sec01.tex#7">각 요소에 대한 요령</h3>
+<p data-blk="chapters/ch07/sec01.tex#8"><strong>역할.</strong> <em>너는 전문가다</em>는 별 효과가 없다. 대신 <strong>무엇을 하지 말지</strong>를 정하는 데 쓰면 유용하다. 위 예에서 <em>해석과 제안은 하지 말고</em>가 그것이다. 이렇게 하지 않으면 묻지도 않은 개선 방안이 딸려 온다.</p>
+<p><strong>맥락.</strong> 다음 절에서 따로 다룬다. 여기서는 한 가지만  —  <em>내가 누구이고 무엇을 하려는 중인지</em> 한 줄을 넣는 것만으로도 답이 달라진다.</p>
+<p data-blk="chapters/ch07/sec01.tex#10"><strong>과제.</strong> 번호를 붙여 나눈다. 하나의 긴 문장보다 번호 세 개가 낫다. 빠뜨리는 것도 줄고, 결과를 확인하기도 쉽다.</p>
+<p data-blk="chapters/ch07/sec01.tex#11"><strong>형식.</strong> 표인지 목록인지 문단인지. 길이는 어느 정도인지. 이것을 정하지 않으면 매번 다른 모양으로 답해서 앞뒤를 견줄 수 없다.</p>
+<p data-blk="chapters/ch07/sec01.tex#12"><strong>제약.</strong> 가장 자주 빠지고 가장 효과가 큰 요소다. 특히 다음 셋은 거의 항상 붙일 만하다.</p>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>- 자료에 없는 내용은 추측하지 말고 <strong>[자료에 없음]</strong>이라고 표시할 것<br>
+- 확실하지 않은 것은 <strong>[확인 필요]</strong>라고 표시할 것<br>
+- 내가 묻지 않은 제안은 하지 말 것</p></code></pre></div>
+<h3 data-blk="chapters/ch07/sec01.tex#13">순서와 위치</h3>
+<p data-blk="chapters/ch07/sec01.tex#14">요소의 순서는 크게 중요하지 않지만, 두 가지 경험칙이 있다.</p>
+<p data-blk="chapters/ch07/sec01.tex#15"><strong>긴 자료는 앞에, 지시는 뒤에.</strong> 자료를 먼저 붙이고 그다음에 무엇을 할지 적는 편이 대체로 낫다. 지시가 마지막에 있으면 잊히지 않는다.</p>
+<p data-blk="chapters/ch07/sec01.tex#16"><strong>가장 중요한 제약은 마지막에 한 번 더.</strong> 반드시 지켜야 할 것이 있으면 끝에 다시 적는다. 길고 복잡한 프롬프트일수록 효과가 있다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p>프롬프트를 잘 쓰는 것은 <strong>말을 잘하는 일이 아니라 요구사항을 빠짐없이 적는 일</strong>이다. 그래서 4–6장에서 명세서를 써 본 사람이 훨씬 유리하다  —  이미 적을 것이 정해져 있기 때문이다.</p></div>
+<h3 data-blk="chapters/ch07/sec01.tex#18">기록해 두기</h3>
+<p data-blk="chapters/ch07/sec01.tex#19">잘 통한 프롬프트는 <code>프롬프트기록.txt</code>에 저장한다. 그리고 다음번에는 처음부터 쓰지 말고 저장해 둔 것을 고쳐 쓴다. 한 학기가 지나면 자기 작업에 맞는 서식 대여섯 개가 생기는데, 그것이 이 수업에서 남는 실용적인 자산 중 하나다.</p>
+<h2 data-blk="chapters/ch07/sec02.tex#1" id="sec2">7.2 맥락을 주는 법</h2>
+<p data-blk="chapters/ch07/sec02.tex#2">2.4절에서 컨텍스트를 <em>모델의 책상 위</em>로 비유했다. 이 절에서는 그 책상에 무엇을 올릴지 정한다. 답의 질을 가장 크게 바꾸는 요소이면서, 가장 자주 소홀히 하는 부분이다.</p>
+<h3 data-blk="chapters/ch07/sec02.tex#3">네 가지 재료</h3>
+<p data-blk="chapters/ch07/sec02.tex#4"><strong>1. 자료.</strong> 표, 문서, 기록. 우리 사정을 알려 주는 가장 확실한 것이다. 파일로 올릴 수 있으면 올리고, 안 되면 붙여 넣는다.</p>
+<p data-blk="chapters/ch07/sec02.tex#5"><strong>2. 예시.</strong> <em>이런 식으로 해 줘</em>라며 완성된 예를 하나 보여 주는 것이다. 설명 열 줄보다 예시 하나가 정확할 때가 많다. 특히 형식을 맞춰야 할 때 효과가 크다.</p>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>아래 형식으로 정리해 줘. 예:</p><p>날짜  |  항목  |  금액  |  결제수단  |  이름<br>
+2026-03-04  |  간식  |  12000  |  카드  |  김OO</p><p>날짜는 반드시 이 형식으로, 금액은 쉼표 없이 숫자만.</p></code></pre></div>
+<p data-blk="chapters/ch07/sec02.tex#6"><strong>3. 지금까지의 결과물.</strong> 고쳐 나가는 중이라면 최신본을 붙인다. 특히 대화가 길어졌을 때는 반드시 다시 올린다(2.4절).</p>
+<p data-blk="chapters/ch07/sec02.tex#7"><strong>4. 결정과 그 이유.</strong> <em>로그인은 넣지 않기로 했다</em>, <em>금액은 원 단위로만 다룬다</em> 같은 것. 이것을 적어 두지 않으면 앞에서 뺀 기능이 슬그머니 되살아난다.</p>
+<h3 data-blk="chapters/ch07/sec02.tex#8">많이 준다고 좋아지지 않는다</h3>
+<p data-blk="chapters/ch07/sec02.tex#9">관련 있어 보이는 것을 전부 넣는 것은 흔한 실수다. 다음과 같은 일이 생긴다.</p>
+<ul data-blk="chapters/ch07/sec02.tex#10">
+<li>무엇이 중요한지 흐려져 초점이 어긋난다</li>
+<li>서로 어긋나는 자료를 함께 주면 섞인 답이 나온다 (옛 버전과 새 버전을 같이 준 경우)</li>
+<li>책상이 빨리 차서 앞의 지시가 밀려난다</li>
+<li>응답이 느려지고 무료 한도가 빨리 닳는다</li>
+</ul>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch07/sec02.tex#11"><strong>필요한 것만, 최신의 것만.</strong> 붙여 넣기 전에 한 번 훑어 관계없는 부분을 지우는 30초가 답의 질을 크게 바꾼다.</p>
+</div>
+<h3 data-blk="chapters/ch07/sec02.tex#12">자료를 넣기 전에 확인할 것</h3>
+<p data-blk="chapters/ch07/sec02.tex#13">여기서 반드시 짚고 갈 것이 있다. <strong>올린 자료는 서비스 제공자의 서버로 간다.</strong></p>
+<div class="box caution"><span class="chip">주의</span><p data-blk="chapters/ch07/sec02.tex#14">다음이 들어 있는 자료는 그대로 올리지 않는다.</p>
+<ul data-blk="chapters/ch07/sec02.tex#15">
+<li>이름·학번·연락처·주소 등 개인을 알아볼 수 있는 정보</li>
+<li>성적, 건강, 상담 기록처럼 민감한 내용</li>
+<li>학교나 기관의 내부 문서로 외부 공개가 제한된 것</li>
+<li>다른 사람이 나에게만 보여 준 자료</li>
+</ul>
+</div>
+<p data-blk="chapters/ch07/sec02.tex#16">올려야 한다면 먼저 손질한다.</p>
+<ul>
+<li><strong>이름을 바꾼다</strong>  —  김OO, A, 학생1 등으로</li>
+<li><strong>일부만 올린다</strong>  —  전체 대신 10행 정도로 형식만 보여 준다</li>
+<li><strong>비슷하게 지어낸다</strong>  —  실제 자료와 형식만 같은 가짜 자료를 만들어 쓴다</li>
+</ul>
+<p data-blk="chapters/ch07/sec02.tex#18">세 번째 방법이 의외로 유용하다. 형식과 처리 방법을 먼저 정한 뒤, 실제 자료는 내 손에서만 처리하는 것이다. 11장의 파이썬 작업에서 특히 그렇게 할 수 있다.</p>
+<h3 data-blk="chapters/ch07/sec02.tex#19">긴 자료를 다룰 때</h3>
+<p data-blk="chapters/ch07/sec02.tex#20">파일이 크면 통째로 넣는 것이 오히려 나쁘다. 세 가지 방법이 있다.</p>
+<p data-blk="chapters/ch07/sec02.tex#21"><strong>잘라서 준다.</strong> 필요한 부분만 뽑아 넣는다. 가장 확실하다.</p>
+<p data-blk="chapters/ch07/sec02.tex#22"><strong>요약을 먼저 만든다.</strong> 긴 문서라면 먼저 요약하게 하고, 그 요약을 가지고 작업한다. 다만 요약 과정에서 중요한 것이 빠질 수 있으니, <strong>무엇을 남길지 지정</strong>해 준다.</p>
+<p data-blk="chapters/ch07/sec02.tex#23"><strong>나눠서 여러 번 시킨다.</strong> 자료를 셋으로 나눠 각각 처리하고 마지막에 합친다. 나눌 때 겹치는 부분을 조금 두면 경계에서 놓치는 것이 줄어든다.</p>
+<h3 data-blk="chapters/ch07/sec02.tex#24">맥락이 잘 전달됐는지 확인하기</h3>
+<p data-blk="chapters/ch07/sec02.tex#25">작업을 시작하기 전에 한 번 되물어 보는 것이 좋다. 특히 긴 자료를 준 뒤에는 반드시.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a><a class="tool-open" href="https://aistudio.google.com" target="_blank" rel="noopener">AI Studio</a></div><pre class="prompt"><code><p>지금까지 내가 준 자료와 지시를 네가 어떻게 이해했는지 정리해 줘.</p><p>1. 내가 하려는 일<br>
+2. 네가 받은 자료가 무엇이고 어떤 구조인지<br>
+3. 내가 정한 제약과 하지 말라고 한 것<br>
+4. 네가 <strong>확신이 서지 않는</strong> 부분</p><p>아직 작업은 시작하지 말고 이것만 답해 줘.</p></code></pre><div class="listing-caption">프롬프트 7.2: 맥락 확인하기</div></div>
+<p data-blk="chapters/ch07/sec02.tex#26">4번이 핵심이다. 여기서 나온 것이 대개 실제로 문제가 되는 지점이다. 그것을 지금 정리해 주면 뒤에서 헤매지 않는다.</p>
+<p data-blk="chapters/ch07/sec02.tex#27">이 확인 한 번이 특히 중요한 곳은 8장 이후 무언가를 만들 때다. 만들기 시작하면 되돌리기 어렵기 때문이다.</p>
+<h2 data-blk="chapters/ch07/sec03.tex#1" id="sec3">7.3 한 번에 되지 않는다: 반복과 되먹임</h2>
+<p data-blk="chapters/ch07/sec03.tex#2">완벽한 프롬프트를 한 번에 쓰려는 시도는 대개 실패한다. 무엇을 원하는지 우리 자신도 결과를 보기 전에는 정확히 모르기 때문이다. 그래서 실제 작업은 <strong>짧게 여러 번 주고받는</strong> 모양이 된다.</p>
+<h3 data-blk="chapters/ch07/sec03.tex#3">첫 요청은 짧게</h3>
+<p data-blk="chapters/ch07/sec03.tex#4">역설처럼 들리지만, 첫 요청에 모든 것을 담으려 하지 않는 편이 낫다. 어차피 고칠 것이기 때문이다. 첫 결과를 빨리 받아 보고 <em>아, 이건 아니네</em>를 확인하는 편이 빠르다.</p>
+<p data-blk="chapters/ch07/sec03.tex#5">특히 무언가를 만들 때는 <strong>가장 단순한 형태부터</strong> 요청한다. 화면 하나, 기능 하나. 되는 것을 확인하고 하나씩 붙인다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch07/sec03.tex#6"><strong>동작하는 상태를 유지하며 키운다.</strong> 한꺼번에 다 만들어 놓고 안 되는 상태가 가장 고치기 어렵다. 어디가 문제인지 알 수 없기 때문이다.</p>
+</div>
+<h3 data-blk="chapters/ch07/sec03.tex#7">고쳐 달라고 말하는 법</h3>
+<p data-blk="chapters/ch07/sec03.tex#8"><em>다시 해 줘</em>는 최악의 지시다. 무엇이 잘못됐는지 알려 주지 않으므로 같은 것이 다시 나오거나, 엉뚱하게 달라진다.</p>
+<p data-blk="chapters/ch07/sec03.tex#9">좋은 수정 요청에는 셋이 있다.</p>
+<div class="table-wrap"><div class="table-caption">표 7.2: 수정 요청의 세 요소</div><table><tr><th></th><th> 무엇을</th><th> 예</th></tr><tr><td>어디가</td><td>구체적인 위치</td><td>합계가 표시되는 부분이</td></tr><tr><td>왜</td><td>무엇이 문제인지</td><td>금액이 커지면 자릿수를 세기 어렵다</td></tr><tr><td>어떻게</td><td>원하는 상태</td><td>세 자리마다 쉼표를 넣어 달라</td></tr></table></div>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt bad"><code><p>좀 더 보기 좋게 만들어 줘.</p></code></pre></div>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>합계가 표시되는 부분에서, 금액이 커지면 자릿수를 세기 어렵다. 세 자리마다 쉼표를 넣고, 글자 크기를 지금의 1.5배로 키워 줘. 나머지는 그대로 둬.</p></code></pre></div>
+<p data-blk="chapters/ch07/sec03.tex#10">마지막 문장 <em>나머지는 그대로 둬</em>를 습관처럼 붙이자. 이것이 없으면 부탁하지 않은 곳까지 바뀌어 있는 일이 자주 생긴다.</p>
+<h3 data-blk="chapters/ch07/sec03.tex#11">되돌아가는 문제</h3>
+<p data-blk="chapters/ch07/sec03.tex#12">여러 번 고치다 보면 앞에서 고친 것이 원래대로 돌아와 있는 일이 생긴다. 2.4절에서 본 대로 책상이 넘쳤기 때문이다. 대처법은 셋이다.</p>
+<p data-blk="chapters/ch07/sec03.tex#13"><strong>결정 목록을 만들어 다시 준다.</strong></p>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>지금까지 우리가 정한 것을 다시 정리한다. 앞으로 모든 수정에서 이것을 지켜 줘.</p><p>1. 금액은 세 자리마다 쉼표, 원 단위<br>
+2. 날짜는 YYYY-MM-DD 형식<br>
+3. 로그인은 넣지 않는다<br>
+4. 파일은 하나로 유지한다<br>
+5. 한국어로 표시한다</p></code></pre></div>
+<p data-blk="chapters/ch07/sec03.tex#14"><strong>최신 결과물을 다시 붙인다.</strong> 고쳐 온 것을 그대로 붙여 넣고 <em>이 상태에서 이어서</em>라고 한다.</p>
+<p data-blk="chapters/ch07/sec03.tex#15"><strong>새 대화로 옮긴다.</strong> 2.4절의 요약 프롬프트를 쓴다. 세 번을 고쳤는데도 나아지지 않으면 대개 이쪽이 빠르다.</p>
+<h3 data-blk="chapters/ch07/sec03.tex#16">언제 멈출 것인가</h3>
+<p data-blk="chapters/ch07/sec03.tex#17">고치기를 계속하면 어느 순간 나아지지 않고 이리저리 왔다 갔다 하기 시작한다. 그때가 멈출 때다.</p>
+<ul data-blk="chapters/ch07/sec03.tex#18">
+<li><strong>세 번 고쳤는데 같은 문제가 남아 있다</strong> → 지시가 문제일 가능성. 다시 설명하는 방식을 바꾼다</li>
+<li><strong>고칠 때마다 다른 곳이 망가진다</strong> → 새 대화로 옮기거나, 그 부분만 떼어 따로 다룬다</li>
+<li><strong>내가 뭘 원하는지 모르겠다</strong> → 6.4절로 돌아가 종이에 그려 본다</li>
+</ul>
+<p data-blk="chapters/ch07/sec03.tex#19">세 번째가 의외로 자주 있다. 계속 마음에 안 드는데 무엇이 마음에 안 드는지 말할 수 없다면, 그것은 프롬프트의 문제가 아니라 <strong>아직 정하지 못한 것</strong>이다.</p>
+<div class="box caution"><span class="chip">주의</span><p data-blk="chapters/ch07/sec03.tex#20">막혔을 때 <em>프롬프트를 더 길게 쓰면 되겠지</em>라고 생각하기 쉽다. 대개 반대다. 길어질수록 지시끼리 충돌하고 초점이 흐려진다. <strong>막히면 늘리지 말고 나눈다.</strong></p>
+</div>
+<h3 data-blk="chapters/ch07/sec03.tex#21">잘된 순간을 저장한다</h3>
+<p data-blk="chapters/ch07/sec03.tex#22">고치다 보면 중간에 <em>이 상태가 제일 나았는데</em> 싶은 순간이 온다. 그래서 규칙 하나를 권한다.</p>
+<p data-blk="chapters/ch07/sec03.tex#23"><strong>마음에 드는 상태가 나오면 그 자리에서 파일로 저장한다.</strong> 이름에 날짜나 번호를 붙여 둔다(<code>expense_v1.html</code>, <code>expense_v2.html</code>). 용량도 크지 않고, 되돌아갈 곳이 생긴다. 부록 C의 <em>어제 되던 것이 오늘 안 된다</em>가 이것으로 대부분 해결된다.</p>
+<h2 data-blk="chapters/ch07/sec04.tex#1" id="sec4">7.4 결과를 의심하는 습관</h2>
+<p data-blk="chapters/ch07/sec04.tex#2">2장에서 인공지능의 답이 <em>출발점이지 도착점이 아니라</em>고 했다. 이 절에서는 그 확인을 실제로 하는 방법을 다룬다.</p>
+<h3 data-blk="chapters/ch07/sec04.tex#3">네 가지 검증 질문</h3>
+<p data-blk="chapters/ch07/sec04.tex#4"><strong>1. 근거를 대게 한다.</strong></p>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>방금 답한 내용 중 각 주장이 어디에서 나온 것인지 표시해 줘. 내가 준 자료에서 나온 것, 검색해서 찾은 것(출처 주소 포함), 네가 원래 알고 있던 것을 구분해 줘.</p></code></pre></div>
+<p data-blk="chapters/ch07/sec04.tex#5">세 번째 분류에 속한 것들이 확인이 필요한 것들이다.</p>
+<p data-blk="chapters/ch07/sec04.tex#6"><strong>2. 반대 의견을 말하게 한다.</strong></p>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>방금 네가 내놓은 결론에 반대하는 입장에서 가장 강한 반박을 세 가지 해 봐. 그리고 그 반박이 타당한지 평가해 줘.</p></code></pre></div>
+<p data-blk="chapters/ch07/sec04.tex#7"><strong>3. 확신 정도를 밝히게 한다.</strong></p>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>답변의 각 항목에 대해 확신 정도를 [높음/보통/낮음]으로 표시해 줘. 낮음인 것은 무엇을 확인하면 되는지도 알려 줘.</p></code></pre></div>
+<p data-blk="chapters/ch07/sec04.tex#8"><strong>4. 다른 방법으로 다시 풀게 한다.</strong></p>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>같은 문제를 완전히 다른 방법으로 다시 풀어 봐. 그리고 두 결과가 같은지 비교해 줘. 다르다면 어느 쪽이 맞을지 판단해 줘.</p></code></pre></div>
+<p data-blk="chapters/ch07/sec04.tex#9">4번은 계산이나 자료 처리에서 특히 유용하다. 두 방법의 결과가 다르면 최소한 하나는 틀린 것이므로, 확인해야 할 지점이 분명해진다.</p>
+<h3 data-blk="chapters/ch07/sec04.tex#10">AI에게 검증시키는 것의 한계</h3>
+<p data-blk="chapters/ch07/sec04.tex#11">여기서 정직해야 한다. <strong>같은 모델은 같은 실수를 반복한다.</strong></p>
+<p data-blk="chapters/ch07/sec04.tex#12">자기가 만든 것을 자기가 검토하면, 만들 때 틀린 이유와 같은 이유로 검토에서도 놓친다. <em>다 확인했습니다</em>라는 답은 확인했다는 증거가 아니다.</p>
+<p data-blk="chapters/ch07/sec04.tex#13">그래서 다음 셋을 함께 쓴다.</p>
+<ul>
+<li><strong>다른 도구에 물어본다</strong>  —  다른 서비스에 결과를 주고 검토시킨다. 다른 실수를 하므로 서로의 오류가 드러난다</li>
+<li><strong>원자료로 대조한다</strong>  —  가장 확실하다. 몇 건이라도 손으로 확인한다</li>
+<li><strong>사람에게 보인다</strong>  —  그 분야를 아는 사람이면 몇 초 만에 이상한 곳을 짚는다</li>
+</ul>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch07/sec04.tex#15">검증의 최종 책임은 사람에게 있다. <strong>내가 이해하지 못한 결과물은 검증한 것이 아니다.</strong> 그래서 8.4절에서 만들어진 것을 읽는 최소한의 눈을 익힌다.</p>
+</div>
+<h3 data-blk="chapters/ch07/sec04.tex#16">되묻기의 함정</h3>
+<p data-blk="chapters/ch07/sec04.tex#17"><em>정말이야?</em>, <em>확실해?</em>라고 되묻는 것은 생각보다 효과가 적다. 모델은 사용자가 의심하면 답을 바꾸는 경향이 있어서, <strong>맞는 답도 함께 철회</strong>한다.</p>
+<div class="airesp err"><span class="chip">되묻기의 전형적인 결과</span><p>죄송합니다. 제가 잘못 말씀드렸습니다. 다시 확인해 보니 …
+<i class="resp-note">(원래 답이 맞았는데도 이렇게 물러서는 경우가 많다. 사과를 받으려고 물은 것이 아닌데 사과가 돌아온다.)</i></p></div>
+<p data-blk="chapters/ch07/sec04.tex#18">대신 이렇게 묻는다.</p>
+<ul data-blk="chapters/ch07/sec04.tex#19">
+<li><em>이걸 어떻게 확인할 수 있어?</em></li>
+<li><em>이 숫자는 어느 행에서 나온 거야?</em></li>
+<li><em>내가 준 자료의 몇 번째 줄을 근거로 한 거야?</em></li>
+</ul>
+<p data-blk="chapters/ch07/sec04.tex#20">답을 바꾸라고 압박하는 대신 <strong>확인할 수 있는 형태로 만들라고</strong> 요구하는 것이다.</p>
+<h3 data-blk="chapters/ch07/sec04.tex#21">무엇을 얼마나 확인할 것인가</h3>
+<p data-blk="chapters/ch07/sec04.tex#22">모든 것을 확인하면 시간이 남지 않는다. 2.3절의 표를 기준으로 힘을 배분한다.</p>
+<div class="table-wrap"><div class="table-caption">표 7.3: 확인의 강도</div><table><tr><th> 무엇을 받았나</th><th> 확인 강도</th><th> 어떻게</th></tr><tr><td>아이디어 목록</td><td>낮음</td><td>읽고 고른다</td></tr><tr><td>글의 초안</td><td>낮음</td><td>읽으며 고친다</td></tr><tr><td>자료 정리 결과</td><td><strong>높음</strong></td><td>몇 건을 원자료와 대조</td></tr><tr><td>계산 결과</td><td><strong>높음</strong></td><td>손으로 검산</td></tr><tr><td>사실·수치·인용</td><td><strong>아주 높음</strong></td><td>원출처에서 확인</td></tr><tr><td>코드</td><td>보통</td><td>돌려 보고, 결과를 검산</td></tr></table></div>
+<p data-blk="chapters/ch07/sec04.tex#23"><em>자료 정리 결과</em>가 높은 이유를 짚어 두자. 표가 깔끔하게 나오면 맞아 보인다. 그런데 정리 과정에서 몇 건이 조용히 빠지거나 잘못 분류되는 일이 흔하다. <strong>건수의 합이 원래 건수와 같은지</strong>만 확인해도 상당수가 걸러진다.</p>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>정리 전 건수와 정리 후 건수를 각각 알려 줘. 다르다면 어느 건이 왜 빠졌는지 전부 보여 줘.</p></code></pre></div>
+<p data-blk="chapters/ch07/sec04.tex#24">이 질문 하나를 습관으로 만들자. 11장에서 자료를 다룰 때 계속 쓰게 된다.</p>
+<h2 data-blk="chapters/ch07/sec05.tex#1" id="sec5">7.5 만들기 위한 대화: 명세서를 프롬프트로</h2>
+<p data-blk="chapters/ch07/sec05.tex#2">이제 6.5절의 명세서를 프롬프트로 옮긴다. 이 절의 결과물이 8장의 출발점이다.</p>
+<h3 data-blk="chapters/ch07/sec05.tex#3">명세서의 어느 칸이 어디로 가는가</h3>
+<div class="table-wrap"><div class="table-caption">표 7.4: 명세서 → 프롬프트</div><table><tr><th> 명세서의 칸</th><th> 프롬프트의</th><th> 비고</th></tr><tr><td>3. 누구를 위한 것인가</td><td>맥락</td><td>사용자를 알려 줘야 화면이 맞는다</td></tr><tr><td>4. 무엇을 만드는가</td><td>과제</td><td>한 문장 설명이 첫 줄이 된다</td></tr><tr><td>5. 화면과 흐름</td><td>과제</td><td>스케치를 이미지로 첨부해도 좋다</td></tr><tr><td>6. 기능(꼭)</td><td>과제</td><td>번호를 붙여 그대로 옮긴다</td></tr><tr><td>6. 이번엔 안 함</td><td>제약</td><td><strong>반드시 적는다</strong>. 안 적으면 딸려 온다</td></tr><tr><td>7. 자료</td><td>형식</td><td>열 이름과 형식을 지정한다</td></tr><tr><td>8. 성공 기준</td><td>제약</td><td>확인할 것으로 바꿔 적는다</td></tr></table></div>
+<p data-blk="chapters/ch07/sec05.tex#4"><em>이번엔 안 함</em>을 제약으로 옮기는 것을 잊지 말자. 적지 않으면 인공지능은 친절하게 로그인 화면과 그래프를 붙여 준다. 그러면 범위가 커지고, 6.3절에서 한 일이 무효가 된다.</p>
+<h3 data-blk="chapters/ch07/sec05.tex#5">완성된 제작 프롬프트</h3>
+<p data-blk="chapters/ch07/sec05.tex#6">명세서를 옮겨 쓴 결과다. 이 책에서 가장 긴 프롬프트이며, 8장에서 이것을 그대로 쓴다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a><a class="tool-open" href="https://aistudio.google.com" target="_blank" rel="noopener">AI Studio</a></div><pre class="prompt"><code><p><span class="ptag">[만들 것]</span> 웹 페이지 한 장을 만들어 줘. <strong>HTML 파일 하나</strong>로만 만들고, 외부 라이브러리나 인터넷 연결 없이 그 파일만으로 동작해야 해.</p><p><span class="ptag">[누가 쓰나]</span> 대학 동아리원 40명. 대부분 휴대전화로 열어 볼 것이고, 컴퓨터를 잘 다루지 않는 사람도 있다. 지출한 직후 그 자리에서 1분 안에 입력하는 것이 목표다.</p><p><span class="ptag">[화면과 흐름]</span> 페이지를 열면 입력 칸이 먼저 보이고, 그 아래에 지금까지 입력된 목록과 합계가 있다. 입력하고 [추가]를 누르면 목록에 쌓이고 합계가 다시 계산된다.</p><p><span class="ptag">[기능  —  이것만 만든다]</span>
+1. <strong>지출 입력</strong>: 날짜, 항목, 금액, 결제수단, 이름. 날짜는 날짜 고르기, 결제수단은 현금/카드/이체 중에서 고르기, 나머지는 직접 입력.<br>
+2. <strong>목록 보기</strong>: 입력된 것을 최근 것이 위로 오게 표로 보여 준다.<br>
+3. <strong>합계</strong>: 전체 합계와 항목별 합계를 목록 위에 크게 표시한다.<br>
+4. <strong>저장</strong>: 새로고침하거나 창을 닫았다 열어도 입력한 것이 남아 있어야 한다.<br>
+5. <strong>내보내기</strong>: [표로 내보내기] 단추를 누르면 CSV 파일로 내려받아진다.</p><p><span class="ptag">[자료 형식]</span> 각 지출은 다음 다섯 가지를 갖는다. 날짜(YYYY-MM-DD), 항목(글자), 금액(숫자, 원 단위 정수), 결제수단(현금/카드/이체), 이름(글자). 화면에 보일 때 금액은 세 자리마다 쉼표를 넣고, 내보내는 파일에는 쉼표 없이 숫자만 넣는다.</p><p><span class="ptag">[이번에는 넣지 말 것]</span> 로그인, 회원 구분, 사진 첨부, 예산 대비 집행률, 그래프, 통장 연동, 알림. <strong>요청하지 않은 기능을 넣지 말 것.</strong></p><p><span class="ptag">[지켜야 할 것]</span>
+- 화면의 모든 글자는 한국어<br>
+- 아무것도 입력되지 않았을 때는 <em>아직 입력된 지출이 없습니다</em>라고 안내<br>
+- 금액이 비었거나 숫자가 아니면 추가하지 말고 그 자리에 안내를 보여 줄 것<br>
+- 휴대전화 화면에서도 가로 스크롤 없이 보일 것<br>
+- 글자 크기는 작지 않게. 단추는 손가락으로 누를 수 있는 크기로</p><p><span class="ptag">[만든 뒤]</span> 다음을 알려 줘.<br>
+1. 이 파일을 어디에 저장하고 어떻게 열어 보는지<br>
+2. 내가 나중에 고칠 만한 부분이 코드의 어디쯤에 있는지 (항목 이름, 색, 안내 문구)<br>
+3. 네가 <strong>임의로 정한 것</strong>이 있다면 무엇인지</p></code></pre><div class="listing-caption">프롬프트 7.3: 제작 프롬프트  —  동아리 지출 기록 도구</div></div>
+<h3 data-blk="chapters/ch07/sec05.tex#7">이 프롬프트에서 눈여겨볼 곳</h3>
+<p data-blk="chapters/ch07/sec05.tex#8"><strong><em>HTML 파일 하나</em>로 못 박은 것.</strong> 이렇게 하지 않으면 파일이 여러 개로 나뉘어 나오고, 초심자에게는 그 순간부터 관리가 어려워진다. 10장의 배포도 파일 하나일 때 가장 쉽다.</p>
+<p data-blk="chapters/ch07/sec05.tex#9"><strong><em>요청하지 않은 기능을 넣지 말 것</em>.</strong> 한 줄이지만 효과가 크다.</p>
+<p data-blk="chapters/ch07/sec05.tex#10"><strong><em>네가 임의로 정한 것</em>을 묻는 것.</strong> 프롬프트에 적지 않은 것은 인공지능이 알아서 정한다. 색, 배치, 세부 동작 등이다. 무엇을 정했는지 알아야 그중 마음에 안 드는 것을 고칠 수 있다.</p>
+<p data-blk="chapters/ch07/sec05.tex#11"><strong>성공 기준이 제약으로 바뀐 것.</strong> <em>1분 안에 입력</em>이라는 목표가 <em>휴대전화에서 가로 스크롤 없이</em>, <em>단추는 손가락 크기로</em>가 되었다. 목표를 그대로 적으면 인공지능이 무엇을 해야 할지 모른다. <strong>목표를 눈에 보이는 조건으로 바꿔 적는 것</strong>이 요령이다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch07/sec05.tex#12">좋은 제작 프롬프트는 <strong>만들 것을 설명한 글</strong>이 아니라 <strong>확인할 수 있는 조건의 목록</strong>이다. 각 줄을 읽고 <em>됐는지 안 됐는지</em> 판정할 수 있으면 잘 쓴 것이다.</p>
+</div>
+<h3 data-blk="chapters/ch07/sec05.tex#13">다음 장에서 할 일</h3>
+<p data-blk="chapters/ch07/sec05.tex#14">이 프롬프트를 8장에서 실제로 넣는다. 그리고 돌아온 결과를 저장하고, 열어 보고, 한 글자씩 고쳐 본다.</p>
+<p data-blk="chapters/ch07/sec05.tex#15">그 전에 마지막으로 확인하자. 여러분의 프롬프트에 다음이 모두 있는가?</p>
+<ul class="checklist">
+<li>무엇을 만드는지 한 문장</li>
+<li>누가 어떤 상황에서 쓰는지</li>
+<li>기능 목록 (다섯 개 이하, 번호를 붙여)</li>
+<li><strong>넣지 말 것</strong> 목록</li>
+<li>자료의 형식 (열 이름과 형식)</li>
+<li>확인할 수 있는 조건들</li>
+<li>만든 뒤 알려 달라고 할 것</li>
+</ul>
+<p><span id="labs"></span><div class="box lab"><div class="lab-title">이 장의 실습</div><h3 data-blk="chapters/ch07/labs.tex#1">실습 7-1. 나쁜 프롬프트 고쳐 쓰기</h3>
+<p data-blk="chapters/ch07/labs.tex#2">다음 세 프롬프트를 7.1절의 다섯 요소를 갖추어 고쳐 쓴다. 그리고 고치기 전과 후의 결과를 모두 받아 비교한다.</p>
+<ol data-blk="chapters/ch07/labs.tex#3">
+<li><em>우리 학과 소개 글 좀 써 줘</em></li>
+<li><em>이 자료 정리해 줘</em> (자기 자료 하나를 첨부)</li>
+<li><em>조별 과제 아이디어 알려 줘</em></li>
+</ol>
+<p data-blk="chapters/ch07/labs.tex#4">각각에 대해 <strong>어느 요소를 추가했을 때 가장 크게 좋아졌는지</strong> 적는다.</p>
+<h3 data-blk="chapters/ch07/labs.tex#5">실습 7-2. 맥락 실험</h3>
+<p data-blk="chapters/ch07/labs.tex#6">같은 과제를 세 가지 조건으로 시켜 결과를 비교한다.</p>
+<ol>
+<li>맥락 없이  —  과제만 적는다</li>
+<li>맥락 조금  —  내가 누구이고 무엇을 하려는지 두세 줄</li>
+<li>맥락 많이  —  관련 자료를 전부 붙여 넣는다</li>
+</ol>
+<p>세 결과를 나란히 놓고 비교한다. <strong>3번이 2번보다 나빴다면</strong> 왜 그랬는지 분석한다  —  이것이 이 실습의 핵심이다.</p>
+<h3 data-blk="chapters/ch07/labs.tex#9">실습 7-3. 세 번 고쳐 받기</h3>
+<p data-blk="chapters/ch07/labs.tex#10">아무 결과물이나 하나 만들게 한 뒤, 7.3절의 세 요소(어디가·왜·어떻게)를 갖춘 수정 요청을 <strong>세 번 연속</strong> 한다.</p>
+<div class="settingbox-wrap"><div class="setting-label">수정 기록</div><pre class="settingbox"><code>1차 요청 :
+   무엇이 달라졌나 :
+   부탁하지 않았는데 바뀐 곳 :
+
+2차 요청 :
+   ...
+
+3차 요청 :
+   ...
+
+앞에서 고친 것이 되돌아온 적이 있는가 :</code></pre></div>
+<h3 data-blk="chapters/ch07/labs.tex#11">실습 7-4. 검증 질문 던지기</h3>
+<p data-blk="chapters/ch07/labs.tex#12">자기 전공과 관련된 질문을 하나 하고, 받은 답에 7.4절의 네 가지 검증 질문을 모두 던진다.</p>
+<ol data-blk="chapters/ch07/labs.tex#13">
+<li>네 질문 중 <strong>실제로 오류를 찾아낸</strong> 것은 어느 것인가?</li>
+<li>아무것도 못 찾았다면, 원자료와 대조해 확인한다</li>
+<li><em>정말이야?</em>라고 되물었을 때와 <em>어떻게 확인할 수 있어?</em>라고 물었을 때의 반응 차이를 기록한다</li>
+</ol>
+<h3 data-blk="chapters/ch07/labs.tex#14">실습 7-5. 나의 제작 프롬프트</h3>
+<p data-blk="chapters/ch07/labs.tex#15"><strong>이 실습이 이 장에서 가장 중요하다.</strong> 6.5절의 해법 명세서를 7.5절의 형식으로 옮긴다.</p>
+<ul class="checklist">
+<li>무엇을 만드는지 한 문장</li>
+<li>누가 어떤 상황에서 쓰는지</li>
+<li>기능 목록 (다섯 개 이하, 번호를 붙여)</li>
+<li><strong>넣지 말 것</strong> 목록 (명세서의 <em>이번엔 안 함</em>)</li>
+<li>자료의 형식 (열 이름과 형식)</li>
+<li>확인할 수 있는 조건들 (성공 기준을 눈에 보이는 조건으로 바꿔)</li>
+<li>만든 뒤 알려 달라고 할 것 세 가지</li>
+</ul>
+<p data-blk="chapters/ch07/labs.tex#17">완성한 프롬프트를 <code>프롬프트기록.txt</code>와 <code>02_해법/</code> 폴더에 저장한다. <strong>8장 첫 실습에서 이것을 그대로 쓴다.</strong></p>
+<h3 data-blk="chapters/ch07/labs.tex#18">실습 7-6. 프롬프트 미리 점검받기</h3>
+<p data-blk="chapters/ch07/labs.tex#19">만든 제작 프롬프트를 실행하기 <em>전에</em> 점검받는다.</p>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>아래는 내가 무언가를 만들어 달라고 요청하려는 프롬프트다. 아직 만들지 말고, 이 프롬프트만 검토해 줘.</p><p>1. 내가 지정하지 않아서 <strong>네가 임의로 정하게 될</strong> 것들을 모두 나열해 줘<br>
+2. 서로 모순되거나 애매한 지시가 있는가<br>
+3. 이대로 만들면 내가 실망할 가능성이 높은 부분은 어디인가</p></code></pre></div>
+<p data-blk="chapters/ch07/labs.tex#20">1번의 목록을 보고, 그중 <strong>내가 정해야 할 것</strong>을 골라 프롬프트에 추가한다. 나머지는 그대로 맡긴다.</p>
+</div></p>
+<details class="box summary" id="summary"><summary class="box-head">7장 요약</summary><div class="sum-body"><ul>
+<li>프롬프트의 다섯 요소  —  <strong>역할·맥락·과제·형식·제약</strong>. 매번 다 쓸 필요는 없지만, 답이 마음에 안 들 때 <strong>무엇이 빠졌는지 확인하는 목록</strong>으로 쓰면 정확하다.</li>
+<li><em>역할</em>은 <em>전문가처럼 답하라</em>가 아니라 <strong>무엇을 하지 말지</strong>를 정하는 데 쓸 때 효과가 크다. <em>제약</em>은 가장 자주 빠지고 가장 효과가 큰 요소다.</li>
+<li>거의 항상 붙일 만한 제약 셋  —  자료에 없으면 표시할 것, 확실하지 않으면 표시할 것, 묻지 않은 제안은 하지 말 것.</li>
+<li>맥락의 재료는 넷이다. 자료, 예시, 지금까지의 결과물, <strong>결정과 그 이유</strong>. 마지막 것을 적어 두지 않으면 앞에서 뺀 기능이 슬그머니 되살아난다.</li>
+<li><strong>많이 준다고 좋아지지 않는다.</strong> 필요한 것만, 최신의 것만. 어긋나는 자료를 함께 주면 섞인 답이 나온다.</li>
+<li>올린 자료는 서비스 제공자의 서버로 간다. <strong>개인정보·민감 정보·내부 문서는 그대로 올리지 않는다.</strong> 이름을 바꾸거나, 일부만 올리거나, 형식만 같은 가짜 자료를 만들어 쓴다.</li>
+<li>완벽한 첫 프롬프트를 노리지 않는다. <strong>동작하는 상태를 유지하며 키운다</strong>  —  한꺼번에 다 만들어 놓고 안 되는 상태가 가장 고치기 어렵다.</li>
+<li>수정 요청에는 셋이 있어야 한다  —  <strong>어디가, 왜, 어떻게</strong>. 그리고 <em>나머지는 그대로 둬</em>를 습관처럼 붙인다.</li>
+<li>고쳐도 나아지지 않으면 <strong>늘리지 말고 나눈다</strong>. 계속 마음에 안 드는데 무엇이 안 드는지 말할 수 없다면, 그것은 프롬프트 문제가 아니라 아직 정하지 못한 것이다.</li>
+<li>검증 질문 넷  —  근거를 대게 하기, 반대 의견을 말하게 하기, 확신 정도를 밝히게 하기, 다른 방법으로 다시 풀게 하기.</li>
+<li><strong>같은 모델은 같은 실수를 반복한다.</strong> 자기가 만든 것을 자기가 검토하면 만들 때 틀린 이유로 검토에서도 놓친다. 다른 도구·원자료·사람을 함께 쓴다.</li>
+<li><em>정말이야?</em>라고 되물으면 맞는 답도 함께 철회한다. 대신 <em>어떻게 확인할 수 있어?</em>, <em>몇 번째 줄을 근거로 한 거야?</em>라고 묻는다.</li>
+<li>자료 정리 결과는 확인 강도가 높다. <strong>정리 전후의 건수가 같은지</strong>만 확인해도 상당수가 걸러진다.</li>
+<li>좋은 제작 프롬프트는 설명한 글이 아니라 <strong>확인할 수 있는 조건의 목록</strong>이다. 명세서의 <em>이번엔 안 함</em>을 제약으로 반드시 옮기고, <em>네가 임의로 정한 것</em>을 알려 달라고 요구한다.</li>
+</ul></div></details>
+<details class="box exercise" id="exercises"><summary class="box-head">7장 연습문제</summary><div class="ex-body"><ol>
+<li class="ex-item" data-ex="1"><span class="diff"><span class="d1">★</span></span>  프롬프트의 다섯 요소를 쓰고, 각 요소가 빠졌을 때 어떤 답이 돌아오는지 한 줄씩 설명하시오.</li>
+<li class="ex-item" data-ex="2"><span class="diff"><span class="d1">★</span></span>  다음 수정 요청 중 <strong>제대로 된</strong> 것을 고르고, 나머지를 고쳐 쓰시오.
+<ol type="a">
+<li>다시 해 줘</li>
+<li>좀 더 세련되게</li>
+<li>목록에서 날짜 열이 맨 오른쪽에 있어 찾기 어렵다. 맨 왼쪽으로 옮기고 나머지는 그대로 둬</li>
+<li>이건 아닌 것 같은데 다른 방법으로</li>
+</ol></li>
+<li class="ex-item" data-ex="3"><span class="diff"><span class="d1">★</span></span>  자료를 인공지능에게 올리기 전에 확인해야 할 것 네 가지를 쓰고, 각각에 해당하는 예를 자기 전공에서 하나씩 드시오.</li>
+<li class="ex-item" data-ex="4"><span class="diff"><span class="d2">★★</span></span>  다음 프롬프트에서 <strong>인공지능이 임의로 정하게 될 것</strong>을 다섯 가지 이상 찾아내시오.
+<blockquote class="plainquote"><p><em>동아리 회원 명단을 관리하는 웹 페이지를 만들어 줘. 이름과 연락처를 넣을 수 있고 목록으로 볼 수 있으면 돼.</em></p></blockquote></li>
+<li class="ex-item" data-ex="5"><span class="diff"><span class="d2">★★</span></span>  7.4절에서 <em>같은 모델은 같은 실수를 반복한다</em>고 했다. 이 말의 의미를 설명하고, 그럼에도 AI에게 검증을 시키는 것이 유용한 경우는 언제인지 쓰시오.</li>
+<li class="ex-item" data-ex="6"><span class="diff"><span class="d2">★★</span></span>  다음 성공 기준을 <strong>제작 프롬프트에 넣을 수 있는 조건</strong>으로 바꾸어 쓰시오(7.5절 참조).
+<ol type="a">
+<li>어르신도 쉽게 쓸 수 있어야 한다</li>
+<li>입력이 빨라야 한다</li>
+<li>실수로 잘못 입력하는 일이 없어야 한다</li>
+</ol></li>
+<li class="ex-item" data-ex="7"><span class="diff"><span class="d3">★★★</span></span>  실습 7-5에서 만든 제작 프롬프트를 <strong>서로 다른 두 도구</strong>에 넣고 결과를 비교하시오. 보고에는 (1) 프롬프트 전문, (2) 두 결과의 화면, (3) 기능상 차이, (4) 각 도구가 <em>임의로 정한 것</em>의 목록, (5) 그 차이가 프롬프트의 어느 부분이 부족해서 생겼는지에 대한 분석이 포함되어야 한다.</li>
+<li class="ex-item" data-ex="8"><span class="diff"><span class="d3">★★★</span></span>  자기 전공에서 반복적으로 쓰게 될 작업 하나를 골라, <strong>재사용 가능한 프롬프트 서식</strong>을 만드시오. 서식에는 매번 바뀌는 부분을 <span class="pblank"></span>로 비워 두고, 어떤 내용을 채워야 하는지 주석을 달 것. 그리고 그 서식을 서로 다른 세 가지 입력으로 실제 사용해 보고, 서식을 어떻게 개선했는지 기록하시오.</li>
+</ol></div></details>
+<div class="pager-row"><a class="pager prev" href="ch06.html">&larr; 6장</a><a class="pager next" href="ch08.html">8장 &rarr;</a></div>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-glsl.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="book.js"></script>
+</body>
+</html>

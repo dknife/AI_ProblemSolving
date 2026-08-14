@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1장 문제를 푸는 방식이 달라졌다 — AI 문제해결</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="book.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+<script>MathJax = {tex: {inlineMath: [['\\(', '\\)']]}, svg: {fontCache: 'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="home" href="../index.html">&#8962; 홈</a>
+  <span class="book-title">AI 문제해결</span>
+  <span class="ch-indicator">1장 문제를 푸는 방식이 달라졌다</span>
+  <button class="nav-toggle" onclick="document.body.classList.toggle('nav-open')">목차</button>
+</header>
+<div class="layout">
+<nav class="sidebar">
+<div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
+<div class="nav-ch current"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 문제를 푸는 방식이 달라졌다</a>
+<div class="nav-secs"><a class="nav-sec" href="ch01.html#sec1">1.1 전공은 달라도 문제는 닮았다</a><a class="nav-sec" href="ch01.html#sec2">1.2 코드를 몰라도 만들 수 있게 된 이유</a><a class="nav-sec" href="ch01.html#sec3">1.3 그래서 무엇이 더 어려워졌는가</a><a class="nav-sec" href="ch01.html#sec4">1.4 이 수업에서 만들 것</a><a class="nav-sec" href="ch01.html#sec5">1.5 첫 걸음: 계정과 첫 결과물</a><a class="nav-sec" href="ch01.html#labs">실습을 통한 개념 정리</a><a class="nav-sec" href="ch01.html#summary">1장 요약</a><a class="nav-sec" href="ch01.html#exercises">연습문제</a></div>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> AI는 어떻게 답을 만드는가</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 에이전트: 스스로 일하는 AI</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 문제를 찾아내고 정의한다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> 문제를 쪼개고 구조를 본다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch06.html"><span class="nav-num">06</span> 해법을 찾고 고른다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> AI와 제대로 대화한다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 만들기 위한 준비</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 첫 번째 웹 서비스 만들기</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch10.html"><span class="nav-num">10</span> 세상에 내놓기</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch11.html"><span class="nav-num">11</span> 파이썬 앱으로 반복을 없앤다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch12.html"><span class="nav-num">12</span> 고치고 다듬는다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch13.html"><span class="nav-num">13</span> 나의 문제 해결 프로젝트</a>
+</div>
+<div class="nav-part">부록</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">A</span> 무료 AI 도구와 에이전트 총정리</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxb.html"><span class="nav-num">B</span> 문제 해결 프롬프트 사전</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxc.html"><span class="nav-num">C</span> 자주 만나는 오류와 해결</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxd.html"><span class="nav-num">D</span> 배포와 공유 안내</a>
+</div>
+<div class="nav-part">부가 자료</div>
+<div class="nav-ch"><a class="nav-ch-link" href="references.html"><span class="nav-num">&#128218;</span> 참고문헌</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">&#128295;</span> 도구 비교표</a></div>
+</nav>
+<main class="content">
+<div class="chapter-head">
+  <div class="ch-label">CHAPTER 01</div>
+  <h1>문제를 푸는 방식이 달라졌다</h1>
+</div>
+<img class="chapter-hero" src="img/ch01/ch01_img01.jpg" alt="1장 대표 이미지">
+<div class="center"><details class="box goals"><summary class="box-head">이 장을 마치면</summary><div class="goals-body"><ul data-blk="chapters/ch01/ch01.tex#1">
+<li>전공과 상관없이 문제 해결 역량이 왜 지금 중요해졌는지 설명할 수 있다.</li>
+<li>코드를 몰라도 필요한 도구를 만들 수 있게 된 배경을 말할 수 있다.</li>
+<li>AI 에이전트가 잘하는 일과 사람이 쥐고 있어야 할 일을 구분할 수 있다.</li>
+<li>이 수업에서 만들 두 가지 결과물(웹 서비스와 파이썬 앱)이 무엇인지 안다.</li>
+<li>무료 AI 도구의 계정을 만들고 첫 결과물을 얻을 수 있다.</li>
+</ul>
+</div></details></div>
+<p data-blk="chapters/ch01/ch01.tex#2">회비 장부를 매달 손으로 옮겨 적는 학생이 있다. 실습 일정을 확인하려고 세 곳의 공지를 번갈아 열어 보는 학생이 있다. 설문 응답 이백 건을 하나씩 읽어 표로 만드는 학생이 있다. 이런 일은 어느 전공에나 있고, 대부분 <em>원래 그런 것</em>으로 여겨져 왔다. 프로그램을 만들 줄 아는 사람만이 이 반복을 없앨 수 있었기 때문이다.</p>
+<p data-blk="chapters/ch01/ch01.tex#3">그런데 최근 몇 년 사이 그 전제가 무너졌다. 사람의 말을 알아듣고 스스로 코드를 쓰고 고쳐 가며 일을 끝내는 도구가 등장했기 때문이다. 이 장에서는 무엇이 달라졌는지, 그리고 그 변화가 왜 <strong>프로그래밍보다 문제 정의를 더 중요하게</strong> 만들었는지를 살펴본다. 마지막 절에서는 앞으로 한 학기 동안 쓸 도구의 계정을 만들고 첫 결과물을 얻어 본다.</p>
+<h2 data-blk="chapters/ch01/sec01.tex#1" id="sec1">1.1 전공은 달라도 문제는 닮았다</h2>
+<p data-blk="chapters/ch01/sec01.tex#2">이 수업에는 여러 전공의 학생이 앉아 있다. 서로 배우는 것도 다르고 졸업 후 하게 될 일도 다르다. 그런데 각자 겪는 불편을 하나씩 꺼내 놓으면 이상한 일이 벌어진다. 내용은 전혀 다른데 <strong>생김새가 닮아 있다</strong>.</p>
+<h3 data-blk="chapters/ch01/sec01.tex#3">여덟 사람의 불편</h3>
+<p data-blk="chapters/ch01/sec01.tex#4">실제로 수업 첫 시간에 나온 이야기들이다.</p>
+<ul>
+<li><strong>경영학과 A</strong>  동아리 회계를 맡았다. 매달 영수증 예순 장을 표에 옮겨 적고, 항목별로 더하고, 남은 돈을 계산해 단체 대화방에 올린다. 세 시간쯤 걸린다.</li>
+<li><strong>간호학과 B</strong>  실습 일정이 학과 공지, 병원 안내문, 조교의 문자 세 곳에 나뉘어 있다. 바뀔 때마다 셋을 다시 대조한다. 한 번 놓쳐서 병원에 헛걸음한 적이 있다.</li>
+<li><strong>국어국문학과 C</strong>  소설 습작을 합평받는데, 문장이 길고 늘어진다는 지적을 매번 듣는다. 어느 문장이 문제인지는 알려 주지 않는다.</li>
+<li><strong>사회복지학과 D</strong>  봉사활동 확인서를 스무 장 넘게 모았다. 기관별로 시간을 합산해 제출해야 하는데 양식이 제각각이다.</li>
+<li><strong>체육학과 E</strong>  교내 리그의 대진과 승패를 종이에 적어 관리한다. 순위표를 다시 그릴 때마다 계산이 어긋난다.</li>
+<li><strong>시각디자인학과 F</strong>  포트폴리오에 넣을 이미지 백 장의 크기를 같게 맞춰야 한다. 편집 프로그램에서 하나씩 연다.</li>
+<li><strong>식품영양학과 G</strong>  실험 결과를 엑셀에 입력하는데, 같은 계산을 조원 넷이 각자 하다 보니 값이 서로 다르게 나온다.</li>
+<li><strong>행정학과 H</strong>  학회 설문 이백 건을 받았다. 객관식은 자동 집계되는데 주관식 답변은 눈으로 읽어 분류해야 한다.</li>
+</ul>
+<p data-blk="chapters/ch01/sec01.tex#6">여덟 사람의 전공은 겹치지 않는다. 그런데 이 목록을 조금 떨어져서 보면 같은 것이 네 개쯤 반복된다.</p>
+<h3 data-blk="chapters/ch01/sec01.tex#7">반복되는 네 가지 모양</h3>
+<p data-blk="chapters/ch01/sec01.tex#8"><strong>첫째, 같은 일을 되풀이한다.</strong> A의 정산, F의 이미지 크기 조정, G의 계산이 그렇다. 한 번은 어렵지 않다. 매달, 매주, 백 번 반복되기 때문에 부담이 된다. 이런 일은 <em>규칙이 분명하고 판단이 필요 없다</em>는 공통점이 있다. 그래서 기계에게 넘기기 가장 쉽다.</p>
+<p data-blk="chapters/ch01/sec01.tex#9"><strong>둘째, 자료가 여러 곳에 흩어져 있다.</strong> B의 실습 일정, D의 확인서가 그렇다. 정보 자체는 어디엔가 다 있다. 다만 한자리에 모여 있지 않아서 사람이 매번 돌아다니며 대조해야 한다. 이런 일은 <em>모으는 일</em>과 <em>맞추는 일</em>로 나뉜다.</p>
+<p data-blk="chapters/ch01/sec01.tex#10"><strong>셋째, 눈으로 봐야만 넘어간다.</strong> C의 문장 길이, H의 주관식 분류가 그렇다. 사람이 읽고 판단해야 한다고 여겨 온 일이다. 그런데 조금 들여다보면 그 안에 기계가 할 수 있는 부분이 섞여 있다. 문장 길이를 재는 것은 기계가, 그 문장이 정말 늘어지는지 판단하는 것은 사람이 한다.</p>
+<p data-blk="chapters/ch01/sec01.tex#11"><strong>넷째, 아는 사람만 안다.</strong> E의 리그 운영이 그렇다. 절차가 누군가의 머릿속에만 있어서, 그 사람이 졸업하면 처음부터 다시 만들어야 한다. 이런 일은 <em>눈에 보이게 만들어 두는 것</em>만으로도 절반이 해결된다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch01/sec01.tex#12">전공은 달라도 문제의 <strong>모양</strong>은 몇 가지로 수렴한다. 반복, 흩어짐, 눈으로 확인해야 함, 아는 사람만 앎. 자기 전공의 불편이 이 넷 중 어디에 속하는지 알면, 이미 해법의 절반은 보인 셈이다.</p>
+</div>
+<h3 data-blk="chapters/ch01/sec01.tex#13">같은 틀에 넣어 보기</h3>
+<p data-blk="chapters/ch01/sec01.tex#14">이 책에서는 문제를 소개할 때마다 같은 틀을 쓴다. 지금은 형식만 눈에 익혀 두면 된다. 이 틀을 제대로 채우는 방법은 4장에서 배운다.</p>
+<div class="problemcard"><div class="problem-head"><span class="chip">문제</span><span class="problem-name">매달 세 시간 걸리는 동아리 회비 정산</span></div><div class="problem-who">겪는 사람: 회계 담당 학생 / 영향받는 사람: 동아리원 40명</div><p>회계 담당자는 매달 영수증 60건을 손으로 표에 옮겨 적고 항목별로 합산한다. 한 번에 약 3시간이 걸리며, 옮겨 적는 과정에서 매달 두세 건의 오타가 생긴다. 정산 결과가 늦어지면 다음 달 회비 납부 안내도 함께 늦어진다.</p></div>
+<div class="problemcard"><div class="problem-head"><span class="chip">문제</span><span class="problem-name">세 곳에 흩어진 실습 일정</span></div><div class="problem-who">겪는 사람: 실습 나가는 학생 30명 / 영향받는 사람: 조교, 병원 담당자</div><p>실습 일정이 학과 공지·병원 안내문·조교 문자 세 곳에 나뉘어 있고, 변경 사항이 어느 한 곳에만 반영되는 일이 잦다. 학생은 매번 세 곳을 대조해야 하며, 지난 학기에는 두 명이 잘못된 날짜에 병원을 찾았다.</p></div>
+<p data-blk="chapters/ch01/sec01.tex#15">두 카드를 나란히 놓고 보면 무엇이 좋은 문제 진술인지 짐작이 갈 것이다. <em>힘들다</em>, <em>불편하다</em> 같은 말이 없다. 대신 <strong>누가</strong>, <strong>얼마나 자주</strong>, <strong>얼마나</strong>, <strong>그래서 무엇이 나빠지는지</strong>가 적혀 있다. 이렇게 적힌 문제는 해결되었는지 아닌지를 나중에 확인할 수 있다.</p>
+<h3 data-blk="chapters/ch01/sec01.tex#16">왜 지금까지 방치되었나</h3>
+<p data-blk="chapters/ch01/sec01.tex#17">이 문제들이 어려워서 남아 있는 것은 아니다. 컴퓨터를 다룰 줄 아는 사람이라면 A의 정산 도구는 반나절이면 만든다. 그런데도 남아 있는 이유는 단순하다. <strong>겪는 사람과 만들 수 있는 사람이 서로 다른 사람</strong>이었기 때문이다.</p>
+<p data-blk="chapters/ch01/sec01.tex#18">겪는 사람은 만들 줄 몰랐고, 만들 줄 아는 사람은 그 불편을 겪지 않아서 그것이 문제인지도 몰랐다. 컴퓨터공학과 학생에게 <em>간호 실습 일정 관리 도구를 만들어 달라</em>고 부탁해 본 사람은 알 것이다. 무엇을 만들어야 하는지 설명하는 데만 한나절이 걸리고, 결국 나온 것은 원하던 것과 다르다.</p>
+<p data-blk="chapters/ch01/sec01.tex#19">이 수업이 바꾸려는 것이 바로 이 지점이다. 겪는 사람이 직접 만들 수 있게 되면, 설명하는 비용이 사라진다. 무엇이 진짜 불편한지는 겪는 사람이 가장 잘 알기 때문이다.</p>
+<div class="box note"><span class="chip">잠깐</span><span class="box-title">당신의 전공 지식은 손해가 아니다</span><p data-blk="chapters/ch01/sec01.tex#20">프로그래밍을 배우지 않은 것이 이 수업에서 불리하게 작용하지 않는다. 오히려 반대다. 좋은 결과물은 <em>그 분야를 아는 사람</em>만 만들 수 있다. 간호 실습의 흐름을 아는 사람, 회계 처리의 관행을 아는 사람, 설문 응답을 읽어 본 사람이 만든 도구가 쓸모 있다. 이 수업이 채워 주는 것은 그 지식을 형태로 옮기는 방법뿐이다.</p>
+</div>
+<p data-blk="chapters/ch01/sec01.tex#21">지금부터 두 절에 걸쳐, 왜 지금 이것이 가능해졌는지 그리고 그 대신 무엇이 어려워졌는지를 살펴본다.</p>
+<h2 data-blk="chapters/ch01/sec02.tex#1" id="sec2">1.2 코드를 몰라도 만들 수 있게 된 이유</h2>
+<p data-blk="chapters/ch01/sec02.tex#2">무언가를 만들려면 문법을 배워야 한다는 것은 오랫동안 당연한 전제였다. 이 전제가 최근 몇 년 사이에 흔들렸다. 갑자기 무너진 것은 아니고, 삼십 년에 걸쳐 조금씩 낮아지던 문턱이 최근에 한 번 크게 내려앉은 것에 가깝다.</p>
+<h3 data-blk="chapters/ch01/sec02.tex#3">문턱이 낮아져 온 과정</h3>
+<div class="table-wrap"><div class="table-caption">표 1.1: 만드는 일의 문턱이 낮아져 온 과정</div><table><tr><th> 단계</th><th> 사람이 하던 일이</th><th> 기계로 넘어갔다</th></tr><tr><td>표 계산 프로그램의 수식</td><td>종이에 적어 계산하기</td><td>값이 바뀌면 자동으로 다시 계산</td></tr><tr><td>매크로·자동 기록</td><td>같은 조작 반복하기</td><td>한 번 시켜 두면 되풀이</td></tr><tr><td>노코드 도구</td><td>화면과 흐름을 코드로 짜기</td><td>끌어다 놓아 조립</td></tr><tr><td>생성형 AI</td><td>코드를 한 줄씩 쓰기</td><td>말로 설명하면 초안이 나옴</td></tr><tr><td>AI 에이전트</td><td>초안을 받아 고치고 돌려 보기</td><td>만들고 실행하고 고치는 것까지</td></tr></table></div>
+<p data-blk="chapters/ch01/sec02.tex#4">표 <span class="xref" data-ref="tab:threshold">1.1</span>의 각 단계에서 사라진 것은 <em>일</em> 자체가 아니라 <strong>그 일을 하기 위해 미리 배워야 했던 것</strong>이다. 표 계산 프로그램이 나왔을 때도 회계 담당자가 사라지지 않았다. 대신 주판을 배우지 않아도 회계를 볼 수 있게 되었다.</p>
+<p data-blk="chapters/ch01/sec02.tex#5">마지막 두 단계가 이 책이 서 있는 자리다. 그 둘의 차이를 조금 더 들여다보자.</p>
+<h3 data-blk="chapters/ch01/sec02.tex#6">초안을 주는 단계와 끝까지 해내는 단계</h3>
+<p data-blk="chapters/ch01/sec02.tex#7">생성형 AI에게 <em>회비 정산 표를 만드는 코드를 써 달라</em>고 하면 코드가 돌아온다. 그런데 그 코드를 받아서 어디에 저장하고 어떻게 실행하는지는 여전히 사람 몫이었다. 실행했더니 오류가 나면 오류 메시지를 다시 복사해 붙여 넣고, 고쳐진 코드를 다시 저장하고 다시 실행했다. 이 왕복이 초심자에게는 가장 큰 장벽이었다.</p>
+<p data-blk="chapters/ch01/sec02.tex#8"><strong class="term-ko">에이전트</strong><sup class="term">agent</sup>는 그 왕복을 스스로 한다. 파일을 만들고, 실행해 보고, 오류가 나면 읽고, 고쳐서 다시 실행한다. 사람은 <em>무엇을 원하는지</em> 말하고 <em>결과가 맞는지</em> 확인한다. 중간 과정이 사라진 것이 아니라 사람의 손을 떠난 것이다.</p>
+<p data-blk="chapters/ch01/sec02.tex#9">이 차이가 이 수업을 가능하게 했다. 에이전트가 없던 시절이라면 <em>코드를 몰라도 만들 수 있다</em>는 말은 절반쯤 거짓말이었을 것이다. 에이전트가 무엇이고 어디까지 하는지는 3장에서 자세히 본다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch01/sec02.tex#10">달라진 것은 <em>코드가 필요 없어졌다</em>가 아니다. 코드는 여전히 필요하고 여전히 만들어진다. 달라진 것은 <strong>그 코드를 사람이 쓰지 않아도 된다</strong>는 점이다. 대신 사람은 무엇을 만들지 정하고, 만들어진 것이 맞는지 확인하는 일을 맡는다.</p>
+</div>
+<h3 data-blk="chapters/ch01/sec02.tex#11">그러면 어디까지 되는가</h3>
+<p data-blk="chapters/ch01/sec02.tex#12">여기서 정직해야 한다. 이 책이 <em>무엇이든 만들 수 있다</em>고 말한다면 여러분은 첫 번째 벽에서 이 책을 덮게 될 것이다. 실제로 어디까지 되는지 미리 그려 두자.</p>
+<p data-blk="chapters/ch01/sec02.tex#13"><strong>잘 되는 것.</strong> 혼자 또는 소수가 쓰는 도구, 화면이 몇 개 되지 않는 것, 규칙이 분명한 계산, 자료를 읽어 정리하는 일, 이미 있는 것을 조금 바꾸는 일. 이 수업에서 만들 것은 전부 여기에 속한다.</p>
+<p data-blk="chapters/ch01/sec02.tex#14"><strong>어렵지만 되는 것.</strong> 여러 사람이 동시에 쓰는 것, 자료를 서버에 오래 보관해야 하는 것, 로그인이 필요한 것, 외부 서비스와 연결해야 하는 것. 되기는 하지만 신경 쓸 것이 늘고, 무료 도구의 한도에 걸리기 쉽다.</p>
+<p data-blk="chapters/ch01/sec02.tex#15"><strong>아직 어려운 것.</strong> 돈이 오가는 것, 개인정보를 다루는 것, 잘못되면 사람이 다치는 것, 수천 명이 쓰는 것. 이런 것은 만들 수 있다 해도 <em>만들어도 되는가</em>가 다른 문제다. 이 수업에서는 다루지 않는다.</p>
+<div class="box caution"><span class="chip">주의</span><p data-blk="chapters/ch01/sec02.tex#16"><em>만들 수 있다</em>와 <em>내놓아도 된다</em>는 다른 말이다. 실제 사람의 개인정보나 돈이 걸린 것은, 동작한다는 이유만으로 공개해서는 안 된다. 이 기준은 10.4절과 12.5절에서 다시 다룬다.</p>
+</div>
+<h3 data-blk="chapters/ch01/sec02.tex#17">도구는 계속 바뀐다</h3>
+<p data-blk="chapters/ch01/sec02.tex#18">이 책이 소개하는 서비스의 이름은 몇 년 안에 상당수가 바뀔 것이다. 어떤 것은 없어지고, 어떤 것은 무료였다가 유료가 되고, 화면은 거의 확실히 달라진다. 그래서 이 책은 버튼 위치를 외우게 하지 않는다.</p>
+<p data-blk="chapters/ch01/sec02.tex#19">바뀌지 않는 것은 따로 있다. 문제를 정의하는 방법, 큰 것을 쪼개는 방법, 원하는 것을 정확히 말하는 방법, 결과를 의심하는 습관. 도구가 열 번 바뀌어도 이것들은 그대로 통한다. 이 책이 절반을 문제에 쓰는 이유가 여기에 있다.</p>
+<div class="box note"><span class="chip">잠깐</span><span class="box-title">이 책의 유통기한</span><p data-blk="chapters/ch01/sec02.tex#20">구체적인 요금과 한도는 부록 A에 모아 두었다. 본문에 흩어 놓지 않은 이유는, 그 숫자만 낡아도 책 전체가 낡아 보이기 때문이다. 부록 A는 학기가 시작될 때 한 번 확인하고 고쳐 쓰기를 권한다. 담당 교수가 그 작업을 수업 첫 주에 함께 하는 것도 좋은 실습이 된다.</p>
+</div>
+<h2 data-blk="chapters/ch01/sec03.tex#1" id="sec3">1.3 그래서 무엇이 더 어려워졌는가</h2>
+<p data-blk="chapters/ch01/sec03.tex#2">만드는 비용이 내려가면 좋기만 할 것 같지만, 그렇지 않다. 어떤 일이 쉬워지면 그 일이 병목이던 자리에서 다른 것이 병목이 된다. 지금 그 자리에 올라온 것이 <strong>무엇을 만들지 정하는 일</strong>이다.</p>
+<h3 data-blk="chapters/ch01/sec03.tex#3">잘 만들었는데 아무도 쓰지 않는다</h3>
+<p data-blk="chapters/ch01/sec03.tex#4">지난 학기에 있었던 일이다. 한 학생이 학과 행사 참여를 독려하는 도구를 만들었다. 행사 목록을 보여 주고, 관심 있는 행사에 알림을 설정하고, 참여 여부를 표시할 수 있었다. 화면도 깔끔했고 잘 동작했다. 그런데 한 달 뒤 사용자는 만든 사람 한 명이었다.</p>
+<p data-blk="chapters/ch01/sec03.tex#5">무엇이 잘못되었을까. 만드는 과정에는 잘못이 없었다. 문제는 그 앞에 있었다. 이 학생이 붙든 문제는 <em>학과 행사 참여율이 낮다</em>였다. 그런데 실제로 물어보니, 학생들이 행사에 안 오는 이유는 행사를 몰라서가 아니었다. 시간이 겹치거나, 가 봐야 별 재미가 없다고 생각해서였다. <strong>알림을 만들어 해결한 것은 아무도 겪고 있지 않던 문제</strong>였다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p>잘못 정의된 문제를 잘 해결하면, 잘 만들어진 쓸모없는 것이 나온다. 그리고 만들기가 쉬워질수록 이런 일이 더 자주 일어난다  —  확인해 볼 여유도 없이 이미 만들어져 버리기 때문이다.</p></div>
+<h3 data-blk="chapters/ch01/sec03.tex#7">빨리 만들어지는 것의 함정</h3>
+<p data-blk="chapters/ch01/sec03.tex#8">예전에는 만드는 데 두 달이 걸렸다. 두 달 동안 사람들은 싫어도 생각하게 된다. <em>이걸 정말 만들어야 하나</em>, <em>이 방향이 맞나</em>. 시간이 강제로 검토를 시켰던 셈이다.</p>
+<p data-blk="chapters/ch01/sec03.tex#9">지금은 삼십 분이면 무언가가 나온다. 그래서 생각할 시간이 사라졌다. 첫 아이디어가 곧 결과물이 되고, 그것이 틀렸다는 것은 다 만들고 남에게 보여 준 다음에야 알게 된다.</p>
+<p data-blk="chapters/ch01/sec03.tex#10">그래서 이 책은 순서를 뒤집는다. 8장 전까지는 아무것도 만들지 않는다. 대신 문제를 정의하고(4장), 쪼개고(5장), 해법을 고르고(6장), 그것을 정확히 말하는 법(7장)을 익힌다. 만들기가 삼십 분이면 되기 때문에, 오히려 그 앞에 시간을 쓸 수 있게 된 것이다.</p>
+<h3 data-blk="chapters/ch01/sec03.tex#11">쉬워진 것과 어려워진 것</h3>
+<div class="table-wrap"><div class="table-caption">표 1.2: 병목이 옮겨 간 자리</div><table><tr><th></th><th> 예전</th><th> 지금</th></tr><tr><td>가장 오래 걸리는 일</td><td>코드를 쓰고 오류를 잡는 일</td><td>무엇을 만들지 정하는 일</td></tr><tr><td>가장 흔한 실패</td><td>완성하지 못함</td><td>완성했는데 안 쓰임</td></tr><tr><td>필요한 배경 지식</td><td>문법·도구 사용법</td><td>그 분야에 대한 이해</td></tr><tr><td>결정적인 능력</td><td>구현력</td><td>문제를 보는 눈, 결과를 의심하는 힘</td></tr></table></div>
+<p>표 <span class="xref" data-ref="tab:bottleneck">1.2</span>의 오른쪽 열은 전부 <strong>프로그래밍과 무관한 능력</strong>이다. 그리고 이 능력들은 여러분이 이미 자기 전공에서 훈련하고 있는 것과 크게 다르지 않다. 무엇이 문제인지 밝히고, 근거를 모으고, 대안을 견주고, 결과를 비판적으로 읽는 일  —  어느 전공에서든 하는 일이다. 이 수업은 그 훈련을 다른 재료에 적용해 보는 자리에 가깝다.</p>
+<h3 data-blk="chapters/ch01/sec03.tex#13">그래도 만들지 않으면 아무 일도 일어나지 않는다</h3>
+<p data-blk="chapters/ch01/sec03.tex#14">반대 방향의 함정도 있다. 문제 정의만 계속 다듬으면서 아무것도 만들지 않는 경우다. 종이 위의 계획은 아무리 훌륭해도 틀렸는지 맞았는지 알 수 없다. 만들어서 남에게 써 보게 해야 그때 비로소 알게 된다.</p>
+<p data-blk="chapters/ch01/sec03.tex#15">그래서 이 책은 두 구간을 한 짝으로 묶는다. 앞의 일곱 장은 무엇을 만들지 정하기 위한 것이고, 뒤의 여섯 장은 만들어서 그 정의가 맞았는지 확인하기 위한 것이다. 어느 한쪽만으로는 아무것도 남지 않는다.</p>
+<p><blockquote class="bodyquote"><p data-blk="chapters/ch01/sec03.tex#16">문제를 정의하는 데 시간을 쓰는 이유는 생각을 오래 하기 위해서가 아니라, 만든 것이 쓸모 있게 하기 위해서다.</p>
+</blockquote></p>
+<h2 data-blk="chapters/ch01/sec04.tex#1" id="sec4">1.4 이 수업에서 만들 것</h2>
+<p data-blk="chapters/ch01/sec04.tex#2">이 수업이 끝나면 여러분의 손에는 두 가지가 남는다. 하나는 <strong>주소를 보내면 남이 열어 볼 수 있는 웹 서비스</strong>이고, 다른 하나는 <strong>반복 작업을 대신 해 주는 파이썬 앱</strong>이다. 그리고 그 둘을 왜 그렇게 만들었는지 설명하는 기록이 함께 남는다.</p>
+<h3 data-blk="chapters/ch01/sec04.tex#3">웹 서비스: 남이 쓰게 하는 것</h3>
+<p data-blk="chapters/ch01/sec04.tex#4">주소만 있으면 누구나 브라우저로 열 수 있는 화면이다. 설치가 필요 없고, 휴대전화에서도 열리고, 링크 하나로 공유된다.</p>
+<p data-blk="chapters/ch01/sec04.tex#5">이런 형태가 맞는 문제는 <em>다른 사람이 써야 하는</em> 문제다. 앞 절의 동아리 회비 정산이라면, 회계 담당자 혼자 쓰는 계산기가 아니라 동아리원 각자가 지출을 입력하는 화면이 될 수 있다. 실습 일정 문제라면 학생들이 한 곳에서 확인하는 페이지가 된다.</p>
+<p>이 책에서는 9장에서 만들고 10장에서 공개한다. 파일 한 개로 시작해 끝까지 한 개로 간다  —  복잡하게 만들지 않아야 끝까지 갈 수 있다.</p>
+<h3 data-blk="chapters/ch01/sec04.tex#7">파이썬 앱: 내 일을 대신 시키는 것</h3>
+<p data-blk="chapters/ch01/sec04.tex#8">반대로 남에게 보여 줄 필요가 없고, 대신 <em>많은 양</em>이나 <em>복잡한 처리</em>를 다뤄야 하는 일이 있다. 파일 백 개의 이름을 한 번에 바꾸거나, 수천 줄짜리 표를 정리하거나, 매주 같은 보고서를 만들어 내는 일이 그렇다.</p>
+<p>이런 일에는 파이썬이 맞는다. 화면이 필요 없으면 화면 없이 쓰고, 남에게 줘야 할 때만 간단한 화면을 붙인다. 11장에서 다룬다. 설치는 하지 않는다  —  브라우저에서 실행되는 무료 환경을 쓴다.</p>
+<h3 data-blk="chapters/ch01/sec04.tex#10">어느 쪽으로 갈지 고르는 기준</h3>
+<div class="table-wrap"><div class="table-caption">표 1.3: 웹 서비스와 파이썬 앱  —  어느 쪽이 맞는가</div><table><tr><th> 이런 문제라면</th><th> 웹 서비스</th><th> 파이썬 앱</th></tr><tr><td>누가 쓰는가</td><td>여러 사람</td><td>주로 나</td></tr><tr><td>얼마나 자주</td><td>그때그때 열어서</td><td>정해진 때에 한 번에</td></tr><tr><td>다루는 양</td><td>한 번에 조금</td><td>한 번에 아주 많이</td></tr><tr><td>설치</td><td>필요 없음</td><td>실행 환경이 필요</td></tr><tr><td>전형적인 예</td><td>입력·조회·집계 화면</td><td>파일 일괄 처리, 자료 정리</td></tr><tr><td>이 책의 장</td><td>9–10장</td><td>11장</td></tr></table></div>
+<p>표 <span class="xref" data-ref="tab:web-vs-python">1.3</span>이 절대적인 기준은 아니다. 실제로는 둘을 함께 쓰는 경우가 많다  —  파이썬으로 자료를 정리해 두고 웹 화면으로 보여 주는 식이다. 다만 처음 만드는 것이라면 <strong>한쪽만 골라 끝까지 가는 편</strong>이 낫다. 8.1절에서 기술적인 차이를 조금 더 보고, 11.1절에서 다시 한 번 확인한다.</p>
+<h3 data-blk="chapters/ch01/sec04.tex#12">한 학기의 지도</h3>
+<div class="table-wrap"><div class="table-caption">표 1.4: 한 학기 동안 손에 남는 것</div><table><tr><th> 장</th><th> 하는 일</th><th> 남는 것</th></tr><tr><td>1–3</td><td>도구를 이해하고 준비한다</td><td>계정, 불편 목록 열 가지</td></tr><tr><td>4–5</td><td>문제를 정의하고 쪼갠다</td><td>문제 진술문, 로직 트리</td></tr><tr><td>6–7</td><td>해법을 고르고 말로 옮긴다</td><td>해법 명세서, 제작 프롬프트</td></tr><tr><td>8주차</td><td> 중간 발표</td><td>문제 정의와 해법 기획안</td></tr><tr><td>8–10</td><td>웹으로 만들어 공개한다</td><td>동작하는 주소, 사용자 반응</td></tr><tr><td>11</td><td>파이썬으로 반복을 없앤다</td><td>자동화 스크립트</td></tr><tr><td>12</td><td>고치고 검증한다</td><td>오류 기록, 확인 항목</td></tr><tr><td>13</td><td>한 편을 완성한다</td><td>프로젝트 결과물</td></tr><tr><td>15주차</td><td> 기말 발표</td><td>시연과 포트폴리오</td></tr></table></div>
+<p data-blk="chapters/ch01/sec04.tex#13">표 <span class="xref" data-ref="tab:deliverables">1.4</span>에서 눈여겨볼 것은 <strong>오른쪽 열이 매주 쌓인다</strong>는 점이다. 마지막에 몰아서 만드는 구조가 아니다. 4장에서 쓴 문제 진술문이 6장의 명세서가 되고, 그것이 7장의 프롬프트가 되고, 그 프롬프트가 8장에서 첫 결과물이 된다. 중간에 한 주를 건너뛰면 다음 주에 쓸 재료가 없다.</p>
+<div class="box caution"><span class="chip">주의</span><p data-blk="chapters/ch01/sec04.tex#14">기말 프로젝트의 주제는 <strong>4장에서 정한 문제</strong>에서 나온다. 그러니 4장의 실습을 성의 없이 하면 13장에서 주제가 없어 헤매게 된다. 실습 1-3에서 적을 <em>내 전공의 불편 열 가지</em>가 그 출발점이다.</p>
+</div>
+<h2 data-blk="chapters/ch01/sec05.tex#1" id="sec5">1.5 첫 걸음: 계정과 첫 결과물</h2>
+<p data-blk="chapters/ch01/sec05.tex#2">읽는 것만으로는 늘지 않는다. 이 절에서는 도구를 준비하고, 오늘 안에 눈에 보이는 결과물 하나를 만들어 본다. 완성도는 중요하지 않다. <em>내가 말한 대로 무언가가 만들어진다</em>는 감각을 얻는 것이 목적이다.</p>
+<h3 data-blk="chapters/ch01/sec05.tex#3">준비할 것</h3>
+<p data-blk="chapters/ch01/sec05.tex#4">두 가지 계정이면 시작할 수 있다.</p>
+<ol>
+<li><strong>대화형 AI</strong> 하나  —  묻고 답하며 생각을 정리하는 데 쓴다. 4–7장에서 계속 쓴다.</li>
+<li><strong>만들어 주는 도구</strong> 하나  —  말로 설명하면 화면이 나오는 도구다. 8장부터 본격적으로 쓴다.</li>
+</ol>
+<p data-blk="chapters/ch01/sec05.tex#6">요즘은 하나의 서비스가 둘을 겸하는 경우가 많다. 그래도 <strong>두 곳 이상에 계정을 만들어 두기를 권한다</strong>. 한 곳의 무료 한도가 떨어졌을 때 과제를 못 하는 상황을 피할 수 있고, 같은 질문을 두 곳에 넣어 답을 비교하는 습관이 2장에서 배울 내용의 밑거름이 된다.</p>
+<div class="toolcard"><div class="tool-head"><span class="tool-name">대화형 AI</span><span class="price free">무료</span> <span class="price freemium">부분 무료</span></div><div class="tool-addr">chatgpt.com / claude.ai / gemini.google.com</div><p>문장으로 묻고 문장으로 답을 받는 도구다. 셋 다 무료로 쓸 수 있으며, 무료 사용량을 다 쓰면 성능이 낮은 모델로 내려가거나 일정 시간 기다려야 한다. 이 책의 실습은 무료 범위 안에서 모두 가능하다. 어느 것이 낫다고 말하지 않는다  —  직접 써 보고 자기에게 맞는 것을 고르면 된다.</p></div>
+<div class="toolcard"><div class="tool-head"><span class="tool-name">화면까지 만들어 주는 도구</span><span class="price free">무료</span> <span class="price freemium">부분 무료</span></div><div class="tool-addr">claude.ai / aistudio.google.com / chatgpt.com</div><p>설명을 넣으면 코드뿐 아니라 <strong>동작하는 화면</strong>까지 그 자리에서 보여 주는 기능이다. 서비스마다 이름이 다르지만(어떤 곳은 <em>아티팩트</em>, 어떤 곳은 <em>캔버스</em>, 어떤 곳은 <em>빌드</em>라고 부른다), 하는 일은 같다. 이름보다 <em>화면이 옆에 뜨는가</em>로 알아보면 된다.</p></div>
+<div class="box caution"><span class="chip">주의</span><p data-blk="chapters/ch01/sec05.tex#7">가입할 때 <strong>학교 계정보다 개인 계정</strong>을 쓰기를 권한다. 졸업하면 학교 계정이 닫혀 그동안 만든 것에 접근하지 못하게 되는 일이 흔하다. 부록 D에서 다시 다룬다.</p>
+</div>
+<h3 data-blk="chapters/ch01/sec05.tex#8">첫 번째 대화</h3>
+<p data-blk="chapters/ch01/sec05.tex#9">먼저 대화형 AI에 다음을 넣어 보자. 대괄호 안은 자기 전공으로 바꾼다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a><a class="tool-open" href="https://aistudio.google.com" target="_blank" rel="noopener">AI Studio</a></div><pre class="prompt"><code><p>나는 <span class="pblank"></span>학과 2학년 학생이다.</p><p>내 전공에서 학생이나 조교가 <strong>매주 또는 매달 반복해서</strong> 손으로 하는 일을 다섯 가지 알려 줘. 각각에 대해 (1) 무엇을 하는 일인지, (2) 한 번에 얼마나 걸릴 것 같은지, (3) 그 일이 왜 아직 자동화되지 않았을지를 한 줄씩 적어 줘.</p><p>내가 모르는 것을 지어내지 말고, 확실하지 않은 것은 확실하지 않다고 표시해 줘.</p></code></pre><div class="listing-caption">프롬프트 1.1: 자기 전공에서 반복되는 일을 찾는 첫 대화</div></div>
+<p data-blk="chapters/ch01/sec05.tex#10">돌아온 답은 대체로 그럴듯하다. 그런데 자기 전공 이야기이므로 <strong>틀린 부분이 눈에 보일 것</strong>이다. 그 감각이 중요하다. 다음 두 가지를 확인해 보자.</p>
+<div class="airesp"><span class="chip">AI 응답</span><p><b class="resp-h">1. 실습 기록지 작성</b>
+학생이 매주 실습 내용을 기록지에 손으로 옮겨 적습니다. 한 번에 30–40분 정도 걸립니다. 기관마다 양식이 달라 통일된 도구를 만들기 어려웠을 것으로 보입니다.</p>
+<p><b class="resp-h">2. 출석 확인 취합</b>
+<i class="resp-note">(이하 생략  —  실제 응답은 다섯 항목이 이어진다.)</i></p></div>
+<p data-blk="chapters/ch01/sec05.tex#11">읽으면서 두 가지를 표시해 보자. <strong>맞는 것</strong>에는 동그라미를, <strong>내 학교 사정과 다른 것</strong>에는 가위표를 친다. 가위표가 하나도 없다면 질문이 너무 두루뭉술했을 가능성이 높다. 학년, 학교 규모, 구체적인 과목명을 넣어 다시 물어보자.</p>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch01/sec05.tex#12">인공지능의 답은 <em>그 분야에서 흔히 있는 이야기</em>에 가깝다. 우리 학교, 우리 학과의 실제 사정은 모른다. 그래서 <strong>맞는지 판정하는 일은 언제나 여러분 몫</strong>이다. 이 원칙은 책 끝까지 바뀌지 않는다.</p>
+</div>
+<h3 data-blk="chapters/ch01/sec05.tex#13">첫 번째 결과물</h3>
+<p data-blk="chapters/ch01/sec05.tex#14">이제 화면까지 만들어 주는 도구에 다음을 넣어 보자. 5분 안에 무언가가 뜨는 것이 목표다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a><a class="tool-open" href="https://aistudio.google.com" target="_blank" rel="noopener">AI Studio</a></div><pre class="prompt"><code><p>간단한 웹 페이지를 하나 만들어 줘.</p><p>과목 이름과 학점, 성적(A+, A0, B+ …)을 입력하는 칸이 있고, [추가] 단추를 누르면 아래 목록에 쌓인다. 목록 아래에는 전체 평점이 자동으로 계산되어 크게 표시된다.</p><p>한국 대학의 4.5 만점 기준을 쓰고, 입력이 하나도 없을 때는 <em>과목을 추가해 보세요</em>라고 안내해 줘. 한국어로 만들어 줘.</p></code></pre><div class="listing-caption">프롬프트 1.2: 5분 만에 만드는 첫 화면</div></div>
+<p data-blk="chapters/ch01/sec05.tex#15">잠시 기다리면 화면이 나타난다. 숫자를 넣어 보고, 지워 보고, 아무것도 넣지 않은 채로 두어 보자. 대체로 잘 동작하지만 어딘가 마음에 안 드는 부분이 있을 것이다. 그러면 이어서 이렇게 말한다.</p>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>평점이 3.5 이상이면 초록색, 3.0 미만이면 붉은색으로 표시해 줘. 그리고 과목을 잘못 넣었을 때 지울 수 있게 각 줄에 [삭제] 단추를 넣어 줘.</p></code></pre></div>
+<p>화면이 다시 만들어진다. <strong>이것이 이 수업에서 계속 반복할 순환이다</strong>  —  말하고, 보고, 고쳐 달라고 말하고, 다시 본다. 8장에서 이 과정에 이름을 붙이고 제대로 다룬다.</p>
+<div class="box note"><span class="chip">잠깐</span><span class="box-title">잘 안 되더라도</span><p data-blk="chapters/ch01/sec05.tex#17">첫 시도에서 화면이 안 뜨거나 엉뚱한 것이 나올 수 있다. 정상이다. 프롬프트를 조금 더 구체적으로 고쳐 다시 시도해 보고, 그래도 안 되면 다른 도구에서 같은 프롬프트를 넣어 보자. 도구마다 잘하는 것이 다르다. 이 단계에서 막히는 것은 실력 문제가 아니라 <em>아직 요령을 안 배운</em> 문제다.</p>
+</div>
+<h3 data-blk="chapters/ch01/sec05.tex#18">기록하는 습관</h3>
+<p data-blk="chapters/ch01/sec05.tex#19">마지막으로 하나만 부탁한다. <strong>잘 된 프롬프트는 그 자리에서 복사해 파일에 남겨 두자.</strong> 나중에 같은 결과를 다시 만들려 할 때, 그때 무엇을 썼는지는 절대 기억나지 않는다.</p>
+<p data-blk="chapters/ch01/sec05.tex#20">이번 학기 내내 쓸 파일 두 개를 지금 만들어 두면 된다. 하나는 프롬프트를 모으는 파일, 다른 하나는 불편을 적어 두는 파일이다. 실습 1-1에서 폴더와 함께 만든다.</p>
+<p><span id="labs"></span><div class="box lab"><div class="lab-title">이 장의 실습</div><h3 data-blk="chapters/ch01/labs.tex#1">실습 1-1. 작업 폴더와 기록 파일 만들기</h3>
+<p data-blk="chapters/ch01/labs.tex#2">한 학기 동안 쓸 폴더를 만든다. 구조는 다음을 권한다.</p>
+<div class="settingbox-wrap"><div class="setting-label">내 컴퓨터의 작업 폴더</div><pre class="settingbox"><code>AI문제해결/
+  01_문제/          문제 진술문, 조사 자료, 로직 트리
+  02_해법/          대안 비교표, 해법 명세서, 화면 스케치
+  03_웹/            9~10장에서 만든 파일
+  04_파이썬/        11장에서 만든 파일
+  05_프로젝트/      기말 프로젝트 작업물
+  문제기록.txt      불편을 발견할 때마다 그 자리에서 적는 파일
+  프롬프트기록.txt  잘 통한 프롬프트를 붙여넣는 파일</code></pre></div>
+<p>두 개의 <code>.txt</code> 파일이 이 목록에서 가장 중요하다. <strong>문제기록</strong>은 4장의 재료가 되고 결국 기말 프로젝트의 주제가 된다. <strong>프롬프트기록</strong>은 같은 결과를 다시 만들어야 할 때 여러분을 구해 준다. 둘 다 형식 없이 그냥 붙여넣기만 하면 된다  —  정리하려 들면 안 쓰게 된다.</p>
+<h3 data-blk="chapters/ch01/labs.tex#4">실습 1-2. 계정 만들기와 무료 한도 확인</h3>
+<p data-blk="chapters/ch01/labs.tex#5">1.5절에서 소개한 두 종류의 도구 중 각각 하나 이상 계정을 만든다. 그런 다음 각 서비스에서 다음을 직접 확인해 표로 적는다.</p>
+<ul data-blk="chapters/ch01/labs.tex#6">
+<li>무료로 하루(또는 한 달)에 몇 번 쓸 수 있는가?</li>
+<li>한도를 다 쓰면 어떻게 되는가? (못 쓰게 되는가, 느려지는가, 성능이 낮은 모델로 바뀌는가)</li>
+<li>한도는 언제 회복되는가?</li>
+<li>화면까지 만들어 주는 기능이 무료 계정에서도 되는가?</li>
+</ul>
+<p data-blk="chapters/ch01/labs.tex#7">이 표는 부록 A에 옮겨 적어 두고, 학기 중에 바뀌면 갱신한다. 한도를 모르고 쓰다가 과제 마감 직전에 막히는 일이 매 학기 반드시 일어난다.</p>
+<h3 data-blk="chapters/ch01/labs.tex#8">실습 1-3. 내 전공의 불편 열 가지</h3>
+<p data-blk="chapters/ch01/labs.tex#9"><strong>이 실습이 이 장에서 가장 중요하다.</strong> 자기 전공, 동아리, 아르바이트, 학생회에서 겪는 불편을 <strong>열 가지</strong> 적는다. 다음 규칙만 지킨다.</p>
+<ul data-blk="chapters/ch01/labs.tex#10">
+<li>직접 겪은 것만 적는다. 들은 이야기는 표시해 둔다.</li>
+<li>아직 다듬지 않아도 된다. <em>정산이 귀찮다</em> 정도로 충분하다(다듬는 법은 4장에서 배운다).</li>
+<li>해결 방법은 적지 않는다. 지금 떠오르는 해법은 대개 첫 번째 아이디어이고, 6장에서 더 나은 것을 찾게 된다.</li>
+<li>열 개를 채운다. 다섯 개까지는 쉽고 그다음이 어려운데, <strong>진짜 쓸 만한 것은 대개 일곱 번째 이후에 나온다.</strong></li>
+</ul>
+<p data-blk="chapters/ch01/labs.tex#11">적은 것은 <code>문제기록.txt</code>에 넣어 둔다. 4장에서 이 중 셋을 골라 다듬고, 13장에서 하나를 골라 완성한다.</p>
+<h3 data-blk="chapters/ch01/labs.tex#12">실습 1-4. 같은 질문, 다른 대답</h3>
+<p data-blk="chapters/ch01/labs.tex#13">1.5절의 첫 프롬프트를 <strong>서로 다른 두 서비스</strong>에 똑같이 넣는다. 그리고 다음을 정리한다.</p>
+<ol data-blk="chapters/ch01/labs.tex#14">
+<li>두 답이 <strong>공통으로</strong> 말한 것은 무엇인가?</li>
+<li>한쪽에만 있는 내용은 무엇인가?</li>
+<li>둘 중 <strong>사실과 다른</strong> 내용이 있었는가? 어떻게 알았는가?</li>
+<li>어느 쪽 답이 더 쓸모 있었는가? 그 이유는?</li>
+</ol>
+<p data-blk="chapters/ch01/labs.tex#15">3번에서 아무것도 못 찾았다면, 답을 그냥 읽기만 한 것일 가능성이 높다. 자기 학과 홈페이지나 학사 일정과 대조해 보자. 이 실습의 결과가 2장의 출발점이 된다.</p>
+<h3 data-blk="chapters/ch01/labs.tex#16">실습 1-5. 첫 결과물 남기기</h3>
+<p data-blk="chapters/ch01/labs.tex#17">1.5절에서 만든 학점 계산기 화면을 다음과 같이 정리해 제출한다.</p>
+<ol data-blk="chapters/ch01/labs.tex#18">
+<li>처음 넣은 프롬프트 (그대로)</li>
+<li>고쳐 달라고 요청한 내용 (최소 두 번)</li>
+<li>완성된 화면의 캡처</li>
+<li><strong>아직 마음에 안 드는 점</strong> 세 가지</li>
+</ol>
+<p data-blk="chapters/ch01/labs.tex#19">4번이 핵심이다. 무엇이 아쉬운지 말로 적을 수 있으면 그것을 고쳐 달라고 요청할 수 있다. 7장에서 그 말을 정확하게 만드는 법을 배운다.</p>
+</div></p>
+<details class="box summary" id="summary"><summary class="box-head">1장 요약</summary><div class="sum-body"><ul>
+<li>전공은 달라도 문제의 <strong>모양</strong>은 몇 가지로 수렴한다. 같은 일의 반복, 자료의 흩어짐, 눈으로 확인해야만 넘어가는 일, 아는 사람만 아는 절차  —  자기 불편이 어디에 속하는지 알면 해법의 방향이 보인다.</li>
+<li>이런 문제가 오래 방치된 이유는 어려워서가 아니라 <strong>겪는 사람과 만들 수 있는 사람이 달랐기</strong> 때문이다. 겪는 사람이 직접 만들 수 있게 되면 설명하는 비용이 사라진다.</li>
+<li>만드는 문턱은 삼십 년에 걸쳐 낮아져 왔고, 최근 <strong class="term-ko">에이전트</strong><sup class="term">agent</sup>의 등장으로 한 번 더 크게 내려앉았다. 달라진 것은 <em>코드가 필요 없어졌다</em>가 아니라 <strong>그 코드를 사람이 쓰지 않아도 된다</strong>는 점이다.</li>
+<li>그러나 무엇이든 되는 것은 아니다. 소수가 쓰는 도구·분명한 규칙의 계산·자료 정리는 잘 되고, 여러 사람이 동시에 쓰거나 돈과 개인정보가 걸린 것은 <em>만들 수 있는가</em>보다 <em>만들어도 되는가</em>가 먼저 문제가 된다.</li>
+<li>만드는 비용이 내려가면 병목은 <strong>무엇을 만들지 정하는 일</strong>로 옮겨 간다. 그래서 가장 흔한 실패도 <em>완성하지 못함</em>에서 <em>완성했는데 아무도 쓰지 않음</em>으로 바뀌었다.</li>
+<li>잘못 정의된 문제를 잘 해결하면 잘 만들어진 쓸모없는 것이 나온다. 이 책이 앞의 일곱 장을 만들지 않고 생각하는 데 쓰는 이유가 여기에 있다.</li>
+<li>반대로 만들지 않으면 정의가 맞았는지 알 수 없다. <strong>앞의 일곱 장과 뒤의 여섯 장은 한 짝</strong>이다.</li>
+<li>이 수업의 결과물은 둘이다. <strong>웹 서비스</strong>는 남이 주소로 열어 쓰는 것(9–10장), <strong>파이썬 앱</strong>은 내 반복 작업을 대신하는 것(11장)이다.</li>
+<li>인공지능의 답은 <em>그 분야에서 흔히 있는 이야기</em>에 가깝고 우리 학교의 사정은 모른다. <strong>맞는지 판정하는 일은 언제나 사람의 몫</strong>이며, 이 원칙은 책 끝까지 바뀌지 않는다.</li>
+</ul></div></details>
+<details class="box exercise" id="exercises"><summary class="box-head">1장 연습문제</summary><div class="ex-body"><ol data-blk="chapters/ch01/exercises.tex#1">
+<li class="ex-item" data-ex="1"><span class="diff"><span class="d1">★</span></span>  1.1절에서 정리한 <strong>반복되는 네 가지 모양</strong>을 쓰고, 각각에 해당하는 예를 자기 전공에서 하나씩 들어 보시오.</li>
+<li class="ex-item" data-ex="2"><span class="diff"><span class="d1">★</span></span>  다음 중 <strong>기계에 넘기기 가장 쉬운</strong> 일을 고르고, 그 이유를 1.1절의 기준으로 설명하시오.
+<ol type="a">
+<li>학생 200명의 시험 답안을 채점한다 (객관식)</li>
+<li>학생 200명의 논술 답안 중 우수작을 고른다</li>
+<li>매달 지출 영수증을 항목별로 합산한다</li>
+<li>동아리 회장을 누구로 뽑을지 결정한다</li>
+<li>파일 100개의 이름을 정해진 규칙으로 바꾼다</li>
+</ol></li>
+<li class="ex-item" data-ex="3"><span class="diff"><span class="d1">★</span></span>  <em>코드를 몰라도 만들 수 있게 되었다</em>는 말이 정확히 무엇을 뜻하는지 1.2절의 내용을 바탕으로 두 문장으로 설명하시오. <strong>코드가 사라진 것이 아니라는 점</strong>이 드러나야 한다.</li>
+<li class="ex-item" data-ex="4"><span class="diff"><span class="d2">★★</span></span>  1.3절의 <em>학과 행사 알림 도구</em> 사례에서 무엇이 잘못되었는지 설명하고, 그 학생이 만들기 전에 무엇을 했더라면 이를 피할 수 있었을지 두 가지 이상 제시하시오.</li>
+<li class="ex-item" data-ex="5"><span class="diff"><span class="d2">★★</span></span>  다음 문제 진술 가운데 더 나은 것을 고르고, 나머지 하나를 고쳐 쓰시오.
+<ol type="a">
+<li>학생들이 도서관 열람실 자리를 잡기 힘들어한다.</li>
+<li>시험 기간 오전 9시에 열람실 좌석 250석이 20분 안에 모두 차서, 이후 도착한 학생들은 평균 40분을 돌아다니다 결국 카페로 간다.</li>
+</ol></li>
+<li class="ex-item" data-ex="6"><span class="diff"><span class="d2">★★</span></span>  다음 각 상황에 <strong>웹 서비스</strong>와 <strong>파이썬 앱</strong> 중 어느 쪽이 맞는지 고르고 이유를 한 줄로 쓰시오(표 <span class="xref" data-ref="tab:web-vs-python">1.3</span> 참조).
+<ol type="a">
+<li>학과 워크숍 참가 신청을 받아 명단을 모은다</li>
+<li>촬영한 사진 300장의 파일 이름을 날짜순으로 바꾼다</li>
+<li>조별 과제 진행 상황을 조원 다섯이 함께 표시한다</li>
+<li>3년 치 실험 데이터를 한 표로 합친다</li>
+</ol></li>
+<li class="ex-item" data-ex="7"><span class="diff"><span class="d3">★★★</span></span>  실습 1-3에서 적은 열 가지 중 하나를 골라, 1.1절의 <strong>문제 카드</strong> 형식(누가 겪는가 / 얼마나 자주 / 얼마나 걸리는가 / 그래서 무엇이 나빠지는가)으로 다시 쓰시오. 카드에 <em>힘들다</em>, <em>불편하다</em> 같은 말이 들어가면 안 된다.</li>
+<li class="ex-item" data-ex="8"><span class="diff"><span class="d3">★★★</span></span>  1.5절의 학점 계산기를 만든 뒤, 같은 프롬프트를 <strong>다른 도구</strong>에 넣어 결과를 비교하시오. 보고에는 (1) 두 결과의 화면, (2) 기능상 차이 세 가지, (3) 어느 쪽이 더 쓸 만한지와 그 판단 근거, (4) 이 비교로 알게 된 <em>프롬프트에서 빠져 있던 지시</em>가 포함되어야 한다.</li>
+</ol>
+</div></details>
+<div class="pager-row"><a class="pager prev" href="front.html">&larr; 표지·머릿말</a><a class="pager next" href="ch02.html">2장 &rarr;</a></div>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-glsl.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="book.js"></script>
+</body>
+</html>

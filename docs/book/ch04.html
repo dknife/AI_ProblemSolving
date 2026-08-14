@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4장 문제를 찾아내고 정의한다 — AI 문제해결</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="book.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+<script>MathJax = {tex: {inlineMath: [['\\(', '\\)']]}, svg: {fontCache: 'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="home" href="../index.html">&#8962; 홈</a>
+  <span class="book-title">AI 문제해결</span>
+  <span class="ch-indicator">4장 문제를 찾아내고 정의한다</span>
+  <button class="nav-toggle" onclick="document.body.classList.toggle('nav-open')">목차</button>
+</header>
+<div class="layout">
+<nav class="sidebar">
+<div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 문제를 푸는 방식이 달라졌다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> AI는 어떻게 답을 만드는가</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 에이전트: 스스로 일하는 AI</a>
+</div>
+<div class="nav-ch current"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 문제를 찾아내고 정의한다</a>
+<div class="nav-secs"><a class="nav-sec" href="ch04.html#sec1">4.1 불편은 아직 문제가 아니다</a><a class="nav-sec" href="ch04.html#sec2">4.2 누구의 문제인가</a><a class="nav-sec" href="ch04.html#sec3">4.3 문제 진술문 쓰기</a><a class="nav-sec" href="ch04.html#sec4">4.4 무엇으로 성공을 잴 것인가</a><a class="nav-sec" href="ch04.html#sec5">4.5 AI와 함께 문제를 다시 묻기</a><a class="nav-sec" href="ch04.html#labs">실습을 통한 개념 정리</a><a class="nav-sec" href="ch04.html#summary">4장 요약</a><a class="nav-sec" href="ch04.html#exercises">연습문제</a></div>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> 문제를 쪼개고 구조를 본다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch06.html"><span class="nav-num">06</span> 해법을 찾고 고른다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> AI와 제대로 대화한다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 만들기 위한 준비</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 첫 번째 웹 서비스 만들기</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch10.html"><span class="nav-num">10</span> 세상에 내놓기</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch11.html"><span class="nav-num">11</span> 파이썬 앱으로 반복을 없앤다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch12.html"><span class="nav-num">12</span> 고치고 다듬는다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch13.html"><span class="nav-num">13</span> 나의 문제 해결 프로젝트</a>
+</div>
+<div class="nav-part">부록</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">A</span> 무료 AI 도구와 에이전트 총정리</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxb.html"><span class="nav-num">B</span> 문제 해결 프롬프트 사전</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxc.html"><span class="nav-num">C</span> 자주 만나는 오류와 해결</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxd.html"><span class="nav-num">D</span> 배포와 공유 안내</a>
+</div>
+<div class="nav-part">부가 자료</div>
+<div class="nav-ch"><a class="nav-ch-link" href="references.html"><span class="nav-num">&#128218;</span> 참고문헌</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">&#128295;</span> 도구 비교표</a></div>
+</nav>
+<main class="content">
+<div class="chapter-head">
+  <div class="ch-label">CHAPTER 04</div>
+  <h1>문제를 찾아내고 정의한다</h1>
+</div>
+<img class="chapter-hero" src="img/ch04/ch04_img01.jpg" alt="4장 대표 이미지">
+<div class="center"><details class="box goals"><summary class="box-head">이 장을 마치면</summary><div class="goals-body"><ul data-blk="chapters/ch04/ch04.tex#1">
+<li>불편과 문제를 구분할 수 있다.</li>
+<li>문제의 이해관계자를 찾아내고 누구의 문제인지 밝힐 수 있다.</li>
+<li>문제 진술문을 한 문단으로 쓸 수 있다.</li>
+<li>성공을 무엇으로 잴 것인지 측정 가능한 형태로 정할 수 있다.</li>
+<li>AI와의 대화로 자기 문제 정의를 검증하고 다듬을 수 있다.</li>
+</ul>
+</div></details></div>
+<p data-blk="chapters/ch04/ch04.tex#2"><em>학과 행사가 잘 안 된다</em>는 문제가 아니다. 무엇이 잘 안 되는지, 누구에게 무엇이 아쉬운지, 잘 되면 무엇이 달라지는지가 없기 때문이다. 이 상태로 인공지능에게 물으면 그럴듯하지만 쓸모없는 답이 돌아온다. 도구가 나빠서가 아니라 질문이 아직 질문이 아니어서다.</p>
+<p data-blk="chapters/ch04/ch04.tex#3">이 장부터 세 장에 걸쳐 만들기 전에 해야 할 일을 다룬다. 이 구간이 답답하게 느껴진다면 정상이다. 그러나 8장 이후에 손이 멈추는 학생과 끝까지 가는 학생을 가르는 것은 대개 이 세 장에서 한 일의 양이다.</p>
+<h2 data-blk="chapters/ch04/sec01.tex#1" id="sec1">4.1 불편은 아직 문제가 아니다</h2>
+<p data-blk="chapters/ch04/sec01.tex#2"><em>정산이 귀찮다.</em> 이것은 사실이지만 문제가 아니다. 무엇을 해야 할지 알려 주지 않고, 해결되었는지 확인할 방법도 없기 때문이다. 이 절에서는 불편을 문제로 바꾸는 작업을 한다.</p>
+<h3 data-blk="chapters/ch04/sec01.tex#3">네 가지 말</h3>
+<p data-blk="chapters/ch04/sec01.tex#4">작업을 시작하기 전에 비슷해 보이는 네 가지 말을 구분해 두자.</p>
+<div class="table-wrap"><div class="table-caption">표 4.1: 불편–증상–문제–원인</div><table><tr><th></th><th> 무엇인가</th><th> 예</th></tr><tr><td>불편</td><td>느낌. 주관적이고 막연하다</td><td>정산이 귀찮다</td></tr><tr><td>증상</td><td>겉으로 드러난 현상</td><td>정산 결과가 매달 늦게 올라온다</td></tr><tr><td>문제</td><td>누가 무엇 때문에 어떤 대가를 치르는지</td><td>회계 담당자가 영수증 60건을 손으로 옮겨 적느라 매달 3시간을 쓴다</td></tr><tr><td>원인</td><td>그 문제가 생기는 이유</td><td>지출 기록이 영수증 사진으로만 남는다</td></tr></table></div>
+<p data-blk="chapters/ch04/sec01.tex#5">이 넷을 섞어 놓으면 이상한 일이 생긴다. 불편을 해결하려 들면 무엇을 만들어야 할지 정할 수 없고, 원인을 문제로 착각하면 진짜 대가가 무엇인지 잊는다. 우리가 지금 만들 것은 세 번째 칸이다. 네 번째 칸(원인)은 5장에서 다룬다.</p>
+<h3 data-blk="chapters/ch04/sec01.tex#6">구체화의 세 축</h3>
+<p data-blk="chapters/ch04/sec01.tex#7">불편을 문제로 바꾸는 방법은 단순하다. <strong>세 가지를 채워 넣는다.</strong></p>
+<p data-blk="chapters/ch04/sec01.tex#8"><strong>첫째, 얼마나 자주 일어나는가.</strong> 매달인가, 매주인가, 학기에 한 번인가. 이것이 정해지면 해결의 가치가 계산된다. 학기에 한 번 일어나는 일에 도구를 만드는 것은 대개 손해다.</p>
+<p data-blk="chapters/ch04/sec01.tex#9"><strong>둘째, 얼마나 걸리거나 얼마나 나쁜가.</strong> 3시간인가 10분인가. 사람이 몇 명 관련되는가. 실수가 몇 건 생기는가. 숫자가 있어야 나중에 좋아졌는지 알 수 있다.</p>
+<p data-blk="chapters/ch04/sec01.tex#10"><strong>셋째, 누가 겪는가.</strong> 나만인가, 우리 조인가, 학과 전체인가. 다음 절에서 자세히 다룬다.</p>
+<p data-blk="chapters/ch04/sec01.tex#11">세 축을 채우는 과정을 예로 보자.</p>
+<div class="table-wrap"><div class="table-caption">표 4.2: 불편이 문제가 되어 가는 과정</div><table><tr><th> 단계</th><th> 문장</th></tr><tr><td>처음</td><td>실습 일정 확인이 불편하다</td></tr><tr><td>+ 빈도</td><td>실습 기간 8주 동안 <strong>매주 두세 번</strong> 일정을 확인한다</td></tr><tr><td>+ 크기</td><td>확인할 때마다 <strong>세 곳</strong>을 열어 대조하며 <strong>10분</strong>이 걸린다</td></tr><tr><td>+ 대상</td><td><strong>실습 나가는 학생 30명</strong>이 각자 이 일을 한다</td></tr><tr><td>+ 대가</td><td>지난 학기 <strong>2명</strong>이 잘못된 날짜에 병원을 찾았다</td></tr></table></div>
+<p data-blk="chapters/ch04/sec01.tex#12">마지막 줄까지 오면 문장이 달라진다. 처음의 <em>불편하다</em>는 반박할 수도 동의할 수도 없는 말이었지만, 마지막 문장은 확인할 수 있고 틀렸다면 고칠 수 있다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch04/sec01.tex#13">좋은 문제 진술에는 <strong>숫자가 하나 이상</strong> 들어 있다. 숫자가 없다면 아직 구체화가 덜 된 것이거나, 조사를 하지 않은 것이다.</p>
+</div>
+<h3 data-blk="chapters/ch04/sec01.tex#14">숫자가 없을 때</h3>
+<p data-blk="chapters/ch04/sec01.tex#15">여기서 많은 학생이 막힌다. <em>3시간</em>인지 <em>1시간</em>인지 모르겠다는 것이다. 두 가지 방법이 있다.</p>
+<p data-blk="chapters/ch04/sec01.tex#16"><strong>재 본다.</strong> 다음번에 그 일을 할 때 시계를 켜 두면 된다. 가장 정확하고 가장 미룬다.</p>
+<p data-blk="chapters/ch04/sec01.tex#17"><strong>되짚어 추정한다.</strong> <em>저녁 먹고 시작해서 뉴스 볼 때 끝났으니 두 시간쯤</em> 정도로 충분하다. 이때 <strong>추정임을 표시</strong>해 둔다. 나중에 실제로 재서 고치면 된다.</p>
+<p data-blk="chapters/ch04/sec01.tex#18">중요한 것은 정확도가 아니라 <em>잴 수 있는 형태로 적어 두는 것</em>이다. <em>매우 오래 걸린다</em>는 나중에 좋아졌는지 확인할 수 없지만, <em>약 2시간(추정)</em>은 확인할 수 있다.</p>
+<h3 data-blk="chapters/ch04/sec01.tex#19">해법을 미리 적지 않기</h3>
+<p data-blk="chapters/ch04/sec01.tex#20">마지막으로 흔한 실수 하나. 문제를 적으라고 하면 대개 이렇게 쓴다.</p>
+<div class="center"><p><em>정산을 자동화하는 앱이 없어서 불편하다</em></p></div>
+<p data-blk="chapters/ch04/sec01.tex#22">이것은 문제가 아니라 <strong>해법이 없다는 진술</strong>이다. 이렇게 적으면 그 순간부터 다른 해법을 생각할 수 없게 된다. 어쩌면 앱을 만들 필요 없이 지출을 기록하는 방식만 바꿔도 될 수 있는데, 그 가능성이 문장에서 이미 지워진 것이다.</p>
+<p data-blk="chapters/ch04/sec01.tex#23">문제를 적을 때는 <strong>해법을 언급하지 않는다</strong>. 6장에서 여러 해법을 늘어놓고 그중에서 고를 것이다. 지금 하나로 좁히면 그 기회를 잃는다.</p>
+<div class="box caution"><span class="chip">주의</span><p data-blk="chapters/ch04/sec01.tex#24"><em>…이 없어서</em>, <em>…을 만들어야 한다</em>, <em>…을 도입하면 된다</em>로 끝나는 문장은 문제 진술이 아니다. 그 문장에서 해법을 빼고 <strong>남는 것</strong>이 무엇인지 다시 써 보자.</p>
+</div>
+<h2 data-blk="chapters/ch04/sec02.tex#1" id="sec2">4.2 누구의 문제인가</h2>
+<p data-blk="chapters/ch04/sec02.tex#2">1.3절의 학과 행사 알림 도구를 떠올려 보자. 그 학생이 놓친 것은 <em>누가 무엇을 겪고 있는가</em>였다. 이 절에서는 그것을 확인하는 방법을 다룬다.</p>
+<h3 data-blk="chapters/ch04/sec02.tex#3">세 종류의 사람</h3>
+<p data-blk="chapters/ch04/sec02.tex#4">한 문제에는 대개 세 종류의 사람이 얽혀 있다. 이들을 통틀어 <strong class="term-ko">이해관계자</strong><sup class="term">stakeholder</sup>라고 부른다.</p>
+<ul>
+<li><strong>겪는 사람</strong>  —  실제로 그 일을 하며 대가를 치르는 사람. 회계 담당자, 실습 나가는 학생.</li>
+<li><strong>시키는 사람</strong>  —  그 일이 이루어지기를 원하는 사람. 동아리 회장, 학과 조교.</li>
+<li><strong>받는 사람</strong>  —  결과를 쓰는 사람. 정산 내역을 보는 동아리원, 일정을 확인하는 학생.</li>
+</ul>
+<p data-blk="chapters/ch04/sec02.tex#6">셋이 같은 사람일 때도 있다. 혼자 쓰는 도구가 그렇다. 그런 경우는 오히려 쉽다. 어려운 것은 셋이 다를 때다. <strong>누구를 위해 만드는지 정하지 않으면 아무도 만족하지 않는 것이 나온다.</strong></p>
+<p data-blk="chapters/ch04/sec02.tex#7">예를 들어 정산 도구에서, 겪는 사람(회계 담당자)에게 편한 것은 <em>입력이 빠른 것</em>이고, 받는 사람(동아리원)에게 편한 것은 <em>내역이 잘 보이는 것</em>이다. 둘은 자주 충돌한다. 어느 쪽을 우선할지는 정해야 한다.</p>
+<div class="table-wrap"><div class="table-caption">표 4.3: 이해관계자 지도  —  실습 일정 문제의 예</div><table><tr><th> 누구</th><th> 무엇을 얻고 싶은가</th><th> 지금 무엇을 잃고 있나</th></tr><tr><td>실습생 30명</td><td>정확한 일정을 한 번에</td><td>매주 20분, 가끔 헛걸음</td></tr><tr><td>조교</td><td>문의가 줄기를</td><td>같은 질문에 반복 답변</td></tr><tr><td>병원 담당자</td><td>학생이 제때 오기를</td><td>결원 발생 시 일정 조정</td></tr><tr><td>학과 사무실</td><td>사고가 없기를</td><td>사고 시 수습</td></tr></table></div>
+<p>표 <span class="xref" data-ref="tab:stakeholder">4.3</span>처럼 적어 보면 뜻밖의 것이 보인다. 처음에는 학생만 생각했는데, 조교도 같은 문제로 시간을 쓰고 있다. 그렇다면 이 도구는 조교의 협조를 얻기 쉬울 것이다  —  실제로 만들어 쓰이게 하는 데 결정적인 정보다.</p>
+<h3 data-blk="chapters/ch04/sec02.tex#9">내 불편과 남의 불편</h3>
+<p data-blk="chapters/ch04/sec02.tex#10">여기서 정직해야 할 지점이 있다. <strong>내가 불편한 것</strong>과 <strong>남도 불편한 것</strong>은 다르다.</p>
+<p data-blk="chapters/ch04/sec02.tex#11">내 불편만으로 시작해도 괜찮다. 실제로 좋은 도구는 대개 만든 사람 자신의 불편에서 나온다. 다만 그 사실을 알고 있어야 한다. 나 혼자 쓸 것을 만들었으면서 <em>왜 아무도 안 쓰지</em>라고 실망하는 일이 없도록.</p>
+<div class="box keypoint"><span class="chip">요점</span><p>남이 쓰게 하려면 <strong>그 남에게 물어봐야 한다</strong>. 물어보지 않고 짐작한 남의 불편은 대개 틀린다. 그리고 이것은 인공지능에게 물어서 해결되지 않는다  —  우리 학과 사람들의 사정은 인공지능도 모른다(2.2절).</p></div>
+<h3 data-blk="chapters/ch04/sec02.tex#13">물어보는 법</h3>
+<p data-blk="chapters/ch04/sec02.tex#14">교양 수업이므로 조사방법론까지 갈 필요는 없다. 다음 정도면 충분하다.</p>
+<p data-blk="chapters/ch04/sec02.tex#15"><strong>다섯 명이면 대부분 드러난다.</strong> 스무 명에게 물어도 새로 나오는 이야기는 몇 개 안 된다. 다섯 명을 제대로 물어보는 편이 낫다.</p>
+<p data-blk="chapters/ch04/sec02.tex#16"><strong>의견이 아니라 경험을 묻는다.</strong> <em>이런 도구가 있으면 쓰시겠어요?</em>라고 물으면 다들 <em>네</em>라고 한다. 예의상 그렇게 답한다. 대신 이렇게 묻는다.</p>
+<ul data-blk="chapters/ch04/sec02.tex#17">
+<li>가장 최근에 그 일을 한 것이 언제인가요?</li>
+<li>그때 어떻게 하셨는지 순서대로 말씀해 주시겠어요?</li>
+<li>그 과정에서 가장 짜증났던 부분은 어디인가요?</li>
+<li>지금은 그 문제를 어떻게 넘기고 계세요?</li>
+</ul>
+<p data-blk="chapters/ch04/sec02.tex#18">마지막 질문이 특히 중요하다. <strong>사람들은 이미 나름의 방법을 갖고 있다.</strong> 그 방법보다 확실히 낫지 않으면 새것으로 갈아타지 않는다. 엑셀로 그럭저럭 하고 있는 사람에게는, 엑셀보다 나아야 한다.</p>
+<p><strong>할 수 있으면 지켜본다.</strong> 말로 듣는 것보다 실제로 하는 것을 옆에서 보는 것이 훨씬 정확하다. 사람들은 자기가 무엇을 하는지 정확히 설명하지 못한다  —  익숙한 일일수록 더 그렇다.</p>
+<h3 data-blk="chapters/ch04/sec02.tex#20">범위를 정한다</h3>
+<p data-blk="chapters/ch04/sec02.tex#21">이해관계자를 다 적고 나면 대개 욕심이 생긴다. 모두를 만족시키고 싶어진다. 그러면 아무것도 완성하지 못한다.</p>
+<p data-blk="chapters/ch04/sec02.tex#22"><strong>한 사람을 고른다.</strong> 이번에 만들 것은 <em>누구</em>를 위한 것인지 한 명(또는 한 무리)으로 정한다. 나머지는 <em>이번에는 다루지 않는다</em>고 적어 둔다. 지우는 것이 아니라 미루는 것이다.</p>
+<div class="box note"><span class="chip">잠깐</span><span class="box-title">미룬 것을 적어 두는 이유</span><p data-blk="chapters/ch04/sec02.tex#23"><em>이번에 하지 않을 것</em> 목록은 나중에 두 가지로 쓰인다. 첫째, 발표할 때 <em>왜 이것만 했는가</em>에 대한 답이 된다. 둘째, 다음 판을 만들 때의 후보 목록이 된다. 그냥 잊어버리는 것과 적어 두고 미루는 것은 전혀 다르다.</p>
+</div>
+<h2 data-blk="chapters/ch04/sec03.tex#1" id="sec3">4.3 문제 진술문 쓰기</h2>
+<p>앞의 두 절에서 모은 것을 한 문단으로 묶는다. 이것을 <strong class="term-ko">문제 진술문</strong><sup class="term">problem statement</sup>이라고 부른다. 이 문단이 이 수업의 나머지 전부를 끌고 간다  —  5장의 분해도, 6장의 해법 선택도, 7장의 프롬프트도, 13장의 발표도 여기서 나온다.</p>
+<h3 data-blk="chapters/ch04/sec03.tex#3">틀</h3>
+<p data-blk="chapters/ch04/sec03.tex#4">다섯 칸을 채우면 된다.</p>
+<div class="settingbox-wrap"><div class="setting-label">문제 진술문의 틀</div><pre class="settingbox"><code>[누가] 는
+[어떤 상황] 에서
+[무엇] 을 하려 하는데,
+[무엇] 때문에
+[어떤 대가] 를 치르고 있다.
+
+이것이 해결되면 [무엇] 이 달라진다.</code></pre></div>
+<p data-blk="chapters/ch04/sec03.tex#5">마지막 문장이 있어야 한다. 그것이 없으면 <em>왜 이 문제를 푸는가</em>가 빠진 셈이고, 나중에 성공 기준을 세울 수도 없다.</p>
+<h3 data-blk="chapters/ch04/sec03.tex#6">채워 보기</h3>
+<p data-blk="chapters/ch04/sec03.tex#7">앞에서 다룬 두 사례를 이 틀에 넣어 보자.</p>
+<div class="problemcard"><div class="problem-head"><span class="chip">문제</span><span class="problem-name">동아리 회비 정산</span></div><div class="problem-who">겪는 사람: 회계 담당 학생 1명 / 받는 사람: 동아리원 40명</div><p><strong>회계 담당 학생</strong>은 <strong>매달 말 정산 기간</strong>에 <strong>그달의 지출을 항목별로 정리해 공유</strong>하려 하는데, <strong>지출 기록이 영수증 사진으로만 흩어져 있어</strong> <strong>한 번에 약 3시간을 쓰고 매달 두세 건의 입력 오류가 생긴다</strong>.</p>
+<p>이것이 해결되면 정산이 하루 안에 끝나 다음 달 회비 안내가 제때 나가고, 담당자가 바뀌어도 인수인계가 가능해진다.</p></div>
+<div class="problemcard"><div class="problem-head"><span class="chip">문제</span><span class="problem-name">실습 일정 확인</span></div><div class="problem-who">겪는 사람: 실습생 30명 / 시키는 사람: 학과 조교</div><p><strong>실습 나가는 학생</strong>은 <strong>실습 기간 8주 동안 매주</strong>, <strong>다음 실습의 날짜·장소·준비물을 확인</strong>하려 하는데, <strong>정보가 학과 공지·병원 안내문·조교 문자 세 곳에 나뉘어 있고 변경이 한 곳에만 반영되어</strong> <strong>매번 10분을 대조에 쓰고, 지난 학기 2명이 잘못된 날짜에 병원을 찾았다</strong>.</p>
+<p>이것이 해결되면 확인 시간이 사라지고 헛걸음이 없어지며, 조교가 같은 문의에 반복 답변하지 않게 된다.</p></div>
+<h3 data-blk="chapters/ch04/sec03.tex#8">나쁜 진술문 고쳐 보기</h3>
+<p data-blk="chapters/ch04/sec03.tex#9">실제로 학생들이 처음 써 오는 문장들이다. 무엇이 빠졌는지 짚어 보자.</p>
+<div class="table-wrap"><div class="table-caption">표 4.4: 자주 나오는 문제와 고칠 점</div><table><tr><th> 처음 쓴 문장</th><th> 빠진 것</th></tr><tr><td>학생들이 시간표 짜기를 어려워한다</td><td>누가 · 얼마나 자주 · 무엇 때문에 · 대가</td></tr><tr><td>조별 과제 소통이 잘 안 된다</td><td>무엇이 안 되는지가 없다. <em>소통</em>은 현상이 아니다</td></tr><tr><td>학과 홈페이지가 불편해서 개편이 필요하다</td><td>해법이 먼저 들어와 있다(4.1절)</td></tr><tr><td>자료 정리 자동화 프로그램이 없다</td><td>문제가 아니라 <em>해법의 부재</em></td></tr><tr><td>동아리 운영이 비효율적이다</td><td>무엇이 어떻게 비효율적인지가 없다</td></tr></table></div>
+<p data-blk="chapters/ch04/sec03.tex#10">이 중 하나를 고쳐 보자. <em>조별 과제 소통이 잘 안 된다</em>에서 출발한다.</p>
+<ol data-blk="chapters/ch04/sec03.tex#11">
+<li><strong>무엇이 안 되는지 묻는다.</strong> → 누가 어디까지 했는지 모른다.</li>
+<li><strong>언제 그것이 문제가 되는가.</strong> → 마감 이틀 전에야 안 한 부분이 드러난다.</li>
+<li><strong>대가는.</strong> → 한두 명이 마지막 이틀을 몰아서 하고, 그 부분의 완성도가 떨어진다.</li>
+<li><strong>얼마나 자주.</strong> → 한 학기에 조별 과제가 세 번, 매번 반복된다.</li>
+</ol>
+<div class="problemcard"><div class="problem-head"><span class="chip">문제</span><span class="problem-name">조별 과제의 진행 상황이 보이지 않는다</span></div><div class="problem-who">겪는 사람: 조원 5명 / 특히: 마감에 몰아 하는 1–2명</div><p><strong>조별 과제를 하는 학생들</strong>은 <strong>2–3주짜리 과제 기간 동안</strong> <strong>각자 맡은 부분을 진행</strong>하는데, <strong>누가 어디까지 했는지 확인할 방법이 대화방 대화뿐이라</strong> <strong>마감 이틀 전에야 빈 부분이 드러나고, 그때부터 1–2명이 몰아서 채운다</strong>.</p>
+<p>이것이 해결되면 빈 부분을 일주일 전에 발견해 나눠 맡을 수 있고, 과제 완성도의 편차가 줄어든다.</p></div>
+<h3 data-blk="chapters/ch04/sec03.tex#12">좋은 진술문의 조건</h3>
+<p data-blk="chapters/ch04/sec03.tex#13">다 쓰고 나서 다음을 확인한다.</p>
+<ul class="checklist">
+<li>숫자가 하나 이상 들어 있는가</li>
+<li>해법이 언급되지 않았는가</li>
+<li><em>불편하다</em>, <em>어렵다</em>, <em>비효율적이다</em> 같은 말이 없는가</li>
+<li>겪는 사람이 누구인지 분명한가</li>
+<li>이것이 해결되면 무엇이 달라지는지 적혀 있는가</li>
+<li><strong>남이 읽고 상황을 그릴 수 있는가</strong></li>
+</ul>
+<p data-blk="chapters/ch04/sec03.tex#15">마지막 항목이 가장 좋은 시험이다. 진술문을 옆 사람에게 읽히고 <em>무슨 상황인지 설명해 보라</em>고 해 보자. 설명하지 못하면 아직 덜 쓴 것이다.</p>
+<div class="box caution"><span class="chip">주의</span><p data-blk="chapters/ch04/sec03.tex#16">진술문은 한 문단을 넘기지 않는다. 길어진다는 것은 여러 문제가 섞여 있다는 뜻이다. 그런 경우 <strong>가장 아픈 것 하나</strong>를 골라 다시 쓰고, 나머지는 <em>이번에는 다루지 않을 것</em>으로 옮긴다.</p>
+</div>
+<h2 data-blk="chapters/ch04/sec04.tex#1" id="sec4">4.4 무엇으로 성공을 잴 것인가</h2>
+<p data-blk="chapters/ch04/sec04.tex#2">문제를 적었으면 이제 정할 것이 하나 남았다. <strong>무엇이 되면 해결된 것인가.</strong> 이것을 먼저 정하지 않으면, 다 만들고 나서도 잘한 것인지 알 수 없다.</p>
+<h3 data-blk="chapters/ch04/sec04.tex#3">잴 수 없는 목표는 소망이다</h3>
+<p data-blk="chapters/ch04/sec04.tex#4">다음 두 문장을 견줘 보자.</p>
+<div class="center"><p>정산이 편해진다</p>
+<p>정산에 드는 시간이 3시간에서 30분 이하로 줄어든다</p></div>
+<p data-blk="chapters/ch04/sec04.tex#6">아래 문장은 만든 뒤에 시계를 켜고 확인할 수 있다. 위 문장은 확인할 수 없다. 확인할 수 없으면 <em>잘된 것 같다</em>는 느낌만 남고, 그 느낌은 대개 만든 사람에게만 든다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch04/sec04.tex#7">성공 기준에는 <strong>지금 값</strong>과 <strong>목표 값</strong>이 모두 있어야 한다. 지금 값이 없으면 얼마나 나아졌는지 말할 수 없고, 목표 값이 없으면 언제 멈춰야 할지 알 수 없다.</p>
+</div>
+<h3 data-blk="chapters/ch04/sec04.tex#8">무엇을 잴 수 있는가</h3>
+<div class="table-wrap"><div class="table-caption">표 4.5: 잴 수 있는 것들</div><table><tr><th> 종류</th><th> 예</th><th> 재는 방법</th></tr><tr><td>시간</td><td>3시간 → 30분</td><td>실제로 해 보고 잰다</td></tr><tr><td>횟수</td><td>문의 주 10건 → 2건</td><td>세어 본다</td></tr><tr><td>오류</td><td>월 3건 → 0건</td><td>결과를 대조한다</td></tr><tr><td>사람 수</td><td>나 혼자 → 5명이 씀</td><td>물어보거나 기록을 본다</td></tr><tr><td>단계 수</td><td>7단계 → 3단계</td><td>절차를 적어 센다</td></tr></table></div>
+<p>가장 흔히 쓰는 것은 <strong>시간</strong>과 <strong>횟수</strong>다. 둘 다 재기 쉽고 남에게 설명하기도 쉽다. 그러나 시간만 좇다 보면 놓치는 것이 생긴다  —  빨라졌지만 오류가 늘었다면 나아진 것이 아니다. 그래서 기준을 <strong>두 개 이상</strong> 두는 것이 좋다. 대개 <em>빨라졌는가</em>와 <em>틀리지 않았는가</em>의 짝이다.</p>
+<h3 data-blk="chapters/ch04/sec04.tex#10">쓰이는지도 재야 한다</h3>
+<p data-blk="chapters/ch04/sec04.tex#11">남이 쓸 것을 만든다면 기준이 하나 더 필요하다. <strong>실제로 쓰이는가.</strong></p>
+<p data-blk="chapters/ch04/sec04.tex#12">1.3절의 알림 도구는 아마 <em>알림 발송 시간</em>으로 재면 훌륭했을 것이다. 그런데 아무도 안 썼다. 그러니 다음과 같은 기준이 함께 있어야 한다.</p>
+<ul data-blk="chapters/ch04/sec04.tex#13">
+<li>만든 지 2주 뒤에 나 말고 <strong>3명 이상</strong>이 쓰고 있는가</li>
+<li>한 번 써 본 사람 중 <strong>절반 이상</strong>이 다시 쓰는가</li>
+<li>원래 방식(엑셀, 대화방)으로 되돌아간 사람이 있는가</li>
+</ul>
+<p>세 번째가 가장 정직한 신호다. 되돌아갔다면 그 이유를 물어야 한다  —  그 답이 다음 판의 작업 목록이 된다(10.5절).</p>
+<h3 data-blk="chapters/ch04/sec04.tex#15">언제 멈출 것인가</h3>
+<p data-blk="chapters/ch04/sec04.tex#16">성공 기준에는 한 가지 역할이 더 있다. <strong>그만해도 된다고 알려 주는 것</strong>이다.</p>
+<p data-blk="chapters/ch04/sec04.tex#17">만들다 보면 끝이 없다. 조금만 더 예쁘게, 기능 하나만 더. 그렇게 학기가 끝난다. 기준을 미리 정해 두면 <em>여기까지 하면 된 것</em>이라는 선이 생긴다.</p>
+<div class="settingbox-wrap"><div class="setting-label">성공 기준 적기  —  서식</div><pre class="settingbox"><code>[주 기준] 무엇을     :
+           지금 값   :
+           목표 값   :
+           재는 방법 :
+
+[부 기준] 무엇을     :
+           지금 값   :
+           목표 값   :
+
+[쓰임 기준] 2주 뒤에                                 (남이 쓸 것이라면)
+
+[이 정도면 됐다] 위 기준을 모두 채우면 더 만들지 않는다</code></pre></div>
+<p data-blk="chapters/ch04/sec04.tex#18">이 서식은 6장의 해법 명세서에 그대로 들어가고, 12.3절에서 <em>되는지 확인하는</em> 시험 항목의 뼈대가 된다. 지금 적어 둔 것이 나중에 세 번 더 쓰인다.</p>
+<div class="box note"><span class="chip">잠깐</span><span class="box-title">기준을 나중에 고쳐도 되는가</span><p data-blk="chapters/ch04/sec04.tex#19">된다. 만들다 보면 처음의 기준이 틀렸다는 것을 알게 되는 경우가 많다. 다만 <strong>고쳤다는 사실과 이유를 적어 둔다.</strong> 슬그머니 목표를 낮춰 성공했다고 하는 것과, 근거를 대고 기준을 바꾸는 것은 다르다. 발표에서는 후자가 훨씬 좋은 평가를 받는다.</p>
+</div>
+<h2 data-blk="chapters/ch04/sec05.tex#1" id="sec5">4.5 AI와 함께 문제를 다시 묻기</h2>
+<p data-blk="chapters/ch04/sec05.tex#2">여기까지는 사람이 하는 일이었다. 이제 인공지능을 부른다. 다만 역할을 분명히 하자. <strong>문제를 대신 정해 달라고 부르는 것이 아니라, 내 정의를 흔들어 보라고 부르는 것이다.</strong></p>
+<h3 data-blk="chapters/ch04/sec05.tex#3">왜 흔들어야 하는가</h3>
+<p data-blk="chapters/ch04/sec05.tex#4">자기가 쓴 문제 진술문은 자기 눈에 완벽해 보인다. 며칠을 들여다봤기 때문이다. 남에게 보여 주면 3초 만에 구멍이 보이는데, 마침 이 도구는 3초 만에 답한다.</p>
+<p data-blk="chapters/ch04/sec05.tex#5">무엇을 물을지가 관건이다. <em>내 문제 진술문 어때?</em>라고 물으면 칭찬이 돌아온다. 인공지능은 대체로 사용자에게 우호적으로 답하도록 만들어져 있어서, 그냥 물으면 좋은 말을 한다. 그러니 <strong>반박하라고 명시</strong>해야 한다.</p>
+<h3 data-blk="chapters/ch04/sec05.tex#6">네 가지 질문</h3>
+<p data-blk="chapters/ch04/sec05.tex#7"><strong>하나, 반박시킨다.</strong></p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code><p>아래는 내가 쓴 문제 진술문이다.</p><p><i class="resp-note">(여기에 자기 진술문을 붙여 넣는다)</i></p><p>너는 이 진술문을 심사하는 까다로운 심사위원이다. 칭찬하지 말고 다음만 지적해 줘.</p><p>1. 근거 없이 단정한 부분<br>
+2. 확인되지 않은 가정<br>
+3. 이 문제가 사실은 다른 문제의 <strong>증상</strong>일 가능성<br>
+4. 이 문제를 겪지 않는 사람이 읽었을 때 이해가 안 될 부분</p><p>각 지적마다 <strong>무엇을 확인하면 되는지</strong>를 한 줄로 붙여 줘.</p></code></pre><div class="listing-caption">프롬프트 4.1: 문제 정의를 반박하게 하기</div></div>
+<p data-blk="chapters/ch04/sec05.tex#8"><strong>둘, 놓친 사람을 찾게 한다.</strong></p>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>이 문제에 영향을 받는 사람 중 내가 언급하지 않은 사람이 있을까? 특히 이 문제가 <em>해결되면 오히려 곤란해지는</em> 사람이 있다면 알려 줘.</p></code></pre></div>
+<p data-blk="chapters/ch04/sec05.tex#9">마지막 물음이 뜻밖에 유용하다. 지금 방식으로 이익을 보는 사람이 있으면 새 방식은 정착하지 않는다.</p>
+<p data-blk="chapters/ch04/sec05.tex#10"><strong>셋, 정말 문제인지 의심하게 한다.</strong></p>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>이 문제를 굳이 해결하지 않아도 되는 이유를 세 가지 대 봐. 그리고 그 세 가지가 각각 타당한지 아닌지도 평가해 줘.</p></code></pre></div>
+<p data-blk="chapters/ch04/sec05.tex#11"><strong>넷, 이미 있는 해법을 찾게 한다.</strong></p>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>이런 문제를 다루는 도구나 방법이 이미 있는지 알려 줘. 있다면 그것으로 충분한지, 부족하다면 무엇이 부족한지도 알려 줘. 없다면 없다고 해도 된다.</p></code></pre></div>
+<p>이 질문이 중요한 이유가 있다. <strong>이미 잘 만들어진 것이 있는데 굳이 만드는 것</strong>은 좋은 선택이 아닐 때가 많다. 다만 이 답은 반드시 확인해야 한다  —  존재하지 않는 도구를 알려 줄 수 있다(2.3절).</p>
+<h3 data-blk="chapters/ch04/sec05.tex#13">받은 지적을 다루는 법</h3>
+<p data-blk="chapters/ch04/sec05.tex#14">지적을 다 받아들이면 안 된다. 인공지능은 우리 사정을 모르기 때문에(2.2절) 틀린 지적도 섞여 있다.</p>
+<div class="table-wrap"><div class="table-caption">표 4.6: 지적을 분류하기</div><table><tr><th> 분류</th><th> 어떤 지적인가</th><th> 무엇을 하는가</th></tr><tr><td>받아들인다</td><td>맞다. 몰랐다</td><td>진술문을 고친다</td></tr><tr><td>확인한다</td><td>맞는지 모르겠다</td><td>조사 목록에 넣는다(5.4절)</td></tr><tr><td>기각한다</td><td>우리 사정과 다르다</td><td><strong>이유를 적어</strong> 남긴다</td></tr></table></div>
+<p data-blk="chapters/ch04/sec05.tex#15">세 번째 칸에서 <em>이유를 적어</em> 남기는 것이 핵심이다. 나중에 발표할 때 <em>왜 그 지적을 반영하지 않았는가</em>를 누군가 반드시 묻는다. 그때 답이 준비되어 있으면 문제를 깊이 들여다봤다는 증거가 된다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p><strong>인공지능의 지적을 그대로 자기 정의로 삼지 않는다.</strong> 최종 문장은 반드시 자기 손으로 쓴다. 이 원칙을 어기면 발표 때 자기 문제를 설명하지 못하는 상황이 생긴다  —  실제로 자주 있는 일이다.</p></div>
+<h3 data-blk="chapters/ch04/sec05.tex#17">한 바퀴 돌린 뒤</h3>
+<p data-blk="chapters/ch04/sec05.tex#18">지적을 반영해 진술문을 고쳤으면 다시 4.3절의 점검 목록으로 돌아가 확인한다. 대개 두세 바퀴를 돌면 안정된다.</p>
+<div class="box caution"><span class="chip">주의</span><p data-blk="chapters/ch04/sec05.tex#19">계속 고치고만 있으면 안 된다. <strong>두 바퀴를 돌렸으면 일단 확정</strong>하고 다음 장으로 넘어가자. 문제 정의는 5–6장을 진행하면서 자연스럽게 더 정확해진다. 완벽한 정의를 만들어 놓고 시작하려는 것은, 1.3절에서 경고한 반대편 함정이다.</p>
+</div>
+<p><span id="labs"></span><div class="box lab"><div class="lab-title">이 장의 실습</div><h3 data-blk="chapters/ch04/labs.tex#1">실습 4-1. 불편을 문제로 바꾸기</h3>
+<p data-blk="chapters/ch04/labs.tex#2">실습 1-3에서 적은 열 가지 중 <strong>셋</strong>을 고른다. 고르는 기준은 다음과 같다.</p>
+<ul data-blk="chapters/ch04/labs.tex#3">
+<li>자주 일어나는 것 (학기에 한 번인 것은 제외)</li>
+<li>내가 직접 겪는 것</li>
+<li>자료나 사람에게 접근할 수 있는 것 (다른 학교 이야기는 확인할 수 없다)</li>
+</ul>
+<p data-blk="chapters/ch04/labs.tex#4">셋 각각에 대해 4.1절의 세 축(빈도, 크기, 대상)을 채운다. 숫자를 모르면 추정하고 <strong>(추정)</strong>이라고 표시한다.</p>
+<h3 data-blk="chapters/ch04/labs.tex#5">실습 4-2. 이해관계자 지도</h3>
+<p data-blk="chapters/ch04/labs.tex#6">셋 중 <strong>하나</strong>를 골라 이해관계자를 모두 적는다. 표 <span class="xref" data-ref="tab:stakeholder">4.3</span>의 형식을 쓴다.</p>
+<ol data-blk="chapters/ch04/labs.tex#7">
+<li>겪는 사람 / 시키는 사람 / 받는 사람을 각각 찾는다</li>
+<li>각자가 무엇을 얻고 싶은지, 지금 무엇을 잃고 있는지 적는다</li>
+<li><strong>이번에 누구를 위해 만들 것인지</strong> 한 명(또는 한 무리)을 정한다</li>
+<li>나머지는 <em>이번에 다루지 않을 것</em>에 옮겨 적는다</li>
+</ol>
+<h3 data-blk="chapters/ch04/labs.tex#8">실습 4-3. 다섯 명에게 물어보기</h3>
+<p data-blk="chapters/ch04/labs.tex#9">실습 4-2에서 정한 대상에 해당하는 사람 <strong>다섯 명</strong>에게 4.2절의 네 가지 질문을 한다. 대면이 어려우면 대화방으로 해도 되지만, 최소 두 명은 직접 이야기를 나눈다.</p>
+<div class="settingbox-wrap"><div class="setting-label">인터뷰 기록 서식</div><pre class="settingbox"><code>날짜 / 대상 :
+1. 가장 최근에 그 일을 한 때 :
+2. 그때 밟은 순서 :
+3. 가장 짜증났던 지점 :
+4. 지금은 어떻게 넘기고 있나 :
+
+내가 예상하지 못했던 대답 :</code></pre></div>
+<p data-blk="chapters/ch04/labs.tex#10">마지막 칸이 비어 있다면 질문이 너무 유도적이었을 가능성이 높다. 다섯 명 중 최소 한 명에게서는 예상 밖의 답이 나와야 정상이다.</p>
+<h3 data-blk="chapters/ch04/labs.tex#11">실습 4-4. 문제 진술문 한 편</h3>
+<p data-blk="chapters/ch04/labs.tex#12">4.3절의 틀에 맞춰 진술문을 쓴다. 그리고 다음을 수행한다.</p>
+<ol data-blk="chapters/ch04/labs.tex#13">
+<li>4.3절의 점검 목록으로 스스로 확인한다</li>
+<li>옆 사람에게 읽히고 <strong>무슨 상황인지 설명해 보라</strong>고 한다</li>
+<li>설명하지 못한 부분을 표시받아 고친다</li>
+<li>고친 진술문을 <code>01_문제/</code> 폴더에 저장한다</li>
+</ol>
+<h3 data-blk="chapters/ch04/labs.tex#14">실습 4-5. 성공 기준 정하기</h3>
+<p data-blk="chapters/ch04/labs.tex#15">4.4절의 서식으로 성공 기준을 정한다. <strong>지금 값을 반드시 채운다.</strong> 모르면 다음 주까지 재 온다.</p>
+<p data-blk="chapters/ch04/labs.tex#16">주 기준 하나, 부 기준 하나, 그리고 남이 쓸 것이라면 쓰임 기준 하나. 셋을 넘기지 않는다.</p>
+<h3 data-blk="chapters/ch04/labs.tex#17">실습 4-6. AI에게 반박당하기</h3>
+<p data-blk="chapters/ch04/labs.tex#18">4.5절의 네 가지 질문을 모두 던진다. 받은 지적을 표 <span class="xref" data-ref="tab:critique-sort">4.6</span>의 세 분류로 나눈다.</p>
+<ol data-blk="chapters/ch04/labs.tex#19">
+<li>받아들인 지적: 몇 개인가? 진술문을 어떻게 고쳤는가?</li>
+<li>확인이 필요한 지적: 목록으로 만든다(5장에서 조사한다)</li>
+<li>기각한 지적: <strong>각각의 기각 이유를 한 줄씩</strong> 적는다</li>
+</ol>
+<p data-blk="chapters/ch04/labs.tex#20">3번 목록은 중간 발표 자료에 그대로 들어간다. <em>무엇을 왜 반영하지 않았는가</em>를 설명할 수 있는 것이 이 실습의 성과다.</p>
+</div></p>
+<details class="box summary" id="summary"><summary class="box-head">4장 요약</summary><div class="sum-body"><ul>
+<li>불편·증상·문제·원인은 다르다. 우리가 만들어야 할 것은 <strong>문제</strong>  —  누가 무엇 때문에 어떤 대가를 치르는지를 적은 것이다.</li>
+<li>불편을 문제로 바꾸려면 세 축을 채운다. <strong>얼마나 자주</strong> 일어나는가, <strong>얼마나</strong> 걸리거나 나쁜가, <strong>누가</strong> 겪는가. 좋은 문제 진술에는 숫자가 하나 이상 들어 있다.</li>
+<li>숫자를 모르면 추정하고 <em>(추정)</em>이라고 표시한다. 중요한 것은 정확도가 아니라 <strong>잴 수 있는 형태로 적어 두는 것</strong>이다.</li>
+<li>문제를 적을 때 <strong>해법을 언급하지 않는다</strong>. <em>…이 없어서 불편하다</em>는 문제가 아니라 해법의 부재이며, 그렇게 적는 순간 다른 해법을 생각할 수 없게 된다.</li>
+<li>한 문제에는 <strong class="term-ko">이해관계자</strong><sup class="term">stakeholder</sup>가 셋 있다  —  겪는 사람, 시키는 사람, 받는 사람. 이들이 다를 때 <strong>누구를 위해 만들 것인지 정하지 않으면</strong> 아무도 만족하지 않는 것이 나온다.</li>
+<li>남이 쓰게 하려면 그 남에게 물어야 한다. 다섯 명이면 충분하고, <strong>의견이 아니라 경험</strong>을 묻는다. 특히 <em>지금은 어떻게 넘기고 있는가</em>를 반드시 묻는다  —  기존 방식보다 확실히 낫지 않으면 갈아타지 않는다.</li>
+<li><strong class="term-ko">문제 진술문</strong><sup class="term">problem statement</sup>은 다섯 칸을 채운 한 문단이다. 마지막에 <em>해결되면 무엇이 달라지는지</em>가 반드시 있어야 한다. 가장 좋은 검사는 <strong>남이 읽고 상황을 그릴 수 있는가</strong>이다.</li>
+<li>성공 기준에는 <strong>지금 값과 목표 값</strong>이 모두 있어야 한다. 잴 수 없는 목표는 소망이다. 기준은 두 개 이상 두되(대개 <em>빨라졌는가</em>와 <em>틀리지 않았는가</em>) 셋을 넘기지 않는다.</li>
+<li>남이 쓸 것이라면 <strong>실제로 쓰이는가</strong>도 재야 한다. 특히 원래 방식으로 되돌아간 사람이 있다면 그 이유가 다음 판의 작업 목록이 된다.</li>
+<li>성공 기준은 <em>언제 멈출지</em>도 알려 준다. 기준을 미리 정해 두지 않으면 <em>조금만 더</em>가 반복되다 학기가 끝난다.</li>
+<li>인공지능은 문제를 정해 주는 상대가 아니라 <strong>내 정의를 흔들어 보는</strong> 상대다. 그냥 물으면 칭찬하므로 <em>반박하라</em>고 명시해야 한다. 받은 지적은 받아들임·확인 필요·기각으로 나누고, <strong>기각에는 이유를 적어 남긴다</strong>.</li>
+</ul></div></details>
+<details class="box exercise" id="exercises"><summary class="box-head">4장 연습문제</summary><div class="ex-body"><ol data-blk="chapters/ch04/exercises.tex#1">
+<li class="ex-item" data-ex="1"><span class="diff"><span class="d1">★</span></span>  불편·증상·문제·원인을 구분해 설명하고, 하나의 상황에 대해 네 가지를 각각 한 문장씩 써 보시오.</li>
+<li class="ex-item" data-ex="2"><span class="diff"><span class="d1">★</span></span>  다음 문장들 가운데 <strong>문제 진술문이 될 수 없는</strong> 것을 모두 고르고, 각각 무엇이 잘못되었는지 쓰시오.
+<ol type="a">
+<li>학생회 예산 집행 내역을 공개하는 시스템이 없다</li>
+<li>학과 MT 참가 신청을 대화방으로 받다 보니 매년 20–30명의 명단이 중복되거나 누락되어, 담당자가 출발 전날 밤 2시간을 확인 전화에 쓴다</li>
+<li>도서관이 불편하다</li>
+<li>새로운 앱을 개발할 필요가 있다</li>
+</ol></li>
+<li class="ex-item" data-ex="3"><span class="diff"><span class="d1">★</span></span>  <strong class="term-ko">이해관계자</strong><sup class="term">stakeholder</sup> 세 종류를 쓰고, 자기 문제에서 각각 누구인지 밝히시오. 셋이 같은 사람이라면 그렇다고 쓰고 이유를 밝히시오.</li>
+<li class="ex-item" data-ex="4"><span class="diff"><span class="d2">★★</span></span>  다음 성공 기준을 <strong>잴 수 있는 형태</strong>로 고쳐 쓰시오. 지금 값과 목표 값, 재는 방법이 모두 있어야 한다.
+<ol type="a">
+<li>조별 과제 진행이 원활해진다</li>
+<li>학생들이 실습 일정을 잘 알게 된다</li>
+<li>정산이 정확해진다</li>
+</ol></li>
+<li class="ex-item" data-ex="5"><span class="diff"><span class="d2">★★</span></span>  4.2절에서 <em>의견이 아니라 경험을 물으라</em>고 했다. 그 이유를 설명하고, 다음 질문들을 경험을 묻는 질문으로 고쳐 쓰시오.
+<ol type="a">
+<li>이런 도구가 있으면 쓰시겠어요?</li>
+<li>지금 방식이 불편하지 않으세요?</li>
+<li>어떤 기능이 있으면 좋겠어요?</li>
+</ol></li>
+<li class="ex-item" data-ex="6"><span class="diff"><span class="d2">★★</span></span>  어떤 학생이 <em>학과 홈페이지가 불편해서 개편이 필요하다</em>를 문제로 삼았다. 이 진술의 문제점을 지적하고, 그 학생이 무엇을 조사한 뒤 어떻게 다시 써야 할지 구체적으로 제시하시오.</li>
+<li class="ex-item" data-ex="7"><span class="diff"><span class="d3">★★★</span></span>  자기 문제 진술문을 4.5절의 네 가지 질문으로 검증하시오. 보고에는 (1) 원래 진술문, (2) 받은 지적 전체, (3) 세 분류로 나눈 결과, (4) <strong>기각한 지적과 그 이유</strong>, (5) 고친 진술문이 포함되어야 한다.</li>
+<li class="ex-item" data-ex="8"><span class="diff"><span class="d3">★★★</span></span>  자기 문제에 대해 <em>이 문제가 해결되면 오히려 곤란해지는 사람</em>이 있는지 조사하시오. 있다면 누구이고 왜 그런지, 그리고 그 사람의 반대를 어떻게 다룰 것인지 서술하시오. 없다고 판단했다면 그 근거를 대시오(<em>없는 것 같다</em>는 근거가 아니다).</li>
+</ol>
+</div></details>
+<div class="pager-row"><a class="pager prev" href="ch03.html">&larr; 3장</a><a class="pager next" href="ch05.html">5장 &rarr;</a></div>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-glsl.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="book.js"></script>
+</body>
+</html>

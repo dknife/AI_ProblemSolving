@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>부록 A 무료 AI 도구와 에이전트 총정리 — AI 문제해결</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="book.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="home" href="../index.html">&#8962; 홈</a>
+  <span class="book-title">AI 문제해결</span>
+  <span class="ch-indicator">부록 A 무료 AI 도구와 에이전트 총정리</span>
+  <button class="nav-toggle" onclick="document.body.classList.toggle('nav-open')">목차</button>
+</header>
+<div class="layout">
+<nav class="sidebar">
+<div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 문제를 푸는 방식이 달라졌다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> AI는 어떻게 답을 만드는가</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 에이전트: 스스로 일하는 AI</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 문제를 찾아내고 정의한다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> 문제를 쪼개고 구조를 본다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch06.html"><span class="nav-num">06</span> 해법을 찾고 고른다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> AI와 제대로 대화한다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 만들기 위한 준비</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 첫 번째 웹 서비스 만들기</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch10.html"><span class="nav-num">10</span> 세상에 내놓기</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch11.html"><span class="nav-num">11</span> 파이썬 앱으로 반복을 없앤다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch12.html"><span class="nav-num">12</span> 고치고 다듬는다</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="ch13.html"><span class="nav-num">13</span> 나의 문제 해결 프로젝트</a>
+</div>
+<div class="nav-part">부록</div>
+<div class="nav-ch current"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">A</span> 무료 AI 도구와 에이전트 총정리</a>
+<div class="nav-secs"><a class="nav-sec" href="apxa.html#sec1">도구를 고르는 세 가지 질문</a><a class="nav-sec" href="apxa.html#sec2">대화형 AI</a><a class="nav-sec" href="apxa.html#sec3">화면까지 만들어 주는 도구</a><a class="nav-sec" href="apxa.html#sec4">에이전트형 도구</a><a class="nav-sec" href="apxa.html#sec5">파이썬 실행 환경</a><a class="nav-sec" href="apxa.html#sec6">배포와 보관</a><a class="nav-sec" href="apxa.html#sec7">도구 비교표</a><a class="nav-sec" href="apxa.html#sec8">무료 한도 안에서 일하는 요령</a></div>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxb.html"><span class="nav-num">B</span> 문제 해결 프롬프트 사전</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxc.html"><span class="nav-num">C</span> 자주 만나는 오류와 해결</a>
+</div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxd.html"><span class="nav-num">D</span> 배포와 공유 안내</a>
+</div>
+<div class="nav-part">부가 자료</div>
+<div class="nav-ch"><a class="nav-ch-link" href="references.html"><span class="nav-num">&#128218;</span> 참고문헌</a></div>
+<div class="nav-ch"><a class="nav-ch-link" href="apxa.html"><span class="nav-num">&#128295;</span> 도구 비교표</a></div>
+</nav>
+<main class="content">
+<div class="chapter-head">
+  <div class="ch-label">APPENDIX A</div>
+  <h1>무료 AI 도구와 에이전트 총정리</h1>
+</div>
+<img class="appendix-hero" src="img/appendix.jpg" alt="부록 대표 이미지">
+<p>이 부록은 본문에서 소개한 도구를 한자리에 모은 것이다. <strong>요금과 한도는 수시로 바뀐다.</strong> 그래서 여기서는 구체적인 숫자보다 각 도구의 성격과 고르는 기준에 무게를 둔다. 학기가 시작될 때 이 표를 직접 확인해 채워 넣기를 권한다  —  그 작업 자체가 좋은 실습이다.</p>
+<h2 data-blk="backmatter/appendix_tools.tex#2" id="sec1">도구를 고르는 세 가지 질문</h2>
+<div class="settingbox-wrap"><div class="setting-label">세 가지 질문</div><pre class="settingbox"><code>1. 무엇을 만들 것인가?
+     남이 열어 쓰는 화면       -&gt; 웹 (9~10장)
+     내 반복 작업을 대신       -&gt; 파이썬 (11장)
+     둘 다                     -&gt; 웹부터 만든다
+
+2. 어떤 환경에서 작업하는가?
+     학교 실습실 / 공용 컴퓨터 -&gt; 설치 없는 웹 도구만
+     개인 노트북               -&gt; 설치형도 가능
+     태블릿만 있다             -&gt; 웹 도구만, 배포는 웹 화면에서
+
+3. 남에게 보여 줄 것인가?
+     아니오                    -&gt; 계정 하나로 충분
+     예                        -&gt; 저장소 계정이 추가로 필요 (부록 D)</code></pre></div>
+<h2 data-blk="backmatter/appendix_tools.tex#3" id="sec2">대화형 AI</h2>
+<p data-blk="backmatter/appendix_tools.tex#4">문장으로 묻고 답을 받는 도구다. 4–7장에서 문제를 정의하고 다듬는 데 계속 쓴다.</p>
+<div class="toolcard"><div class="tool-head"><span class="tool-name">ChatGPT</span><span class="price freemium">부분 무료</span></div><div class="tool-addr">chatgpt.com</div><p>무료로 쓸 수 있으며, 사용량이 많아지면 성능이 낮은 모델로 내려간다. 코드와 함께 화면을 만들어 보여 주는 기능이 있다. 파일 업로드와 웹 검색을 지원한다.</p></div>
+<div class="toolcard"><div class="tool-head"><span class="tool-name">Claude</span><span class="price freemium">부분 무료</span></div><div class="tool-addr">claude.ai</div><p>무료 계정에서 하루 일정량을 쓸 수 있고, 소진되면 시간이 지나 회복된다. 만든 결과물을 옆 화면에서 바로 실행해 볼 수 있어 8–9장의 작업에 편하다. 긴 문서를 다루는 데 강하다.</p></div>
+<div class="toolcard"><div class="tool-head"><span class="tool-name">Gemini</span><span class="price freemium">부분 무료</span></div><div class="tool-addr">gemini.google.com</div><p>구글 계정으로 바로 쓸 수 있다. 구글 문서·스프레드시트와 연결해 쓰기 편하며, 노트북 환경(11장)과 같은 계정을 쓴다.</p></div>
+<div class="box caution"><span class="chip">주의</span><p data-blk="backmatter/appendix_tools.tex#5"><strong>어느 것이 낫다고 말하지 않는다.</strong> 세 곳 모두 자주 바뀌고, 작업에 따라 잘하는 것이 다르다. <strong>최소 두 곳에 계정을 만들어</strong> 같은 질문을 넣어 보는 습관을 들이자(실습 1-4).</p>
+</div>
+<h2 data-blk="backmatter/appendix_tools.tex#6" id="sec3">화면까지 만들어 주는 도구</h2>
+<p data-blk="backmatter/appendix_tools.tex#7">설명을 넣으면 코드와 함께 <strong>동작하는 화면</strong>을 보여 준다. 8–10장의 핵심 도구다.</p>
+<div class="table-wrap"><div class="table-caption">표 A.1: 화면을 만들어 주는 기능  —  이름은 달라도 하는 일은 같다</div><table><tr><th> 서비스</th><th> 부르는 이름</th><th> 확인할 것</th></tr><tr><td>Claude</td><td>아티팩트</td><td>파일로 내려받기 되는가</td></tr><tr><td>ChatGPT</td><td>캔버스</td><td>무료 계정에서 되는가</td></tr><tr><td>Google AI Studio</td><td>빌드</td><td>결과물 저장 방식</td></tr></table></div>
+<p>이름보다 <strong>화면이 옆에 뜨는가</strong>로 알아보면 된다. 고를 때 반드시 확인할 것은 하나다  —  <strong>결과물을 HTML 파일로 내려받을 수 있는가.</strong> 내려받을 수 없으면 10장에서 배포할 수 없다.</p>
+<h2 data-blk="backmatter/appendix_tools.tex#9" id="sec4">에이전트형 도구</h2>
+<p data-blk="backmatter/appendix_tools.tex#10">목표를 주면 여러 단계를 스스로 진행한다(3장). 웹에서 쓰는 것과 설치해서 쓰는 것으로 나뉜다.</p>
+<div class="table-wrap"><div class="table-caption">표 A.2: 에이전트 도구  —  두 갈래</div><table><tr><th></th><th> 웹에서</th><th> 설치해서</th></tr><tr><td>준비</td><td>계정만</td><td>프로그램 설치</td></tr><tr><td>다루는 것</td><td>대화창 안의 결과물</td><td>내 컴퓨터의 파일·폴더</td></tr><tr><td>잘하는 일</td><td>화면 만들기, 자료 처리</td><td>여러 파일에 걸친 작업</td></tr><tr><td>막히는 곳</td><td>무료 한도</td><td>설치·권한·환경</td></tr><tr><td>이 책에서</td><td><strong>기본</strong></td><td>선택 (여유가 되면)</td></tr></table></div>
+<div class="box caution"><span class="chip">주의</span><p data-blk="backmatter/appendix_tools.tex#11">설치형을 쓸 때는 <strong>그 프로젝트만을 위한 빈 폴더</strong>를 만들어 그 안에서만 작업하게 한다(3.4절). 그리고 <em>모든 것을 자동 승인</em>하는 옵션을 켜지 않는다.</p>
+</div>
+<h2 data-blk="backmatter/appendix_tools.tex#12" id="sec5">파이썬 실행 환경</h2>
+<div class="toolcard"><div class="tool-head"><span class="tool-name">Google Colab</span><span class="price free">무료</span></div><div class="tool-addr">colab.research.google.com</div><p>설치 없이 브라우저에서 파이썬을 실행한다. 파일을 올리고 내려받을 수 있으며, 표 처리와 그림 그리기 도구가 기본으로 들어 있다. 11장의 모든 실습이 여기서 가능하다. <strong>한동안 두면 올린 파일이 사라지므로</strong> 결과는 만든 즉시 내려받는다.</p></div>
+<h2 data-blk="backmatter/appendix_tools.tex#13" id="sec6">배포와 보관</h2>
+<div class="toolcard"><div class="tool-head"><span class="tool-name">GitHub</span><span class="price free">무료</span></div><div class="tool-addr">github.com</div><p>파일을 올려 두고 그대로 웹 주소로 공개할 수 있다(GitHub Pages). 우리는 <strong>파일을 올리고 공개 설정을 켜는</strong> 정도만 쓴다. 명령줄 도구는 필요 없다. 절차는 부록 D.</p></div>
+<p data-blk="backmatter/appendix_tools.tex#14">파이썬 앱을 주소로 만들려면 앱 호스팅 서비스가 필요하다(11.5절). 무료 계정에서는 <strong>한동안 아무도 안 쓰면 잠들어</strong> 다음 사람이 열 때 시간이 걸린다는 점을 알아 두자.</p>
+<h2 data-blk="backmatter/appendix_tools.tex#15" id="sec7">도구 비교표</h2>
+<div class="widget" data-widget="tools"><div class="widget-head"><span class="widget-tag">체험</span><span class="widget-title">도구 비교표</span></div><div class="widget-body"><p class="tooltable-empty">불러오는 중…</p></div><div class="widget-note">분야로 걸러 보고 열을 눌러 정렬할 수 있다. 이 표는 원고가 아니라 별도 자료 파일로 관리하므로, 도구 정보가 바뀌면 웹 쪽만 갱신된다.</div></div>
+<p data-blk="backmatter/appendix_tools.tex#17">학기 시작 때 직접 확인해 채운다.</p>
+<div class="settingbox-wrap"><div class="setting-label">내가 확인한 도구 (확인 날짜: 20  년   월   일)</div><pre class="settingbox"><code>이름            분야        무료 한도              설치  쓰는 곳    한 줄 평
+----------------------------------------------------------------------------------
+                대화형
+                대화형
+                화면 만들기
+                화면 만들기
+                에이전트
+                파이썬
+                배포
+----------------------------------------------------------------------------------</code></pre></div>
+<h2 data-blk="backmatter/appendix_tools.tex#18" id="sec8">무료 한도 안에서 일하는 요령</h2>
+<p data-blk="backmatter/appendix_tools.tex#19">한도에 걸려 과제를 못 내는 상황을 막는 것이 이 절의 목적이다.</p>
+<p data-blk="backmatter/appendix_tools.tex#20"><strong>좋은 모델을 아껴 쓴다.</strong> 생각이 필요한 일(문제 검토, 코드 만들기)에만 쓰고, 정리·형식 변환처럼 뻔한 일은 가벼운 모델에게 맡긴다(2.5절).</p>
+<p data-blk="backmatter/appendix_tools.tex#21"><strong>대화를 길게 끌지 않는다.</strong> 컨텍스트가 길어질수록 한 번의 응답에 드는 비용이 커진다. 주제가 바뀌면 새로 시작한다(2.4절).</p>
+<p data-blk="backmatter/appendix_tools.tex#22"><strong>정리한 뒤 요청한다.</strong> 자료를 통째로 붙이지 말고 필요한 부분만 넣는다. 답의 질도 좋아진다(7.2절).</p>
+<p data-blk="backmatter/appendix_tools.tex#23"><strong>마감 직전을 피한다.</strong> 한도가 회복되는 데 몇 시간이 걸릴 수 있다. 과제 마감 당일에 한도가 떨어지면 방법이 없다.</p>
+<p data-blk="backmatter/appendix_tools.tex#24"><strong>두 곳을 번갈아 쓴다.</strong> 한 곳이 막히면 다른 곳으로 간다. 계정을 둘 이상 만들어 두라고 한 실용적인 이유다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="backmatter/appendix_tools.tex#25">무료 한도는 <strong>제약이자 훈련</strong>이다. 한도가 없으면 아무 생각 없이 스무 번 물어보게 된다. 한도가 있으면 한 번 물을 때 제대로 묻게 되고, 그것이 7장에서 배운 것이다.</p>
+</div>
+<div class="pager-row"><a class="pager prev" href="ch13.html">&larr; 13장</a><a class="pager next" href="apxb.html">부록 B &rarr;</a></div>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-glsl.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="book.js"></script>
+</body>
+</html>
