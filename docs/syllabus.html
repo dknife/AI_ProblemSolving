@@ -1,0 +1,1323 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 문제해결 수업계획서</title>
+<meta name="description" content="2026학년도 2학기 역량교양 「AI 문제해결」 수업계획서. 15주 주차별 학습내용, 평가 계획, 교재와 실습 서식을 담았습니다.">
+<style>
+/* ============================================================
+   AI 문제해결 수업계획서
+   팔레트는 교재(latex/preamble.tex)의 딥네이비·웜카퍼를 그대로 쓴다.
+   ============================================================ */
+:root {
+  --ground:      #F4F6F9;
+  --surface:     #FFFFFF;
+  --label-bg:    #EDF1F7;
+  --label-bg-2:  #E3E9F2;
+  --ink:         #1B2433;
+  --ink-2:       #47536A;
+  --ink-3:       #6E7A8F;
+  --navy:        #163864;
+  --navy-soft:   #2A5588;
+  --copper:      #C86932;
+  --copper-soft: #E4E0DA;
+  --rule:        #C8CFD9;
+  --rule-soft:   #DFE4EC;
+  --ok:          #2A7D6B;
+  --on-copper:   #FFFFFF;
+
+  --w-label: 104px;
+  --maxw: 1000px;
+  --fs-body: 14.5px;
+
+  --kr: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+        "Pretendard", "Malgun Gothic", "맑은 고딕", "Noto Sans KR", sans-serif;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", "D2Coding",
+          Consolas, "Liberation Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground:      #10141B;
+    --surface:     #171C25;
+    --label-bg:    #1E2632;
+    --label-bg-2:  #26303E;
+    --ink:         #E5E9F0;
+    --ink-2:       #AEB8C8;
+    --ink-3:       #8590A2;
+    --navy:        #8AB0DE;
+    --navy-soft:   #A9C6EC;
+    --copper:      #E2955C;
+    --copper-soft: #3A3229;
+    --rule:        #333E4E;
+    --rule-soft:   #262F3C;
+    --ok:          #57B39C;
+    --on-copper:   #14100C;
+  }
+}
+:root[data-theme="dark"] {
+  --ground:      #10141B;
+  --surface:     #171C25;
+  --label-bg:    #1E2632;
+  --label-bg-2:  #26303E;
+  --ink:         #E5E9F0;
+  --ink-2:       #AEB8C8;
+  --ink-3:       #8590A2;
+  --navy:        #8AB0DE;
+  --navy-soft:   #A9C6EC;
+  --copper:      #E2955C;
+  --copper-soft: #3A3229;
+  --rule:        #333E4E;
+  --rule-soft:   #262F3C;
+  --ok:          #57B39C;
+  --on-copper:   #14100C;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--kr);
+  font-size: var(--fs-body);
+  line-height: 1.62;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
+
+.page {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 30px 20px 72px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* ---------- 문서 머리 ---------- */
+.doc-head { text-align: center; padding: 6px 0 2px; }
+.doc-head h1 {
+  margin: 0;
+  font-size: clamp(24px, 4vw, 31px);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--navy);
+  text-wrap: balance;
+}
+.doc-head .sub {
+  margin: 9px 0 0;
+  font-size: 13.5px;
+  color: var(--ink-2);
+}
+.doc-head .sub b { color: var(--ink); font-weight: 700; }
+.doc-head .bar {
+  width: 62px; height: 3px; margin: 13px auto 0;
+  background: var(--copper); border-radius: 2px;
+}
+
+/* ---------- 공통 표 ---------- */
+table { border-collapse: collapse; width: 100%; }
+.block {
+  background: var(--surface);
+  border: 1.5px solid var(--ink-2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.block + .block { margin-top: 0; }
+th, td {
+  border: 1px solid var(--rule);
+  padding: 7px 10px;
+  vertical-align: middle;
+  text-align: left;
+}
+th {
+  background: var(--label-bg);
+  color: var(--ink);
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+}
+td { background: var(--surface); }
+.num, .c { text-align: center; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+/* 표 안 여백을 좁혀야 하는 곳 */
+.tight th, .tight td { padding: 5px 8px; }
+
+/* 섹션 제목 띠 */
+.band {
+  background: var(--label-bg-2);
+  color: var(--navy);
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 0.06em;
+  padding: 8px 10px;
+  border: 1px solid var(--rule);
+  border-bottom: none;
+}
+
+/* 라벨 열 */
+.lb { width: var(--w-label); }
+.lb-w { width: 132px; }
+
+/* 본문 셀 안의 목록 */
+td ul, td ol { margin: 0; padding-left: 1.15em; }
+td li { margin: 2px 0; }
+td p { margin: 0 0 7px; }
+td p:last-child { margin-bottom: 0; }
+.note { color: var(--ink-3); font-size: 12.8px; }
+.hl { color: var(--copper); font-weight: 700; }
+b, strong { font-weight: 700; }
+
+/* 기입 대기 자리 */
+.email { white-space: nowrap; font-size: 13.2px; }
+.nw { white-space: nowrap; }
+.fill {
+  display: inline-block;
+  min-width: 96px;
+  padding: 1px 8px;
+  border-bottom: 1.5px dotted var(--rule);
+  color: var(--ink-3);
+  font-size: 12.6px;
+}
+
+/* ---------- 주차 블록 ---------- */
+.week {
+  background: var(--surface);
+  border: 1.5px solid var(--ink-2);
+  border-radius: 3px;
+  overflow: hidden;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.week-head {
+  display: flex; align-items: center; gap: 11px;
+  flex-wrap: wrap;
+  padding: 9px 12px;
+  background: var(--label-bg-2);
+  border-bottom: 1px solid var(--rule);
+}
+.week-no {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  color: var(--on-copper);
+  background: var(--copper);
+  padding: 3px 9px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.week-title { font-weight: 800; color: var(--navy); font-size: 15.5px; }
+.week-src {
+  margin-left: auto;
+  font-size: 12.5px; color: var(--ink-3); white-space: nowrap;
+}
+.week-exam .week-head { background: var(--copper-soft); }
+.week-exam .week-title { color: var(--copper); }
+
+/* 수업방법 체크 격자 */
+.methods { table-layout: fixed; }
+.methods th { font-size: 12.2px; font-weight: 600; padding: 5px 3px; white-space: normal; }
+.methods td { text-align: center; padding: 5px 3px; height: 26px; }
+.methods .on {
+  color: var(--ok);
+  font-weight: 800;
+  font-size: 15px;
+  background: color-mix(in srgb, var(--ok) 9%, var(--surface));
+}
+
+/* ---------- 주차 바로가기 ---------- */
+.jump {
+  position: sticky; top: 0; z-index: 5;
+  background: color-mix(in srgb, var(--ground) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--rule-soft);
+  border-radius: 4px;
+  padding: 8px 10px;
+  display: flex; align-items: center; gap: 7px; flex-wrap: wrap;
+}
+.jump .cap {
+  font-size: 12.2px; font-weight: 700; color: var(--ink-3);
+  letter-spacing: 0.04em; margin-right: 2px;
+}
+.jump a {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 12.4px;
+  color: var(--navy);
+  text-decoration: none;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 2px 7px;
+  background: var(--surface);
+}
+.jump a:hover { border-color: var(--copper); color: var(--copper); }
+.jump a.exam { border-color: var(--copper); color: var(--copper); font-weight: 700; }
+.jump .tools { margin-left: auto; display: flex; gap: 7px; }
+.jump button {
+  font: inherit; font-size: 12.4px;
+  color: var(--ink-2); background: var(--surface);
+  border: 1px solid var(--rule); border-radius: 3px;
+  padding: 2px 10px; cursor: pointer;
+}
+.jump button:hover { border-color: var(--copper); color: var(--copper); }
+
+.foot {
+  color: var(--ink-3); font-size: 12.4px; text-align: center;
+  padding-top: 6px; line-height: 1.75;
+}
+.foot a { color: var(--navy); }
+
+/* ---------- 좁은 화면 ---------- */
+.scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+@media (max-width: 720px) {
+  :root { --fs-body: 14px; --w-label: 82px; }
+  .page { padding: 20px 12px 56px; }
+  th, td { padding: 6px 7px; }
+  .scroll > table { min-width: 640px; }
+  .week-src { margin-left: 0; width: 100%; }
+}
+
+/* ---------- 인쇄 (A4) ---------- */
+@media print {
+  @page { size: A4; margin: 12mm 11mm; }
+  :root {
+    --ground: #fff; --surface: #fff;
+    --label-bg: #EDEDED; --label-bg-2: #E2E2E2;
+    --ink: #000; --ink-2: #333; --ink-3: #555;
+    --navy: #000; --copper: #000; --rule: #999; --copper-soft: #E8E8E8;
+    --on-copper: #fff;
+    --fs-body: 9.6px;
+    --w-label: 62px;
+  }
+  body { background: #fff; line-height: 1.5; }
+  /* flex 컨테이너는 크롬 인쇄에서 자식을 쪽 사이로 나누지 못한다. 블록으로 되돌린다. */
+  .page { max-width: none; padding: 0; display: block; }
+  .page > * { margin-bottom: 7px; }
+  .jump { display: none; }
+  /* overflow가 걸린 상자는 쪽 분할을 막고, 넘친 표를 잘라 낸다. 인쇄에서는 모두 푼다. */
+  .block, .week, .scroll { overflow: visible; }
+  .block, .week { border-color: #000; border-radius: 0; }
+  /* 주차 블록은 원본 서식처럼 쪽을 넘겨 이어지되, 줄과 체크표는 가운데서 끊기지 않게 */
+  .week { break-inside: auto; page-break-inside: auto; }
+  tr { break-inside: avoid; page-break-inside: avoid; }
+  .week-head { break-after: avoid; page-break-after: avoid; padding: 5px 8px; }
+  .methods { break-inside: avoid; page-break-inside: avoid; }
+  th, td { padding: 2.6px 4px; }
+  /* 라벨의 nowrap과 이메일이 겹치면 표가 인쇄 폭을 넘긴다. 인쇄에서는 접히게 둔다. */
+  th { white-space: normal; overflow-wrap: normal; word-break: keep-all; }
+  .email { white-space: normal; font-size: inherit; word-break: normal; }
+  .scroll > table { min-width: 0; }
+  .week-title { font-size: 12px; }
+  .week-no { background: #444; }
+  .methods td { height: 17px; }
+  .methods .on { background: #EEE; color: #000; }
+  td li { margin: 0; }
+  .doc-head { padding: 0 0 2px; }
+  .doc-head h1 { font-size: 21px; }
+  .doc-head .sub { margin-top: 5px; }
+  .doc-head .bar { margin-top: 7px; height: 2px; }
+  a { color: #000; text-decoration: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+html { scroll-behavior: smooth; }
+
+/* 웹에서만 보이는 이동 막대 — 인쇄하면 사라진다 */
+.sitebar {
+  max-width: var(--maxw); margin: 0 auto -14px; padding: 26px 20px 0;
+  display: flex; gap: 18px; align-items: baseline;
+  font-size: 13.5px; letter-spacing: -.01em;
+}
+.sitebar a { color: var(--ink-3); text-decoration: none; border-bottom: 1px solid transparent; }
+.sitebar a:hover { color: var(--copper); border-bottom-color: var(--copper); }
+.sitebar .home { color: var(--navy); font-weight: 700; }
+.sitebar .push { margin-left: auto; }
+@media print { .sitebar { display: none !important; } }
+</style>
+</head>
+<body>
+
+<nav class="sitebar" aria-label="사이트 이동">
+  <a class="home" href="index.html">AI 문제해결</a>
+  <a href="book/front.html">책 읽기</a>
+  <a href="book/apxa.html">도구 정리</a>
+  <a class="push" href="javascript:window.print()">인쇄 / PDF 저장</a>
+</nav>
+
+<main class="page">
+
+<header class="doc-head">
+  <h1>수업계획서</h1>
+  <p class="sub"><b>AI 문제해결</b> — 코드를 몰라도 만드는 웹 서비스와 파이썬 앱</p>
+  <div class="bar"></div>
+</header>
+
+<!-- ===================== 기본 정보 ===================== -->
+<div class="block scroll">
+<table class="tight">
+  <tr>
+    <th class="lb">학년도</th><td class="c num">2026</td>
+    <th class="lb">학기</th><td class="c">2학기</td>
+    <th class="lb">학과</th><td class="c">학부교양대학</td>
+    <th class="lb">수강대상</th><td class="c">1&ndash;4학년</td>
+  </tr>
+  <tr>
+    <th>강좌코드</th><td class="c"><span class="fill">학사 부여 후 기입</span></td>
+    <th>과목명</th><td class="c"><b>AI 문제해결</b></td>
+    <th>분반</th><td class="c num">01</td>
+    <th>이수구분</th><td class="c">역량교양</td>
+  </tr>
+  <tr>
+    <th>학점</th><td class="c num">2</td>
+    <th>평가방법</th><td class="c">상대평가 I</td>
+    <th>이수단위<br><span class="note nw">(이론·실습·설계)</span></th>
+    <td class="c num">1 / 1 / 0</td>
+    <th>주당시수</th><td class="c num">2</td>
+  </tr>
+  <tr>
+    <th>부제</th>
+    <td colspan="7">AI 에이전트와 함께 문제를 정의하고 직접 만들어 푸는 법</td>
+  </tr>
+  <tr>
+    <th>담당교수<br><span class="note">(대표교수)</span></th><td class="c">강영민</td>
+    <th>연구실</th><td class="c"><span class="fill">기입</span></td>
+    <th>전화</th><td class="c"><span class="fill">기입</span></td>
+    <th>E-MAIL</th><td class="c email">ymkang<wbr>@tu.ac.kr</td>
+  </tr>
+  <tr>
+    <th>상담시간</th>
+    <td colspan="3">수업 후 30분 및 사전 예약(이메일)</td>
+    <th>선수과목</th>
+    <td colspan="3">없음. 프로그래밍 경험을 요구하지 않는다.</td>
+  </tr>
+</table>
+</div>
+
+<!-- ===================== 교과 개요·목표 ===================== -->
+<div class="block">
+<table>
+  <tr>
+    <th class="lb-w">교과개요</th>
+    <td>
+      <p>본 교과는 <b>전공을 가리지 않는 학생</b>이 자기 분야에서 실제로 겪는 문제를 스스로 정의하고,
+      AI 에이전트를 활용하여 그 문제를 해결하는 <b>웹 서비스</b>와 <b>간단한 파이썬 앱</b>을 직접
+      만들어 내는 역량을 기르도록 설계된 교양 교과목이다. 프로그래밍 언어의 문법이나 컴퓨터 전공
+      지식을 전제하지 않으며, 코드는 <i>쓰는 것</i>이 아니라 <i>읽고 검증하는 것</i>으로 다룬다.</p>
+
+      <p><b>1주차부터 만든다.</b> 첫 시간에 표 파일을 끌어다 놓으면 요약과 막대그래프가 나오는
+      웹 페이지를 30분 만에 만든다. 파일을 읽고, 분석하고, 그림으로 보여 주는 일 &mdash; 프로그래밍을
+      배우지 않은 학생이 <i>그건 컴퓨터 하는 사람이나 하는 것</i>이라 여기던 그 일이 첫 과제다.
+      그리고 매주 그것을 조금씩 고쳐 나가, 15주차에는 같은 결과물이 열세 번 좋아진 상태가 된다.</p>
+
+      <p><b>4주차가 전환점이다.</b> 만든 것을 다섯 사람에게 내밀어 보게 하는데, 대개 아무도 쓰지
+      않는다. 그 순간부터 <i>문제를 제대로 정의하는 일</i>이 시작된다 &mdash; 필요성을 설명으로
+      가르치지 않고 겪게 하는 것이 이 과목의 방식이다. 5&ndash;7주차에 문제를 다시 보고 명세를
+      세워 제대로 다시 만들고, 9&ndash;14주차에 읽고 고치고 공개하고 검증한다.</p>
+
+      <p>모든 실습은 <b>무료 도구만으로, 설치 없이</b> 완주할 수 있도록 구성한다. 8주차와 15주차는
+      프로젝트 발표에 배정하며, 매주의 실습 결과물이 다음 주의 재료가 되는 누적식으로 진행된다.
+      선수 과목은 없고, 학생이 직접 겪는 문제를 학기 내내 하나로 붙들고 가는 것이 이 수업의 방식이다.</p>
+    </td>
+  </tr>
+  <tr>
+    <th>교과목표</th>
+    <td>
+      <ol>
+        <li><b>파일을 읽어 분석하고 시각화하는 도구</b>를 AI의 도움으로 직접 만들 수 있다.</li>
+        <li>자기 전공·생활에서 겪는 불편을 <b>확인 가능한 문제</b>로 정의하고, 측정할 수 있는 성공 기준을 세울 수 있다.</li>
+        <li>문제를 다룰 수 있는 크기로 <b>쪼개어 구조를 파악</b>하고, 근거를 모아 원인을 가려낼 수 있다.</li>
+        <li>여러 대안을 비교해 <b>주어진 기간에 만들 수 있는 해법</b>을 선택하고, 이를 명세서와 프롬프트로 정확히 전달할 수 있다.</li>
+        <li>AI 에이전트를 활용하여 <b>웹 서비스와 파이썬 앱을 제작·공개</b>하고, 사용자 반응을 받아 개선할 수 있다.</li>
+        <li>AI가 만든 결과물을 <b>검증</b>하고, 개인정보·저작권·책임의 관점에서 내놓아도 되는지 판단할 수 있다.</li>
+      </ol>
+    </td>
+  </tr>
+  <tr>
+    <th>TU<br>수업모형</th>
+    <td>제작 중심의 프로젝트기반 학습(PjBL). 1주차부터 결과물을 만들고 매주 개선하는
+      <b>나선형(iterative) 구조</b>이며, 4주차의 사용자 시험에서 드러난 문제를 문제기반 학습(PBL)으로
+      다룬 뒤 다시 제작으로 돌아간다.</td>
+  </tr>
+</table>
+</div>
+
+<!-- ===================== 수업목표 ===================== -->
+<div class="block">
+<div class="band">수업목표</div>
+<table class="tight">
+  <tr>
+    <th class="lb-w" rowspan="3">학습목표</th>
+    <td class="c num" style="width:34px">1</td>
+    <td><b>일단 만들어 내는 힘</b> : 파일을 읽어 분석하고 그래프로 보여 주는 도구를 첫 주에
+      만들어 낼 수 있고, 매주 기능을 더하거나 덜어 내며 결과물을 키워 갈 수 있습니다.</td>
+  </tr>
+  <tr>
+    <td class="c num">2</td>
+    <td><b>잘 만들기 위한 판단</b> : 만든 것을 실제 사용자에게 내밀어 보고, 왜 쓰이지 않는지
+      알아내어 문제를 다시 정의하고, 명세를 세워 제대로 다시 만들 수 있습니다.</td>
+  </tr>
+  <tr>
+    <td class="c num">3</td>
+    <td><b>공개와 검증, 그리고 책임</b> : 결과물을 인터넷에 공개해 사용자를 받고, 계산 결과를 손으로
+      검산하며, 개인정보·저작권·AI 사용 기록의 관점에서 내놓아도 되는지 판단할 수 있습니다.</td>
+  </tr>
+</table>
+</div>
+
+<!-- ===================== 역량 ===================== -->
+<div class="block scroll">
+<table class="tight">
+  <tr>
+    <th class="lb-w"></th>
+    <th>역량명</th><th>하위역량</th><th style="width:72px">메인여부</th>
+    <th style="width:72px">역량비율</th><th>행동지표</th>
+  </tr>
+  <tr>
+    <th rowspan="3">핵심역량</th>
+    <td>문제해결역량</td><td>문제인식 · 분석</td><td class="c"><b>메인</b></td><td class="c num">50%</td>
+    <td>겪은 불편을 누가·얼마나 자주·어떤 대가를 치르는지가 드러나는 문제 진술문으로 쓰고,
+      측정 가능한 성공 기준을 제시한다.</td>
+  </tr>
+  <tr>
+    <td>창의융합역량</td><td>도구 활용 · 융합적 사고</td><td class="c">&mdash;</td><td class="c num">30%</td>
+    <td>자기 전공 지식과 AI 도구를 결합해 이전에 없던 해결 수단을 만들고, 서로 다른 대안을
+      복수로 도출해 비교한다.</td>
+  </tr>
+  <tr>
+    <td>의사소통역량</td><td>표현 · 경청</td><td class="c">&mdash;</td><td class="c num">20%</td>
+    <td>문제와 판단 근거를 남이 이해할 수 있게 설명하고, 사용자 반응을 수집해 반영 여부를
+      근거와 함께 결정한다.</td>
+  </tr>
+</table>
+<table class="tight">
+  <tr>
+    <th class="lb-w"></th><th>역량명</th><th style="width:110px">메인여부</th><th style="width:110px">역량비율</th>
+  </tr>
+  <tr>
+    <th>전공역량</th>
+    <td>해당없음 <span class="note">(역량교양 과목으로 전공역량은 지정하지 않는다)</span></td>
+    <td class="c">&mdash;</td><td class="c">&mdash;</td>
+  </tr>
+</table>
+</div>
+
+<!-- ===================== 수업유형 ===================== -->
+<div class="block scroll">
+<table class="tight">
+  <tr><th>수업유형</th><th>혁신수업</th><th>원격수업</th><th>기타</th></tr>
+  <tr>
+    <td class="c">강의 · 실습</td>
+    <td class="c">문제기반 학습(PBL), 프로젝트기반 학습(PjBL)</td>
+    <td class="c">해당사항없음 <span class="note">(전 주차 대면)</span></td>
+    <td class="c">상호 사용자 시험(동료 결과물 사용·관찰)</td>
+  </tr>
+</table>
+</div>
+
+<!-- ===================== 교재 ===================== -->
+<div class="block">
+<table class="tight">
+  <tr>
+    <th class="lb-w" rowspan="5">교재</th>
+    <th style="width:96px">주교재</th>
+    <td><b>『AI 문제해결 &mdash; AI 에이전트와 함께 문제를 정의하고 직접 만들어 푸는 법』</b>(강영민, 생능출판사)</td>
+  </tr>
+  <tr>
+    <th>웹 에디션</th>
+    <td>본문 전체를 웹에서 볼 수 있으며, 프롬프트마다 [복사]와 [도구에서 열기] 버튼이 붙는다.
+      부록 A의 도구 비교표는 학기 중 갱신된다. &nbsp;
+      <a href="https://dknife.github.io/AI_ProblemSolving/">dknife.github.io/AI_ProblemSolving</a></td>
+  </tr>
+  <tr>
+    <th>참고도서</th>
+    <td>『How to Solve It』(George Pólya, Princeton University Press, 2004) &mdash; 문제 해결의 고전</td>
+  </tr>
+  <tr>
+    <th>참고도서</th>
+    <td>『What&rsquo;s Your Problem?』(Thomas Wedell-Wedellsborg, Harvard Business Review Press, 2020)
+      &mdash; 문제를 다시 정의하는 법</td>
+  </tr>
+  <tr>
+    <th>참고도서</th>
+    <td>『Artificial Intelligence: A Guide for Thinking Humans』(Melanie Mitchell,
+      Farrar, Straus and Giroux, 2019) &mdash; 인공지능의 능력과 한계</td>
+  </tr>
+</table>
+</div>
+
+<!-- ===================== AI 활용도 ===================== -->
+<div class="block">
+<table>
+  <tr>
+    <th class="lb-w">AI활용도</th>
+    <td>
+      <p><b>(지혜)</b> 생성형 AI와 AI 에이전트를 <b>전 주차에 걸쳐 적극 활용</b>한다. 문제 정의 검토와
+      대안 도출(4&ndash;6주), 요구사항의 프롬프트 전환(7주), 웹 서비스·파이썬 앱 프로토타입 제작과
+      오류 수정(9&ndash;13주)에 사용한다.</p>
+      <p>다만 <b>AI에게 맡기지 않는 것</b>을 함께 가르친다. 무엇을 만들지 정하는 일, 결과가 맞는지
+      판정하는 일, 그 결과에 책임지는 일은 학생에게 남는다. 모든 제출물에는
+      <b>AI 사용 기록</b>(어디에 무엇을 썼는지, 무엇을 직접 판단했는지, 확인하지 못한 것은 무엇인지)을
+      함께 제출한다. 사용 사실을 밝히지 않은 경우에 한해 감점한다.</p>
+    </td>
+  </tr>
+</table>
+</div>
+
+<!-- ===================== 수업 규정 ===================== -->
+<div class="block">
+<table>
+  <tr>
+    <th class="lb-w">수업 규정<br>또는<br>안내사항</th>
+    <td>
+      <ol>
+        <li><b>비용</b> &mdash; 모든 실습과 과제는 <b>무료 도구만으로 완주</b>할 수 있게 구성한다.
+          유료 결제를 요구하지 않으며, 유료 전환 시 무엇이 좋아지는지는 참고로만 안내한다.</li>
+        <li><b>준비물</b> &mdash; 노트북(또는 태블릿)과 인터넷. 프로그램 설치는 필요하지 않으며,
+          브라우저에서 동작하는 도구만 사용한다. 1주차에 계정 두 곳을 개설한다.</li>
+        <li><b>매주 만든다</b> &mdash; 1주차부터 매주 제작 과제가 있고, 그것이 <b>하나의 결과물로
+          이어진다</b>. 새 과제를 매번 새로 만드는 것이 아니라 첫 주에 만든 것을 계속 고쳐 간다.
+          결석한 주의 제작은 다음 수업 전까지 반드시 보충해야 이후 진도를 따라갈 수 있다.</li>
+        <li><b>4주차 사용자 시험은 필수</b> &mdash; 자기 결과물을 다섯 명에게 써 보게 하는 실습이며,
+          이후 아홉 주가 그 결과 위에 서 있다. 대상자를 미리 확보해 둘 것.</li>
+        <li><b>주제의 연속성</b> &mdash; 기말 프로젝트의 주제는 1주차에 작성하는
+          <i>내 전공의 불편 열 가지</i>에서 나온다. 학기 중 주제 변경은 5주차까지 가능하다.</li>
+        <li><b>개인정보</b> &mdash; 실제 사람의 이름·학번·연락처가 포함된 자료를 AI 서비스에 올리지 않는다.
+          익명화하거나 형식만 같은 예시 자료를 만들어 사용한다.</li>
+        <li><b>공개물의 책임</b> &mdash; 결과물을 인터넷에 공개하는 순간 실제 사용자가 생긴다.
+          무엇이 저장되고 누가 볼 수 있는지 화면에 밝히고, 사용자가 자기 자료를 지울 수 있게 한다.</li>
+        <li><b>출결</b> &mdash; 실습형 수업이므로 지각 3회를 결석 1회로 처리한다.
+          전체 수업시수의 1/4 이상 결석 시 F 학점을 부여한다.</li>
+        <li><b>제출</b> &mdash; 과제는 매주 수업 전까지 LMS에 제출한다. 늦은 제출은 1일당 10%를 감하며,
+          발표 주차(8·15주)의 제출물은 지연 제출을 받지 않는다.</li>
+      </ol>
+    </td>
+  </tr>
+</table>
+</div>
+
+<!-- ===================== 평가 계획 ===================== -->
+<div class="block scroll">
+<div class="band">평가 계획</div>
+<table class="tight">
+  <tr>
+    <th class="lb-w"></th><th style="width:106px">구분</th><th style="width:76px">배점(%)</th><th>상세</th>
+  </tr>
+  <tr>
+    <th rowspan="11">학습<br>평가방법</th>
+    <th>중간고사</th><td class="c num">25</td>
+    <td><b>8주차 중간 발표</b> &mdash; <b>첫 판과 다시 만든 판의 비교</b>. 사용자 관찰의 성실성,
+      문제 진술문의 구체성(숫자·근거), 선택 근거, 그리고 <b>두 판이 왜 달라졌는지 설명하는 힘</b>을
+      평가한다. 결과물의 완성도보다 판단의 근거를 본다.</td>
+  </tr>
+  <tr><th>실기평가</th><td class="c num">0</td><td>해당없음</td></tr>
+  <tr>
+    <th>기말고사</th><td class="c num">30</td>
+    <td><b>15주차 기말 발표</b> &mdash; 결과물 시연과 포트폴리오. 동작 여부보다
+      <b>성공 기준 대비 결과를 정직하게 보고했는가</b>, 안 된 것의 원인을 설명할 수 있는가를 중심으로 평가한다.</td>
+  </tr>
+  <tr><th>퀴즈</th><td class="c num">0</td><td>해당없음</td></tr>
+  <tr>
+    <th>프로젝트</th><td class="c num">0</td>
+    <td>별도 배점 없음 <span class="note">(중간·기말고사가 프로젝트 발표로 대체된다)</span></td>
+  </tr>
+  <tr>
+    <th>과제</th><td class="c num">25</td>
+    <td>주차별 실습 결과물 12건. <b>매주 제작물이 포함된다</b> &mdash; 첫 제작(1주), 자료를 읽게 고침(2주),
+      에이전트 기능 추가(3주), 관찰 후 수정(4주), 자료 시험(5주), 기능 덜어 내기(6주),
+      명세대로 다시 만들기(7주), 직접 고치기(9주), 배포 주소(11주), 자동화 스크립트(12주) 등.</td>
+  </tr>
+  <tr>
+    <th>발표</th><td class="c num">0</td>
+    <td>별도 배점 없음 <span class="note">(중간·기말고사에 포함)</span></td>
+  </tr>
+  <tr>
+    <th>출석</th><td class="c num">10</td>
+    <td>결석 1회당 2점 감점. 지각 3회는 결석 1회로 처리한다.</td>
+  </tr>
+  <tr>
+    <th>수업참여도</th><td class="c num">10</td>
+    <td><b>상호 사용자 시험</b> &mdash; 동료의 결과물을 실제로 써 보고 관찰 기록을 남기는 활동
+      (6·10·11주). 성실한 반응 기록과 상호 피드백의 질을 평가한다.</td>
+  </tr>
+  <tr><th>기타</th><td class="c num">0</td><td>해당없음</td></tr>
+  <tr><th>합계</th><td class="c num"><b>100</b></td><td>&nbsp;</td></tr>
+</table>
+<table class="tight methods">
+  <tr>
+    <th class="lb-w" rowspan="3">적용가능<br>평가방법</th>
+    <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th>
+    <th>F</th><th>G</th><th>H</th><th>I</th><th>J</th>
+  </tr>
+  <tr>
+    <td class="on">✓</td><td></td><td></td><td class="on">✓</td><td></td>
+    <td></td><td class="on">✓</td><td class="on">✓</td><td class="on">✓</td><td></td>
+  </tr>
+  <tr>
+    <td colspan="10" style="text-align:left">
+      A. 구두발표. &nbsp; B. 기타. &nbsp; C. 논술형 시험. &nbsp; D. 문제해결시나리오. &nbsp; E. 서술형 시험.<br>
+      F. 작업장 평가. &nbsp; G. 평가자 체크리스트(관찰평가, 과제평가). &nbsp; H. 포트폴리오.<br>
+      I. 피평가자 체크리스트(동료평가, 자기평가). &nbsp; J. 필답시험.
+      <br><span class="note">선택: <b>A</b>(중간·기말 발표) · <b>D</b>(자기 문제의 정의와 해결)
+      · <b>G</b>(주차별 실습 관찰·과제) · <b>H</b>(13.5절 포트폴리오) · <b>I</b>(상호 사용자 시험)</span>
+    </td>
+  </tr>
+</table>
+</div>
+
+<!-- ===================== 주차 바로가기 ===================== -->
+<nav class="jump" aria-label="주차 바로가기">
+  <span class="cap">주차</span>
+  <a href="#w1">1</a><a href="#w2">2</a><a href="#w3">3</a><a href="#w4">4</a>
+  <a href="#w5">5</a><a href="#w6">6</a><a href="#w7">7</a>
+  <a href="#w8" class="exam">8 중간</a>
+  <a href="#w9">9</a><a href="#w10">10</a><a href="#w11">11</a><a href="#w12">12</a>
+  <a href="#w13">13</a><a href="#w14">14</a>
+  <a href="#w15" class="exam">15 기말</a>
+  <span class="tools">
+    <button type="button" id="themeBtn">화면 반전</button>
+    <button type="button" onclick="window.print()">인쇄 / PDF</button>
+  </span>
+</nav>
+
+<div class="block"><div class="band">주차별 학습내용</div></div>
+
+<!-- ============ 1주 ============ -->
+<section class="week" id="w1">
+  <div class="week-head">
+    <span class="week-no">1주</span>
+    <span class="week-title">오늘 만들 수 있다</span>
+    <span class="week-src">주교재 1장 · 대면</span>
+  </div>
+  <table class="tight">
+    <tr><th class="lb">학습목표</th><td>
+      수업의 목표와 평가 방법을 이해할 수 있다.<br>
+      전공과 무관하게 문제 해결 역량이 왜 지금 중요해졌는지 설명할 수 있다.<br>
+      <b>파일을 읽어 요약과 그래프를 보여 주는 웹 페이지를 30분 안에 만들 수 있다.</b></td></tr>
+    <tr><th class="lb">운영방법</th><td>대면</td></tr>
+    <tr>
+      <th class="lb">1교시</th>
+      <td>수업 소개와 평가 방법 안내. <b>전공은 달라도 문제는 닮았다</b> &mdash;
+        여덟 전공의 불편 사례에서 반복되는 네 가지 모양(반복 · 흩어짐 · 눈으로 확인 · 아는 사람만 앎).
+        문제 카드로 보는 좋은 문제 진술의 형태.</td>
+    </tr>
+    <tr>
+      <th class="lb">2교시</th>
+      <td>코드를 몰라도 만들 수 있게 된 이유와 <b>만들기는 쉽다, 잘 만들기가 어렵다</b>(동작 →
+        잘 만듦 사이의 네 가지 거리). <b>[제작]</b> 표 파일을 끌어다 놓으면 행 수·열 요약·막대그래프가
+        나오는 페이지를 만든다. 파일 읽기 · 분석 · 가시화를 첫 시간에 경험한다.</td>
+    </tr>
+  </table>
+  <div class="scroll"><table class="tight methods">
+    <tr><th class="lb" rowspan="4">수업방법</th>
+      <th>강의</th><th>토론/세미나</th><th>실험/실습/설계</th><th>현장실습</th>
+      <th>프로젝트기반 학습</th><th>이러닝</th><th>문제기반 학습</th></tr>
+    <tr><td class="on">✓</td><td></td><td class="on">✓</td><td></td><td></td><td></td><td></td></tr>
+    <tr><th>융합교육</th><th>플립러닝</th><th>100% 온라인</th><th>K-MOOC</th>
+      <th>블렌디드러닝</th><th>리빙랩</th><th>캡스톤디자인</th></tr>
+    <tr><td class="on">✓</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table></div>
+  <table class="tight">
+    <tr><th class="lb">수업자료</th><td>주교재 1장 · 웹 에디션 1장 · 부록 A(무료 도구 정리) ·
+      작업 폴더 서식(<span class="num">문제기록.txt</span>, <span class="num">프롬프트기록.txt</span>)</td></tr>
+    <tr><th class="lb">과제</th><td><b>① 첫 제작</b> &mdash; 파일 분석·그래프 페이지 완성, 자기 자료를 넣은 화면 캡처
+      <b>②</b> 남의 자료를 넣어 <b>깨지는 곳 목록</b> 작성(2·5주차 재료)
+      <b>③ 내 전공의 불편 열 가지</b>(학기 프로젝트의 후보군)
+      <b>④</b> 도구 계정 2곳 개설 및 무료 한도 확인</td></tr>
+  </table>
+</section>
+
+<!-- ============ 2주 ============ -->
+<section class="week" id="w2">
+  <div class="week-head">
+    <span class="week-no">2주</span>
+    <span class="week-title">AI는 어떻게 답을 만드는가</span>
+    <span class="week-src">주교재 2장 · 대면</span>
+  </div>
+  <table class="tight">
+    <tr><th class="lb">학습목표</th><td>
+      언어 모델이 다음 낱말을 고르는 방식을 수식 없이 설명할 수 있다.<br>
+      환각이 왜 생기는지 설명하고, 어떤 작업에서 검증이 필요한지 판단할 수 있다.<br>
+      컨텍스트가 무엇이며 긴 대화에서 왜 앞의 지시를 잊는지 안다.</td></tr>
+    <tr><th class="lb">운영방법</th><td>대면</td></tr>
+    <tr><th class="lb">1교시</th>
+      <td><b>다음 낱말을 고르는 기계</b> &mdash; 확률 분포와 온도, 토큰. 웹 체험 위젯으로
+        온도에 따라 후보 분포가 달라지는 것을 직접 조작. 학습한 것과 학습하지 못한 것(지식 컷오프).</td></tr>
+    <tr><th class="lb">2교시</th>
+      <td><b>환각</b>은 고장이 아니라 구조의 결과다 &mdash; 위험한 자리와 그렇지 않은 자리의 구분.
+        <b>컨텍스트</b>를 &lsquo;모델의 책상&rsquo;으로 이해하기. 좋은 답이 나오는 다섯 조건.</td></tr>
+  </table>
+  <div class="scroll"><table class="tight methods">
+    <tr><th class="lb" rowspan="4">수업방법</th>
+      <th>강의</th><th>토론/세미나</th><th>실험/실습/설계</th><th>현장실습</th>
+      <th>프로젝트기반 학습</th><th>이러닝</th><th>문제기반 학습</th></tr>
+    <tr><td class="on">✓</td><td></td><td class="on">✓</td><td></td><td></td><td></td><td></td></tr>
+    <tr><th>융합교육</th><th>플립러닝</th><th>100% 온라인</th><th>K-MOOC</th>
+      <th>블렌디드러닝</th><th>리빙랩</th><th>캡스톤디자인</th></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table></div>
+  <table class="tight">
+    <tr><th class="lb">수업자료</th><td>주교재 2장 · 웹 체험 위젯 <b>다음 낱말 고르기</b>(2.1절) ·
+      도식 <b>모델의 책상</b>(2.4절) · 검증 프롬프트 모음(부록 B)</td></tr>
+    <tr><th class="lb">과제</th><td><b>① [제작]</b> 1주차 페이지가 <b>우리 자료</b>를 제대로 읽도록 고친다
+      (한글 열 이름·날짜 형식·쉼표 붙은 금액·빈 칸) <b>②</b> 행 수와 합계를 <b>손으로 검산</b>
+      &mdash; 조용히 틀리는 것을 처음 경험한다 <b>③</b> 자기 전공 질문으로 환각 잡아내기</td></tr>
+  </table>
+</section>
+
+<!-- ============ 3주 ============ -->
+<section class="week" id="w3">
+  <div class="week-head">
+    <span class="week-no">3주</span>
+    <span class="week-title">에이전트: 스스로 일하는 AI</span>
+    <span class="week-src">주교재 3장 · 대면</span>
+  </div>
+  <table class="tight">
+    <tr><th class="lb">학습목표</th><td>
+      대화형 AI와 에이전트의 차이를 설명할 수 있다.<br>
+      계획&ndash;실행&ndash;관찰&ndash;수정의 순환을 예를 들어 설명할 수 있다.<br>
+      자율성의 정도를 구분하고 무엇을 어디까지 맡길지 스스로 정할 수 있다.</td></tr>
+    <tr><th class="lb">운영방법</th><td>대면</td></tr>
+    <tr><th class="lb">1교시</th>
+      <td><b>채팅에서 에이전트로</b> &mdash; 같은 과제를 두 방식으로 처리해 비교.
+        <b>도구를 쓰는 AI</b>(웹 검색 · 파일 읽기와 쓰기 · 코드 실행)가 2장의 약점을 어떻게 메우는가.</td></tr>
+    <tr><th class="lb">2교시</th>
+      <td>에이전트의 순환과 <b>실패하고 다시 시도하는 장면</b> 읽기. 자율성의 세 단계
+        (제안 / 승인 후 실행 / 자율 실행)와 판단 기준. 무료 에이전트 도구 실습.</td></tr>
+  </table>
+  <div class="scroll"><table class="tight methods">
+    <tr><th class="lb" rowspan="4">수업방법</th>
+      <th>강의</th><th>토론/세미나</th><th>실험/실습/설계</th><th>현장실습</th>
+      <th>프로젝트기반 학습</th><th>이러닝</th><th>문제기반 학습</th></tr>
+    <tr><td class="on">✓</td><td></td><td class="on">✓</td><td></td><td></td><td></td><td></td></tr>
+    <tr><th>융합교육</th><th>플립러닝</th><th>100% 온라인</th><th>K-MOOC</th>
+      <th>블렌디드러닝</th><th>리빙랩</th><th>캡스톤디자인</th></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table></div>
+  <table class="tight">
+    <tr><th class="lb">수업자료</th><td>주교재 3장 · 도식 <b>에이전트의 순환</b>(3.3절) ·
+      부록 A(에이전트형 도구) · 중간 확인 지점을 요구하는 프롬프트 서식(3.3절)</td></tr>
+    <tr><th class="lb">과제</th><td><b>① [제작]</b> 에이전트에게 파일을 넘겨 <b>기능 하나 추가</b>
+      (이상해 보이는 값 찾아 표시) &mdash; 전체를 다시 만들지 말고 고치게 한다
+      <b>②</b> 에이전트가 밟은 단계·실패하고 다시 시도한 지점 기록
+      <b>③</b> 불편 열 가지를 자율성 단계로 분류</td></tr>
+  </table>
+</section>
+
+<!-- ============ 4주 ============ -->
+<section class="week" id="w4">
+  <div class="week-head">
+    <span class="week-no">4주</span>
+    <span class="week-title">만들었는데 왜 안 쓰이는가</span>
+    <span class="week-src">주교재 4장 · 대면</span>
+  </div>
+  <table class="tight">
+    <tr><th class="lb">학습목표</th><td>
+      <b>자기 결과물을 남에게 써 보게 하고, 안 쓰이는 이유를 알아낼 수 있다.</b><br>
+      불편과 문제를 구분하고, 이해관계자를 찾아 누구를 위해 만들 것인지 정할 수 있다.<br>
+      문제 진술문을 한 문단으로 쓰고, 측정 가능한 성공 기준을 세울 수 있다.</td></tr>
+    <tr><th class="lb">운영방법</th><td>대면</td></tr>
+    <tr><th class="lb">1교시</th>
+      <td><b>[제작·수업 중] 다섯 사람에게 내민다.</b> 1&ndash;3주차에 만든 것을 설명 없이 써 보게 하고
+        관찰 기록을 남긴다. 대개 아무도 다시 열지 않는다 &mdash; 그 이유를 캐 들어간다.
+        <b>불편은 아직 문제가 아니다</b>: 구체화의 세 축, 이해관계자.</td></tr>
+    <tr><th class="lb">2교시</th>
+      <td><b>문제 진술문 쓰기</b>(다섯 칸 서식)와 나쁜 진술문 고쳐 쓰기 실습.
+        성공 기준 세우기(지금 값 → 목표 값). AI에게 자기 정의를 <b>반박당하는</b> 실습.</td></tr>
+  </table>
+  <div class="scroll"><table class="tight methods">
+    <tr><th class="lb" rowspan="4">수업방법</th>
+      <th>강의</th><th>토론/세미나</th><th>실험/실습/설계</th><th>현장실습</th>
+      <th>프로젝트기반 학습</th><th>이러닝</th><th>문제기반 학습</th></tr>
+    <tr><td class="on">✓</td><td class="on">✓</td><td></td><td></td><td></td><td></td><td class="on">✓</td></tr>
+    <tr><th>융합교육</th><th>플립러닝</th><th>100% 온라인</th><th>K-MOOC</th>
+      <th>블렌디드러닝</th><th>리빙랩</th><th>캡스톤디자인</th></tr>
+    <tr><td class="on">✓</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table></div>
+  <table class="tight">
+    <tr><th class="lb">수업자료</th><td>주교재 4장 · 문제 진술문 서식(4.3절) · 성공 기준 서식(4.4절) ·
+      인터뷰 기록 서식(4.2절) · 부록 B(문제 정의 프롬프트)</td></tr>
+    <tr><th class="lb">과제</th><td><b>① 사용 관찰 기록</b>(5명, 둘 이상이 막힌 지점)
+      <b>② [제작]</b> 그 근거로 <b>문구·기능 하나만</b> 고치고 같은 사람에게 다시 보이기
+      <b>③ 문제 진술문 1편</b>(숫자 포함, 해법 언급 없이) <b>④ 성공 기준</b>(지금 값·목표 값)
+      <b>⑤</b> AI 반박 결과를 받아들임/확인 필요/기각으로 분류</td></tr>
+  </table>
+</section>
+
+<!-- ============ 5주 ============ -->
+<section class="week" id="w5">
+  <div class="week-head">
+    <span class="week-no">5주</span>
+    <span class="week-title">문제를 쪼개고 구조를 본다</span>
+    <span class="week-src">주교재 5장 · 대면</span>
+  </div>
+  <table class="tight">
+    <tr><th class="lb">학습목표</th><td>
+      큰 문제를 다룰 수 있는 크기로 나누고 로직 트리로 구조를 드러낼 수 있다.<br>
+      증상과 원인을 구분하고 근본 원인을 찾아갈 수 있다.<br>
+      주장을 뒷받침할 근거를 모으고, 이후 작업에 쓸 수 있는 형태로 정리할 수 있다.</td></tr>
+    <tr><th class="lb">운영방법</th><td>대면</td></tr>
+    <tr><th class="lb">1교시</th>
+      <td><b>큰 덩어리는 그대로 풀 수 없다</b> &mdash; 나누는 축을 바꾸면 보이는 해법이 달라진다.
+        로직 트리 그리기와 <b>빠짐없이, 겹치지 않게</b> 점검(상호 교차 검토).</td></tr>
+    <tr><th class="lb">2교시</th>
+      <td>증상과 원인 가려내기(<i>왜</i>를 되풀이해 묻기), 함께 일어남과 인과의 구분.
+        <b>근거로 확인하기</b>와 자료를 모으는 형태(표 한 장, 한 행이 한 건). AI 분석 결과의 검증.</td></tr>
+  </table>
+  <div class="scroll"><table class="tight methods">
+    <tr><th class="lb" rowspan="4">수업방법</th>
+      <th>강의</th><th>토론/세미나</th><th>실험/실습/설계</th><th>현장실습</th>
+      <th>프로젝트기반 학습</th><th>이러닝</th><th>문제기반 학습</th></tr>
+    <tr><td class="on">✓</td><td class="on">✓</td><td></td><td></td><td></td><td></td><td class="on">✓</td></tr>
+    <tr><th>융합교육</th><th>플립러닝</th><th>100% 온라인</th><th>K-MOOC</th>
+      <th>블렌디드러닝</th><th>리빙랩</th><th>캡스톤디자인</th></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table></div>
+  <table class="tight">
+    <tr><th class="lb">수업자료</th><td>주교재 5장 · 도식 <b>로직 트리</b>(5.2절) ·
+      원인 후보 정리 서식(5.3절) · 자료 정리 원칙(5.4절) · 부록 B(분해·검증 프롬프트)</td></tr>
+    <tr><th class="lb">과제</th><td><b>①</b> 서로 다른 <b>두 축으로 그린 로직 트리</b>
+      <b>② [제작]</b> 실제 자료를 넣고 <b>일부러 망가뜨려</b> 본다(빈 행·열 이름 변경·숫자 자리에 글자).
+      멈추는지, <b>조용히 틀리는지</b> 기록 <b>③</b> 원인 후보 3개와 근거
+      <b>④</b> 자료를 어떤 형태로 모을지 자기 규칙 다섯 줄(10주차에 그대로 사용)</td></tr>
+  </table>
+</section>
+
+<!-- ============ 6주 ============ -->
+<section class="week" id="w6">
+  <div class="week-head">
+    <span class="week-no">6주</span>
+    <span class="week-title">해법을 찾고 고른다</span>
+    <span class="week-src">주교재 6장 · 대면</span>
+  </div>
+  <table class="tight">
+    <tr><th class="lb">학습목표</th><td>
+      한 문제에 대해 서로 다른 해법을 여러 개 만들어 낼 수 있다.<br>
+      기준을 세워 대안을 비교하고, 한 학기 안에 만들 수 있는 크기로 범위를 줄일 수 있다.<br>
+      종이 위 프로토타입으로 해법을 미리 검증하고 명세서로 정리할 수 있다.</td></tr>
+    <tr><th class="lb">운영방법</th><td>대면</td></tr>
+    <tr><th class="lb">1교시</th>
+      <td><b>대안을 많이 만드는 법</b> &mdash; 없애기/줄이기/옮기기/자동화/쉽게 하기의 다섯 축과
+        <b>만들지 않는 해법</b>. 기준 넷(효과 · 만들 수 있는가 · 쓰이겠는가 · 위험)으로 비교표 작성.</td></tr>
+    <tr><th class="lb">2교시</th>
+      <td><b>만들 수 있는 크기로 줄이기</b> &mdash; 가로로 자르기, 기능을 세 칸으로 나누기.
+        종이에 화면 세 장 그리고 <b>동료에게 종이로 시켜 보기</b>. 해법 명세서 한 장 작성.</td></tr>
+  </table>
+  <div class="scroll"><table class="tight methods">
+    <tr><th class="lb" rowspan="4">수업방법</th>
+      <th>강의</th><th>토론/세미나</th><th>실험/실습/설계</th><th>현장실습</th>
+      <th>프로젝트기반 학습</th><th>이러닝</th><th>문제기반 학습</th></tr>
+    <tr><td class="on">✓</td><td class="on">✓</td><td></td><td></td><td class="on">✓</td><td></td><td></td></tr>
+    <tr><th>융합교육</th><th>플립러닝</th><th>100% 온라인</th><th>K-MOOC</th>
+      <th>블렌디드러닝</th><th>리빙랩</th><th>캡스톤디자인</th></tr>
+    <tr><td class="on">✓</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table></div>
+  <table class="tight">
+    <tr><th class="lb">수업자료</th><td>주교재 6장 · 도식 <b>가로로 자르기</b>(6.3절) ·
+      대안 비교표 서식(6.2절) · <b>해법 명세서 서식</b>(6.5절) · 종이 시험 기록 서식(6.4절)</td></tr>
+    <tr><th class="lb">과제</th><td><b>①</b> 대안 12개 도출과 다섯 축 분류 <b>②</b> 넷으로 줄인 비교표
+      <b>③ [제작] 기능을 덜어 낸다</b> &mdash; 4주차 관찰에서 아무도 쓰지 않은 기능을 지우고,
+      기능이 줄었는데 더 쓸 만해졌는지 같은 사람에게 다시 확인
+      <b>④</b> 손으로 그린 화면 3장 <b>⑤ 해법 명세서 1장</b>(중간 발표 제출물)</td></tr>
+  </table>
+</section>
+
+<!-- ============ 7주 ============ -->
+<section class="week" id="w7">
+  <div class="week-head">
+    <span class="week-no">7주</span>
+    <span class="week-title">AI와 제대로 대화한다</span>
+    <span class="week-src">주교재 7장 · 대면</span>
+  </div>
+  <table class="tight">
+    <tr><th class="lb">학습목표</th><td>
+      프롬프트의 다섯 요소를 갖추어 요청할 수 있다.<br>
+      필요한 맥락을 골라 전달하고, 개인정보가 든 자료를 다루는 기준을 지킬 수 있다.<br>
+      해법 명세서를 <b>제작 프롬프트</b>로 옮길 수 있다.</td></tr>
+    <tr><th class="lb">운영방법</th><td>대면</td></tr>
+    <tr><th class="lb">1교시</th>
+      <td><b>프롬프트의 뼈대</b>(역할 · 맥락 · 과제 · 형식 · 제약)와 같은 요청의 두 가지 방식 비교.
+        맥락을 주는 법과 <b>올리기 전에 확인할 것</b>(개인정보·민감 자료).</td></tr>
+    <tr><th class="lb">2교시</th>
+      <td>한 번에 되지 않는다 &mdash; 수정 요청의 세 요소(어디가·왜·어떻게)와 되돌아감 대처.
+        결과를 의심하는 네 가지 검증 질문. <b>명세서를 제작 프롬프트로</b> 옮기는 실습.</td></tr>
+  </table>
+  <div class="scroll"><table class="tight methods">
+    <tr><th class="lb" rowspan="4">수업방법</th>
+      <th>강의</th><th>토론/세미나</th><th>실험/실습/설계</th><th>현장실습</th>
+      <th>프로젝트기반 학습</th><th>이러닝</th><th>문제기반 학습</th></tr>
+    <tr><td class="on">✓</td><td></td><td class="on">✓</td><td></td><td></td><td></td><td></td></tr>
+    <tr><th>융합교육</th><th>플립러닝</th><th>100% 온라인</th><th>K-MOOC</th>
+      <th>블렌디드러닝</th><th>리빙랩</th><th>캡스톤디자인</th></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table></div>
+  <table class="tight">
+    <tr><th class="lb">수업자료</th><td>주교재 7장 · <b>제작 프롬프트 예시</b>(7.5절) ·
+      명세서 → 프롬프트 대응표(7.5절) · 부록 B(프롬프트 사전 전체)</td></tr>
+    <tr><th class="lb">과제</th><td><b>① 나의 제작 프롬프트</b> 작성(명세서를 옮긴 것)
+      <b>② [제작] 명세대로 처음부터 다시 만든다</b> &mdash; 새 대화에서 빈 화면부터.
+      1&ndash;6주차의 판과 나란히 놓고 비교표 작성(중간 발표 핵심 자료)
+      <b>③</b> 맥락을 세 단계로 준 결과 비교 <b>④</b> 검증 질문 4개 적용</td></tr>
+  </table>
+</section>
+
+<!-- ============ 8주 (중간) ============ -->
+<section class="week week-exam" id="w8">
+  <div class="week-head">
+    <span class="week-no">8주</span>
+    <span class="week-title">중간고사 &mdash; 중간 발표</span>
+    <span class="week-src">평가 25% · 대면</span>
+  </div>
+  <table class="tight">
+    <tr><th class="lb">학습목표</th><td>
+      <b>첫 판과 다시 만든 판을 나란히 보이며</b> 무엇이 왜 달라졌는지 설명할 수 있다.<br>
+      동료의 기획을 검토해 구체적인 피드백을 제시할 수 있다.</td></tr>
+    <tr><th class="lb">운영방법</th><td>대면</td></tr>
+    <tr><th class="lb">1교시</th>
+      <td><b>중간고사</b> &mdash; 중간 발표 1조. 1인 6분(<b>첫 판 시연</b> 1분 · 왜 안 쓰였나 2분 ·
+        문제 정의와 근거 2분 · <b>다시 만든 판 시연</b> 1분), 질의 2분.
+        제출물: 사용 관찰 기록 · 문제 진술문 · 해법 명세서 · <b>두 판의 비교</b>.</td></tr>
+    <tr><th class="lb">2교시</th>
+      <td><b>중간고사</b> &mdash; 중간 발표 2조 및 상호 피드백. 발표별로 동료가
+        <i>가장 확신이 없어 보이는 지점</i> 한 가지를 지적하고, 발표자는 그 답을 기록한다.</td></tr>
+  </table>
+  <div class="scroll"><table class="tight methods">
+    <tr><th class="lb" rowspan="4">수업방법</th>
+      <th>강의</th><th>토론/세미나</th><th>실험/실습/설계</th><th>현장실습</th>
+      <th>프로젝트기반 학습</th><th>이러닝</th><th>문제기반 학습</th></tr>
+    <tr><td></td><td class="on">✓</td><td></td><td></td><td class="on">✓</td><td></td><td></td></tr>
+    <tr><th>융합교육</th><th>플립러닝</th><th>100% 온라인</th><th>K-MOOC</th>
+      <th>블렌디드러닝</th><th>리빙랩</th><th>캡스톤디자인</th></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table></div>
+  <table class="tight">
+    <tr><th class="lb">수업자료</th><td>중간 발표 평가 기준표(관찰의 성실성 · 문제 정의의 구체성 ·
+      선택 근거 · <b>두 판의 차이를 설명하는 힘</b>) · 명세서 점검 목록(6.5절) · 동료 피드백 서식</td></tr>
+    <tr><th class="lb">과제</th><td><b>①</b> 받은 지적을 반영해 <b>해법 명세서 수정본</b> 제출(다음 주 수업 전)
+      <b>②</b> 반영하지 않기로 한 지적과 그 이유를 기록</td></tr>
+  </table>
+</section>
+
+<!-- ============ 9주 ============ -->
+<section class="week" id="w9">
+  <div class="week-head">
+    <span class="week-no">9주</span>
+    <span class="week-title">만들어진 것을 읽고 고친다</span>
+    <span class="week-src">주교재 8장 · 대면</span>
+  </div>
+  <table class="tight">
+    <tr><th class="lb">학습목표</th><td>
+      웹 서비스와 파이썬 앱의 차이를 설명하고 자기 문제에 맞는 쪽을 고를 수 있다.<br>
+      <b>인공지능이 임의로 정한 것</b>을 찾아내 확인하고 내가 다시 정할 수 있다.<br>
+      만들어진 코드를 훑어 어디를 고쳐야 할지 짚고 <b>직접 고칠</b> 수 있다.</td></tr>
+    <tr><th class="lb">운영방법</th><td>대면</td></tr>
+    <tr><th class="lb">1교시</th>
+      <td>웹과 앱은 무엇이 다른가(HTML · CSS · 자바스크립트의 역할). <b>작업 환경 만들기</b> &mdash;
+        브라우저 · 계정 · 폴더 · 저장소. 파일 확장자 보이기, 편집기로 열기 등 막히는 지점 점검.</td></tr>
+    <tr><th class="lb">2교시</th>
+      <td><b>임의로 정한 것을 확인한다</b> &mdash; 빈 칸 처리·숫자로 안 읽히는 값·반올림·정렬을
+        묻고, 위험한 것을 내가 다시 정한다. <b>[제작]</b> 파일을 열어 문구·색·값을 <b>직접</b> 고치고,
+        일부러 한 줄 지워 무슨 일이 생기는지 본다.</td></tr>
+  </table>
+  <div class="scroll"><table class="tight methods">
+    <tr><th class="lb" rowspan="4">수업방법</th>
+      <th>강의</th><th>토론/세미나</th><th>실험/실습/설계</th><th>현장실습</th>
+      <th>프로젝트기반 학습</th><th>이러닝</th><th>문제기반 학습</th></tr>
+    <tr><td class="on">✓</td><td></td><td class="on">✓</td><td></td><td></td><td></td><td></td></tr>
+    <tr><th>융합교육</th><th>플립러닝</th><th>100% 온라인</th><th>K-MOOC</th>
+      <th>블렌디드러닝</th><th>리빙랩</th><th>캡스톤디자인</th></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table></div>
+  <table class="tight">
+    <tr><th class="lb">수업자료</th><td>주교재 8장 · 환경 점검 목록(8.2절) · 부록 C(자주 만나는 오류) ·
+      부록 D(계정과 저장소 준비) · 오류 기록 서식(8.5절)</td></tr>
+    <tr><th class="lb">과제</th><td><b>①</b> 1&ndash;7주차의 판을 모두 <b>내 파일로</b> 정리(v1~v7)
+      <b>② 임의로 정한 것</b> 목록을 받아 위험한 것 골라 고치기
+      <b>③ [제작]</b> 글자·색·크기를 각각 하나씩 <b>직접</b> 수정
+      <b>④</b> 일부러 망가뜨려 콘솔 오류 확인 <b>⑤</b> <span class="num">오류기록.txt</span> 정리</td></tr>
+  </table>
+</section>
+
+<!-- ============ 10주 ============ -->
+<section class="week" id="w10">
+  <div class="week-head">
+    <span class="week-no">10주</span>
+    <span class="week-title">첫 번째 웹 서비스 만들기</span>
+    <span class="week-src">주교재 9장 · 대면</span>
+  </div>
+  <table class="tight">
+    <tr><th class="lb">학습목표</th><td>
+      입력을 받아 목록에 쌓고 집계하는 웹 페이지를 만들 수 있다.<br>
+      계산 규칙을 말로 정확히 적고, 그 결과를 손으로 검산할 수 있다.<br>
+      남이 써도 헤매지 않도록 다듬을 수 있다.</td></tr>
+    <tr><th class="lb">운영방법</th><td>대면</td></tr>
+    <tr><th class="lb">1교시</th>
+      <td>한 페이지로 시작해 다섯 단계로 키우기. <b>입력과 목록</b> 만들기 &mdash;
+        입력 칸의 종류를 정하는 일(고르기로 만들 수 있는 것은 고르기로).</td></tr>
+    <tr><th class="lb">2교시</th>
+      <td><b>계산과 반응</b>(규칙을 문장으로 먼저 적기, 반드시 검산), 자료 저장과 내보내기,
+        <b>쓰기 쉽게 다듬기</b>. 동료 3명에게 설명 없이 시켜 보고 막힌 지점 기록.</td></tr>
+  </table>
+  <div class="scroll"><table class="tight methods">
+    <tr><th class="lb" rowspan="4">수업방법</th>
+      <th>강의</th><th>토론/세미나</th><th>실험/실습/설계</th><th>현장실습</th>
+      <th>프로젝트기반 학습</th><th>이러닝</th><th>문제기반 학습</th></tr>
+    <tr><td class="on">✓</td><td></td><td class="on">✓</td><td></td><td class="on">✓</td><td></td><td></td></tr>
+    <tr><th>융합교육</th><th>플립러닝</th><th>100% 온라인</th><th>K-MOOC</th>
+      <th>블렌디드러닝</th><th>리빙랩</th><th>캡스톤디자인</th></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table></div>
+  <table class="tight">
+    <tr><th class="lb">수업자료</th><td>주교재 9장 · 예제(HTML 파일 한 장) · 계산 규칙 서식(9.3절) ·
+      사용 관찰 기록 서식(9.5절) · 부록 C(이 단계에서 흔한 문제)</td></tr>
+    <tr><th class="lb">과제</th><td><b>①</b> 명세서의 <b>꼭 있어야</b> 기능 전부 완성
+      <b>②</b> 5주차에 모은 <b>실제 자료 15건 이상</b> 입력 <b>③</b> 계산 결과 손 검산 기록
+      <b>④</b> 동료 3명 사용 관찰 기록과 그에 따른 수정</td></tr>
+  </table>
+</section>
+
+<!-- ============ 11주 ============ -->
+<section class="week" id="w11">
+  <div class="week-head">
+    <span class="week-no">11주</span>
+    <span class="week-title">세상에 내놓기</span>
+    <span class="week-src">주교재 10장 · 대면</span>
+  </div>
+  <table class="tight">
+    <tr><th class="lb">학습목표</th><td>
+      만든 것을 인터넷에 공개하고 주소로 공유할 수 있다.<br>
+      사용자에게 써 보게 하고 반응을 수집·분류할 수 있다.<br>
+      사용자가 생겼을 때 따라오는 책임을 인식하고 대비할 수 있다.</td></tr>
+    <tr><th class="lb">운영방법</th><td>대면</td></tr>
+    <tr><th class="lb">1교시</th>
+      <td><b>내 컴퓨터 밖으로</b> &mdash; 무료 정적 페이지 호스팅으로 배포하기(저장소 · 파일 업로드 ·
+        공개 설정 · 주소 확인). 공개 전 점검과 자주 막히는 지점.</td></tr>
+    <tr><th class="lb">2교시</th>
+      <td>써 보게 하고 반응 받기(무엇을 물을 것인가), <b>사용자가 생기면 따라오는 책임</b>
+        (개인정보 · 안내 · 지우기 · 유지 계획), 반응을 다음 판의 작업 목록으로 바꾸기.</td></tr>
+  </table>
+  <div class="scroll"><table class="tight methods">
+    <tr><th class="lb" rowspan="4">수업방법</th>
+      <th>강의</th><th>토론/세미나</th><th>실험/실습/설계</th><th>현장실습</th>
+      <th>프로젝트기반 학습</th><th>이러닝</th><th>문제기반 학습</th></tr>
+    <tr><td class="on">✓</td><td class="on">✓</td><td class="on">✓</td><td></td><td class="on">✓</td><td></td><td></td></tr>
+    <tr><th>융합교육</th><th>플립러닝</th><th>100% 온라인</th><th>K-MOOC</th>
+      <th>블렌디드러닝</th><th>리빙랩</th><th>캡스톤디자인</th></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td class="on">✓</td><td></td></tr>
+  </table></div>
+  <table class="tight">
+    <tr><th class="lb">수업자료</th><td>주교재 10장 · <b>부록 D</b>(배포 절차와 공개 전 점검 목록) ·
+      알림 메시지 서식(10.3절) · 반응 기록 서식(10.3절) · 부록 C(배포 후 문제)</td></tr>
+    <tr><th class="lb">과제</th><td><b>① 배포 주소 확보</b>(휴대전화에서 열리는지 확인)
+      <b>②</b> 실제 사용자 5명에게 알리고 <b>반응 기록</b> <b>③</b> 버그/막힘/요청/이탈로 분류하고
+      상위 3건 수정 후 재배포 <b>④</b> 반영하지 않기로 한 요청과 이유 <b>⑤</b> 성공 기준 대비 현재 상태 측정</td></tr>
+  </table>
+</section>
+
+<!-- ============ 12주 ============ -->
+<section class="week" id="w12">
+  <div class="week-head">
+    <span class="week-no">12주</span>
+    <span class="week-title">파이썬 앱으로 반복을 없앤다</span>
+    <span class="week-src">주교재 11장 · 대면</span>
+  </div>
+  <table class="tight">
+    <tr><th class="lb">학습목표</th><td>
+      파이썬이 잘하는 일과 웹이 잘하는 일을 구분할 수 있다.<br>
+      설치 없이 자료를 읽어 정리하고 결과 파일로 내보낼 수 있다.<br>
+      결과를 그림으로 확인하고, 그림으로 잘못 말하지 않을 수 있다.</td></tr>
+    <tr><th class="lb">운영방법</th><td>대면</td></tr>
+    <tr><th class="lb">1교시</th>
+      <td>파이썬이 맞는 일(많은 양 · 파일 다루기 · 반복 실행). 브라우저 노트북 환경에서
+        <b>첫 실행과 파일 올리기·내려받기</b>. 확인 출력을 함께 요구하는 습관.</td></tr>
+    <tr><th class="lb">2교시</th>
+      <td><b>자료를 읽고 정리하고 내보내기</b> &mdash; 지저분한 실제 자료의 처리 방침을 사람이 정하고,
+        건수로 검증하기. 결과를 그림으로 보기와 <b>그림으로 거짓말하지 않는 법</b>. 화면 붙이기(선택).</td></tr>
+  </table>
+  <div class="scroll"><table class="tight methods">
+    <tr><th class="lb" rowspan="4">수업방법</th>
+      <th>강의</th><th>토론/세미나</th><th>실험/실습/설계</th><th>현장실습</th>
+      <th>프로젝트기반 학습</th><th>이러닝</th><th>문제기반 학습</th></tr>
+    <tr><td class="on">✓</td><td></td><td class="on">✓</td><td></td><td></td><td></td><td></td></tr>
+    <tr><th>융합교육</th><th>플립러닝</th><th>100% 온라인</th><th>K-MOOC</th>
+      <th>블렌디드러닝</th><th>리빙랩</th><th>캡스톤디자인</th></tr>
+    <tr><td class="on">✓</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table></div>
+  <table class="tight">
+    <tr><th class="lb">수업자료</th><td>주교재 11장 · 노트북 예제 · <b>정리 방침 서식</b>(11.3절) ·
+      자료 점검 목록(부록 C) · 그림의 네 가지 함정(11.4절)</td></tr>
+    <tr><th class="lb">과제</th><td><b>①</b> 자기 자료를 살펴보고 <b>정리 방침</b> 수립(예상 최종 행 수 포함)
+      <b>②</b> 방침대로 처리하고 <b>예상과 실제 건수 대조</b> <b>③ 손으로 하던 작업 1건 자동화</b>와
+      소요 시간 비교(몇 번 반복하면 본전인지) <b>④</b> 그림 1장과 해석 2문장(자료에서 읽히는 것 / 해석)</td></tr>
+  </table>
+</section>
+
+<!-- ============ 13주 ============ -->
+<section class="week" id="w13">
+  <div class="week-head">
+    <span class="week-no">13주</span>
+    <span class="week-title">고치고 다듬는다</span>
+    <span class="week-src">주교재 12장 · 대면</span>
+  </div>
+  <table class="tight">
+    <tr><th class="lb">학습목표</th><td>
+      오류 메시지를 읽고 무엇이 잘못되었는지 짐작할 수 있다.<br>
+      오류 상황을 정확히 전달해 고치고, 고쳐졌는지 확인하는 절차를 만들 수 있다.<br>
+      저작권·개인정보·책임의 관점에서 내놓아도 되는지 판단할 수 있다.</td></tr>
+    <tr><th class="lb">운영방법</th><td>대면</td></tr>
+    <tr><th class="lb">1교시</th>
+      <td><b>오류는 실패가 아니라 정보다</b> &mdash; 메시지의 구조(무엇이·왜·어디서)와 자주 만나는 세 유형.
+        오류를 AI에게 옮기는 네 요소, <b>원인을 먼저 설명하게 하기</b>.</td></tr>
+    <tr><th class="lb">2교시</th>
+      <td><b>되는지 확인하는 방법</b>(정상 · 이상한 값 · 비어 있음)과 확인 목록 만들어 돌리기.
+        <b>동작한다고 옳은 것은 아니다</b> &mdash; 숨은 가정 드러내기. 책임 있게 만들기와 AI 사용 기록.</td></tr>
+  </table>
+  <div class="scroll"><table class="tight methods">
+    <tr><th class="lb" rowspan="4">수업방법</th>
+      <th>강의</th><th>토론/세미나</th><th>실험/실습/설계</th><th>현장실습</th>
+      <th>프로젝트기반 학습</th><th>이러닝</th><th>문제기반 학습</th></tr>
+    <tr><td class="on">✓</td><td></td><td class="on">✓</td><td></td><td></td><td></td><td class="on">✓</td></tr>
+    <tr><th>융합교육</th><th>플립러닝</th><th>100% 온라인</th><th>K-MOOC</th>
+      <th>블렌디드러닝</th><th>리빙랩</th><th>캡스톤디자인</th></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table></div>
+  <table class="tight">
+    <tr><th class="lb">수업자료</th><td>주교재 12장 · <b>부록 C</b>(오류 도감) · 확인 목록 서식(12.3절) ·
+      숨은 가정 드러내기 프롬프트(12.4절) · <b>AI 사용 기록 서식</b>(12.5절)</td></tr>
+    <tr><th class="lb">과제</th><td><b>①</b> 학기 중 만난 오류를 유형·원인·해결·교훈으로 정리한
+      <b>나만의 오류 사전</b> <b>②</b> 확인 목록 15개 이하 작성 후 <b>전 항목 통과</b>
+      <b>③</b> 계산 결과 표본 5건 손 검산 <b>④</b> 숨은 가정 점검과 수정 <b>⑤ AI 사용 기록</b> 및 책임 점검</td></tr>
+  </table>
+</section>
+
+<!-- ============ 14주 ============ -->
+<section class="week" id="w14">
+  <div class="week-head">
+    <span class="week-no">14주</span>
+    <span class="week-title">나의 문제 해결 프로젝트</span>
+    <span class="week-src">주교재 13장 · 대면</span>
+  </div>
+  <table class="tight">
+    <tr><th class="lb">학습목표</th><td>
+      학기 중 산출물을 한 편의 기획서로 묶을 수 있다.<br>
+      10분 발표를 구성하고 시연 실패에 대비할 수 있다.<br>
+      과정과 결과를 포트폴리오로 정리해 공개할 수 있다.</td></tr>
+    <tr><th class="lb">운영방법</th><td>대면</td></tr>
+    <tr><th class="lb">1교시</th>
+      <td>4&ndash;12주의 산출물을 <b>기획서 한 편</b>으로 묶기(문제 · 해법 · 만든 것 · 결과 · 돌아보기).
+        <b>돌아보기</b>를 구체적인 숫자와 원인으로 쓰는 법. 프로젝트 마무리 작업.</td></tr>
+    <tr><th class="lb">2교시</th>
+      <td>발표 구성(문제 2분 · 해법 선택 2분 · <b>시연 4분</b> · 결과와 배운 것 2분)과
+        <b>리허설</b>(시간 측정, 시연 녹화본 준비). <b>포트폴리오 페이지</b> 제작과 배포.</td></tr>
+  </table>
+  <div class="scroll"><table class="tight methods">
+    <tr><th class="lb" rowspan="4">수업방법</th>
+      <th>강의</th><th>토론/세미나</th><th>실험/실습/설계</th><th>현장실습</th>
+      <th>프로젝트기반 학습</th><th>이러닝</th><th>문제기반 학습</th></tr>
+    <tr><td class="on">✓</td><td class="on">✓</td><td></td><td></td><td class="on">✓</td><td></td><td></td></tr>
+    <tr><th>융합교육</th><th>플립러닝</th><th>100% 온라인</th><th>K-MOOC</th>
+      <th>블렌디드러닝</th><th>리빙랩</th><th>캡스톤디자인</th></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td class="on">✓</td></tr>
+  </table></div>
+  <table class="tight">
+    <tr><th class="lb">수업자료</th><td>주교재 13장 · <b>기획서 서식</b>(13.2절) · 발표 구성표(13.4절) ·
+      <b>포트폴리오 서식</b>(13.5절) · 부록 D(포트폴리오 페이지 만들기) · 기말 발표 평가 기준표</td></tr>
+    <tr><th class="lb">과제</th><td><b>① 기획서 제출</b>(3쪽 이내, 돌아보기 포함)
+      <b>② 포트폴리오 페이지 배포</b>(주소 제출) <b>③</b> 발표 리허설 1회와 시간 기록
+      <b>④ 시연 녹화본 준비</b>(실패 대비) <b>⑤</b> 예상 질문 5개와 답변 준비</td></tr>
+  </table>
+</section>
+
+<!-- ============ 15주 (기말) ============ -->
+<section class="week week-exam" id="w15">
+  <div class="week-head">
+    <span class="week-no">15주</span>
+    <span class="week-title">기말고사 &mdash; 기말 발표</span>
+    <span class="week-src">평가 30% · 대면</span>
+  </div>
+  <table class="tight">
+    <tr><th class="lb">학습목표</th><td>
+      기말 발표를 통해 자신의 문제 해결 과정과 결과물을 발표할 수 있다.<br>
+      성공 기준 대비 결과를 정직하게 보고하고, 안 된 것의 원인을 설명할 수 있다.</td></tr>
+    <tr><th class="lb">운영방법</th><td>대면</td></tr>
+    <tr><th class="lb">1교시</th>
+      <td><b>기말고사</b> &mdash; 기말 발표 1조. 1인 10분 + 질의 3분. 문제 · 해법 선택 근거 ·
+        <b>실제 시연</b>(잘못 입력했을 때 포함) · 성공 기준 대비 결과와 배운 것.</td></tr>
+    <tr><th class="lb">2교시</th>
+      <td><b>기말고사</b> &mdash; 기말 발표 2조. <b>포트폴리오 공개</b>와 상호 열람,
+        학기 전체 돌아보기(가장 시간을 많이 쓴 단계는 어디였고 왜 그랬는가).</td></tr>
+  </table>
+  <div class="scroll"><table class="tight methods">
+    <tr><th class="lb" rowspan="4">수업방법</th>
+      <th>강의</th><th>토론/세미나</th><th>실험/실습/설계</th><th>현장실습</th>
+      <th>프로젝트기반 학습</th><th>이러닝</th><th>문제기반 학습</th></tr>
+    <tr><td></td><td class="on">✓</td><td></td><td></td><td class="on">✓</td><td></td><td></td></tr>
+    <tr><th>융합교육</th><th>플립러닝</th><th>100% 온라인</th><th>K-MOOC</th>
+      <th>블렌디드러닝</th><th>리빙랩</th><th>캡스톤디자인</th></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td class="on">✓</td></tr>
+  </table></div>
+  <table class="tight">
+    <tr><th class="lb">수업자료</th><td>기말 발표 평가 기준표 · 포트폴리오 점검 목록(13.5절) ·
+      동료 평가 서식 · 학기 정리 자료</td></tr>
+    <tr><th class="lb">과제</th><td>없음 <span class="note">(발표와 포트폴리오 공개로 학기를 마친다.
+      다만 결과물의 유지 계획을 사용자에게 알리고, 파일 전체를 백업해 둘 것)</span></td></tr>
+  </table>
+</section>
+
+<!-- ===================== 수업평가 문항 ===================== -->
+<div class="block scroll">
+<div class="band">수업평가 필수문항</div>
+<table class="tight">
+  <tr><th class="lb-w">교수자열의/열정</th><td>교수님은 이 수업에 대한 학생들의 흥미와 관심을 이끌어냈다.</td></tr>
+  <tr><th>수업강점</th><td>이 수업의 강점을 구체적으로 적어주세요.</td></tr>
+  <tr><th>전반만족도</th><td>이 수업은 전반적으로 만족스러웠다.</td></tr>
+  <tr><th>수업성과</th><td>이 수업은 내가 해당분야에 대한 지식, 기술(skill), 태도 등을 익히는데 도움이 되었다.</td></tr>
+  <tr><th>수업목표</th><td>수업의 목표가 구체적이고 명확하게 제시되었다.</td></tr>
+  <tr><th>학습책임/성찰</th><td>나는 이 수업을 위해 예습·복습의 시간을 가졌다.</td></tr>
+  <tr><th>학습책임/성찰</th><td>나는 이 수업에 적극적으로 참여하였다.</td></tr>
+  <tr><th>수업계획</th><td>수업계획서는 수업에 관한 충분한 정보(수업 목표와 내용, 수업방식, 평가 등)를 담고 있어서 수강에 도움이 되었다.</td></tr>
+  <tr><th>개선제언</th><td>이 수업의 개선을 위해 제안하고 싶은 점이 있으면 구체적으로 적어주세요.
+    예) 수업내용과 방법, 수업환경, 인권존중·침해, (성, 인종, 나이, 장애 등)평등·차별, 기타</td></tr>
+  <tr><th>수업운영</th><td>교수님은 수업을 충실하게 운영하였다.(출결관리, 휴보강 관리, 수업계획서 준수, 수업시간 준수 등)</td></tr>
+</table>
+</div>
+
+<div class="block scroll">
+<div class="band">수업평가 선택문항</div>
+<table class="tight">
+  <tr><th class="lb-w">교수자특성</th><td>교수님은 학생이 스스로 학습할 수 있도록 조언하고 안내했다.</td></tr>
+  <tr><th>수업평가</th><td>성적평가는 안내된 평가기준에 따라 공정하게 이루어졌다.</td></tr>
+</table>
+</div>
+
+<p class="foot">
+  주교재 『AI 문제해결』(강영민) · 웹 에디션
+  <a href="https://dknife.github.io/AI_ProblemSolving/">dknife.github.io/AI_ProblemSolving</a><br>
+  본문에 소개한 인공지능 서비스의 이름·요금·기능은 각 제공자의 정책에 따라 수시로 바뀝니다.
+  도구 목록은 학기 시작 전에 확인하여 갱신합니다.
+</p>
+
+</main>
+
+<script>
+(function () {
+  'use strict';
+  // 화면 반전 — 조판을 확인하거나 밝은 화면이 불편할 때 쓴다.
+  var btn = document.getElementById('themeBtn');
+  var root = document.documentElement;
+  function current() {
+    if (root.dataset.theme) return root.dataset.theme;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  btn.addEventListener('click', function () {
+    root.dataset.theme = current() === 'dark' ? 'light' : 'dark';
+  });
+})();
+</script>
+</body>
+</html>
