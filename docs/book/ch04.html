@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4장 문제를 찾아내고 정의한다 — AI 문제해결</title>
+<title>4장 만들었는데 왜 안 쓰이는가 — AI 문제해결</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
@@ -17,19 +17,19 @@
 <header class="topbar">
   <a class="home" href="../index.html">&#8962; 홈</a>
   <span class="book-title">AI 문제해결</span>
-  <span class="ch-indicator">4장 문제를 찾아내고 정의한다</span>
+  <span class="ch-indicator">4장 만들었는데 왜 안 쓰이는가</span>
   <button class="nav-toggle" onclick="document.body.classList.toggle('nav-open')">목차</button>
 </header>
 <div class="layout">
 <nav class="sidebar">
 <div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
-<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 문제를 푸는 방식이 달라졌다</a>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 오늘 만들 수 있다</a>
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> AI는 어떻게 답을 만드는가</a>
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 에이전트: 스스로 일하는 AI</a>
 </div>
-<div class="nav-ch current"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 문제를 찾아내고 정의한다</a>
+<div class="nav-ch current"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 만들었는데 왜 안 쓰이는가</a>
 <div class="nav-secs"><a class="nav-sec" href="ch04.html#sec1">4.1 불편은 아직 문제가 아니다</a><a class="nav-sec" href="ch04.html#sec2">4.2 누구의 문제인가</a><a class="nav-sec" href="ch04.html#sec3">4.3 문제 진술문 쓰기</a><a class="nav-sec" href="ch04.html#sec4">4.4 무엇으로 성공을 잴 것인가</a><a class="nav-sec" href="ch04.html#sec5">4.5 AI와 함께 문제를 다시 묻기</a><a class="nav-sec" href="ch04.html#labs">실습을 통한 개념 정리</a><a class="nav-sec" href="ch04.html#summary">4장 요약</a><a class="nav-sec" href="ch04.html#exercises">연습문제</a></div>
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> 문제를 쪼개고 구조를 본다</a>
@@ -38,7 +38,7 @@
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> AI와 제대로 대화한다</a>
 </div>
-<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 만들기 위한 준비</a>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 만들어진 것을 읽고 고친다</a>
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 첫 번째 웹 서비스 만들기</a>
 </div>
@@ -66,19 +66,22 @@
 <main class="content">
 <div class="chapter-head">
   <div class="ch-label">CHAPTER 04</div>
-  <h1>문제를 찾아내고 정의한다</h1>
+  <h1>만들었는데 왜 안 쓰이는가</h1>
 </div>
 <img class="chapter-hero" src="img/ch04/ch04_img01.jpg" alt="4장 대표 이미지">
 <div class="center"><details class="box goals"><summary class="box-head">이 장을 마치면</summary><div class="goals-body"><ul data-blk="chapters/ch04/ch04.tex#1">
+<li>자기 결과물을 남에게 써 보게 하고, 안 쓰이는 이유를 알아낼 수 있다.</li>
 <li>불편과 문제를 구분할 수 있다.</li>
 <li>문제의 이해관계자를 찾아내고 누구의 문제인지 밝힐 수 있다.</li>
 <li>문제 진술문을 한 문단으로 쓸 수 있다.</li>
-<li>성공을 무엇으로 잴 것인지 측정 가능한 형태로 정할 수 있다.</li>
-<li>AI와의 대화로 자기 문제 정의를 검증하고 다듬을 수 있다.</li>
+<li>성공을 무엇으로 잴 것인지 측정 가능한 형태로 정하고, AI와의 대화로 그 정의를 검증할 수 있다.</li>
 </ul>
 </div></details></div>
-<p data-blk="chapters/ch04/ch04.tex#2"><em>학과 행사가 잘 안 된다</em>는 문제가 아니다. 무엇이 잘 안 되는지, 누구에게 무엇이 아쉬운지, 잘 되면 무엇이 달라지는지가 없기 때문이다. 이 상태로 인공지능에게 물으면 그럴듯하지만 쓸모없는 답이 돌아온다. 도구가 나빠서가 아니라 질문이 아직 질문이 아니어서다.</p>
-<p data-blk="chapters/ch04/ch04.tex#3">이 장부터 세 장에 걸쳐 만들기 전에 해야 할 일을 다룬다. 이 구간이 답답하게 느껴진다면 정상이다. 그러나 8장 이후에 손이 멈추는 학생과 끝까지 가는 학생을 가르는 것은 대개 이 세 장에서 한 일의 양이다.</p>
+<p data-blk="chapters/ch04/ch04.tex#2">지난 세 장 동안 여러분은 꽤 그럴듯한 것을 만들었다. 파일을 읽고, 요약하고, 그래프를 그리고, 이상한 값까지 찾아낸다. 만드는 데 걸린 시간은 다 합쳐 두세 시간이다.</p>
+<p>이제 그것을 남에게 내밀 차례다. 이 장은 거기서 시작한다. 대개 이런 일이 벌어진다  —  <strong>열어는 보고, 좋다고 말하고, 다시 열지 않는다.</strong> 기분 나쁜 경험이지만 이 수업에서 가장 값진 순간이기도 하다. 왜냐하면 그 이유를 캐 들어가면 언제나 같은 자리에 닿기 때문이다. <em>내가 만든 것은 내가 만들 수 있는 것이었지, 그들이 필요한 것이 아니었다.</em></p>
+<p><em>학과 행사가 잘 안 된다</em>는 문제가 아니다. 무엇이 잘 안 되는지, 누구에게 무엇이 아쉬운지, 잘 되면 무엇이 달라지는지가 없기 때문이다. 이 장부터 네 장에 걸쳐, 만든 것을 <strong>쓸모 있는 것</strong>으로 바꾸는 데 필요한 일을 다룬다. 만들기를 멈추지는 않는다  —  매 장 조금씩 고쳐 나가되, 이번에는 <em>무엇을 고칠지</em>를 근거를 가지고 정한다.</p>
+<div class="buildbox"><div class="build-head"><span class="chip">이 장에서 만들 것</span><span class="build-name">문구 하나, 기능 하나를 근거를 가지고 고친다</span></div><p>이 장의 제작은 새로 만드는 것이 아니라 <strong>덜어 내고 고치는</strong> 것이다. 다섯 사람에게 써 보게 해서 받은 반응 가운데 <em>둘 이상이 같은 곳에서 막힌</em> 것 하나를 골라 고친다.</p>
+<p>작아 보이지만 성격이 다르다. 1–3장의 수정은 <em>내 마음에 안 들어서</em> 했고, 이번 수정은 <strong>남이 막혀서</strong> 한다. 이 차이가 이 책의 나머지 절반을 끌고 간다.</p></div>
 <h2 data-blk="chapters/ch04/sec01.tex#1" id="sec1">4.1 불편은 아직 문제가 아니다</h2>
 <p data-blk="chapters/ch04/sec01.tex#2"><em>정산이 귀찮다.</em> 이것은 사실이지만 문제가 아니다. 무엇을 해야 할지 알려 주지 않고, 해결되었는지 확인할 방법도 없기 때문이다. 이 절에서는 불편을 문제로 바꾸는 작업을 한다.</p>
 <h3 data-blk="chapters/ch04/sec01.tex#3">네 가지 말</h3>
@@ -296,7 +299,29 @@
 <li>기각한 지적: <strong>각각의 기각 이유를 한 줄씩</strong> 적는다</li>
 </ol>
 <p data-blk="chapters/ch04/labs.tex#20">3번 목록은 중간 발표 자료에 그대로 들어간다. <em>무엇을 왜 반영하지 않았는가</em>를 설명할 수 있는 것이 이 실습의 성과다.</p>
-</div></p>
+<h3>실습 4-7. 제작  —  다섯 사람에게 내밀고, 하나를 고친다</h3>
+<p data-blk="chapters/ch04/labs.tex#22"><strong>이 장의 다른 실습보다 이것을 먼저 한다.</strong> 나머지 실습의 재료가 여기서 나온다.</p>
+<p><strong>1단계  —  내민다.</strong> 1–3장에서 만든 페이지를 다섯 사람에게 보낸다. 설명은 한 줄만 붙인다: <em>표 파일 넣으면 요약이랑 그래프 나오는 거 만들어 봤어. 한번 써 볼래?</em></p>
+<p data-blk="chapters/ch04/labs.tex#24">그 이상 설명하지 않는다. 옆에서 조작법을 알려 주면 이 실습은 실패한다.</p>
+<p><strong>2단계  —  지켜본다.</strong> 가능하면 최소 두 명은 쓰는 것을 옆에서 본다.</p>
+<div class="settingbox-wrap"><div class="setting-label">사용 관찰 기록</div><pre class="settingbox"><code>사람 1 :  열어는 봤나 (      )   자기 파일을 넣어 봤나 (      )
+          멈칫한 곳 :
+          "이거 뭐 하는 거야?" 라고 물었나 (      )
+          다시 쓸 것 같나 (      )   아니라면 왜 :
+사람 2 : ...
+사람 3 : ...
+사람 4 : ...
+사람 5 : ...
+----------------------------------------------------------
+둘 이상이 같은 곳에서 막힌 것 :
+아무도 안 쓴 이유 (가장 솔직한 답) :</code></pre></div>
+<p><strong>3단계  —  하나만 고친다.</strong> 둘 이상이 걸린 것 <strong>하나</strong>를 골라 고친다. 여러 개를 한꺼번에 고치지 않는다  —  무엇이 효과가 있었는지 알 수 없게 된다.</p>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>사람들이 <span class="pblank"></span> 에서 막혔다.</p><p><span class="pblank"></span> 하게 고쳐 줘. 나머지는 그대로 둬.</p></code></pre></div>
+<p><strong>4단계  —  다시 내민다.</strong> 같은 사람에게 다시 보내 고쳐진 부분을 확인받는다.</p>
+<p><strong>제출</strong>  —  관찰 기록, 고친 내용과 그 근거(누가 어디서 막혔는가), 고치기 전후 화면, 그리고 다음 한 문장.</p>
+<div class="settingbox-wrap"><div class="setting-label">4장의 한 문장</div><pre class="settingbox"><code>내가 만든 것은 (                    )를 위한 것이라고 생각했는데,
+실제로 그들이 필요했던 것은 (                    )였다.</code></pre></div>
+<p>이 문장이 4.3절 문제 진술문의 씨앗이 된다. 지금 채우지 못해도 괜찮다  —  이 장을 다 읽고 다시 온다.</p></div></p>
 <details class="box summary" id="summary"><summary class="box-head">4장 요약</summary><div class="sum-body"><ul>
 <li>불편·증상·문제·원인은 다르다. 우리가 만들어야 할 것은 <strong>문제</strong>  —  누가 무엇 때문에 어떤 대가를 치르는지를 적은 것이다.</li>
 <li>불편을 문제로 바꾸려면 세 축을 채운다. <strong>얼마나 자주</strong> 일어나는가, <strong>얼마나</strong> 걸리거나 나쁜가, <strong>누가</strong> 겪는가. 좋은 문제 진술에는 숫자가 하나 이상 들어 있다.</li>

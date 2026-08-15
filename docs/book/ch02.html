@@ -23,14 +23,14 @@
 <div class="layout">
 <nav class="sidebar">
 <div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
-<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 문제를 푸는 방식이 달라졌다</a>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 오늘 만들 수 있다</a>
 </div>
 <div class="nav-ch current"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> AI는 어떻게 답을 만드는가</a>
 <div class="nav-secs"><a class="nav-sec" href="ch02.html#sec1">2.1 다음 낱말을 고르는 기계</a><a class="nav-sec" href="ch02.html#sec2">2.2 학습한 것과 학습하지 못한 것</a><a class="nav-sec" href="ch02.html#sec3">2.3 환각: 왜 틀린 답을 당당하게 말하는가</a><a class="nav-sec" href="ch02.html#sec4">2.4 컨텍스트: 지금 모델이 보고 있는 것</a><a class="nav-sec" href="ch02.html#sec5">2.5 좋은 답이 나오는 조건</a><a class="nav-sec" href="ch02.html#labs">실습을 통한 개념 정리</a><a class="nav-sec" href="ch02.html#summary">2장 요약</a><a class="nav-sec" href="ch02.html#exercises">연습문제</a></div>
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 에이전트: 스스로 일하는 AI</a>
 </div>
-<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 문제를 찾아내고 정의한다</a>
+<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 만들었는데 왜 안 쓰이는가</a>
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> 문제를 쪼개고 구조를 본다</a>
 </div>
@@ -38,7 +38,7 @@
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> AI와 제대로 대화한다</a>
 </div>
-<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 만들기 위한 준비</a>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 만들어진 것을 읽고 고친다</a>
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 첫 번째 웹 서비스 만들기</a>
 </div>
@@ -79,6 +79,8 @@
 </div></details></div>
 <p data-blk="chapters/ch02/ch02.tex#2">도구를 쓰기 전에 그 도구가 무엇을 하는 물건인지는 알아야 한다. 망치가 못을 박는 물건임을 알면 나사에는 쓰지 않는다. 인공지능을 쓰다가 낭패를 보는 경우는 대부분 이 도구가 무엇을 하는 물건인지 모른 채 쓰기 때문이다.</p>
 <p data-blk="chapters/ch02/ch02.tex#3">이 장은 원리를 다루지만 수식이나 코드는 쓰지 않는다. 목표는 인공지능을 만드는 것이 아니라, <strong>왜 그런 답이 나왔는지 짐작할 수 있게</strong> 되는 것이다. 그 짐작이 되면 어떤 답을 그대로 써도 되는지, 어떤 답은 반드시 확인해야 하는지를 스스로 판단할 수 있다.</p>
+<div class="buildbox"><div class="build-head"><span class="chip">이 장에서 만들 것</span><span class="build-name">우리 자료를 제대로 읽는 판</span></div><p>1장의 페이지에 <strong>진짜 우리 자료</strong>를 넣으면 십중팔구 깨진다. 한글 열 이름을 못 읽거나, <code>2026.3.4</code> 같은 날짜를 글자로 보거나, <code>12,000원</code>을 숫자로 세지 못한다. 인공지능이 우리 학과·우리 동아리의 자료 형식을 알 리 없기 때문이다(2.2절).</p>
+<p>이 장에서는 <strong>자료의 앞부분을 함께 주고</strong> 다시 시켜, 우리 것에 맞게 고친다. 그리고 요약 숫자가 맞는지 손으로 검산한다  —  조용히 틀리는 것이 어떤 모습인지 여기서 처음 본다.</p></div>
 <h2 data-blk="chapters/ch02/sec01.tex#1" id="sec1">2.1 다음 낱말을 고르는 기계</h2>
 <p data-blk="chapters/ch02/sec01.tex#2">우리가 쓰는 인공지능 도구의 속에는 <strong class="term-ko">언어 모델</strong><sup class="term">language model</sup>이 들어 있다. 이름이 거창하지만 하는 일은 놀랄 만큼 단순하다. <strong>앞에 나온 말을 보고 다음에 올 말을 고른다.</strong> 그것을 아주 여러 번 반복한다.</p>
 <h3 data-blk="chapters/ch02/sec01.tex#3">빈칸 채우기를 아주 잘하는 것</h3>
@@ -193,7 +195,7 @@
 <li>초반에 붙여 넣은 자료의 내용을 잊는다</li>
 <li>앞에서 고친 부분을 다시 원래대로 되돌려 놓는다</li>
 </ul>
-<p data-blk="chapters/ch02/sec04.tex#11">마지막 항목은 8장 이후 만들기를 할 때 특히 자주 겪는다. 세 번 고쳐 놓았는데 네 번째 요청에서 첫 번째 고침이 사라져 있는 식이다. 화가 나겠지만 고장이 아니라 책상이 넘친 것이다.</p>
+<p data-blk="chapters/ch02/sec04.tex#11">마지막 항목은 이 장의 제작에서 바로 겪게 된다. 세 번 고쳐 놓았는데 네 번째 요청에서 첫 번째 고침이 사라져 있는 식이다. 화가 나겠지만 고장이 아니라 책상이 넘친 것이다.</p>
 <div class="table-wrap"><div class="table-caption">표 2.5: 증상과 대처</div><table><tr><th> 이런 일이 생기면</th><th> 이렇게 한다</th></tr><tr><td>앞의 지시를 어기기 시작한다</td><td>지금까지의 결정을 한 번에 다시 적어 준다</td></tr><tr><td>자꾸 옛날 버전으로 되돌아간다</td><td>최신 결과물을 다시 붙여 넣고 이어 간다</td></tr><tr><td>답이 전반적으로 흐릿해진다</td><td>새 대화를 시작하고 요약본을 옮겨 간다</td></tr><tr><td>자료를 여러 개 넣었더니 나빠졌다</td><td>관련 없는 자료를 뺀다</td></tr></table></div>
 <h3 data-blk="chapters/ch02/sec04.tex#12">많이 넣는다고 좋아지지 않는다</h3>
 <p data-blk="chapters/ch02/sec04.tex#13">흔한 오해가 있다. 관련 있어 보이는 것을 전부 넣으면 답이 좋아질 것이라는 생각이다. 실제로는 반대인 경우가 많다.</p>
@@ -282,7 +284,27 @@
 <li>요약에서 <strong>빠뜨렸던 것</strong>이 있었다면 무엇인가?</li>
 </ol>
 <p data-blk="chapters/ch02/labs.tex#19">3번에서 알게 된 것을 요약 프롬프트에 반영해 자기만의 서식으로 고쳐 <code>프롬프트기록.txt</code>에 저장한다. 이 서식은 학기 내내 쓰게 된다.</p>
-</div></p>
+<h3>실습 2-6. 제작  —  우리 자료를 제대로 읽게 만든다</h3>
+<p data-blk="chapters/ch02/labs.tex#21">1장에서 만든 페이지에 <strong>실제 자료</strong>를 넣는다(실습 1-6에서 깨진 그 파일이면 가장 좋다).</p>
+<p><strong>1단계  —  무엇이 깨지는지 적는다.</strong> 고치려 하지 말고 증상만 적는다.</p>
+<div class="settingbox-wrap"><div class="setting-label">깨진 곳</div><pre class="settingbox"><code>열 이름          :  제대로 읽혔나 (        )
+날짜 열          :  무엇으로 인식됐나 (        )
+금액·숫자 열     :  숫자로 세어졌나 (        )
+빈 칸            :  어떻게 처리됐나 (        )
+그 밖            :</code></pre></div>
+<p><strong>2단계  —  자료를 주고 다시 시킨다.</strong> 자료의 <strong>앞 10행</strong>만 프롬프트에 붙여 넣는다(개인정보가 있으면 이름을 바꾼다  —  7.2절에서 다룰 원칙을 미리 지킨다).</p>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>아래는 내가 넣을 자료의 앞부분이다.</p><p><i class="resp-note">(자기 자료 10행을 붙여 넣는다)</i></p><p>이 형식을 제대로 읽도록 고쳐 줘.</p><p>- 열 이름은 한글이다. 그대로 화면에 보여 줘<br>
+- 날짜 열은 <span class="pblank"></span> 형식이다. 날짜로 인식해 줘<br>
+- 금액 열은 쉼표와 단위가 붙어 있다. 숫자로 바꿔 세어 줘<br>
+- 빈 칸은 평균에서 빼고, <strong>몇 건이 비었는지</strong>를 따로 알려 줘</p><p>나머지는 그대로 둬.</p></code></pre></div>
+<p><strong>3단계  —  손으로 검산한다.</strong> 이 단계를 건너뛰지 않는다.</p>
+<ol data-blk="chapters/ch02/labs.tex#25">
+<li>화면에 나온 <strong>행 수</strong>가 파일의 실제 행 수와 같은가? (엑셀에서 확인)</li>
+<li>숫자 열 하나를 골라 <strong>합계를 직접</strong> 구해 화면의 값과 비교한다</li>
+<li>빈 칸이 있는 열의 평균이, 빈 칸을 0으로 세지는 않았는지 확인한다</li>
+</ol>
+<p data-blk="chapters/ch02/labs.tex#26">2번이나 3번에서 어긋나면 <strong>조용히 틀린</strong> 것이다. 오류 메시지 없이 잘못된 숫자가 나오는 이 상황이 2.3절에서 말한 위험이며, 12장에서 본격적으로 다룬다.</p>
+<p><strong>제출</strong>  —  고치기 전후 화면, 쓴 프롬프트, 검산 기록, 그리고 <em>자료를 준 것만으로 무엇이 달라졌는지</em> 세 문장.</p></div></p>
 <details class="box summary" id="summary"><summary class="box-head">2장 요약</summary><div class="sum-body"><ul>
 <li><strong class="term-ko">언어 모델</strong><sup class="term">language model</sup>은 앞의 말을 보고 <strong>그럴듯한 다음 말</strong>을 고르는 일을 반복한다. 문장을 이해하고 답을 아는 것이 아니다. 이 한 문장이 이후의 거의 모든 현상을 설명한다.</li>
 <li>후보들 가운데 점수에 비례한 확률로 뽑기 때문에 <strong>같은 질문에도 매번 다른 답</strong>이 나온다. 이 과감함의 정도를 <strong class="term-ko">온도</strong><sup class="term">temperature</sup>라고 부르며, 아이디어를 늘릴 때는 다양하게, 형식을 지키거나 코드를 만들 때는 안정되게 두는 편이 유리하다.</li>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>8장 만들기 위한 준비 — AI 문제해결</title>
+<title>8장 만들어진 것을 읽고 고친다 — AI 문제해결</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
@@ -17,19 +17,19 @@
 <header class="topbar">
   <a class="home" href="../index.html">&#8962; 홈</a>
   <span class="book-title">AI 문제해결</span>
-  <span class="ch-indicator">8장 만들기 위한 준비</span>
+  <span class="ch-indicator">8장 만들어진 것을 읽고 고친다</span>
   <button class="nav-toggle" onclick="document.body.classList.toggle('nav-open')">목차</button>
 </header>
 <div class="layout">
 <nav class="sidebar">
 <div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
-<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 문제를 푸는 방식이 달라졌다</a>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 오늘 만들 수 있다</a>
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> AI는 어떻게 답을 만드는가</a>
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 에이전트: 스스로 일하는 AI</a>
 </div>
-<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 문제를 찾아내고 정의한다</a>
+<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 만들었는데 왜 안 쓰이는가</a>
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> 문제를 쪼개고 구조를 본다</a>
 </div>
@@ -37,8 +37,8 @@
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> AI와 제대로 대화한다</a>
 </div>
-<div class="nav-ch current"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 만들기 위한 준비</a>
-<div class="nav-secs"><a class="nav-sec" href="ch08.html#sec1">8.1 웹과 앱, 무엇이 다른가</a><a class="nav-sec" href="ch08.html#sec2">8.2 작업 환경 만들기</a><a class="nav-sec" href="ch08.html#sec3">8.3 바이브 코딩: 말로 만드는 첫 경험</a><a class="nav-sec" href="ch08.html#sec4">8.4 만들어진 것을 읽는 최소한의 눈</a><a class="nav-sec" href="ch08.html#sec5">8.5 무엇부터 물을 것인가</a><a class="nav-sec" href="ch08.html#labs">실습을 통한 개념 정리</a><a class="nav-sec" href="ch08.html#summary">8장 요약</a><a class="nav-sec" href="ch08.html#exercises">연습문제</a></div>
+<div class="nav-ch current"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 만들어진 것을 읽고 고친다</a>
+<div class="nav-secs"><a class="nav-sec" href="ch08.html#sec1">8.1 웹과 앱, 무엇이 다른가</a><a class="nav-sec" href="ch08.html#sec2">8.2 대화창 밖으로 가져오기</a><a class="nav-sec" href="ch08.html#sec3">8.3 임의로 정한 것을 확인한다</a><a class="nav-sec" href="ch08.html#sec4">8.4 만들어진 것을 읽는 최소한의 눈</a><a class="nav-sec" href="ch08.html#sec5">8.5 무엇부터 물을 것인가</a><a class="nav-sec" href="ch08.html#labs">실습을 통한 개념 정리</a><a class="nav-sec" href="ch08.html#summary">8장 요약</a><a class="nav-sec" href="ch08.html#exercises">연습문제</a></div>
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 첫 번째 웹 서비스 만들기</a>
 </div>
@@ -66,21 +66,24 @@
 <main class="content">
 <div class="chapter-head">
   <div class="ch-label">CHAPTER 08</div>
-  <h1>만들기 위한 준비</h1>
+  <h1>만들어진 것을 읽고 고친다</h1>
 </div>
 <img class="chapter-hero" src="img/ch08/ch08_img01.jpg" alt="8장 대표 이미지">
 <div class="center"><details class="box goals"><summary class="box-head">이 장을 마치면</summary><div class="goals-body"><ul data-blk="chapters/ch08/ch08.tex#1">
 <li>웹 서비스와 파이썬 앱의 차이를 설명할 수 있다.</li>
-<li>브라우저·계정·폴더·저장소로 이루어진 작업 환경을 갖출 수 있다.</li>
-<li>말로 지시해 동작하는 결과물을 처음부터 끝까지 한 번 만들어 볼 수 있다.</li>
-<li>만들어진 코드를 읽고 어디를 고쳐야 할지 짚을 수 있다.</li>
+<li>대화창 안의 결과물을 내 파일로 가져와 관리할 수 있다.</li>
+<li>인공지능이 <em>임의로 정한 것</em>을 찾아내 확인할 수 있다.</li>
+<li>만들어진 코드를 읽고 어디를 고쳐야 할지 짚어 직접 고칠 수 있다.</li>
 <li>막혔을 때 무엇을 물어야 하는지 안다.</li>
 </ul>
 </div></details></div>
-<p data-blk="chapters/ch08/ch08.tex#2">이제 만든다. 그런데 만들기 전에 알아 둘 것이 조금 있다. 어렵지는 않지만 모르면 계속 걸린다 — 만든 것이 어디에 저장되는지, 브라우저에서 어떻게 열어 보는지, 고칠 때 어느 파일을 여는지 같은 것들이다.</p>
-<p data-blk="chapters/ch08/ch08.tex#3">이 장은 그 최소한만 다룬다. 문법을 배우지 않고, 개념도 필요한 만큼만 짚는다. 대신 이 장이 끝나면 <strong>말로 지시해 동작하는 것 하나를 처음부터 끝까지</strong> 만들어 본 상태가 된다. 그 경험이 있어야 9장 이후가 편해진다.</p>
+<p data-blk="chapters/ch08/ch08.tex#2">일곱 장 동안 만들어 왔다. 그런데 솔직히 말해 보자. 지금 가진 그 파일 안에 무엇이 들어 있는지, 여러분은 알고 있는가? 대부분은 모른다. 대화창에서 받아 저장했을 뿐이다.</p>
+<p data-blk="chapters/ch08/ch08.tex#3">지금까지는 그래도 괜찮았다. 앞으로는 곤란해진다. 9장부터는 남이 쓰는 것을 만들고 10장에서 공개하는데, <strong>내가 이해하지 못한 것을 남에게 줄 수는 없기</strong> 때문이다. 무엇이 저장되는지, 어디가 틀릴 수 있는지 설명하지 못하면서 주소를 뿌리는 것은 무책임한 일이다.</p>
+<p data-blk="chapters/ch08/ch08.tex#4">이 장에서는 문법을 배우지 않는다. 대신 <strong>훑어보고 어디가 어딘지 짚는</strong> 눈을 만든다. 그것이 되면 두 가지가 달라진다. 간단한 것은 직접 고칠 수 있고, 못 고치는 것도 <em>어디를</em> 고쳐 달라고 정확히 말할 수 있다.</p>
+<div class="buildbox"><div class="build-head"><span class="chip">이 장에서 만들 것</span><span class="build-name">내 손으로 고친 판</span></div><p>이 장의 제작에는 인공지능이 거의 등장하지 않는다. 파일을 열어 <strong>직접</strong> 문구를 바꾸고, 색을 바꾸고, 값을 바꾼다. 그리고 일부러 한 줄 지워 무슨 일이 생기는지 본다.</p>
+<p>작은 일이지만 이 장을 지나면 코드가 <em>건드리면 안 되는 검은 상자</em>에서 <em>어디가 무엇을 하는 글</em>로 바뀐다. 12장에서 오류를 만났을 때 이 차이가 크게 벌어진다.</p></div>
 <h2 data-blk="chapters/ch08/sec01.tex#1" id="sec1">8.1 웹과 앱, 무엇이 다른가</h2>
-<p data-blk="chapters/ch08/sec01.tex#2">만들기 전에 알아 둘 것이 조금 있다. 많지 않다. <strong>내가 만든 것이 어디에 있고 어떻게 실행되는가</strong> 정도다. 이것만 알아도 막혔을 때 어디를 봐야 할지 감이 온다.</p>
+<p data-blk="chapters/ch08/sec01.tex#2">지금까지 만든 것이 정확히 무엇인지부터 정리하자. 많지 않다. <strong>내가 만든 것이 어디에 있고 어떻게 실행되는가</strong> 정도다. 이것만 알아도 막혔을 때 어디를 봐야 할지 감이 온다.</p>
 <h3 data-blk="chapters/ch08/sec01.tex#3">두 가지 실행 방식</h3>
 <p data-blk="chapters/ch08/sec01.tex#4"><strong>브라우저에서 열리는 것.</strong> 파일을 브라우저가 읽어 화면으로 그린다. 주소를 아는 사람은 누구나 열 수 있고, 설치가 필요 없다. 우리가 9–10장에서 만들 것이 이것이다.</p>
 <p data-blk="chapters/ch08/sec01.tex#5"><strong>실행 환경에서 돌아가는 것.</strong> 파이썬 같은 언어로 쓴 코드를 실행 프로그램이 읽어 실행한다. 브라우저로는 열리지 않고, 실행할 환경이 있어야 한다. 11장에서 만들 것이 이것이다.</p>
@@ -115,8 +118,8 @@
 <p data-blk="chapters/ch08/sec01.tex#18">둘 다 해당한다면 웹부터 만든다. 눈에 보이는 것이 먼저 나와야 계속할 힘이 생긴다.</p>
 <div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch08/sec01.tex#19">이 절의 내용은 <strong>외울 것이 아니다.</strong> 다만 나중에 <em>화면은 나오는데 단추가 안 눌린다</em>는 상황이 오면, 그것이 HTML 문제가 아니라 자바스크립트 문제라는 정도는 짐작할 수 있어야 한다. 그 짐작이 12장에서 오류를 다룰 때 큰 차이를 만든다.</p>
 </div>
-<h2 data-blk="chapters/ch08/sec02.tex#1" id="sec2">8.2 작업 환경 만들기</h2>
-<p data-blk="chapters/ch08/sec02.tex#2">준비물은 많지 않다. 다만 하나라도 빠지면 계속 걸리므로, 이 절은 수업 시간 안에 끝내는 것이 좋다.</p>
+<h2 data-blk="chapters/ch08/sec02.tex#1" id="sec2">8.2 대화창 밖으로 가져오기</h2>
+<p data-blk="chapters/ch08/sec02.tex#2">지금까지 만든 것은 대부분 <strong>대화창 안</strong>에 있다. 서비스가 정책을 바꾸거나 대화가 지워지면 함께 사라지고, 10장에서 공개하려면 어차피 내 파일이 필요하다. 이 절에서 그것을 밖으로 꺼내 둔다. 준비물은 많지 않지만 하나라도 빠지면 계속 걸리므로, 이 절은 수업 시간 안에 끝내는 것이 좋다.</p>
 <h3 data-blk="chapters/ch08/sec02.tex#3">네 가지</h3>
 <p data-blk="chapters/ch08/sec02.tex#4"><strong>1. 브라우저.</strong> 이미 있다. 다만 최신 상태인지 확인한다. 오래된 브라우저에서는 요즘 만들어진 것이 안 열리는 경우가 있다.</p>
 <p data-blk="chapters/ch08/sec02.tex#5"><strong>2. 만들어 주는 도구 계정.</strong> 3.5절에서 정한 것. 최소 두 곳.</p>
@@ -147,61 +150,48 @@
 <li>파일 확장자가 보인다</li>
 <li>텍스트 편집기로 <code>.html</code> 파일을 열 수 있다</li>
 <li>저장소 계정이 있다 (개인 이메일로)</li>
-<li><code>프롬프트기록.txt</code>에 실습 7-5의 제작 프롬프트가 저장되어 있다</li>
+<li>1–7장에서 만든 파일이 그 폴더에 <strong>내 파일로</strong> 저장되어 있다</li>
+<li><code>프롬프트기록.txt</code>에 지금까지 쓴 프롬프트가 남아 있다</li>
 </ul>
-<p data-blk="chapters/ch08/sec02.tex#24">마지막 항목까지 확인했으면 다음 절로 간다. 이제 만든다.</p>
-<h2 data-blk="chapters/ch08/sec03.tex#1" id="sec3">8.3 바이브 코딩: 말로 만드는 첫 경험</h2>
-<p data-blk="chapters/ch08/sec03.tex#2">이제 7.5절의 프롬프트를 실제로 넣는다. 이 절이 끝나면 여러분의 폴더에 <strong>동작하는 파일 하나</strong>가 있게 된다.</p>
-<h3 data-blk="chapters/ch08/sec03.tex#3">이름 붙이기</h3>
-<p data-blk="chapters/ch08/sec03.tex#4">말로 설명해 코드를 만들어 내는 이 방식을 요즘 <strong class="term-ko">바이브 코딩</strong><sup class="term">vibe coding</sup>이라고 부른다. 문법을 몰라도, 무엇을 원하는지 말할 수 있으면 만들어진다는 뜻이다.</p>
-<p data-blk="chapters/ch08/sec03.tex#5">이름이 가벼워 보이지만 정직한 이름이기도 하다. <strong>잘 되는 영역과 안 되는 영역이 뚜렷하기</strong> 때문이다.</p>
-<div class="table-wrap"><div class="table-caption">표 8.3: 바이브 코딩이 잘 되는 곳과 안 되는 곳</div><table><tr><th> 잘 된다</th><th> 어렵다</th></tr><tr><td>흔한 형태의 화면 (입력·목록·집계)</td><td>아주 독특한 화면 구성</td></tr><tr><td>규칙이 분명한 계산</td><td>규칙이 애매한 판단</td></tr><tr><td>파일 하나로 끝나는 것</td><td>여러 부분이 얽힌 큰 것</td></tr><tr><td>잘못돼도 되돌릴 수 있는 것</td><td>돈·개인정보가 걸린 것</td></tr><tr><td>내가 결과를 확인할 수 있는 것</td><td><strong>맞는지 내가 판단 못 하는 것</strong></td></tr></table></div>
-<p data-blk="chapters/ch08/sec03.tex#6">마지막 줄이 핵심이다. <strong>내가 확인할 수 없는 것은 만들지 않는다.</strong> 확인 못 하는 결과물은 동작해도 쓸 수 없다.</p>
-<h3 data-blk="chapters/ch08/sec03.tex#7">넣고 받기</h3>
-<p data-blk="chapters/ch08/sec03.tex#8">프롬프트를 넣는다. 잠시 뒤 코드와 화면이 나온다. 그다음에 할 일이 순서대로 있다.</p>
-<p data-blk="chapters/ch08/sec03.tex#9"><strong>1. 화면을 본다.</strong> 미리보기가 나오면 이것저것 눌러 본다. 아직 저장하지 않아도 된다.</p>
-<p data-blk="chapters/ch08/sec03.tex#10"><strong>2. 세 가지를 확인한다.</strong> 7.5절 프롬프트의 마지막에 물어 둔 것이다.</p>
-<ul data-blk="chapters/ch08/sec03.tex#11">
-<li>파일을 어디에 저장하고 어떻게 여는가</li>
-<li>내가 고칠 만한 부분이 어디쯤인가</li>
-<li><strong>임의로 정한 것</strong>이 무엇인가</li>
-</ul>
-<p data-blk="chapters/ch08/sec03.tex#12">세 번째 답을 꼼꼼히 읽자. 여기에 나중에 문제가 될 것이 대개 들어 있다.</p>
-<div class="airesp"><span class="chip">임의로 정한 것  —  실제 응답 예</span><p>프롬프트에 지정되지 않아 제가 정한 것들입니다.</p>
-<p><b class="resp-h">1. 항목 입력 방식</b>
-자유 입력으로 만들었습니다. 미리 정해진 목록에서 고르게 할 수도 있는데, 어떤 항목이 필요한지 알 수 없어 자유 입력으로 두었습니다.</p>
-<p><b class="resp-h">2. 저장 방식</b>
-브라우저의 로컬 저장소를 사용했습니다. 같은 브라우저에서만 남아 있고, <strong>다른 사람이나 다른 기기와 공유되지는 않습니다.</strong></p>
-<p><b class="resp-h">3. 삭제 기능</b>
-넣지 말라고 하신 목록에 없어서 각 줄에 [삭제]를 넣었습니다. 원치 않으시면 빼겠습니다.</p>
-<p><b class="resp-h">4. 색과 글꼴</b>
-기본 시스템 글꼴과 회색 계열을 썼습니다.</p></div>
-<p data-blk="chapters/ch08/sec03.tex#13">두 번째 항목이 중요한 정보다. <em>같은 브라우저에서만 남는다</em>는 것은 곧 <strong>동아리원 40명이 각자 입력해도 서로 보이지 않는다</strong>는 뜻이다. 명세서의 의도와 다르다. 이것을 지금 알아채는 것과 3주 뒤에 알아채는 것은 전혀 다르다.</p>
-<div class="box keypoint"><span class="chip">요점</span><p><strong><em>임의로 정한 것</em>을 반드시 읽는다.</strong> 여기서 명세서와 어긋나는 것이 발견되면, 그 자리에서 결정해야 한다  —  이번 범위를 조정할 것인가, 다른 방법을 쓸 것인가.</p></div>
-<h3 data-blk="chapters/ch08/sec03.tex#15">저장하고 열어 보기</h3>
-<p data-blk="chapters/ch08/sec03.tex#16">미리보기에서 잘 돌아도, <strong>내 컴퓨터의 파일로 저장해 브라우저에서 직접 열어 봐야</strong> 진짜 확인이다.</p>
-<ol data-blk="chapters/ch08/sec03.tex#17">
-<li>코드를 내려받거나 전체 복사한다</li>
-<li><code>03_웹/</code> 폴더에 <code>expense.html</code>로 저장한다 (확장자 확인!)</li>
-<li>파일을 두 번 눌러 브라우저에서 연다</li>
-<li>미리보기에서 했던 것을 똑같이 해 본다</li>
-</ol>
-<p data-blk="chapters/ch08/sec03.tex#18">여기서 안 되는 경우가 종종 있다. 미리보기 환경에서는 되던 것이 파일로는 안 되는 것이다. 그때는 그 사실을 그대로 알려 준다.</p>
-<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>코드를 <code>expense.html</code>로 저장해서 브라우저로 직접 열었더니, 화면은 나오는데 [추가] 단추를 눌러도 아무 일이 없다. 미리보기에서는 됐다. 파일 하나만으로 동작하도록 고쳐 줘.</p></code></pre></div>
-<h3 data-blk="chapters/ch08/sec03.tex#19">한 번 더 고쳐 보기</h3>
-<p data-blk="chapters/ch08/sec03.tex#20">첫 결과물이 완벽할 리 없다. 7.3절의 방식(어디가·왜·어떻게)으로 두세 번 고쳐 본다. 예를 들면 이런 것들이다.</p>
-<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>목록에서 날짜가 <code>2026-03-04</code>로 나오는데, 휴대전화에서 보니 열이 좁아 줄바꿈이 생긴다. <code>3/4</code>처럼 짧게 표시해 줘. 내보내는 파일에서는 지금처럼 전체 날짜를 유지해 줘. 나머지는 그대로 둬.</p></code></pre></div>
-<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>항목을 자유 입력으로 두니 <em>간식</em>, <em>간식비</em>, <em>다과</em>가 섞여 들어와 합계가 나뉜다. 자주 쓰는 항목 여섯 개를 골라 고르기로 만들고, 그중 없으면 직접 입력할 수 있게 해 줘. 여섯 개는 내가 정할 테니 코드에서 쉽게 바꿀 수 있는 자리에 모아 줘.</p></code></pre></div>
-<p data-blk="chapters/ch08/sec03.tex#21">두 번째 요청의 마지막 문장을 눈여겨보자. <strong>나중에 내가 고칠 것을 한 자리에 모아 달라고</strong> 부탁하는 것이다. 이렇게 해 두면 다음 절에서 직접 고칠 수 있다.</p>
-<h3 data-blk="chapters/ch08/sec03.tex#22">잘 안 될 때</h3>
-<p data-blk="chapters/ch08/sec03.tex#23">첫 시도에 안 되는 경우도 많다. 순서대로 해 본다.</p>
-<ol data-blk="chapters/ch08/sec03.tex#24">
-<li>프롬프트를 그대로 <strong>다른 도구</strong>에 넣어 본다 (도구마다 잘하는 것이 다르다)</li>
-<li>기능을 <strong>하나로 줄여</strong> 다시 요청한다 (입력과 목록만. 되면 하나씩 붙인다)</li>
-<li>화면에 뜬 것을 <strong>그대로 복사해</strong> 알려 준다 (12.2절의 방식)</li>
-<li>새 대화에서 처음부터 다시 시작한다</li>
-</ol>
-<p data-blk="chapters/ch08/sec03.tex#25">2번이 특히 효과적이다. <strong>작게 시작해 키우는 것</strong>은 이 수업 내내 반복될 원칙이다.</p>
+<p data-blk="chapters/ch08/sec02.tex#24">마지막 항목까지 확인했으면 다음 절로 간다. 이제 그 파일 안을 들여다본다.</p>
+<h2 data-blk="chapters/ch08/sec03.tex#1" id="sec3">8.3 임의로 정한 것을 확인한다</h2>
+<p data-blk="chapters/ch08/sec03.tex#2">프롬프트에 적지 않은 것은 인공지능이 알아서 정한다. 그 결정들이 지금 여러분의 파일 안에 들어 있고, 대부분은 여러분이 모른다. 이 절에서는 그것을 찾아낸다.</p>
+<h3 data-blk="chapters/ch08/sec03.tex#3">적지 않은 것은 정해진다</h3>
+<p data-blk="chapters/ch08/sec03.tex#4">1.5절의 첫 프롬프트를 다시 보자. 파일을 읽고, 요약하고, 그래프를 그리라고 적었다. 그런데 적지 않은 것이 훨씬 많다.</p>
+<div class="table-wrap"><div class="table-caption">표 8.3: 내가 정하지 않아 인공지능이 정한 것들</div><table><tr><th> 무엇</th><th> 흔한 선택</th><th> 다르게 할 수도 있었다</th></tr><tr><td>빈 칸의 평균 처리</td><td>빼고 계산</td><td>0으로 세기</td></tr><tr><td>숫자로 안 읽히는 값</td><td>조용히 건너뜀</td><td>오류로 알리기</td></tr><tr><td>막대그래프의 개수</td><td>상위 몇 개만</td><td>전부</td></tr><tr><td>큰 파일</td><td>그대로 읽음</td><td>앞부분만</td></tr><tr><td>소수점 자리</td><td>둘째 자리 반올림</td><td>원본 그대로</td></tr><tr><td>날짜의 형식</td><td>미국식 월/일</td><td>우리식 연-월-일</td></tr></table></div>
+<p data-blk="chapters/ch08/sec03.tex#5">표 <span class="xref" data-ref="tab:silent-choices">8.3</span>의 왼쪽 두 줄은 특히 위험하다. <strong>조용히 건너뛴 행이 있다면 화면의 숫자는 이미 틀렸다.</strong> 오류는 나지 않는다.</p>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch08/sec03.tex#6">인공지능은 애매한 지시를 만나면 멈추지 않고 <strong>그럴듯한 쪽으로 정하고 진행한다</strong>. 이것은 친절이지만 동시에 위험이다. 무엇을 정했는지 묻지 않으면 알 수 없다.</p>
+</div>
+<h3 data-blk="chapters/ch08/sec03.tex#7">물어서 목록을 받는다</h3>
+<p data-blk="chapters/ch08/sec03.tex#8">가장 빠른 방법은 그냥 물어보는 것이다. 만든 지 한참 지난 파일에도 쓸 수 있다.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://aistudio.google.com" target="_blank" rel="noopener">AI Studio</a><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code><p>첨부한 파일은 내가 예전에 너에게 만들어 달라고 해서 받은 것이다. 지금 코드를 읽고 다음을 알려 줘. <strong>고치지는 말고</strong> 설명만 해 줘.</p><p>1. 내가 지정하지 않아서 <strong>네가(또는 만든 쪽이) 임의로 정한 것</strong>을 모두 나열해 줘. 자료 처리 방식, 표시 형식, 예외 상황 처리, 개수 제한 등.<br>
+2. 각각에 대해 <strong>다르게 할 수도 있었던 선택</strong>과, 그렇게 하면 결과가 어떻게 달라지는지 한 줄로.<br>
+3. 그중 <strong>내가 확인해야 할 것</strong>과 그냥 둬도 되는 것을 구분해 줘.<br>
+4. 자료에 따라 <strong>조용히 틀린 결과</strong>가 나올 수 있는 자리가 있다면 표시해 줘.</p><p>목록은 위험한 것부터 정렬해 줘.</p></code></pre><div class="listing-caption">프롬프트 8.1: 숨은 결정 드러내기</div></div>
+<p data-blk="chapters/ch08/sec03.tex#9">4번이 핵심이다. 여기 걸린 것들은 12장까지 미루지 말고 이 장에서 확인한다.</p>
+<div class="airesp"><span class="chip">돌아온 목록  —  실제 응답 예</span><p><b class="resp-h">확인이 필요한 것</b>
+<strong>1. 빈 칸을 0으로 세고 있습니다.</strong> 평균을 낼 때 빈 칸이 있는 행을 빼지 않고 0으로 계산합니다. 빈 칸이 많은 열이라면 평균이 실제보다 낮게 나옵니다.</p>
+<p><strong>2. 숫자로 읽히지 않는 값을 건너뜁니다.</strong> <code>12,000원</code>처럼 쉼표와 단위가 붙은 값은 조용히 제외됩니다. 화면의 <em>행 수</em>는 전체를 세지만 평균은 일부만으로 계산되어, 둘이 어긋납니다.</p>
+<p><b class="resp-h">그냥 둬도 되는 것</b>
+3. 막대 색은 파란 계열 하나로 고정했습니다.<br>
+4. 그래프는 값이 큰 것부터 왼쪽에 놓았습니다.
+<i class="resp-note">(1번과 2번은 자료에 따라 결과가 달라진다. 이런 것을 찾아내는 것이 이 절의 목적이다.)</i></p></div>
+<h3 data-blk="chapters/ch08/sec03.tex#10">정하고 다시 시킨다</h3>
+<p>목록을 받았으면 <strong>여러분이</strong> 정한다. 인공지능에게 <em>알아서 고쳐 달라</em>고 하지 않는다  —  그러면 또 다른 임의의 결정이 들어온다.</p>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>방금 알려 준 것 중 다음을 이렇게 바꿔 줘.</p><p>1. 빈 칸은 <strong>평균에서 빼고</strong>, 몇 건이 비었는지 열 옆에 표시해 줘<br>
+2. 숫자로 안 읽히는 값은 건너뛰지 말고 <strong>몇 건인지 세어</strong> 표 위에 보여 줘. <em>212건 중 3건은 숫자로 읽히지 않아 계산에서 제외됨</em>처럼.</p><p>나머지 결정은 그대로 둬.</p></code></pre></div>
+<p data-blk="chapters/ch08/sec03.tex#12">2번 같은 표시가 있으면 사용자가 <em>숫자를 믿어도 되는지</em> 스스로 판단할 수 있다. <strong>감추는 것보다 드러내는 것이 언제나 낫다.</strong></p>
+<h3 data-blk="chapters/ch08/sec03.tex#13">한 번 정한 것은 적어 둔다</h3>
+<p data-blk="chapters/ch08/sec03.tex#14">같은 결정을 매번 다시 하지 않으려면 적어 두어야 한다. 7.2절에서 말한 <em>결정과 그 이유</em>가 이것이다.</p>
+<div class="settingbox-wrap"><div class="setting-label">내가 정한 것 (프롬프트기록.txt에 함께 둔다)</div><pre class="settingbox"><code>빈 칸        : 평균에서 뺀다. 몇 건인지 표시한다
+숫자 아닌 값 : 건너뛰되 건수를 화면에 밝힌다
+날짜 형식    : YYYY-MM-DD
+소수점       : 둘째 자리까지
+정렬         : 값이 큰 것부터
+큰 파일      : 1000행이 넘으면 경고만 하고 전부 처리</code></pre></div>
+<p data-blk="chapters/ch08/sec03.tex#15">이 목록은 대화가 길어져 앞의 지시가 밀려났을 때(2.4절) 통째로 다시 붙여 넣는 용도로도 쓴다. 그리고 6.5절 명세서의 <em>자료</em> 칸에 그대로 옮겨 적으면 된다.</p>
+<div class="box caution"><span class="chip">주의</span><p data-blk="chapters/ch08/sec03.tex#16">새 대화에서 다시 만들면 <strong>이 결정들이 전부 초기화된다.</strong> 7장에서 명세대로 새로 만들 때, 이 목록을 프롬프트에 함께 넣지 않으면 애써 정한 것이 도로 임의의 선택으로 돌아간다.</p>
+</div>
 <h2 data-blk="chapters/ch08/sec04.tex#1" id="sec4">8.4 만들어진 것을 읽는 최소한의 눈</h2>
 <p data-blk="chapters/ch08/sec04.tex#2">코드를 쓰는 법을 배우지는 않는다. 대신 <strong>훑어보고 어디가 어딘지 짚는</strong> 법을 익힌다. 이것이 되면 두 가지가 달라진다. 간단한 것은 직접 고칠 수 있고, 못 고치는 것도 <em>어디를</em> 고쳐 달라고 정확히 말할 수 있다.</p>
 <h3 data-blk="chapters/ch08/sec04.tex#3">파일을 열어 본다</h3>
@@ -261,7 +251,7 @@
 <p data-blk="chapters/ch08/sec04.tex#22">모르는 부분은 그 자리에서 물어보면 된다.</p>
 <div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://aistudio.google.com" target="_blank" rel="noopener">AI Studio</a><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div><pre class="prompt"><code><p>아래는 내가 만든 페이지의 일부다.</p><p><i class="resp-note">(모르는 부분을 복사해 붙여 넣는다)</i></p><p>다음을 알려 줘. 프로그래밍을 배우지 않은 사람이 이해할 수 있게.</p><p>1. 이 부분이 하는 일을 한 문장으로<br>
 2. 이 부분을 지우면 화면에서 무엇이 사라지는지<br>
-3. 내가 바꿔도 안전한 곳과 건드리면 안 되는 곳</p><p>문법을 설명하지 말고, <strong>무슨 일을 하는지</strong>만 알려 줘.</p></code></pre><div class="listing-caption">프롬프트 8.1: 코드의 한 부분을 설명받기</div></div>
+3. 내가 바꿔도 안전한 곳과 건드리면 안 되는 곳</p><p>문법을 설명하지 말고, <strong>무슨 일을 하는지</strong>만 알려 줘.</p></code></pre><div class="listing-caption">프롬프트 8.2: 코드의 한 부분을 설명받기</div></div>
 <p data-blk="chapters/ch08/sec04.tex#23">마지막 줄이 중요하다. 이렇게 쓰지 않으면 문법 강의가 시작된다. 우리에게 필요한 것은 문법이 아니라 <strong>여기가 무엇을 하는 자리인가</strong>이다.</p>
 <h2 data-blk="chapters/ch08/sec05.tex#1" id="sec5">8.5 무엇부터 물을 것인가</h2>
 <p data-blk="chapters/ch08/sec05.tex#2">만들다 보면 반드시 막힌다. 이 절에서는 막혔을 때 무엇을 어떤 순서로 하는지 정해 둔다. 순서가 정해져 있으면 당황하지 않는다.</p>
@@ -310,17 +300,23 @@
 <p data-blk="chapters/ch08/labs.tex#4">시험용으로 <code>test.html</code> 파일을 만들어 다음 한 줄만 넣고 브라우저에서 열어 본다.</p>
 <div class="listing"><button class="prompt-copy" type="button">복사</button><pre class="line-numbers"><code class="language-markup">&lt;h1&gt;안녕하세요&lt;/h1&gt;</code></pre></div>
 <p data-blk="chapters/ch08/labs.tex#5">큰 글씨로 <em>안녕하세요</em>가 나오면 준비 완료다.</p>
-<h3 data-blk="chapters/ch08/labs.tex#6">실습 8-2. 첫 결과물 만들기</h3>
-<p data-blk="chapters/ch08/labs.tex#7">실습 7-5의 제작 프롬프트를 넣어 결과를 받는다.</p>
+<h3 data-blk="chapters/ch08/labs.tex#6">실습 8-2. 대화창 밖으로 꺼내기</h3>
+<p data-blk="chapters/ch08/labs.tex#7">1–7장에서 만든 것을 <strong>내 파일</strong>로 정리한다.</p>
 <ol data-blk="chapters/ch08/labs.tex#8">
-<li>미리보기에서 동작을 확인한다</li>
-<li><strong>임의로 정한 것</strong> 목록을 받아 읽는다</li>
-<li>그중 명세서와 어긋나는 것이 있는지 확인한다</li>
-<li>코드를 <code>03_웹/</code> 폴더에 저장한다 (파일 이름을 정해 적어 둔다)</li>
-<li>파일을 두 번 눌러 브라우저에서 연다</li>
-<li>미리보기에서 했던 것을 똑같이 해 본다</li>
+<li>지금까지의 판을 모두 내려받아 <code>03_웹/</code>에 넣는다</li>
+<li>이름을 시간순으로 정리한다: <code>v1_1장.html</code>, <code>v2_2장.html</code>, …, <code>v7_명세.html</code></li>
+<li>각각을 브라우저에서 열어 <strong>정말 동작하는지</strong> 확인한다</li>
+<li>안 열리는 것이 있으면 표시해 둔다 (미리보기에서만 되던 것일 수 있다)</li>
 </ol>
-<p data-blk="chapters/ch08/labs.tex#9">5–6번에서 안 되면 8.3절의 방법으로 고친다. <strong>화면에 무언가 뜨고 최소한 하나의 동작이 되는</strong> 상태까지가 이 실습의 목표다.</p>
+<div class="settingbox-wrap"><div class="setting-label">내 판 목록</div><pre class="settingbox"><code>파일 이름          만든 장   동작하나   무엇이 달라졌나
+------------------------------------------------------------
+v1_1장.html          1장
+v2_2장.html          2장
+...
+v7_명세.html         7장
+------------------------------------------------------------
+지금 쓰는 판 :</code></pre></div>
+<p data-blk="chapters/ch08/labs.tex#9">이 목록이 13장 발표에서 <strong>과정을 보여 주는 자료</strong>가 된다. 첫 판과 지금 판을 나란히 놓으면 한 학기가 한눈에 보인다.</p>
 <h3 data-blk="chapters/ch08/labs.tex#10">실습 8-3. 세 덩어리 찾기</h3>
 <p data-blk="chapters/ch08/labs.tex#11">저장한 파일을 텍스트 편집기로 열고 다음을 찾아 줄 번호를 적는다.</p>
 <div class="settingbox-wrap"><div class="setting-label">세 덩어리 위치</div><pre class="settingbox"><code>&lt;style&gt; 시작 :      줄    &lt;/style&gt; 끝 :      줄
@@ -358,15 +354,15 @@
 <p data-blk="chapters/ch08/labs.tex#25">이 파일은 12장까지 계속 쌓아 간다.</p>
 </div></p>
 <details class="box summary" id="summary"><summary class="box-head">8장 요약</summary><div class="sum-body"><ul>
+<li>일곱 장 동안 만들어 왔지만, 그 파일 안에 무엇이 들어 있는지는 대개 모른다. 9장부터는 남이 쓰는 것을 만들기 때문에 <strong>내가 이해하지 못한 것을 남에게 줄 수는 없다</strong>.</li>
 <li>만든 것은 크게 두 가지 방식으로 실행된다. <strong>브라우저에서 열리는 것</strong>(<code>.html</code>, 주소로 공유)과 <strong>실행 환경에서 돌아가는 것</strong>(<code>.py</code>, 파일과 많은 양을 잘 다룸).</li>
 <li>웹 페이지는 세 가지로 이루어진다  —  <strong class="term-ko">HTML</strong><sup class="term">HTML</sup>(무엇이 있는가), <strong class="term-ko">CSS</strong><sup class="term">CSS</sup>(어떻게 보이는가), <strong class="term-ko">자바스크립트</strong><sup class="term">JavaScript</sup>(무엇이 일어나는가). 이 수업에서는 <strong>셋을 파일 하나에</strong> 넣는다.</li>
-<li>준비물은 넷이다. 브라우저, 만들어 주는 도구 계정 두 곳, 파일을 둘 폴더, 저장소 계정. <strong>설치는 하지 않는다</strong>  —  교양 수업에서 설치 문제로 한 주를 날리지 않기 위해서다.</li>
-<li><strong>파일 확장자를 보이게</strong> 설정한다. 숨겨져 있으면 <code>index.html.txt</code>를 만들어 놓고 왜 안 되는지 모르는 사고가 난다.</li>
-<li>저장소 계정은 <strong>개인 이메일</strong>로 만든다. 학교 계정은 졸업하면 닫힌다.</li>
-<li><strong class="term-ko">바이브 코딩</strong><sup class="term">vibe coding</sup>은 흔한 형태의 화면, 규칙이 분명한 계산, 파일 하나로 끝나는 것에 잘 통한다. 반대로 <strong>맞는지 내가 판단할 수 없는 것은 만들지 않는다</strong>.</li>
-<li>결과를 받으면 <strong><em>임의로 정한 것</em>을 반드시 읽는다.</strong> 프롬프트에 적지 않은 것은 인공지능이 정하며, 여기에 명세서와 어긋나는 것이 들어 있는 경우가 많다.</li>
-<li>미리보기에서 되는 것과 저장한 파일이 브라우저에서 되는 것은 다르다. <strong>반드시 파일로 저장해 직접 열어 확인한다</strong>.</li>
-<li>안 될 때는 <strong>기능을 하나로 줄여</strong> 다시 요청한다. 작게 시작해 키우는 것이 이 수업 내내 반복되는 원칙이다.</li>
+<li>지금까지의 결과물은 대부분 <strong>대화창 안</strong>에 있다. 서비스가 바뀌거나 대화가 지워지면 함께 사라지므로, 내 폴더로 꺼내 판마다 이름을 붙여 둔다.</li>
+<li><strong>파일 확장자를 보이게</strong> 설정한다. 숨겨져 있으면 <code>index.html.txt</code>를 만들어 놓고 왜 안 되는지 모르는 사고가 난다. 저장소 계정은 <strong>개인 이메일</strong>로 만든다.</li>
+<li><strong>프롬프트에 적지 않은 것은 인공지능이 정한다.</strong> 빈 칸 처리, 숫자로 안 읽히는 값, 반올림, 정렬, 개수 제한  —  이 결정들이 이미 파일 안에 들어 있고, 묻지 않으면 알 수 없다.</li>
+<li>특히 위험한 것은 <strong>조용히 건너뛰는</strong> 처리다. 행 몇 개가 계산에서 빠져도 오류는 나지 않고 화면의 숫자만 틀린다.</li>
+<li>목록을 받았으면 <strong>내가</strong> 정한다. <em>알아서 고쳐 달라</em>고 하면 또 다른 임의의 결정이 들어온다. 정한 것은 적어 두었다가 새 대화에서 다시 준다.</li>
+<li>감추는 것보다 <strong>드러내는 것</strong>이 낫다. <em>212건 중 3건은 숫자로 읽히지 않아 제외됨</em>처럼 표시하면 사용자가 스스로 판단할 수 있다.</li>
 <li>코드를 쓸 줄 몰라도 <strong>세 덩어리</strong>(<code>&lt;style&gt;</code> / <code>&lt;body&gt;</code> / <code>&lt;script&gt;</code>)는 구분할 수 있어야 한다. 색은 첫째, 글자는 둘째, 계산은 셋째 덩어리다.</li>
 <li><strong>내가 프롬프트에 쓴 말을 코드에서 찾아본다.</strong> 찾아서 바꾸고 새로고침해 보는 것이 가장 좋은 연습이며, 바꾸기 전에는 언제나 사본을 만든다.</li>
 <li>막혔을 때 적을 네 가지  —  무엇을 하려 했나, 무엇을 했나, <strong>무엇이 나왔나(그대로 복사)</strong>, 무엇을 이미 해 봤나. 오류 메시지를 요약하지 않는 것이 핵심이다.</li>
@@ -385,7 +381,7 @@
 <li class="ex-item" data-ex="3"><span class="diff"><span class="d1">★</span></span>  막혔을 때 적어야 할 네 가지를 쓰고, 그중 <em>오류 메시지를 요약하지 말라</em>고 하는 이유를 설명하시오.</li>
 <li class="ex-item" data-ex="4"><span class="diff"><span class="d2">★★</span></span>  다음 도움 요청을 8.5절의 형식으로 고쳐 쓰시오. 없는 정보는 그럴듯하게 지어내되, <strong>네 요소가 모두</strong> 들어가야 한다.
 <blockquote class="plainquote"><p><em>제가 만든 페이지가 이상해요. 어제는 됐는데 오늘 안 돼요. 봐 주세요.</em></p></blockquote></li>
-<li class="ex-item" data-ex="5"><span class="diff"><span class="d2">★★</span></span>  8.3절에서 인공지능이 <em>저장은 브라우저의 로컬 저장소를 사용했으며 다른 사람과 공유되지 않는다</em>고 밝혔다. 이것이 원래 명세서(동아리원 40명이 각자 입력)와 어떻게 어긋나는지 설명하고, 이 시점에서 취할 수 있는 선택지를 두 가지 이상 제시하시오.</li>
+<li class="ex-item" data-ex="5"><span class="diff"><span class="d2">★★</span></span>  8.3절의 방법으로 자기 결과물의 <em>임의로 정한 것</em> 목록을 받았더니, <em>빈 칸을 0으로 세어 평균을 낸다</em>는 항목이 있었다. 이것이 왜 위험한지 설명하고, 사용자가 스스로 판단할 수 있게 하려면 화면에 무엇을 표시해야 하는지 쓰시오.</li>
 <li class="ex-item" data-ex="6"><span class="diff"><span class="d2">★★</span></span>  실습 8-5에서 코드 한 줄을 지웠을 때의 결과를 정리하고, 지운 줄이 어느 덩어리에 속했는지와 관찰된 증상이 서로 어떻게 대응하는지 설명하시오.</li>
 <li class="ex-item" data-ex="7"><span class="diff"><span class="d3">★★★</span></span>  자기 제작 프롬프트로 만든 결과물에 대해, 다음을 수행하시오. (1) 코드에서 자기가 프롬프트에 쓴 말을 다섯 군데 찾아 표시, (2) 화면의 글자·색·크기를 각각 하나씩 직접 수정, (3) 수정 전후 화면 캡처, (4) <strong>직접 고친 것</strong>과 <strong>인공지능에게 부탁해야 했던 것</strong>을 구분하고 그 경계가 어디였는지 서술.</li>
 <li class="ex-item" data-ex="8"><span class="diff"><span class="d3">★★★</span></span>  같은 제작 프롬프트로 만든 결과물을 놓고, <em>임의로 정한 것</em> 목록을 받아 각 항목에 대해 (1) 그대로 둘 것, (2) 바꿀 것, (3) 명세서를 고칠 것으로 분류하시오. 그리고 3번에 해당하는 항목이 있었다면, 6.5절의 명세서를 실제로 고쳐 제출하시오.</li>

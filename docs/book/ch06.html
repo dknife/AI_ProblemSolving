@@ -23,13 +23,13 @@
 <div class="layout">
 <nav class="sidebar">
 <div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
-<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 문제를 푸는 방식이 달라졌다</a>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 오늘 만들 수 있다</a>
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> AI는 어떻게 답을 만드는가</a>
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 에이전트: 스스로 일하는 AI</a>
 </div>
-<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 문제를 찾아내고 정의한다</a>
+<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 만들었는데 왜 안 쓰이는가</a>
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> 문제를 쪼개고 구조를 본다</a>
 </div>
@@ -38,7 +38,7 @@
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> AI와 제대로 대화한다</a>
 </div>
-<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 만들기 위한 준비</a>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 만들어진 것을 읽고 고친다</a>
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 첫 번째 웹 서비스 만들기</a>
 </div>
@@ -78,7 +78,9 @@
 </ul>
 </div></details></div>
 <p data-blk="chapters/ch06/ch06.tex#2">문제를 잘 정의하면 해법이 저절로 떠오를 것 같지만 그렇지 않다. 대개는 가장 먼저 떠오른 하나에 매달리게 되고, 그것이 최선인지는 끝내 확인하지 못한다. 인공지능은 이 지점에서 특히 쓸모가 있다 — 사람이 지치는 <em>여러 개 만들기</em>를 지치지 않고 해내기 때문이다.</p>
-<p data-blk="chapters/ch06/ch06.tex#3">이 장에서는 대안을 여러 개 만들고, 기준을 세워 고르고, 고른 것을 만들 수 있는 크기로 줄인다. 그리고 코드 한 줄 쓰기 전에 종이 위에서 먼저 만들어 본다. 마지막 절에서 쓰는 <strong>해법 명세서</strong>가 8장 이후 실제 제작의 출발점이 된다.</p>
+<p data-blk="chapters/ch06/ch06.tex#3">이 장에서는 대안을 여러 개 만들고, 기준을 세워 고르고, 고른 것을 만들 수 있는 크기로 줄인다. 그리고 다음 판을 만들기 전에 종이 위에서 먼저 그려 본다. 마지막 절에서 쓰는 <strong>해법 명세서</strong>가 7장에서 다시 만들 때의 설계도가 되고, 9–12장 내내 기준점이 된다.</p>
+<div class="buildbox"><div class="build-head"><span class="chip">이 장에서 만들 것</span><span class="build-name">기능을 덜어 낸 판</span></div><p>이번 제작은 처음으로 <strong>빼는</strong> 작업이다. 지금까지 붙인 기능 가운데 4장의 관찰에서 <em>아무도 쓰지 않은 것</em>을 골라 지운다.</p>
+<p>기능이 줄었는데 더 쓸 만해지는 경험을 하게 된다. 그 이유를 설명할 수 있게 되는 것이 이 장의 목표다.</p></div>
 <h2 data-blk="chapters/ch06/sec01.tex#1" id="sec1">6.1 대안을 많이 만드는 법</h2>
 <p data-blk="chapters/ch06/sec01.tex#2">5장에서 어느 가지부터 손댈지 정했다. 이제 그 가지를 어떻게 다룰지 정할 차례다. 그런데 대부분의 사람이 여기서 같은 실수를 한다. <strong>맨 처음 떠오른 하나에 매달린다.</strong></p>
 <h3 data-blk="chapters/ch06/sec01.tex#3">첫 아이디어는 왜 위험한가</h3>
@@ -238,7 +240,7 @@
 <p data-blk="chapters/ch06/sec04.tex#23">마지막 항목이 기준이다. 4.2절에서 인터뷰할 때 사람들이 쓴 말을 그대로 쓰는 것이 가장 좋다. 동아리에서 <em>총무</em>라고 부르면 화면에도 <em>총무</em>라고 쓴다. <em>회계 담당자</em>라고 쓰면 순간 낯설어진다.</p>
 <div class="box note"><span class="chip">잠깐</span><span class="box-title">스케치를 남겨 둔다</span><p>종이 스케치를 사진으로 찍어 <code>02_해법/</code> 폴더에 넣어 두자. 두 곳에서 쓰인다. 하나는 7.5절  —  그림을 그대로 첨부해 만들어 달라고 할 수 있다. 다른 하나는 13장 발표  —  처음 스케치와 완성된 화면을 나란히 보여 주면 과정이 한눈에 전달된다.</p></div>
 <h2 data-blk="chapters/ch06/sec05.tex#1" id="sec5">6.5 만들기 전에 적는 해법 명세서</h2>
-<p data-blk="chapters/ch06/sec05.tex#2">지금까지 세 장에 걸쳐 만든 것을 한 장으로 묶는다. 이 문서를 <strong>해법 명세서</strong>라고 부르자. 8장부터 12장까지 이 문서가 기준점이 된다.</p>
+<p data-blk="chapters/ch06/sec05.tex#2">4–6장에 걸쳐 알아낸 것을 한 장으로 묶는다. 이 문서를 <strong>해법 명세서</strong>라고 부르자. 7장에서 이것을 프롬프트로 옮겨 처음부터 다시 만들고, 12장까지 이 문서가 기준점이 된다.</p>
 <h3 data-blk="chapters/ch06/sec05.tex#3">서식</h3>
 <div class="settingbox-wrap"><div class="setting-label">해법 명세서 (한 장을 넘기지 않는다)</div><pre class="settingbox"><code>1. 문제
    (4장의 문제 진술문을 그대로)
@@ -326,7 +328,7 @@
 <h3 data-blk="chapters/ch06/sec05.tex#13">이것으로 무엇을 하는가</h3>
 <p data-blk="chapters/ch06/sec05.tex#14">명세서는 다음 다섯 곳에서 쓰인다. 지금 잘 써 두면 앞으로 다섯 번 편해진다.</p>
 <div class="table-wrap"><div class="table-caption">표 6.3: 해법 명세서가 쓰이는 곳</div><table><tr><th> 어디서</th><th> 무엇으로</th><th> 어느 칸</th></tr><tr><td>7.5절</td><td>제작 프롬프트의 재료</td><td>3–7번 전부</td></tr><tr><td>8–9장</td><td>만들다 길을 잃었을 때 기준</td><td>6번</td></tr><tr><td>10장</td><td>사용자에게 설명할 내용</td><td>1·4번</td></tr><tr><td>12.3절</td><td>확인할 항목</td><td>6·8번</td></tr><tr><td>13장</td><td>발표와 포트폴리오</td><td>전부</td></tr></table></div>
-<p data-blk="chapters/ch06/sec05.tex#15">이 명세서가 <strong>중간 발표(8주차)의 제출물</strong>이다. 여기까지가 이 수업의 절반이고, 어떤 의미에서는 어려운 절반이 끝난 것이다. 다음 장에서 이것을 인공지능에게 전달하는 법을 배우고, 8장부터 실제로 만든다.</p>
+<p data-blk="chapters/ch06/sec05.tex#15">이 명세서와 <strong>그것으로 다시 만든 판</strong>이 중간 발표(8주차)의 제출물이다. 1장에서 아무 근거 없이 만든 첫 판과 나란히 놓으면, 이 수업의 절반이 무엇이었는지가 한 장으로 보인다. 다음 장에서 이 명세서를 프롬프트로 옮긴다.</p>
 <p><span id="labs"></span><div class="box lab"><div class="lab-title">이 장의 실습</div><h3 data-blk="chapters/ch06/labs.tex#1">실습 6-1. 대안 열두 개</h3>
 <p data-blk="chapters/ch06/labs.tex#2">6.1절의 프롬프트로 자기 문제의 대안을 열두 개 만든다. 그런 다음 <strong>직접</strong> 세 개를 더 보탠다.</p>
 <ol data-blk="chapters/ch06/labs.tex#3">
@@ -389,7 +391,20 @@
 <li>화면 스케치 사진</li>
 <li>성공 기준 (지금 값과 목표 값)</li>
 <li>아직 모르는 것</li>
-</ul></div></p>
+</ul>
+<h3>실습 6-8. 제작  —  기능을 덜어 낸다</h3>
+<p data-blk="chapters/ch06/labs.tex#28">지금까지 붙인 기능이 꽤 된다. 이번 제작은 <strong>빼는 것</strong>이다.</p>
+<ol>
+<li>지금 페이지의 기능을 전부 적는다 (대개 여덟 개쯤 나온다)</li>
+<li>실습 4-7의 관찰 기록을 보고, <strong>아무도 쓰지 않은 기능</strong>에 표시한다</li>
+<li>6.3절의 세 칸으로 나눈다  —  꼭 / 있으면 좋음 / 이번엔 안 함</li>
+<li><strong><em>꼭</em>만 남긴 판</strong>을 만든다</li>
+</ol>
+<div class="prompt-wrap"><button class="prompt-copy" type="button">복사</button><pre class="prompt"><code><p>이 페이지에서 다음 기능을 <strong>빼</strong> 줘: <span class="pblank"></span></p><p>남길 것은 이것뿐이다: <span class="pblank"></span></p><p>화면도 그만큼 단순해져야 한다. 빼면서 남은 기능이 망가지지 않았는지 확인해 줘.</p></code></pre></div>
+<p><strong>덜어 낸 뒤 확인</strong>  —  실습 4-7의 그 사람들에게 다시 보낸다. 기능이 줄었는데 <em>더</em> 쓸 만해졌는가? 대개 그렇다. 그 이유를 두 문장으로 적는다.</p>
+<p><strong>제출</strong>  —  기능 목록과 세 칸 분류, 덜어 내기 전후 화면, 사용자 반응의 변화.</p>
+<div class="box keypoint"><span class="chip">요점</span><p data-blk="chapters/ch06/labs.tex#32">빼는 것이 붙이는 것보다 어렵다. 이미 만든 것을 지우는 데는 아까움이 따르기 때문이다. 그러나 <strong>쓰이지 않는 기능은 있는 것이 아니라 방해가 되는 것</strong>이다.</p>
+</div></div></p>
 <details class="box summary" id="summary"><summary class="box-head">6장 요약</summary><div class="sum-body"><ul>
 <li>첫 아이디어가 위험한 이유는 나빠서가 아니라 <strong>비교 대상이 없기</strong> 때문이다. 하나만 있으면 좋은지 나쁜지 판단할 수 없고, 애착이 생겨 지지하는 근거만 눈에 들어온다.</li>
 <li><strong>발산과 수렴을 섞지 않는다.</strong> 늘릴 때는 판단하지 않고, 판단할 때는 늘리지 않는다.</li>

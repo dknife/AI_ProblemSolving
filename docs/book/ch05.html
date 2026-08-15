@@ -23,13 +23,13 @@
 <div class="layout">
 <nav class="sidebar">
 <div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
-<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 문제를 푸는 방식이 달라졌다</a>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 오늘 만들 수 있다</a>
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> AI는 어떻게 답을 만드는가</a>
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 에이전트: 스스로 일하는 AI</a>
 </div>
-<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 문제를 찾아내고 정의한다</a>
+<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 만들었는데 왜 안 쓰이는가</a>
 </div>
 <div class="nav-ch current"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> 문제를 쪼개고 구조를 본다</a>
 <div class="nav-secs"><a class="nav-sec" href="ch05.html#sec1">5.1 큰 덩어리는 그대로 풀 수 없다</a><a class="nav-sec" href="ch05.html#sec2">5.2 로직 트리: 빠짐없이, 겹치지 않게</a><a class="nav-sec" href="ch05.html#sec3">5.3 증상과 원인을 가려낸다</a><a class="nav-sec" href="ch05.html#sec4">5.4 근거로 확인한다</a><a class="nav-sec" href="ch05.html#sec5">5.5 AI에게 분석시키고 검증하기</a><a class="nav-sec" href="ch05.html#labs">실습을 통한 개념 정리</a><a class="nav-sec" href="ch05.html#summary">5장 요약</a><a class="nav-sec" href="ch05.html#exercises">연습문제</a></div>
@@ -38,7 +38,7 @@
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> AI와 제대로 대화한다</a>
 </div>
-<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 만들기 위한 준비</a>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 만들어진 것을 읽고 고친다</a>
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 첫 번째 웹 서비스 만들기</a>
 </div>
@@ -79,6 +79,8 @@
 </div></details></div>
 <p data-blk="chapters/ch05/ch05.tex#2">4장에서 문제를 하나 정했다면, 그것은 아마 아직 통째로는 손댈 수 없는 크기일 것이다. <em>학과 행사 참여율이 낮다</em>는 문제를 그대로 붙들고 있으면 할 수 있는 일이 떠오르지 않는다. 그러나 참여율을 <em>알게 되는 사람의 수</em>, <em>알고도 오지 않는 비율</em>, <em>오려다 못 오는 사정</em>으로 나누면 손댈 자리가 보인다.</p>
 <p data-blk="chapters/ch05/ch05.tex#3">이 장은 그렇게 나누는 방법을 다룬다. 나누는 방식은 하나가 아니고, 어떻게 나누느냐에 따라 보이는 해법이 달라진다. 인공지능은 이 작업의 좋은 동료지만, 그럴듯한 구조를 잘 만들어 낼 뿐 그것이 맞는지는 확인하지 않는다는 점을 잊지 말아야 한다.</p>
+<div class="buildbox"><div class="build-head"><span class="chip">이 장에서 만들 것</span><span class="build-name">실제 자료를 견디는 판</span></div><p>이 장의 제작은 <strong>망가뜨려 보는</strong> 것이다. 진짜 자료를 넣고, 일부러 빈 행과 이상한 값을 섞어 페이지가 어떻게 반응하는지 본다.</p>
+<p>찾는 것은 오류가 아니라 <strong>조용히 틀리는 자리</strong>다. 멈추는 것은 눈에 보이지만, 잘못된 평균이 태연히 나오는 것은 아무도 알려 주지 않는다.</p></div>
 <h2 data-blk="chapters/ch05/sec01.tex#1" id="sec1">5.1 큰 덩어리는 그대로 풀 수 없다</h2>
 <p data-blk="chapters/ch05/sec01.tex#2">4장에서 문제를 한 문단으로 적었다. 그런데 그 문단을 들고 <em>자, 이제 어떻게 해결하지</em>라고 물으면 대개 아무것도 떠오르지 않는다. 덩어리가 너무 커서 손댈 자리가 보이지 않기 때문이다.</p>
 <h3 data-blk="chapters/ch05/sec01.tex#3">손댈 자리를 만든다</h3>
@@ -315,7 +317,24 @@
 <li>추측인 가지 중 확인해야 할 것 셋을 고른다</li>
 <li>그 셋을 어떻게 확인할지 적는다</li>
 </ol>
-</div></p>
+<h3>실습 5-7. 제작  —  실제 자료를 끝까지 넣어 본다</h3>
+<p data-blk="chapters/ch05/labs.tex#23">실습 5-5에서 정리한 <strong>진짜 자료</strong>를 페이지에 넣고, 끝까지 밀어붙인다.</p>
+<ol>
+<li>정리하기 <strong>전</strong>의 자료를 먼저 넣는다. 무엇이 깨지는가?</li>
+<li>정리한 자료를 넣는다. 무엇이 달라졌는가?</li>
+<li>자료를 <strong>일부러 망가뜨려</strong> 본다  —  빈 행 추가, 열 이름 바꾸기, 숫자 자리에 글자 넣기</li>
+<li>각각에 대해 페이지가 어떻게 반응했는지 적는다 (멈춤 / 조용히 틀림 / 안내)</li>
+</ol>
+<div class="settingbox-wrap"><div class="setting-label">망가뜨려 보기</div><pre class="settingbox"><code>넣은 것                     반응              위험한가
+--------------------------------------------------------------
+빈 행 3개
+열 이름을 다르게
+숫자 칸에 "미정"
+같은 행을 두 번
+--------------------------------------------------------------
+가장 위험한 반응 :        (조용히 틀린 것이 있었나?)</code></pre></div>
+<p data-blk="chapters/ch05/labs.tex#25"><strong>조용히 틀린 것</strong>이 하나라도 있으면 그것부터 고친다. 오류로 멈추는 것보다 훨씬 나쁘다(12.4절).</p>
+<p><strong>제출</strong>  —  위 표, 고친 내용, 그리고 <em>자료를 어떤 형태로 모아야 하는지</em>에 대한 자기 규칙 다섯 줄. 이 규칙이 9장에서 입력 화면을 만들 때 그대로 쓰인다.</p></div></p>
 <details class="box summary" id="summary"><summary class="box-head">5장 요약</summary><div class="sum-body"><ul>
 <li>쪼개는 목적은 전부 해결하기 위해서가 아니라 <strong>어느 하나부터 시작할지 고르기 위해서</strong>다. 잘 쪼갠 트리는 반드시 <em>여기부터 하자</em>는 결론으로 이어진다.</li>
 <li>잘 나뉜 조각의 조건 셋  —  각각을 따로 다룰 수 있고, 합치면 원래 문제가 되고, 크기가 비슷하다.</li>

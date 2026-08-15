@@ -23,13 +23,13 @@
 <div class="layout">
 <nav class="sidebar">
 <div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
-<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 문제를 푸는 방식이 달라졌다</a>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 오늘 만들 수 있다</a>
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> AI는 어떻게 답을 만드는가</a>
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 에이전트: 스스로 일하는 AI</a>
 </div>
-<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 문제를 찾아내고 정의한다</a>
+<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 만들었는데 왜 안 쓰이는가</a>
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> 문제를 쪼개고 구조를 본다</a>
 </div>
@@ -37,7 +37,7 @@
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> AI와 제대로 대화한다</a>
 </div>
-<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 만들기 위한 준비</a>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 만들어진 것을 읽고 고친다</a>
 </div>
 <div class="nav-ch current"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 첫 번째 웹 서비스 만들기</a>
 <div class="nav-secs"><a class="nav-sec" href="ch09.html#sec1">9.1 한 페이지로 시작한다</a><a class="nav-sec" href="ch09.html#sec2">9.2 입력과 출력 만들기</a><a class="nav-sec" href="ch09.html#sec3">9.3 계산하고 반응하게 하기</a><a class="nav-sec" href="ch09.html#sec4">9.4 자료를 다루기</a><a class="nav-sec" href="ch09.html#sec5">9.5 쓰기 쉽게 다듬기</a><a class="nav-sec" href="ch09.html#labs">실습을 통한 개념 정리</a><a class="nav-sec" href="ch09.html#summary">9장 요약</a><a class="nav-sec" href="ch09.html#exercises">연습문제</a></div>
@@ -77,7 +77,7 @@
 <li>남이 써도 헤매지 않도록 다듬을 수 있다.</li>
 </ul>
 </div></details></div>
-<p data-blk="chapters/ch09/ch09.tex#2">이 장에서 만드는 것은 주소만 알면 누구나 열 수 있는 화면 한 장이다. 대단해 보이지 않지만, 지금까지 사람이 손으로 하던 계산과 확인을 이 한 장이 대신하기 시작하면 이야기가 달라진다.</p>
+<p>7장에서 명세대로 다시 만든 판이 있을 것이다. 이 장에서는 그것을 <strong>남이 실제로 쓸 수 있는 상태</strong>까지 끌어올린다. 지금까지는 자료를 <em>읽는</em> 쪽이었다면, 여기서는 자료를 <em>넣는</em> 쪽을 만든다  —  4–6장에서 알아낸 진짜 병목이 대개 그쪽이기 때문이다.</p>
 <p>만드는 과정은 한 번에 완성하는 것이 아니라 다섯 번에 나누어 키워 간다. 화면을 띄우고, 입력과 출력을 붙이고, 계산을 시키고, 자료를 다루고, 다듬는다. 매 단계마다 동작하는 상태를 유지하는 것이 중요하다  —  한꺼번에 만들어 놓고 안 되는 상태가 가장 고치기 어렵다.</p>
 <h2 data-blk="chapters/ch09/sec01.tex#1" id="sec1">9.1 한 페이지로 시작한다</h2>
 <p data-blk="chapters/ch09/sec01.tex#2">8장에서 첫 결과물을 얻었다. 이 장에서는 그것을 명세서의 <em>꼭 있어야</em> 목록을 다 채우는 데까지 키운다. 그리고 그 과정을 다섯 단계로 나눠 진행한다.</p>
@@ -244,7 +244,7 @@
 날짜가 미래                   추가하되 노란색으로 표시
 그 밖                         정상 추가</code></pre></div>
 <p>이 표를 그대로 프롬프트에 붙여 넣으면 된다. 그리고 이 표는 12.3절에서 <strong>확인 항목</strong>으로 그대로 쓰인다  —  각 줄이 시험 하나가 된다.</p>
-<div class="box note"><span class="chip">잠깐</span><span class="box-title">예외를 미리 정하는 것의 값</span><p data-blk="chapters/ch09/sec03.tex#22"><em>금액이 비었을 때 어떻게 할까</em>는 만들기 전에는 떠오르지 않는다. 그런데 실제로 쓰기 시작하면 첫날에 일어난다. 6.4절에서 <em>잘못됐을 때</em>의 화면을 그려 보라고 한 이유가 이것이다. 미리 그려 둔 사람은 이 표를 5분이면 채운다.</p>
+<div class="box note"><span class="chip">잠깐</span><span class="box-title">예외를 미리 정하는 것의 값</span><p data-blk="chapters/ch09/sec03.tex#22"><em>금액이 비었을 때 어떻게 할까</em>는 종이 위에서는 잘 떠오르지 않는다. 그런데 실제로 쓰기 시작하면 첫날에 일어난다. 6.4절에서 <em>잘못됐을 때</em>의 화면을 그려 보라고 한 이유가 이것이다. 미리 그려 둔 사람은 이 표를 5분이면 채운다.</p>
 </div>
 <h2 data-blk="chapters/ch09/sec04.tex#1" id="sec4">9.4 자료를 다루기</h2>
 <p data-blk="chapters/ch09/sec04.tex#2">지금까지 만든 것에는 큰 구멍이 있다. <strong>새로고침하면 다 사라진다.</strong> 이 절에서 그것을 해결하고, 자료를 밖으로 꺼내는 길도 만든다.</p>

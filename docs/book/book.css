@@ -1074,3 +1074,26 @@ pre.shellcode code { color: inherit; background: none; }
 .listing > .prompt-copy {
   position: absolute; top: 8px; right: 10px; z-index: 2;
 }
+
+/* ---- 이 장에서 만들 것 (buildbox) ----
+   1~8장 도입부. 그 장에서 손에 남을 것을 먼저 보인다. */
+.buildbox {
+  margin: 1.4rem 0; padding: 0.95rem 1.15rem;
+  background: #F0F8F6;
+  border-left: 3px solid #2A8C7D;
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.buildbox .build-head {
+  display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;
+  margin-bottom: 0.35rem;
+}
+.buildbox .chip {
+  background: #2A8C7D; color: #fff;
+  font-size: 0.66rem; font-weight: 700; letter-spacing: 0.02em;
+  padding: 0.16rem 0.5rem; border-radius: 3px; white-space: nowrap;
+}
+.buildbox .build-name {
+  font-weight: 800; font-size: 1.04rem; color: #1E6B5F;
+  letter-spacing: -0.01em;
+}
+.buildbox p:last-child { margin-bottom: 0; }

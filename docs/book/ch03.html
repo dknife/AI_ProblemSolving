@@ -23,14 +23,14 @@
 <div class="layout">
 <nav class="sidebar">
 <div class="nav-ch"><a class="nav-ch-link" href="front.html"><span class="nav-num">&#128214;</span> 표지·머릿말</a></div>
-<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 문제를 푸는 방식이 달라졌다</a>
+<div class="nav-ch"><a class="nav-ch-link" href="ch01.html"><span class="nav-num">01</span> 오늘 만들 수 있다</a>
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch02.html"><span class="nav-num">02</span> AI는 어떻게 답을 만드는가</a>
 </div>
 <div class="nav-ch current"><a class="nav-ch-link" href="ch03.html"><span class="nav-num">03</span> 에이전트: 스스로 일하는 AI</a>
 <div class="nav-secs"><a class="nav-sec" href="ch03.html#sec1">3.1 채팅에서 에이전트로</a><a class="nav-sec" href="ch03.html#sec2">3.2 도구를 쓰는 AI</a><a class="nav-sec" href="ch03.html#sec3">3.3 계획하고 되짚는 순환</a><a class="nav-sec" href="ch03.html#sec4">3.4 자율성의 정도와 사람의 자리</a><a class="nav-sec" href="ch03.html#sec5">3.5 무료로 쓸 수 있는 에이전트</a><a class="nav-sec" href="ch03.html#labs">실습을 통한 개념 정리</a><a class="nav-sec" href="ch03.html#summary">3장 요약</a><a class="nav-sec" href="ch03.html#exercises">연습문제</a></div>
 </div>
-<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 문제를 찾아내고 정의한다</a>
+<div class="nav-ch"><a class="nav-ch-link" href="ch04.html"><span class="nav-num">04</span> 만들었는데 왜 안 쓰이는가</a>
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch05.html"><span class="nav-num">05</span> 문제를 쪼개고 구조를 본다</a>
 </div>
@@ -38,7 +38,7 @@
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch07.html"><span class="nav-num">07</span> AI와 제대로 대화한다</a>
 </div>
-<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 만들기 위한 준비</a>
+<div class="nav-ch"><a class="nav-ch-link" href="ch08.html"><span class="nav-num">08</span> 만들어진 것을 읽고 고친다</a>
 </div>
 <div class="nav-ch"><a class="nav-ch-link" href="ch09.html"><span class="nav-num">09</span> 첫 번째 웹 서비스 만들기</a>
 </div>
@@ -79,6 +79,8 @@
 </div></details></div>
 <p data-blk="chapters/ch03/ch03.tex#2">2장의 인공지능은 묻는 말에 답하는 상대였다. 답이 훌륭해도 그것을 받아 옮기고 실행하는 일은 여전히 사람 몫이었다. 이 장에서 다루는 <strong class="term-ko">에이전트</strong><sup class="term">agent</sup>는 다르다. 목표를 주면 스스로 순서를 정하고, 필요한 도구를 쓰고, 결과를 보고 다시 시도한다.</p>
 <p data-blk="chapters/ch03/ch03.tex#3">이 차이가 이 책을 가능하게 한다. 코드를 몰라도 무언가를 만들 수 있는 것은, 파일을 만들고 코드를 쓰고 실행해 보고 오류를 고치는 그 여러 단계를 에이전트가 이어서 해내기 때문이다. 다만 맡긴다는 것은 곧 <strong>잘못될 수 있다는 뜻</strong>이기도 하다. 그래서 이 장은 무엇을 맡기고 무엇을 지켜볼지도 함께 다룬다.</p>
+<div class="buildbox"><div class="build-head"><span class="chip">이 장에서 만들 것</span><span class="build-name">에이전트가 붙인 기능 하나</span></div><p>2장까지는 매번 <em>전체를 다시 만들어 달라</em>고 했다. 기능 하나를 붙일 때마다 처음부터 설명하는 셈이다.</p>
+<p>이 장에서는 <strong>에이전트</strong>에게 파일을 넘기고 <em>여기에 이 기능을 붙여 달라</em>고 맡긴다. 에이전트가 파일을 고치고, 열어 보고, 오류를 읽고, 다시 고치는 과정을 옆에서 지켜본다. 붙일 기능은 <strong>이상해 보이는 값을 찾아 표시하기</strong>  —  5장에서 자료를 다룰 때 그대로 쓰게 된다.</p></div>
 <h2 data-blk="chapters/ch03/sec01.tex#1" id="sec1">3.1 채팅에서 에이전트로</h2>
 <p data-blk="chapters/ch03/sec01.tex#2">2장의 인공지능은 <em>답을 주는</em> 상대였다. 답이 아무리 좋아도 그것을 받아서 실제로 무언가를 하는 일은 사람 몫이었다. 이 장에서 다루는 <strong class="term-ko">에이전트</strong><sup class="term">agent</sup>는 그 다음 단계다. <strong>목표를 주면 스스로 일을 진행한다.</strong></p>
 <h3 data-blk="chapters/ch03/sec01.tex#3">같은 일을 두 가지 방식으로</h3>
@@ -279,7 +281,26 @@
 <h3 data-blk="chapters/ch03/labs.tex#17">실습 3-5. 맡길 것과 맡기지 않을 것</h3>
 <p data-blk="chapters/ch03/labs.tex#18">실습 1-3에서 적은 불편 열 가지를 다시 꺼낸다. 각각에 대해, 만약 자동화한다면 표 <span class="xref" data-ref="tab:autonomy">3.4</span>의 어느 단계가 맞을지 표시하고 <strong>이유를 한 줄씩</strong> 적는다.</p>
 <p data-blk="chapters/ch03/labs.tex#19">3.4절의 세 가지 질문(되돌릴 수 있는가 / 남에게 영향이 가는가 / 돈이나 개인정보가 걸리는가)을 판단 근거로 쓴다. 이 표는 12.5절과 기말 프로젝트에서 다시 쓰인다.</p>
-</div></p>
+<h3>실습 3-6. 제작  —  에이전트에게 기능 하나를 맡긴다</h3>
+<p data-blk="chapters/ch03/labs.tex#21">2장에서 고친 파일을 <strong>에이전트</strong>에게 넘기고, 이번에는 <em>전체를 다시 만들지 말고 여기에 붙여 달라</em>고 맡긴다.</p>
+<p><strong>맡길 기능</strong>  —  이상해 보이는 값 찾아 표시하기.</p>
+<div class="promptcard" data-kind="prompt"><div class="promptcard-bar"><span class="promptcard-tag">프롬프트</span><button class="prompt-copy" type="button">복사</button><a class="tool-open" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a><a class="tool-open" href="https://claude.ai" target="_blank" rel="noopener">Claude</a><a class="tool-open" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a><a class="tool-open" href="https://aistudio.google.com" target="_blank" rel="noopener">AI Studio</a></div><pre class="prompt"><code><p>첨부한 <code>analyze.html</code>에 기능을 하나 붙여 줘. <strong>전체를 다시 만들지 말고</strong> 이 파일을 고쳐 줘.</p><p><span class="ptag">[붙일 기능]</span> 표 아래에 <em>확인이 필요한 행</em> 목록을 보여 준다. 다음에 해당하는 행을 찾는다.<br>
+- 숫자 열이 비어 있거나 숫자로 읽히지 않는 행<br>
+- 숫자 열의 값이 그 열의 다른 값들과 크게 동떨어진 행<br>
+- 완전히 똑같은 내용이 두 번 이상 나오는 행</p><p>각 행에 <strong>왜 걸렸는지</strong> 이유를 함께 적어 줘. 몇 건이 걸렸는지도 위에 표시해 줘.</p><p><span class="ptag">[진행 방식]</span> 다음 순서로 하고, 각 단계가 끝나면 결과를 보여 준 뒤 내 확인을 받고 넘어가 줘.<br>
+1. 지금 파일이 무엇을 하는지 읽고 요약한다<br>
+2. 어디에 어떻게 붙일지 알려 준다<br>
+3. 고친 뒤 실제로 열어 동작을 확인한다<br>
+4. <strong>원래 되던 기능이 그대로인지</strong> 확인한다</p><p><span class="ptag">[제약]</span> 파일은 하나로 유지. 요청하지 않은 기능은 넣지 말 것.</p></code></pre><div class="listing-caption">프롬프트 3.3: 에이전트에게 기능 추가를 맡기기</div></div>
+<p><strong>관찰할 것</strong>  —  이 실습의 진짜 목적은 기능이 아니라 <em>에이전트가 일하는 모습</em>이다.</p>
+<div class="settingbox-wrap"><div class="setting-label">에이전트 관찰 기록</div><pre class="settingbox"><code>밟은 단계 수        :
+스스로 실패하고 다시 시도한 적  :  (있다 / 없다 —  몇 번:      )
+나에게 물어본 지점  :
+임의로 정한 것      :
+원래 기능이 망가진 곳 :        (있었다면 어떻게 알았나:        )</code></pre></div>
+<p><strong>제출</strong>  —  위 기록, 붙인 기능이 동작하는 화면, 그리고 <strong>2장의 방식(전체 다시 만들기)과 비교해 무엇이 편했고 무엇이 불안했는지</strong>.</p>
+<div class="box caution"><span class="chip">주의</span><p data-blk="chapters/ch03/labs.tex#25">고친 파일을 받기 전에 <strong>사본을 남긴다.</strong> 에이전트가 파일을 직접 고치므로, 잘못되면 되돌릴 곳이 필요하다(3.4절).</p>
+</div></div></p>
 <details class="box summary" id="summary"><summary class="box-head">3장 요약</summary><div class="sum-body"><ul>
 <li><strong class="term-ko">에이전트</strong><sup class="term">agent</sup>와 대화형 AI의 차이는 능력이 아니라 <strong>누가 다음 단계를 정하는가</strong>이다. 중간 과정이 사라진 것이 아니라 사람의 손을 떠났을 뿐이다.</li>
 <li>그래서 편리한 만큼 위험도 커진다. 대화형 AI가 틀리면 읽다가 알아챌 기회가 있지만, 에이전트가 틀리면 <strong>그 방향으로 끝까지 만들어 놓는다</strong>.</li>
